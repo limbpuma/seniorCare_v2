@@ -1,0 +1,51 @@
+---
+import type { HTMLTag, Polymorphic } from "astro/types"
+
+type Props<Tag extends HTMLTag> = Polymorphic<{
+	as: Tag
+	variant: keyof typeof variantClasses
+	color: keyof typeof colorClasses
+}>
+
+const { as: Tag, class: className, variant, color, ...props } = Astro.props
+
+const variantClasses: { [key: string]: string } = {
+    "h1": "font-bold text-5xl md:text-9x",
+    "h2": "font-bold text-3xl md:text-[64px] leading-[74px]",
+    "h3": "font-bold text-3xl md:text-5xl leading-[58px]",
+    "h4": "font-bold text-3xl md:text-[36px] leading-[46px]",
+    "h5": "font-bold text-3xl md:text-[24px] leading-[34px]",
+    "h6": "font-bold text-3xl md:text-lg leading-7",
+
+    "sub-heading": "text-3xl md:text-lg font-medium",
+    "button-text": "text-3xl md:text-base font-semibold",
+    "body-text": "text-3xl md:text-base leading-[26px] font-medium",
+    "testimonial-text": "text-3xl md:text-[21px] leading-[31px] font-semibold italic",
+    "list-text": "text-3xl md:text-base leading-[46px] font-medium",
+    "404-text": "text-3xl md:text-[269px] font-bold",
+}
+
+const colorClasses = {
+	white: "text-white",
+	black: "text-black",
+	primary: "text-primary-dark",
+	primaryLight: "text-primary-light",
+	accent: "text-accent",
+}
+
+const classes = [
+	variantClasses[variant as keyof typeof variantClasses],
+	colorClasses[color as keyof typeof colorClasses],
+	className,
+]
+---
+
+<Tag class:list={classes} {...props} tabindex="0">
+	<slot />
+</Tag>
+
+<style>
+    h1, h2, h3, h4, h5, h6 {
+        font-family: raleway;
+    }
+</style>
