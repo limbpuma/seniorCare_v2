@@ -1,0 +1,27 @@
+---
+// Asume que FontAwesome ya está incluido globalmente en tu proyecto
+const { socials = [], size = 'medium' } = Astro.props;
+
+const sizes = {
+  small: 'text-xs',
+  medium: 'text-lg',
+  large: 'text-xl'
+};
+
+const iconClass = sizes[size] || sizes.medium; // Acceso directo a la propiedad
+
+// Definimos un mapa para los íconos, asociando el nombre de la red social con su clase de FontAwesome
+const iconMap = {
+  facebook: 'fa-facebook-f',
+  twitter: 'fa-twitter',
+  instagram: 'fa-instagram',
+  linkedin: 'fa-linkedin-in',
+  youtube: 'fa-youtube'
+};
+---
+
+<div class="flex">
+  {socials.map(social => (
+    <i class={`fab ${iconMap[social]} m-1 ${iconClass}`}></i>
+  ))}
+</div>
