@@ -1,38 +1,38 @@
 @font-face {
   font-family: 'FontAwesome Brands';
-  src: url('/assets/fonts/fa-brands-400.woff2') format('woff2'),
-       url('/assets/fonts/fa-brands-400.woff') format('woff'),
-       url('/assets/fonts/fa-brands-400.ttf') format('truetype'),
-       url('/assets/fonts/fa-brands-400.eot') format('embedded-opentype');
+  src: url('/assets/css/fonts/fa-brands-400.woff2') format('woff2'),
+       url('/assets/css/fonts/fa-brands-400.woff') format('woff'),
+       url('/assets/css/fonts/fa-brands-400.ttf') format('truetype'),
+       url('/assets/css/fonts/fa-brands-400.eot') format('embedded-opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'FontAwesome Regular';
-  src: url('/assets/fonts/fa-regular-400.woff2') format('woff2'),
-       url('/assets/fonts/fa-regular-400.woff') format('woff'),
-       url('/assets/fonts/fa-regular-400.ttf') format('truetype'),
-       url('/assets/fonts/fa-regular-400.eot') format('embedded-opentype');
+  src: url('/assets/css/fonts/fa-regular-400.woff2') format('woff2'),
+       url('/assets/css/fonts/fa-regular-400.woff') format('woff'),
+       url('/assets/css/fonts/fa-regular-400.ttf') format('truetype'),
+       url('/assets/css/fonts/fa-regular-400.eot') format('embedded-opentype');
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'FontAwesome Solid';
-  src: url('/assets/fonts/fa-solid-900.woff2') format('woff2'),
-       url('/assets/fonts/fa-solid-900.woff') format('woff'),
-       url('/assets/fonts/fa-solid-900.ttf') format('truetype'),
-       url('/assets/fonts/fa-solid-900.eot') format('embedded-opentype');
+  src: url('/assets/css/fonts/fa-solid-900.woff2') format('woff2'),
+       url('/assets/css/fonts/fa-solid-900.woff') format('woff'),
+       url('/assets/css/fonts/fa-solid-900.ttf') format('truetype'),
+       url('/assets/css/fonts/fa-solid-900.eot') format('embedded-opentype');
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Flaticon';
-  src: url('/assets/fonts/Flaticon.woff2') format('woff2'),
-       url('/assets/fonts/Flaticon.woff') format('woff'),
-       url('/assets/fonts/Flaticon.ttf') format('truetype');
+  src: url('/assets/css/fonts/Flaticon.woff2') format('woff2'),
+       url('/assets/css/fonts/Flaticon.woff') format('woff'),
+       url('/assets/css/fonts/Flaticon.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -41,3 +41,44 @@
 body {
   font-family: 'Montserrat', sans-serif; /* Fuente predeterminada */
 }
+.icon {
+  font-family: 'Flaticon' !important;
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon-facebook:before {
+  content: "\e900"; /* Reemplaza con el código correcto del icono */
+}
+
+.icon-twitter:before {
+  content: "\e901"; /* Reemplaza con el código correcto del icono */
+}
+
+.icon-instagram:before {
+  content: "\e902"; /* Reemplaza con el código correcto del icono */
+}
+
+.icon-linkedin:before {
+  content: "\e903"; /* Reemplaza con el código correcto del icono */
+}
+
+.icon-youtube:before {
+  content: "\e904"; /* Reemplaza con el código correcto del icono */
+}
+
+.icon-map-marker:before {
+  content: "\e905"; /* Reemplaza con el código correcto del icono */
+}
+
+.icon-phone:before {
+  content: "\e906"; /* Reemplaza con el código correcto del icono */
+}
+
+.icon-clock:before {
+  content: "\e907"; /* Reemplaza con el código correcto del icono */
+}
+

@@ -18,7 +18,9 @@ export default {
       boxShadow: {
         'soft': '0 4px 6px rgba(0, 0, 0, 0.1)',
         'medium': '0 5px 15px rgba(0, 0, 0, 0.15)',
-        'hard': '0 10px 20px rgba(0, 0, 0, 0.2)'
+        'hard': '0 10px 20px rgba(0, 0, 0, 0.2)',
+        'custom-light': '0 4px 6px rgba(0, 0, 0, 0.1)',
+        'custom-heavy': '0 8px 10px rgba(0, 0, 0, 0.15)',
       },
       spacing: {
         '128': '32rem',

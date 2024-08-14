@@ -1,0 +1,27 @@
+---
+import Button from "../common/Button.astro";
+import seniorCoupleImage from '/assets/img/senior_couple__in_the_park.webp';
+const BUTTON = {
+  text: 'Free Care Consult',
+};
+---
+<section class="bg-center bg-no-repeat bg-cover bg-[url('/assets/img/senior_couple__in_the_park.webp')] bg-blend-multiply">
+    <div class="px-4 mx-auto max-w-screen-xl text-center lg:text-left py-16 sm:py-24 lg:py-48 flex flex-col lg:flex-row lg:items-center">
+        <div class="lg:w-1/2 w-full px-4">
+            <h3 class="text-deep-blue text-ag-h5 font-ag-h5 mb-2 sm:mb-4">Love & Care For</h3>
+            <h1 class="text-deep-blue mb-4 text-ag-h2 font-ag-h2 tracking-tight leading-tight sm:text-ag-h1 sm:leading-tight">
+                Seniors
+            </h1>
+            <p class="text-deep-blue mb-8 text-ag-body-text font-ag-body-text sm:text-lg lg:text-xl">
+                Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.
+            </p>
+            <div class="flex flex-col space-y-4 sm:flex-row sm:justify-center lg:justify-start sm:space-y-0">
+                <Button variant="primary" size="medium" class="mx-auto sm:mx-0">
+                    {BUTTON.text}
+                </Button>
+            </div>
+        </div>
+        <!-- Parte derecha vacía para pantallas grandes -->
+        <div class="hidden lg:block lg:w-1/2"></div>
+    </div>
+</section>

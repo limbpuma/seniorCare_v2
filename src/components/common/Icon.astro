@@ -1,0 +1,25 @@
+---
+const { socials = [], size = 'medium' } = Astro.props;
+
+const sizes = {
+  small: 'text-xs',
+  medium: 'text-lg',
+  large: 'text-xl'
+};
+
+const iconClass = sizes[size] || sizes.medium;
+
+const iconMap = {
+  facebook: 'icon-facebook',
+  twitter: 'icon-twitter',
+  instagram: 'icon-instagram',
+  linkedin: 'icon-linkedin',
+  youtube: 'icon-youtube'
+};
+---
+
+<div class="flex">
+  {socials.map(social => (
+    <i class={`icon ${iconMap[social]} m-1 ${iconClass}`}></i>
+  ))}
+</div>
