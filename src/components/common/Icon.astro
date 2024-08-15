@@ -10,16 +10,19 @@ const sizes = {
 const iconClass = sizes[size] || sizes.medium;
 
 const iconMap = {
-  facebook: 'icon-facebook',
-  twitter: 'icon-twitter',
-  instagram: 'icon-instagram',
-  linkedin: 'icon-linkedin',
-  youtube: 'icon-youtube'
+  facebook: 'fab fa-facebook-f',
+  twitter: 'fab fa-twitter',
+  instagram: 'fab fa-instagram',
+  linkedin: 'fab fa-linkedin-in',
+  youtube: 'fab fa-youtube',
+  phone: 'fas fa-phone',
+  mapMarker: 'fas fa-map-marker-alt',
+  clock: 'fas fa-clock',
 };
 ---
 
 <div class="flex">
   {socials.map(social => (
-    <i class={`icon ${iconMap[social]} m-1 ${iconClass}`}></i>
+    <i class={`${iconMap[social]} m-1 ${iconClass}`}></i>
   ))}
 </div>

@@ -37,48 +37,8 @@
   font-style: normal;
 }
 
+
 /* Otros estilos globales */
 body {
   font-family: 'Montserrat', sans-serif; /* Fuente predeterminada */
 }
-.icon {
-  font-family: 'Flaticon' !important;
-  font-weight: normal;
-  font-style: normal;
-  display: inline-block;
-  text-rendering: auto;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-.icon-facebook:before {
-  content: "\e900"; /* Reemplaza con el código correcto del icono */
-}
-
-.icon-twitter:before {
-  content: "\e901"; /* Reemplaza con el código correcto del icono */
-}
-
-.icon-instagram:before {
-  content: "\e902"; /* Reemplaza con el código correcto del icono */
-}
-
-.icon-linkedin:before {
-  content: "\e903"; /* Reemplaza con el código correcto del icono */
-}
-
-.icon-youtube:before {
-  content: "\e904"; /* Reemplaza con el código correcto del icono */
-}
-
-.icon-map-marker:before {
-  content: "\e905"; /* Reemplaza con el código correcto del icono */
-}
-
-.icon-phone:before {
-  content: "\e906"; /* Reemplaza con el código correcto del icono */
-}
-
-.icon-clock:before {
-  content: "\e907"; /* Reemplaza con el código correcto del icono */
-}
-
