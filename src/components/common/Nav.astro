@@ -1,5 +1,14 @@
 ---
-const { links } = Astro.props;
+interface Link {
+    name: string;
+    href: string;
+}
+
+const links: Link[] = [
+    { name: 'Home', href: '/' },
+    { name: 'About', href: '/about' },
+    
+];
 ---
 
 <nav>
