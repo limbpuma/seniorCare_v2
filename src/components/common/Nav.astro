@@ -1,14 +1,14 @@
 ---
 interface Link {
-    name: string;
-    href: string;
+  name: string;
+  href: string;
 }
 
-const links: Link[] = [
-    { name: 'Home', href: '/' },
-    { name: 'About', href: '/about' },
-    
-];
+interface Props {
+  links: Link[];
+}
+
+const { links } = Astro.props;
 ---
 
 <nav>
