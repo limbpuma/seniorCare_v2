@@ -11,7 +11,7 @@ export default {
         "soft-blue": '#5a8bba', 
         "deep-blue": '#084487', 
         "soft-beige": '#ffedcc', 
-        "soft-orange": '#F1C097',
+        "soft-orange": '#F2B98A',
         primary: '#084487', 
         accent: '#FFDAA3',
       },

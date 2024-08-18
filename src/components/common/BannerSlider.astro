@@ -1,0 +1,18 @@
+---
+import ReactSwiperSlider from './Slider.jsx';
+
+const slides = [
+  { text: 'Relaxation', icon: 'fa-solid fa-user-nurse' },
+  { text: 'Compassion', icon: 'fa-solid fa-heart-pulse' },
+  { text: 'Atmosphere', icon: 'fa-solid fa-bed-pulse' },
+  { text: 'Peaceful', icon: 'fa-solid fa-hospital-user' },
+  { text: 'Care with', icon: 'fa-solid fa-pills' },
+  { text: 'tmosphere', icon: 'fa-solid fa-house-medical' },
+  { text: 'Environment', icon: 'fa-solid fa-user-doctor' },
+
+];
+---
+
+<div class="bg-soft-orange py-12 w-full">
+  <ReactSwiperSlider slides={slides} client:load/>
+</div>
