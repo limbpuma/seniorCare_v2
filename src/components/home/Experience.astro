@@ -1,0 +1,35 @@
+---
+import Button from "../common/Button.astro";
+import Icon from '../common/Icon.astro';
+
+const content = {
+  heading: 'Why Choose Us',
+  title: 'Most Experience Care For Senior Person',
+  description: 'It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.',
+  buttonText: 'Know More',
+};
+---
+
+<section class="features py-12 sm:py-16">
+  <div class="container mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8 flex flex-col lg:flex-row items-center lg:justify-between">
+    
+    
+    <div class="relative w-full lg:w-1/2 bg-gray-200">
+      <img src="/assets/img/Bild1.jpg" alt="Image Description" class="w-full h-full object-cover" />
+
+      
+      <div class="absolute bottom-0 left-0 bg-deep-blue p-12 flex flex-col items-center text-soft-orange">
+        <Icon socials={['handhelp']} size="xl" />
+        <p class="text-white ag-h5 font-ag-h5 font-bold">Safe & Security</p>
+      </div>
+    </div>
+    <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-12">
+      <h5 class="text-soft-blue font-ag-sub-heading text-ag-sub-heading mb-4">{content.heading}</h5>
+      <h3 class="text-deep-blue font-ag-h3 text-ag-h3 mb-4">{content.title}</h3>
+      <p class="text-gray-600 text-ag-body-text font-ag-body-text mb-6">{content.description}</p>
+      <Button variant="primary" size="medium">
+        {content.buttonText}
+      </Button>
+    </div>
+  </div>
+</section>

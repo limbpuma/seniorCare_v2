@@ -2,7 +2,7 @@ import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode } from 'swiper/modules';
 
-// Importar estilos de Swiper
+
 import 'swiper/css';
 import 'swiper/css/free-mode';
 
@@ -13,7 +13,7 @@ const ReactSwiperSlider = ({ slides }) => {
     slidesPerView: 'auto',
     freeMode: true,
     loop: true,
-    speed: 5000, // Aumentar el valor para que sea más suave
+    speed: 5000, 
     autoplay: {
       delay: 0,
       disableOnInteraction: false,

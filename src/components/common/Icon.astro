@@ -3,9 +3,9 @@ const { socials = [], size = 'medium', customSize = '' } = Astro.props;
 
 const sizes = {
   small: 'text-xs',
-  medium: 'text-lg',
-  large: 'text-xl',
-  xl: 'text-3xl'  // Agregando un tamaño extra grande como ejemplo
+  medium: 'text-ag-body-text', 
+  large: 'text-ag-h5', 
+  xl: 'text-ag-h3', 
 };
 
 const iconClass = customSize ? customSize : (sizes[size] || sizes.medium);
@@ -20,6 +20,7 @@ const iconMap = {
   mapMarker: 'fas fa-map-marker-alt',
   clock: 'fas fa-clock',
   smile: 'far fa-smile',
+  handhelp: 'fa-solid fa-handshake-angle'
 };
 ---
 
