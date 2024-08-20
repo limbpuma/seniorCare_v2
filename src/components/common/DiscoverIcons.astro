@@ -1,0 +1,40 @@
+---
+
+//ONGOING CODE > lack of improvement in styles
+//ONGOING CODE > lack of improvement in styles
+//ONGOING CODE > lack of improvement in styles
+
+import Icon from '../common/Icon.astro';
+
+const features = [
+  { icon: 'bed', title: 'Comfortable Living Spaces', description: 'Aenean viverra cursus ipsum. Etiam vitae aliquet lorem ultricies eget massa.', number: '01' },
+  { icon: 'utensils', title: 'Nutritious Dining Options', description: 'Aenean viverra cursus ipsum. Etiam vitae aliquet lorem ultricies eget massa.', number: '02' },
+  { icon: 'shield-alt', title: 'Safety and Security Measures', description: 'Aenean viverra cursus ipsum. Etiam vitae aliquet lorem ultricies eget massa.', number: '03' },
+  { icon: 'seedling', title: 'Memory Care Services', description: 'Aenean viverra cursus ipsum. Etiam vitae aliquet lorem ultricies eget massa.', number: '04' },
+  { icon: 'ambulance', title: 'Transportation Assistance', description: 'Aenean viverra cursus ipsum. Etiam vitae aliquet lorem ultricies eget massa.', number: '05' },
+  { icon: 'heart', title: 'Emotional and Spiritual Support', description: 'Aenean viverra cursus ipsum. Etiam vitae aliquet lorem ultricies eget massa.', number: '06' },
+];
+---
+
+<section class="features py-12 sm:py-16 bg-soft-orange">
+  <div class="container mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+    <div class="text-center mb-12">
+      <h5 class="text-soft-blue font-ag-h5 text-ag-h5 mb-2">Senior Living</h5>
+      <h2 class="text-deep-blue font-ag-h2 text-ag-h2 mb-4">Discover Our Unique Offerings</h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {features.map((feature, index) => (
+        <div class={`relative p-6 rounded-lg bg-white ${index === 1 ? 'bg-soft-beige' : ''} shadow-md hover:shadow-lg transition-shadow duration-300`}>
+          <div class="flex flex-col items-center mb-4">
+            <div class="text-deep-blue text-5xl lg:text-6xl mb-4">
+              <Icon socials={[feature.icon]} size="xl" />
+            </div>
+            <h3 class="text-deep-blue font-ag-h4 text-ag-h4 mb-2 text-center">{feature.title}</h3>
+            <p class="text-gray-600 text-ag-body-text font-ag-body-text text-center">{feature.description}</p>
+          </div>
+          <div class="absolute top-4 right-4 text-soft-orange text-ag-h1 opacity-20">{feature.number}</div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
