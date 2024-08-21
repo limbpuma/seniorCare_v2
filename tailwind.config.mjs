@@ -10,8 +10,9 @@ export default {
         "gray-blue": '#bfd2d7', 
         "soft-blue": '#5a8bba', 
         "deep-blue": '#084487', 
-        "soft-beige": '#ffedcc', 
         "soft-orange": '#F2B98A',
+        "soft-beige": '#ffedcc', 
+        
         primary: '#084487', 
         accent: '#FFDAA3',
       },

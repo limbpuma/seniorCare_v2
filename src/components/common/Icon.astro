@@ -2,10 +2,11 @@
 const { socials = [], size = 'medium', customSize = '' } = Astro.props;
 
 const sizes = {
-  small: 'text-xs',
-  medium: 'text-ag-body-text', 
-  large: 'text-ag-h5', 
-  xl: 'text-ag-h3', 
+  tiny: 'text-xs',                      // Muy pequeño
+  small: 'text-sm',                     // Pequeño
+  medium: 'text-ag-body-text',          // Medio (texto normal)
+  large: 'text-ag-h5',                  // Grande
+  xl: 'text-ag-h3',  
 };
 
 const iconClass = customSize ? customSize : (sizes[size] || sizes.medium);
