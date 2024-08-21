@@ -11,8 +11,10 @@ const slides = [
   { text: 'Environment', icon: 'fa-solid fa-user-doctor' },
 
 ];
+
+const imageClasses = "w-full h-auto object-cover";
 ---
 
 <div class="bg-soft-orange py-12 w-full">
-  <ReactSwiperSlider slides={slides} client:load/>
+  <ReactSwiperSlider slides={slides} imageClasses={imageClasses} client:load/>
 </div>
