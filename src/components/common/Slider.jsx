@@ -5,7 +5,7 @@ import { Autoplay, FreeMode } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 
-const ReactSwiperSlider = ({ slides, isImageSlider = false }) => {
+const ReactSwiperSlider = ({ slides, isImageSlider = false, class:classes }) => {
   const settings = {
     modules: [Autoplay, FreeMode],
     spaceBetween: 30,
@@ -30,7 +30,7 @@ const ReactSwiperSlider = ({ slides, isImageSlider = false }) => {
             ) : (
               <>
                 {isImageSlider ? (
-                  <img src={slide.src} alt={slide.alt} className={imageClasses} />
+                  <img src={slide.src} alt={slide.alt} />
                 ) : (
                   <>
                     <i className={`${slide.icon} text-ag-h2 lg:text-ag-h2 text-deep-blue mr-12`}></i>

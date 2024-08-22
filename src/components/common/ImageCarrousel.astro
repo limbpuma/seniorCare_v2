@@ -2,16 +2,15 @@
 import ReactSwiperSlider from './Slider.jsx';
 
 const images = [
-  { src: '/assets/img/Bild1.jpg', alt: 'Image 1', description: 'Assisted Living' },
-  { src: '/assets/img/Bild1.jpg', alt: 'Image 2', description: 'Healthcare Services' },
-  { src: '/assets/img/Bild1.jpg', alt: 'Image 3', description: 'Meal Services' },
-  { src: '/assets/img/Bild1.jpg', alt: 'Image 4', description: 'Housekeeping' },
-  { src: '/assets/img/Bild1.jpg', alt: 'Image 5', description: 'Memory Care' },
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 1', description: 'Assisted Living', className: 'w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 object-cover mb-4 rounded' },
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 2', description: 'Healthcare Services', className: 'w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 object-cover mb-4 rounded' },
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 3', description: 'Meal Services', className: 'w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 object-cover mb-4 rounded' },
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 4', description: 'Housekeeping', className: 'w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 object-cover mb-4 rounded' },
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 5', description: 'Memory Care', className: 'w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 object-cover mb-4 rounded' },
 ];
 
 const title = "What We Offer";
 const subtitle = "We Take Care Senior Persons";
-const imageClasses = "w-32 h-32 lg:w-32 lg:h-32 object-cover mb-4 rounded";
 ---
 
 <section class="py-12 sm:py-16 bg-white">
@@ -21,7 +20,7 @@ const imageClasses = "w-32 h-32 lg:w-32 lg:h-32 object-cover mb-4 rounded";
       <p class="text-gray-600 text-ag-body-text font-ag-body-text">{subtitle}</p>
     </div>
     <div class="w-full">
-      <ReactSwiperSlider slides={images} isImageSlider={true} imageClasses={imageClasses} client:load />
+      <ReactSwiperSlider slides={images} isImageSlider={true} client:load />
     </div>
   </div>
 </section>
