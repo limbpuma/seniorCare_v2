@@ -1,0 +1,96 @@
+---
+import ReactSwiperSlider from './Slider.jsx';
+
+const specialists = [
+  { 
+    src: '/assets/img/Bild1.jpg', 
+    alt: 'Lucas Murray', 
+    title: 'Lucas Murray',
+    text: 'Medical Specialist'
+  },
+  { 
+    src: '/assets/img/Bild1.jpg', 
+    alt: 'Tommy Gould', 
+    title: 'Tommy Gould',
+    text: 'Medical Specialist'
+  },
+  { 
+    src: '/assets/img/Bild1.jpg', 
+    alt: 'Kyle Macdonald', 
+    title: 'Kyle Macdonald',
+    text: 'Medical Specialist'
+  },
+  { 
+    src: '/assets/img/Bild1.jpg', 
+    alt: 'Alberto Short', 
+    title: 'Alberto Short',
+    text: 'Medical Specialist'
+  },
+  { 
+    src: '/assets/img/Bild1.jpg', 
+    alt: 'Lucas Murray', 
+    title: 'Lucas Murray',
+    text: 'Medical Specialist'
+  },
+  { 
+    src: '/assets/img/Bild1.jpg', 
+    alt: 'Tommy Gould', 
+    title: 'Tommy Gould',
+    text: 'Medical Specialist'
+  },
+  { 
+    src: '/assets/img/Bild1.jpg', 
+    alt: 'Kyle Macdonald', 
+    title: 'Kyle Macdonald',
+    text: 'Medical Specialist'
+  },
+  { 
+    src: '/assets/img/Bild1.jpg', 
+    alt: 'Alberto Short', 
+    title: 'Alberto Short',
+    text: 'Medical Specialist'
+  },
+];
+
+const stitle = "What We Offer";
+const title = "Our Specialist";
+const imageClasses = "w-full h-[250px] object-cover";
+const titleClasses = "text-white text-xl font-bold";
+const textClasses = "text-white text-ag-body-text font-ag-body-text text-sm";
+const wrapperClasses = "absolute bottom-0 left-0 bg-blue-900 p-2";
+---
+
+<section class="bg-blue-900 py-16">
+  <div class="container mx-auto px-4">
+    <div class="flex justify-between items-center mb-8">
+      <div class="flex flex-col">
+      <h2 class="text-white text-ag-list-text font-ag-list-text">{title}</h2>
+      <h2 class="text-white font-ag-h5 text-ag-h5">{title}</h2>
+    </div>
+      <div class="flex space-x-4">
+        <button class="text-white hover:text-blue-200 focus:outline-none" aria-label="Previous slide">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+          </svg>
+        </button>
+        <button class="text-white hover:text-blue-200 focus:outline-none" aria-label="Next slide">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <div class="w-full relative">
+      <ReactSwiperSlider 
+        slides={specialists} 
+        imgClass={imageClasses} 
+        titleClass={titleClasses}
+        textClass={textClasses} 
+        wrapperClass={wrapperClasses}
+        isImageSlider={false} 
+        divType="flex-col"
+        client:load
+      />
+    </div>
+  </div>
+</section>

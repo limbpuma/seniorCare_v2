@@ -2,25 +2,37 @@
 import ReactSwiperSlider from './Slider.jsx';
 
 const images = [
-  { src: '/assets/img/Bild1.jpg', alt: 'Image 1', description: 'Assisted Living', className: 'w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 object-cover mb-4 rounded' },
-  { src: '/assets/img/Bild1.jpg', alt: 'Image 2', description: 'Healthcare Services', className: 'w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 object-cover mb-4 rounded' },
-  { src: '/assets/img/Bild1.jpg', alt: 'Image 3', description: 'Meal Services', className: 'w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 object-cover mb-4 rounded' },
-  { src: '/assets/img/Bild1.jpg', alt: 'Image 4', description: 'Housekeeping', className: 'w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 object-cover mb-4 rounded' },
-  { src: '/assets/img/Bild1.jpg', alt: 'Image 5', description: 'Memory Care', className: 'w-24 h-24 sm:w-32 sm:h-32 lg:w-40 lg:h-40 object-cover mb-4 rounded' },
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 1', text: 'Assisted Living'},
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 2', text: 'Healthcare Services'},
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 3', text: 'Meal Services'},
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 4', text: 'Housekeeping'},
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 5', text: 'Memory Care'},
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 1', text: 'Assisted Living'},
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 2', text: 'Healthcare Services'},
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 3', text: 'Meal Services'},
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 4', text: 'Housekeeping'},
+  { src: '/assets/img/Bild1.jpg', alt: 'Image 5', text: 'Memory Care'},
 ];
 
 const title = "What We Offer";
 const subtitle = "We Take Care Senior Persons";
+const imagenclases = "w-full h-[200px] object-cover";
+const textclasses = "mt-2 text-white text-ag-body-text font-ag-body-text text-left";
+const wrapperClasses = "relative overflow-hidden";
 ---
 
-<section class="py-12 sm:py-16 bg-white">
-  <div class="container mx-auto w-full max-w-screen-xl px-4 lg:px-8">
+<section class="relative py-12 sm:py-16">
+  <div class="absolute inset-0 w-full h-full">
+    <div class="w-full h-1/2 bg-white"></div>
+    <div class="w-full h-1/2 bg-blue-500"></div>
+  </div>
+  <div class="relative container mx-auto w-full max-w-screen-xl px-4 lg:px-8 z-10">
     <div class="text-center mb-8">
-      <h2 class="text-deep-blue font-ag-h2 text-ag-h2">{title}</h2>
-      <p class="text-gray-600 text-ag-body-text font-ag-body-text">{subtitle}</p>
+      <p class="text-deep-blue text-ag-sub-heading font-ag-sub-heading">{subtitle}</p>
+      <h2 class="text-deep-blue font-ag-h3 text-ag-h3">{title}</h2>
     </div>
     <div class="w-full">
-      <ReactSwiperSlider slides={images} isImageSlider={true} client:load />
+      <ReactSwiperSlider slides={images} imgClass={imagenclases} textClass={textclasses} wrapperClass={wrapperClasses} isImageSlider={true} divType="flex-col" client:load />
     </div>
   </div>
 </section>

@@ -2,9 +2,9 @@
 import ReactSwiperSlider from './Slider.jsx';
 
 const slides = [
-  { text: 'Relaxation', icon: 'fa-solid fa-user-nurse' },
-  { text: 'Compassion', icon: 'fa-solid fa-heart-pulse' },
-  { text: 'Atmosphere', icon: 'fa-solid fa-bed-pulse' },
+  { text: 'Relaxatio', icon: 'fa-solid fa-user-nurse' },
+  { text: 'Compassio', icon: 'fa-solid fa-heart-pulse' },
+  { text: 'Atmosphes', icon: 'fa-solid fa-bed-pulse' },
   { text: 'Peaceful', icon: 'fa-solid fa-hospital-user' },
   { text: 'Care with', icon: 'fa-solid fa-pills' },
   { text: 'tmosphere', icon: 'fa-solid fa-house-medical' },
@@ -12,9 +12,13 @@ const slides = [
 
 ];
 
-const imageClasses = "w-full h-auto object-cover";
+const iconclases = "text-ag-h2 lg:text-ag-h2 text-deep-blue";
+const textclasses = " text-ag-h2 lg:text-ag-h2 font-bold text-deep-blue ";
+const wrapperClasses = "flex items-center gap-4 sm:gap-12";
 ---
 
 <div class="bg-soft-orange py-12 w-full">
-  <ReactSwiperSlider slides={slides} client:load/>
+  <div class="w-full h-auto object-cover gap-4 sm:gap-12">
+  <ReactSwiperSlider slides={slides} iconClass={iconclases} textClass={textclasses} wrapperClass={wrapperClasses} divType="flex-center" client:load/>
+</div>
 </div>

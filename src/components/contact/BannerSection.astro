@@ -1,0 +1,16 @@
+---
+import Banner from '../common/BannerSection.astro';
+
+const pageTitle = "Contact";
+const breadcrumbs = [
+  { label: "Home", url: "/" },
+  { label: "Contact", url: "/contact" }
+];
+const backgroundImage = "/assets/img/Bild1.jpg";
+---
+
+<Banner 
+  title={pageTitle} 
+  breadcrumbs={breadcrumbs} 
+  backgroundImage={backgroundImage}
+/>
