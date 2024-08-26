@@ -16,23 +16,25 @@ const images = [
 
 const title = "What We Offer";
 const subtitle = "We Take Care Senior Persons";
-const imagenclases = "w-full h-[200px] object-cover";
+const imagenclases = "w-full h-[150px] object-cover";
 const textclasses = "mt-2 text-white text-ag-body-text font-ag-body-text text-left";
 const wrapperClasses = "relative overflow-hidden";
 ---
 
-<section class="relative py-12 sm:py-16">
+<section class="relative py-12 sm:py-16 ">
+  <div class="container mx-auto px-4 max-w-screen-xl">
   <div class="absolute inset-0 w-full h-full">
     <div class="w-full h-1/2 bg-white"></div>
     <div class="w-full h-1/2 bg-blue-500"></div>
   </div>
-  <div class="relative container mx-auto w-full max-w-screen-xl px-4 lg:px-8 z-10">
+  <div class="relative mx-auto w-full z-10">
     <div class="text-center mb-8">
       <p class="text-deep-blue text-ag-sub-heading font-ag-sub-heading">{subtitle}</p>
       <h2 class="text-deep-blue font-ag-h3 text-ag-h3">{title}</h2>
     </div>
-    <div class="w-full">
+    <div class="w-full relative">
       <ReactSwiperSlider slides={images} imgClass={imagenclases} textClass={textclasses} wrapperClass={wrapperClasses} isImageSlider={true} divType="flex-col" client:load />
     </div>
   </div>
+</div>
 </section>
