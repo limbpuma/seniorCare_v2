@@ -1,0 +1,46 @@
+---
+const { srcs, class: className } = Astro.props;
+
+---
+
+<picture class="grid-mosaic" class:list={[className]}>
+  {
+    srcs.map((src: string, i: number) => {
+        const area = 'area-' + (i + 1);
+        return (
+        <div class={area}>
+          <img src={src} class="object-cover min-w-full h-full" alt="" />
+        </div>
+      );
+    })
+  }
+</picture>
+
+<style>
+  .grid-mosaic {
+    display: grid;
+    gap: 12px;
+    grid-template-areas:
+      "one two three"
+      "one two four"
+      "five two four";
+    grid-template-columns: repeat(3, 300px);
+    grid-template-rows: repeat(3, 250px);
+  }
+
+  .area-1 {
+    grid-area: one;
+  }
+  .area-2 {
+    grid-area: two;
+  }
+  .area-3 {
+    grid-area: three;
+  }
+  .area-4 {
+    grid-area: four;
+  }
+  .area-5 {
+    grid-area: five;
+  }
+</style>

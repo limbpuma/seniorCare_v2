@@ -1,0 +1,60 @@
+---
+import Button from "./Button.astro";
+
+type InputType = "text" | "email" | "password" | "number" | "tel" | "url";
+
+interface inputInfo {
+  type: InputType;
+  placeholder: string;
+}
+
+const classes =
+  "w-full  px-4 py-3 bg-inherit border-t-0 border-x-0 border-b border-primary text-primary-dark focus:outline-none";
+
+const inputInfo: inputInfo[] = [
+  {
+    type: "text",
+    placeholder: "Full Name",
+  },
+  {
+    type: "text",
+    placeholder: "Phone Number",
+  },
+  {
+    type: "email",
+    placeholder: "Email Address",
+  },
+];
+---
+
+<form
+  action=""
+  class="bg-accent w-[703px] h-[875px] mx-auto my-12 px-10 py-14  flex flex-col justify-between"
+>
+  <h2 class="font-ag-h4 text-ag-h4 text-primary text-center">
+    Clarify your Queries <br /> Call Us Now!
+  </h2>
+  <div class="space-y-6 mt-10">
+    {
+      inputInfo.map((input) => {
+        const { type, placeholder } = input;
+        return <input type={type} placeholder={placeholder} class={classes} />;
+      })
+    }
+    <select class={classes}>
+      <option>Service Required</option>
+      <option>Option 1</option>
+      <option>Option 2</option>
+      <option>Option 3</option>
+    </select>
+    <textarea placeholder="Additional Message" rows="8" class={classes}
+    ></textarea>
+  </div>
+  <Button variant="primary" fullWidth> Submit </Button>
+</form>
+
+<style>
+  *:focus {
+    box-shadow: none;
+  }
+</style>
