@@ -1,0 +1,37 @@
+---
+import ReactSwiperSlider from './Slider.jsx';
+
+const offerings = [
+  { src: '/assets/img/Bild1.jpg', alt: 'Assisted Living', text: 'Assisted Living' },
+  { src: '/assets/img/Bild1.jpg', alt: 'Healthcare Services', text: 'Healthcare Services' },
+  { src: '/assets/img/Bild1.jpg', alt: 'Meal Services', text: 'Meal Services' },
+  { src: '/assets/img/Bild1.jpg', alt: 'Housekeeping', text: 'Housekeeping' },
+  { src: '/assets/img/Bild1.jpg', alt: 'Memory Care', text: 'Memory Care' },
+];
+
+const subtitle = "Exceptional Living";
+const title = "Unveiling Our Top-Notch Offerings";
+const imageClasses = "w-full h-[224px] object-cover";
+const textClasses = "text-white text-xl font-bold";
+const wrapperClasses = "absolute bottom-0 left-0 bg-blue-900 p-4";
+---
+
+<section class="bg-deep-blue py-16">
+  <div class="container mx-auto px-4 max-w-screen-xl">
+    <div class="text-center mb-12">
+      <p class="text-white text-sm uppercase mb-2">{subtitle}</p>
+      <h2 class="text-white text-4xl font-bold">{title}</h2>
+    </div>
+    <div class="w-full relative">
+      <ReactSwiperSlider 
+        slides={offerings} 
+        imgClass={imageClasses} 
+        textClass={textClasses}
+        wrapperClass={wrapperClasses}
+        isImageSlider={true} 
+        divType="flex-col"
+        client:load
+      />
+    </div>
+  </div>
+</section>

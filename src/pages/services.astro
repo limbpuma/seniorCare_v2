@@ -1,11 +1,13 @@
 ---
+import BannerSection from '@/components/services/BannerSection.astro';
 import Layout from '../layouts/Layout.astro';
+import DiscoverIcons from '@/components/common/DiscoverIcons.astro';
+import ImageCarrousel_3 from '@/components/common/ImageCarrousel_3.astro';
 const title = 'Services';
 ---
 
 <Layout title={title}>
-  <section>
-    <h1>Services We Offer</h1>
-    <p>Explore the wide range of services we offer for senior care.</p>
-  </section>
+  <BannerSection />
+  <DiscoverIcons />
+  <ImageCarrousel_3/>
 </Layout>

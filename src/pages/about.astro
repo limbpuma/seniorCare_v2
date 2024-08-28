@@ -1,11 +1,15 @@
 ---
+import BannerSection from '@/components/about/BannerSection.astro';
+import AboutSection from '@/components/common/AboutSection.astro';
+import BannerSlider from '@/components/common/BannerSlider.astro';
 import Layout from '../layouts/Layout.astro';
+import DiscoverIcons from '@/components/common/DiscoverIcons.astro';
 const title = 'About Us';
 ---
 
 <Layout title={title}>
-  <section>
-    <h1>About Integra</h1>
-    <p>We are dedicated to providing the best care for our seniors.</p>
-  </section>
+  <BannerSection />
+  <AboutSection/>
+  <BannerSlider />
+  <DiscoverIcons />
 </Layout>

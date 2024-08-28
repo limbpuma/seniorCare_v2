@@ -26,7 +26,7 @@ const location = {
         <h2 class=" text-deep-blue text-ag-sub-heading font-ag-sub-heading mb-2">{location.subtitle}</h2>
         <h1 class="text-ag-h5 font-ag-h5 text-deep-blue mb-4">{location.title}</h1>
         <p class="text-deep-blue text-ag-body-text font-ag-body-text mb-4">{location.description}</p>
-        <h3 class="text-ag-h5 font-ag-h5 text-blue-deep mb-2">{location.city}</h3>
+        <h3 class="text-ag-h5 font-ag-h5 text-deep-blue mb-4">{location.city}</h3>
         <Button class="hidden sm:flex" variant="primary" size="medium">
             {location.buttonText}
           </Button>
@@ -34,10 +34,10 @@ const location = {
       </div>
     </div>
   
-    <div class="bg-soft-orange p-6">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+    <div class="bg-soft-orange p-12">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-2 text-center">
         {location.stats.map(stat => (
-          <div>
+          <div class="grid grid-cols-2">
             <p class="text-ag-h3 font-ag-h3 text-blue-900">{stat.value}</p>
             <p class="text-ag-body-text font-ag-body-text text-black">{stat.label}</p>
           </div>
