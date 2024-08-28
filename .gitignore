@@ -1,6 +1,6 @@
 # build output
 dist/
-
+bun.lockb
 # generated types
 .astro/
 

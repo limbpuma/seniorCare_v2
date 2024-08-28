@@ -1,0 +1,16 @@
+---
+interface Props {
+    subtitle?: string;
+    title: string;
+    desc?: string;
+}
+
+const { subtitle, title, desc } = Astro.props;
+---
+
+<div class="flex flex-col justify-center gap-2">
+    {subtitle && <p class="font-ag-sub-heading text-ag-sub-heading text-primary-dark">{subtitle}</p>}
+    <h2 class="font-ag-h3 text-ag-h3 text-primary-dark">{title}</h2>
+    {desc && <p class="font-ag-body text-ag-body text-zinc-700">{desc}</p>}
+    <slot />
+</div>

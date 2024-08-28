@@ -1,0 +1,47 @@
+---
+interface Props {
+    testimonials: Testimonial[];
+}
+
+interface Testimonial {
+    name: string;
+    title: string;
+    image: string;
+    desc: string;
+}
+
+const { testimonials } = Astro.props;
+---
+
+<div class="flex gap-3 my-12 justify-center">
+  {
+    testimonials.map((testimonial) => {
+      const { name, title, image, desc } = testimonial;
+      return (
+        <div class="border-[2px] border-accent p-10 max-w-[500px] grid gap-8 text-primary-dark">
+          <p class="font-ag-testimonial-text text-ag-testimonial-text italic">
+            {desc}
+          </p>
+          <div class="font-ag-testimonial-text text-ag-testimonial-text flex justify-between ">
+            <div class="pt-6">
+              <h5 class="font-ag-h5 text-ag-h5">{name}</h5>
+              <span class="text-ag-body-text font-ag-body-text">
+                {title}
+              </span>
+            </div>
+            <div class="relative">
+              <img src="/assets/img/quote.png" alt="" class="absolute top-[50%] translate-y-[-50%] -left-5 z-20" />
+              <div class="img-container || relative size-[140px] border-none rounded-full overflow-hidden bg-slate-200 ">
+                <img
+                  src={image}
+                  alt=""
+                  class="object-cover w-full h-full"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    })
+  }
+</div>
