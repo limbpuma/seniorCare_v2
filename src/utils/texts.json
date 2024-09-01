@@ -36,6 +36,44 @@
       "title": "Most Experience Care For Senior Person",
       "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.",
       "buttonText": "Know More"
+    },
+    "imageCarousel": {
+      "title": "What We Offer",
+      "subtitle": "We Take Care Senior Persons",
+      "images": [
+        { "src": "/assets/img/Bild1.jpg", "alt": "Image 1", "text": "Assisted Living" },
+        { "src": "/assets/img/Bild1.jpg", "alt": "Image 2", "text": "Healthcare Services" },
+        { "src": "/assets/img/Bild1.jpg", "alt": "Image 3", "text": "Meal Services" },
+        { "src": "/assets/img/Bild1.jpg", "alt": "Image 4", "text": "Housekeeping" },
+        { "src": "/assets/img/Bild1.jpg", "alt": "Image 5", "text": "Memory Care" }
+      ]
+    },
+    "location": {
+      "subtitle": "Locations",
+      "title": "As Leading Care",
+      "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      "city": "Dortmund",
+      "buttonText": "View all location",
+      "stats": [
+        { "value": "25+", "label": "Years Experience" },
+        { "value": "15+", "label": "Senior Citizen's Home" },
+        { "value": "50+", "label": "Physician & Nurse" },
+        { "value": "15K", "label": "Peoples Happy" }
+      ]
+    },
+    "imageCarousel_2": {
+      "title": "What We Offer",
+      "subtitle": "We Take Care Senior Persons",
+      "images":[
+      { "src": "/assets/img/Bild1.jpg", "alt": "Lucas Murray", "title": "Lucas Murray", "text": "Medical Specialist" },
+      { "src": "/assets/img/Bild1.jpg", "alt": "Tommy Gould", "title": "Tommy Gould", "text": "Medical Specialist" },
+      { "src": "/assets/img/Bild1.jpg", "alt": "Kyle Macdonald", "title": "Kyle Macdonald", "text": "Medical Specialist" },
+      { "src": "/assets/img/Bild1.jpg", "alt": "Alberto Short", "title": "Alberto Short", "text": "Medical Specialist" },
+      { "src": "/assets/img/Bild1.jpg", "alt": "Lucas Murray", "title": "Lucas Murray", "text": "Medical Specialist" },
+      { "src": "/assets/img/Bild1.jpg", "alt": "Tommy Gould", "title": "Tommy Gould", "text": "Medical Specialist" },
+      { "src": "/assets/img/Bild1.jpg", "alt": "Kyle Macdonald", "title": "Kyle Macdonald", "text": "Medical Specialist" },
+      { "src": "/assets/img/Bild1.jpg", "alt": "Alberto Short", "title": "Alberto Short", "text": "Medical Specialist" }
+    ]
     }
       }
     }
