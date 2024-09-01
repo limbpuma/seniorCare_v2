@@ -7,17 +7,20 @@ import Experience from "@/components/home/Experience.astro";
 import ImageCarrousel from "@/components/common/ImageCarrousel.astro";
 import ImageCarrousel_2 from "@/components/common/ImageCarrousel_2.astro";
 import Location from "@/components/home/Location.astro";
-
+import texts from "@/utils/texts.json";
 
 
 const title = 'Home';
+
+
+
 ---
 
 <Layout title={title}>
-    <Hero />
-    <AboutSection/>
-    <BannerSlider />
-    <Experience />
+    <Hero {...texts.home.hero} />
+    <AboutSection {...texts.home.about}/>
+    <BannerSlider slides={texts.home.bannerSlides}/>
+    <Experience {...texts.home.experience}/>
     <ImageCarrousel />
     <Location />
     <ImageCarrousel_2 />

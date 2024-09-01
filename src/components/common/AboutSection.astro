@@ -1,21 +1,21 @@
 ---
 import Button from "../common/Button.astro";
-import Icon from '../common/Icon.astro';
 
-const stats = [
-  { number: '12k', label: 'Seniors Helped' },
-  { number: '69+', label: 'Seniors Helped' },
-];
 
-const services = [
-  'Home Personal Care',
-  'Health Center',
-  'Active Aging Club Centre',
-];
+interface Stat {
+  number: string;
+  label: string;
+}
 
-const BUTTON = {
-  text: 'Book Appointment',
-};
+interface Props {
+  services: string[];
+  stats: Stat[];
+  buttonText: string;
+  description: string;
+  phoneNumber: string;
+}
+
+const { services, stats, buttonText, description, phoneNumber } = Astro.props;
 ---
 
 <section class="bg-deep-blue py-12 sm:py-16">
@@ -32,15 +32,10 @@ const BUTTON = {
       <div class="flex justify-center mx-auto items-center lg:w-1/4 order-1 lg:order-2 mb-8 lg:mb-0">
         <img src="/assets/img/Bild1.jpg" alt="Smiley Icon" class="bg-gray-blue h-24 w-24 sm:h-32 sm:w-32 md:h-48 md:w-48 lg:h-48 lg:w-48 rounded-full inline-block sm:mb-4"/>
       </div>
-      
-
-      
     </div>
 
-    
     <div class="border-t border-soft-orange mb-8 sm:mb-12"></div>
 
-    
     <div class="flex flex-col lg:flex-row justify-between items-center text-center lg:text-left space-y-8 lg:space-y-0 ">
       <div class="grid grid-cols-2 gap-4 sm:gap-8 md:gap-0 mb-8 lg:mb-0 w-full lg:w-1/2">
         {stats.map(({ number, label }) => (
@@ -51,24 +46,22 @@ const BUTTON = {
         ))}
       </div>
 
-      
       <div class="flex flex-col lg:items-end w-full lg:w-1/2 ">
-        
         <div class="mb-4 lg:mb-6 text-center lg:text-left">
           <p class="text-ag-body-text font-ag-body-text">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat voluptas ea vero consequatur ipsa debitis reiciendis.
+            {description}
           </p>
         </div>
       
-        
         <div class="flex flex-col sm:flex-row items-center justify-center sm:justify-start lg:justify-end space-y-4 sm:space-y-0 sm:space-x-12 mx-auto">
           <div class="flex flex-col sm:flex-row items-center justify-center sm:justify-start lg:justify-end space-y-4 sm:space-y-0 sm:space-x-12 mx-auto">
             <Button variant="accent" size="medium">
-            {BUTTON.text}
-          </Button>
-          <div class="flex items-center text-ag-h5 font-ag-h5 mt-4 sm:mt-0">
-            <i class="fa fa-phone mr-2 text-soft-orange"></i>
-            180 5545 6985
+              {buttonText}
+            </Button>
+            <div class="flex items-center text-ag-h5 font-ag-h5 mt-4 sm:mt-0">
+              <i class="fa fa-phone mr-2 text-soft-orange"></i>
+              {phoneNumber}
+            </div>
           </div>
         </div>
       </div>

@@ -1,0 +1,43 @@
+{
+    "home": {
+      "hero": {
+        "subtitle": "Love & Care For",
+        "title": "Seniors",
+        "description": "Here at Flowbite we focus on markets where technology, innovation, and capital can unlock long-term value and drive economic growth.",
+        "buttonText": "Free Care Consult"
+      },
+      "about": {
+        "services": [
+          "Home Personal Care",
+          "Health Center",
+          "Active Aging Club Centre"
+        ],
+        "stats": [
+          { "number": "12k", "label": "Seniors Helped" },
+          { "number": "69+", "label": "Seniors Helped" }
+        ],
+        "buttonText": "Book Appointment",
+        "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat voluptas ea vero consequatur ipsa debitis reiciendis.",
+        "phoneNumber": "180 5545 6985"
+      },
+      "bannerSlides": [
+            
+                { "text": "Relaxatio", "icon": "fa-solid fa-user-nurse" },
+                { "text": "Compassio", "icon": "fa-solid fa-heart-pulse" },
+                { "text": "Atmosphes", "icon": "fa-solid fa-bed-pulse" },
+                { "text": "Peaceful", "icon": "fa-solid fa-hospital-user" },
+                { "text": "Care with", "icon": "fa-solid fa-pills" },
+                { "text": "tmosphere", "icon": "fa-solid fa-house-medical" },
+                { "text": "Environment", "icon": "fa-solid fa-user-doctor" }
+      
+            ],
+            "experience": {
+      "heading": "Why Choose Us",
+      "title": "Most Experience Care For Senior Person",
+      "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here.",
+      "buttonText": "Know More"
+    }
+      }
+    }
+  
+  

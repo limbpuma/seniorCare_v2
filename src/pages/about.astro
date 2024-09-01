@@ -4,12 +4,28 @@ import AboutSection from '@/components/common/AboutSection.astro';
 import BannerSlider from '@/components/common/BannerSlider.astro';
 import Layout from '../layouts/Layout.astro';
 import DiscoverIcons from '@/components/common/DiscoverIcons.astro';
+
 const title = 'About Us';
+
+const aboutSectionProps = {
+  services: [
+    'Home Personal Care',
+    'Health Center',
+    'Active Aging Club Centre',
+  ],
+  stats: [
+    { number: '12k', label: 'Seniors Helped' },
+    { number: '69+', label: 'Seniors Helped' },
+  ],
+  buttonText: 'Book Appointment',
+  description: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat voluptas ea vero consequatur ipsa debitis reiciendis.',
+  phoneNumber: '180 5545 6985'
+};
 ---
 
 <Layout title={title}>
   <BannerSection />
-  <AboutSection/>
+  <AboutSection {...aboutSectionProps}/>
   <BannerSlider />
   <DiscoverIcons />
 </Layout>

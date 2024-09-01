@@ -1,24 +1,13 @@
 ---
 import ReactSwiperSlider from './Slider.jsx';
 
-const slides = [
-  { text: 'Relaxatio', icon: 'fa-solid fa-user-nurse' },
-  { text: 'Compassio', icon: 'fa-solid fa-heart-pulse' },
-  { text: 'Atmosphes', icon: 'fa-solid fa-bed-pulse' },
-  { text: 'Peaceful', icon: 'fa-solid fa-hospital-user' },
-  { text: 'Care with', icon: 'fa-solid fa-pills' },
-  { text: 'tmosphere', icon: 'fa-solid fa-house-medical' },
-  { text: 'Environment', icon: 'fa-solid fa-user-doctor' },
-
-];
-
-const iconclases = "text-ag-h2 lg:text-ag-h2 text-deep-blue";
-const textclasses = " text-ag-h2 lg:text-ag-h2 font-bold text-deep-blue ";
+const iconClasses = "text-ag-h2 lg:text-ag-h2 text-deep-blue";
+const textClasses = "text-ag-h2 lg:text-ag-h2 font-bold text-deep-blue";
 const wrapperClasses = "flex items-center gap-4 sm:gap-12";
+
+const { slides } = Astro.props;
 ---
 
 <div class="bg-soft-orange py-12 w-full">
-  <div class="w-full h-auto object-cover gap-4 sm:gap-12">
-  <ReactSwiperSlider slides={slides} iconClass={iconclases} textClass={textclasses} wrapperClass={wrapperClasses} divType="flex-center" client:load/>
-</div>
+  <ReactSwiperSlider slides={slides} iconClass={iconClasses} textClass={textClasses} wrapperClass={wrapperClasses} divType="flex-center" client:load/>
 </div>
