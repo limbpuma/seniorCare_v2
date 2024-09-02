@@ -1,0 +1,55 @@
+---
+
+interface Props {
+    testimonials: Testimonial[];
+}
+
+interface Testimonial {
+    name: string;
+    title: string;
+    image: string;
+    desc: string;
+}
+
+const { testimonials } = Astro.props;
+---
+<section class="py-12 lg:py-20">
+  <div class="container mx-auto px-4 py-6 lg:py-8 flex flex-col lg:flex-row items-center lg:justify-between ">
+    
+<div class="flex gap-3 my-12 justify-center">
+  {
+    testimonials.map((testimonial) => {
+      const { name, title, image, desc } = testimonial;
+      return (
+
+        <div class="border-[2px] border-accent p-10 max-w-[500px] grid gap-8 text-primary-dark">
+          <p class="font-ag-testimonial-text text-ag-testimonial-text italic">
+            {desc}
+          </p>
+          <div class="font-ag-testimonial-text text-ag-testimonial-text flex justify-between ">
+            <div class="pt-6">
+              <h5 class="font-ag-h5 text-ag-h5">{name}</h5>
+              <span class="text-ag-body-text font-ag-body-text">
+                {title}
+              </span>
+            </div>
+            <div class="relative">
+              
+              <div class="img-container relative size-[140px] border-none rounded-full bg-slate-200">
+                
+                <i class="fa-solid fa-quote-right text-ag-h3 text-deep-blue absolute top-[10px] left-[-10px] z-10"></i>
+                <img
+                  src={image}
+                  alt=""
+                  class="object-cover w-full h-full rounded-full overflow-hidden"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    })
+  }
+</div>
+  </div>
+</section>

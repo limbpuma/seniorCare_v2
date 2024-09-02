@@ -38,6 +38,28 @@ const imageCarouselSettings = {
   },
 };
 
+const testimonialSettings = {
+  modules: [Autoplay, Navigation],
+  spaceBetween: 30,
+  slidesPerView: 1,
+  loop: true,
+  autoplay: {
+    delay: 5000,
+    disableOnInteraction: false,
+  },
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+  breakpoints: {
+    640: {
+      slidesPerView: 2,
+    },
+    1024: {
+      slidesPerView: 3,
+    },
+  },
+};
 
 const ReactSwiperSlider = ({ slides, isImageSlider = false, divType = 'flex-center', imgClass = '', iconClass = '', textClass = '', titleClass = '', wrapperClass = '' }) => {
   const settings = isImageSlider ? imageCarouselSettings : bannerSliderSettings;

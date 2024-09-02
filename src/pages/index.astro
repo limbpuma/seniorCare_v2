@@ -7,7 +7,9 @@ import Experience from "@/components/home/Experience.astro";
 import ImageCarrousel from "@/components/common/ImageCarrousel.astro";
 import ImageCarrousel_2 from "@/components/common/ImageCarrousel_2.astro";
 import Location from "@/components/home/Location.astro";
+import Testimonial from "@/components/common/Testimonial.astro";
 import texts from "@/utils/texts.json";
+import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
 
 
 const title = 'Home';
@@ -24,5 +26,6 @@ const title = 'Home';
     <ImageCarrousel {...texts.home.imageCarousel} />
     <Location {...texts.home.location} />
     <ImageCarrousel_2 {...texts.home.imageCarousel_2} />
-    
+    <Testimonial testimonials={texts.home.testimonials} />
+    <GalleryMosaic {...texts.home.galleryMosaic}/>
 </Layout>
