@@ -1,0 +1,72 @@
+---
+import TitleCommon from "../common/TitleCommon.astro";
+
+interface Props {
+  srcs: src[]
+}
+
+interface src {
+  label: string,
+  src: string
+  href?: string
+}
+
+const { srcs } = Astro.props
+---
+
+<section class="relative py-10 px-4 md:px-0 md:py-0 md:max-h-[550px]" >
+  <div class="container mx-auto relative md:top-28">
+    <TitleCommon title="Wide Range Of Services" subtitle="We Care" class="text-primary-dark text-center">
+    <div class="mt-12 grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-6 md:gap-4">
+      {
+        srcs.map((item, i) => {
+          const {label, src, href } = item
+
+          return (
+          <div class="border md:border-none border-primary/40">
+              <a class={`pos-${i+1} before-content block md:mt-0`} href={href}>
+                <img src={src} alt="" class="object-cover w-full h-full max-h-[350px]"/>
+              </a>
+              <span class="md:text-left text-center text-ag-testimonial-text font-bold font-ag-h5 block my-4">{label}</span>
+            </div>
+          )
+        })
+      }
+
+     </div>
+  </div>
+</section>
+
+<style>
+  .before-content {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .before-content::before {
+    content: 'View More';
+    @apply text-white font-ag-list-text pt-60 font-semibold;
+    font-size: 18px;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    background: linear-gradient(0deg, rgba(0,93,122,1) 0%, rgba(0,93,122, 0.02) 100%);
+    transition: transform .3s;
+  }
+
+  @media (min-width: 768px) {
+    .before-content::before {
+      font-size: 21px;
+      transform: translateY(100%);
+
+    }
+  }
+
+  .before-content:hover::before {
+    transform: translateY(0);
+    cursor: pointer
+  }
+
+</style>

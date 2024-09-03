@@ -19,7 +19,7 @@ const { testimonials } = Astro.props;
       <p class="text-primary font-semibold mb-2">Testimonials</p>
       <h2 class="text-4xl font-bold text-primary-dark">What Our Clients Say About</h2>
     </div>
-    
+
     <div class="relative max-w-7xl mx-auto">
       <div id="testimonialSlider" class="overflow-hidden">
         <div id="testimonialWrapper" class="flex transition-transform duration-300 ease-in-out">
@@ -48,7 +48,7 @@ const { testimonials } = Astro.props;
           ))}
         </div>
       </div>
-      
+
       <button id="prevButton" class="absolute top-1/2 -left-4 transform -translate-y-1/2 bg-white rounded-full p-2 shadow-md hover:bg-gray-100 transition-colors duration-200 z-10">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -82,13 +82,13 @@ const { testimonials } = Astro.props;
     const slidesPerView = getSlidesPerView();
     const slideWidth = 100 / slidesPerView;
     const maxIndex = slides.length - slidesPerView;
-    
+
     if (currentIndex > maxIndex) {
       currentIndex = 0;
     } else if (currentIndex < 0) {
       currentIndex = maxIndex;
     }
-    
+
     wrapper.style.transform = `translateX(-${currentIndex * slideWidth}%)`;
     updateDots();
   }
@@ -98,7 +98,7 @@ const { testimonials } = Astro.props;
     const slidesPerView = getSlidesPerView();
     const totalGroups = Math.ceil(slides.length / slidesPerView);
     const currentGroup = Math.floor(currentIndex / slidesPerView);
-    
+
     for (let i = 0; i < dots.length; i++) {
       if (i === currentGroup) {
         dots[i].classList.remove('bg-gray-300');
@@ -109,7 +109,7 @@ const { testimonials } = Astro.props;
       }
     }
 
-    
+
     for (let i = totalGroups; i < dots.length; i++) {
       dots[i].classList.add('hidden');
     }
@@ -124,13 +124,13 @@ const { testimonials } = Astro.props;
   function updateDotCount() {
     const slidesPerView = getSlidesPerView();
     const totalGroups = Math.ceil(slides.length / slidesPerView);
-    
-    
+
+
     while (dotIndicators.firstChild) {
       dotIndicators.removeChild(dotIndicators.firstChild);
     }
-    
-    
+
+
     for (let i = 0; i < totalGroups; i++) {
       const dot = document.createElement('span');
       dot.className = `w-3 h-3 rounded-full mx-1 ${i === 0 ? 'bg-primary' : 'bg-gray-300'}`;
@@ -153,13 +153,13 @@ const { testimonials } = Astro.props;
     updateSlider();
   });
 
-  
+
   setInterval(() => {
     currentIndex += getSlidesPerView();
     updateSlider();
   }, 5000);
 
-  
+
   updateDotCount();
   updateSlider();
 </script>

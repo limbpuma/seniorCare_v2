@@ -1,13 +1,24 @@
 ---
-import BannerSection from '@/components/services/BannerSection.astro';
+import BannerSection from '@/components/common/BannerSection.astro';
+import WeCare from '@/components/services/WeCare.astro'
 import Layout from '../layouts/Layout.astro';
 import DiscoverIcons from '@/components/common/DiscoverIcons.astro';
 import ImageCarrousel_3 from '@/components/common/ImageCarrousel_3.astro';
+import texts from "@/utils/texts.json";
+import TestimonialBasic from '@/components/common/TestimonialBasic.astro';
+import GalleryMosaicBasic from '@/components/common/GalleryMosaicBasic.astro';
 const title = 'Services';
 ---
 
 <Layout title={title}>
-  <BannerSection />
-  <DiscoverIcons />
+  <BannerSection title={title} breadcrumbs={[{label: 'Home', url: '/'}, {label: title, url: '/services'}]} backgroundImage='/public/assets/img/Bild1.jpg'/>
+  <WeCare srcs={[
+    {label: 'Meal Services', src: '/public/assets/img/Bild1.jpg'},
+    {label: 'Personal Care', src: '/public/assets/img/Bild1.jpg', href: '/'},
+    {label: 'Assited Living', src: '/public/assets/img/Bild1.jpg'},
+    ]} />
+  <DiscoverIcons class="sm:pb-12 sm:pt-60" />
   <ImageCarrousel_3/>
+  <TestimonialBasic testimonials={texts.home.testimonials} small/>
+  <GalleryMosaicBasic {...texts.home.galleryMosaic} />
 </Layout>
