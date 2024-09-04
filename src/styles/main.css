@@ -1,44 +1,47 @@
 @font-face {
-  font-family: 'FontAwesome Brands';
-  src: url('/assets/css/fonts/fa-brands-400.woff2') format('woff2'),
-       url('/assets/css/fonts/fa-brands-400.woff') format('woff'),
-       url('/assets/css/fonts/fa-brands-400.ttf') format('truetype'),
-       url('/assets/css/fonts/fa-brands-400.eot') format('embedded-opentype');
+  font-family: "FontAwesome Brands";
+  src:
+    url("/assets/css/fonts/fa-brands-400.woff2") format("woff2"),
+    url("/assets/css/fonts/fa-brands-400.woff") format("woff"),
+    url("/assets/css/fonts/fa-brands-400.ttf") format("truetype"),
+    url("/assets/css/fonts/fa-brands-400.eot") format("embedded-opentype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'FontAwesome Regular';
-  src: url('/assets/css/fonts/fa-regular-400.woff2') format('woff2'),
-       url('/assets/css/fonts/fa-regular-400.woff') format('woff'),
-       url('/assets/css/fonts/fa-regular-400.ttf') format('truetype'),
-       url('/assets/css/fonts/fa-regular-400.eot') format('embedded-opentype');
+  font-family: "FontAwesome Regular";
+  src:
+    url("/assets/css/fonts/fa-regular-400.woff2") format("woff2"),
+    url("/assets/css/fonts/fa-regular-400.woff") format("woff"),
+    url("/assets/css/fonts/fa-regular-400.ttf") format("truetype"),
+    url("/assets/css/fonts/fa-regular-400.eot") format("embedded-opentype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'FontAwesome Solid';
-  src: url('/assets/css/fonts/fa-solid-900.woff2') format('woff2'),
-       url('/assets/css/fonts/fa-solid-900.woff') format('woff'),
-       url('/assets/css/fonts/fa-solid-900.ttf') format('truetype'),
-       url('/assets/css/fonts/fa-solid-900.eot') format('embedded-opentype');
+  font-family: "FontAwesome Solid";
+  src:
+    url("/assets/css/fonts/fa-solid-900.woff2") format("woff2"),
+    url("/assets/css/fonts/fa-solid-900.woff") format("woff"),
+    url("/assets/css/fonts/fa-solid-900.ttf") format("truetype"),
+    url("/assets/css/fonts/fa-solid-900.eot") format("embedded-opentype");
   font-weight: 900;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Flaticon';
-  src: url('/assets/css/fonts/Flaticon.woff2') format('woff2'),
-       url('/assets/css/fonts/Flaticon.woff') format('woff'),
-       url('/assets/css/fonts/Flaticon.ttf') format('truetype');
+  font-family: "Flaticon";
+  src:
+    url("/assets/css/fonts/Flaticon.woff2") format("woff2"),
+    url("/assets/css/fonts/Flaticon.woff") format("woff"),
+    url("/assets/css/fonts/Flaticon.ttf") format("truetype");
   font-weight: normal;
   font-style: normal;
 }
 
-
 /* Otros estilos globales */
 body {
-  font-family: 'Montserrat', sans-serif; /* Fuente predeterminada */
+  font-family: "Montserrat", sans-serif; /* Fuente predeterminada */
 }

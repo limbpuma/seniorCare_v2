@@ -1,0 +1,72 @@
+---
+import Button from "./Button.astro";
+import Icon from "./Icon.astro";
+import TitleCommon from "./TitleCommon.astro";
+
+const { srcs, class: className } = Astro.props;
+
+---
+
+<section class="py-8 lg:py-20">
+  <div class="container mx-auto text-center md:text-left px-4 grid grid-cols-1 md:grid-cols-[550px_1fr]">
+    <TitleCommon title="A Visual Journey Through Our Gallery" subtitle="Discover Moments">
+      <Button flex class="mt-2 md:mt-8 mx-auto md:mx-0">
+        <Icon socials={['instagram']} size="small"/> / thatha
+      </Button>
+    </TitleCommon>
+    <picture class="grid-mosaic mt-8 md:mt-0" class:list={[className]}>
+      {
+        srcs.map((src: string, i: number) => {
+            const area = 'area-' + (i + 1);
+            return (
+            <div class={area}>
+              <img src={src} class="object-cover min-w-full h-full" alt="" />
+            </div>
+          );
+        })
+      }
+    </picture>
+  </div>
+</section>
+
+<style>
+  .grid-mosaic {
+    margin-inline: auto;
+    display: grid;
+    gap: 12px;
+    grid-template-areas:
+      "one one"
+      "two four"
+      "three four"
+      "five five";
+    grid-template-columns: repeat(2, 48%);
+    grid-template-rows: repeat(4, 150px);
+  }
+
+  @media (min-width: 1550px) {
+    .grid-mosaic {
+      grid-template-areas:
+      "one two three"
+      "one two four"
+      "five two four";
+    grid-template-columns: repeat(3, 310px);
+    grid-template-rows: repeat(3, 250px);
+    }
+   }
+
+  .area-1 {
+    grid-area: one;
+  }
+  .area-2 {
+    grid-area: two;
+  }
+  .area-3 {
+    grid-area: three;
+  }
+  .area-4 {
+    grid-area: four;
+  }
+  .area-5 {
+    grid-area: five;
+  }
+</style>

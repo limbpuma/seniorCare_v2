@@ -9,13 +9,19 @@ const features = [
   { icon: 'ambulance', title: 'Transportation Assistance', description: 'Aenean viverra cursus ipsum. Etiam vitae aliquet lorem ultricies eget massa.', number: '05' },
   { icon: 'heart', title: 'Emotional and Spiritual Support', description: 'Aenean viverra cursus ipsum. Etiam vitae aliquet lorem ultricies eget massa.', number: '06' },
 ];
+
+interface Props {
+  class?: string
+}
+
+const { class: className } = Astro.props
 ---
 
-<section class="features mx-auto px-4 py-12 sm:py-16 bg-soft-orange">
-  <div class="container mx-auto px-4 p-4 py-6 lg:py-8">
+<section class="features py-12 sm:py-16 bg-soft-orange">
+  <div class="container mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
     <div class="text-center mb-12">
       <h5 class="text-deep-blue font-ag-sub-heading text-ag-sub-heading mb-2">Senior Living</h5>
-      <h2 class="text-deep-blue font-ag-h3 text-ag-h3 mb-4">Discover Our Unique Offerings</h2>
+      <h2 class="text-deep-blue font-ag-h3 md:text-ag-h3 text-ag-h4 mb-4">Discover Our Unique Offerings</h2>
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {features.map((feature, index) => (

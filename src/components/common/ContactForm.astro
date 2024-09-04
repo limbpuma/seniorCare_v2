@@ -3,6 +3,10 @@ import Button from "./Button.astro";
 
 type InputType = "text" | "email" | "password" | "number" | "tel" | "url";
 
+interface Props {
+  class?: string
+}
+
 interface inputInfo {
   type: InputType;
   placeholder: string;
@@ -25,11 +29,13 @@ const inputInfo: inputInfo[] = [
     placeholder: "Email Address",
   },
 ];
+
+const { class: className } = Astro.props
 ---
 
 <form
   action=""
-  class="bg-accent w-[703px] h-[875px] mx-auto my-12 px-10 py-14  flex flex-col justify-between"
+  class={`bg-soft-orange max-w-[703px] max-h-[875px] mx-auto px-10 py-14  flex flex-col justify-between ${className}`}
 >
   <h2 class="font-ag-h4 text-ag-h4 text-primary text-center">
     Clarify your Queries <br /> Call Us Now!
@@ -50,7 +56,7 @@ const inputInfo: inputInfo[] = [
     <textarea placeholder="Additional Message" rows="8" class={classes}
     ></textarea>
   </div>
-  <Button variant="primary" fullWidth> Submit </Button>
+  <Button variant="primary" fullWidth class="mt-10"> Submit </Button>
 </form>
 
 <style>
