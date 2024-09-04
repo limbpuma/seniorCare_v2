@@ -1,9 +1,13 @@
 ---
-import BannerSection from '@/components/about/BannerSection.astro';
+import BannerSection from '@/components/common/BannerSection.astro';
 import AboutSection from '@/components/common/AboutSection.astro';
 import BannerSlider from '@/components/common/BannerSlider.astro';
 import Layout from '../layouts/Layout.astro';
 import DiscoverIcons from '@/components/common/DiscoverIcons.astro';
+import Testimonial from '@/components/common/Testimonial.astro';
+import ExpertSection from '@/components/about/ExpertSection.astro';
+
+import texts from "@/utils/texts.json";
 
 const title = 'About Us';
 
@@ -24,8 +28,11 @@ const aboutSectionProps = {
 ---
 
 <Layout title={title}>
-  <BannerSection />
-  <AboutSection {...aboutSectionProps}/>
-  <BannerSlider />
-  <DiscoverIcons />
+  <BannerSection {...texts.about.banner} />
+  <AboutSection {...texts.about.aboutSection} />
+  <BannerSlider slides={texts.about.bannerSlider.slides} />
+  <ExpertSection {...texts.about.expertSection} />
+  <DiscoverIcons {...texts.about.discoverIcons} />
+  <Testimonial testimonials={texts.home.testimonials} />
+  
 </Layout>

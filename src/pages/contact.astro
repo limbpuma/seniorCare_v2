@@ -1,11 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
+import BannerSection from '@/components/common/BannerSection.astro';
+import MapSection from '@/components/contact/MapSection.astro';
+import texts from "@/utils/texts.json";
 const title = 'Contact Us';
 ---
 
 <Layout title={title}>
-  <section>
-    <h1>Contact Integra</h1>
-    <p>We'd love to hear from you! Reach out to us anytime.</p>
-  </section>
+  <BannerSection {...texts.contact.banner} />
+  <MapSection {...texts.contact.mapSection} />
 </Layout>

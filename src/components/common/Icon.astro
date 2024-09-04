@@ -32,8 +32,8 @@ const iconMap = {
 };
 ---
 
-<div class="flex">
+<div class="flex items-center justify-center">
   {socials.map(social => (
-    <i class={`${iconMap[social]} m-1 ${iconClass}`}></i>
+    <i class={`${iconMap[social]} ${iconClass}`}></i>
   ))}
 </div>
