@@ -182,8 +182,155 @@
         "/assets/img/Bild1.jpg",
         "/assets/img/Bild1.jpg"
       ]
-    }
       }
+      },
+    "about": {
+    "banner": {
+      "title": "About Us",
+      "backgroundImage": "/assets/img/Bild1.jpg",
+      "breadcrumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "About Us", "url": "/about" }
+      ]
+    },
+    "aboutSection": {
+      "services": [
+        "Home Personal Care",
+        "Health Center",
+        "Active Aging Club Centre"
+      ],
+      "stats": [
+        { "number": "12k", "label": "Seniors Helped" },
+        { "number": "69+", "label": "Seniors Helped" }
+      ],
+      "buttonText": "Book Appointment",
+      "description": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Fugiat voluptas ea vero consequatur ipsa debitis reiciendis.",
+      "phoneNumber": "180 5545 6985"
+    },
+    "bannerSlider": {
+      "slides": [
+        { "text": "Relaxation", "icon": "fa-solid fa-user-nurse" },
+        { "text": "Compassion", "icon": "fa-solid fa-heart-pulse" },
+        { "text": "Atmosphere", "icon": "fa-solid fa-bed-pulse" },
+        { "text": "Peaceful", "icon": "fa-solid fa-hospital-user" },
+        { "text": "Care with", "icon": "fa-solid fa-pills" },
+        { "text": "Atmosphere", "icon": "fa-solid fa-house-medical" },
+        { "text": "Environment", "icon": "fa-solid fa-user-doctor" }
+      ]
+    },
+    "expertSection": {
+      "subtitle": "Who We Are",
+      "title": "Expert Care Of The Elderly",
+      "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking.",
+      "listItems": [
+        "Safety & Security",
+        "24X7 Nursing Staff",
+        "Meditations",
+        "Relaxing Environment"
+      ],
+      "buttonText": "Know more",
+      "buttonLink": "/services",
+      "mainImage": "/assets/img/Bild1.jpg",
+      "overlayImage": "/assets/img/Bild1.jpg"
+    },
+    "discoverIcons": {
+      "title": "Discover Our Services",
+      "subtitle": "We Provide Best Care",
+      "icons": [
+        { "icon": "fa-solid fa-heart", "text": "Compassionate Care" },
+        { "icon": "fa-solid fa-home", "text": "Home-like Environment" },
+        { "icon": "fa-solid fa-utensils", "text": "Nutritious Meals" },
+        { "icon": "fa-solid fa-dumbbell", "text": "Physical Activities" },
+        { "icon": "fa-solid fa-chess", "text": "Mental Stimulation" },
+        { "icon": "fa-solid fa-users", "text": "Social Interaction" }
+      ]
+    }
+  },
+  "services": {
+    "banner": {
+      "title": "Our Services",
+      "backgroundImage": "/assets/img/Bild1.jpg",
+      "breadcrumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Services", "url": "/services" }
+      ]
+    },
+    "discoverIcons": {
+      "title": "Discover Our Services",
+      "subtitle": "We Provide Best Care",
+      "icons": [
+        { "icon": "fa-solid fa-heart", "text": "Compassionate Care" },
+        { "icon": "fa-solid fa-home", "text": "Home-like Environment" },
+        { "icon": "fa-solid fa-utensils", "text": "Nutritious Meals" },
+        { "icon": "fa-solid fa-dumbbell", "text": "Physical Activities" },
+        { "icon": "fa-solid fa-chess", "text": "Mental Stimulation" },
+        { "icon": "fa-solid fa-users", "text": "Social Interaction" }
+      ]
+    },
+    "imageCarousel_3": {
+      "subtitle": "Exceptional Living",
+      "title": "Unveiling Our Top-Notch Offerings",
+      "offerings": [
+        { "src": "/assets/img/Bild1.jpg", "alt": "Assisted Living", "text": "Assisted Living" },
+        { "src": "/assets/img/Bild1.jpg", "alt": "Healthcare Services", "text": "Healthcare Services" },
+        { "src": "/assets/img/Bild1.jpg", "alt": "Meal Services", "text": "Meal Services" },
+        { "src": "/assets/img/Bild1.jpg", "alt": "Housekeeping", "text": "Housekeeping" },
+        { "src": "/assets/img/Bild1.jpg", "alt": "Memory Care", "text": "Memory Care" }
+      ]
+    },"videoservices": {
+      "subtitle": "We Care",
+      "title": "Wide Range Of Services",
+      "services": [
+        {
+          "image": "/assets/img/Bild1.jpg",
+          "title": "Meal Services"
+        },
+        {
+          "image": "/assets/img/Bild1.jpg",
+          "title": "Personal Care"
+        },
+        {
+          "image": "/assets/img/Bild1.jpg",
+          "title": "Assisted Living"
+        }
+      ]
+    }
+  },
+  "contact": {
+    "banner": {
+      "title": "Contact Us",
+      "backgroundImage": "/assets/img/Bild1.jpg",
+      "breadcrumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "Contact", "url": "/contact" }
+      ]
+    },
+    "contactInfo": {
+      "title": "Get in Touch",
+      "subtitle": "We're Here to Help",
+      "description": "Have questions or need assistance? Our team is ready to provide you with the support you need. Reach out to us using the contact information below or fill out the form, and we'll get back to you as soon as possible.",
+      "phone": "+1 (555) 123-4567",
+      "email": "info@seniorcare.com",
+      "address": "123 Care Street, Cityville, State 12345",
+      "hours": "Monday - Friday: 9:00 AM - 5:00 PM"
+    },
+    "contactForm": {
+      "title": "Send Us a Message",
+      "fields": [
+        { "name": "name", "label": "Your Name", "type": "text", "placeholder": "John Doe" },
+        { "name": "email", "label": "Your Email", "type": "email", "placeholder": "john@example.com" },
+        { "name": "phone", "label": "Phone Number", "type": "tel", "placeholder": "+1 (555) 123-4567" },
+        { "name": "message", "label": "Your Message", "type": "textarea", "placeholder": "How can we help you?" }
+      ],
+      "submitButton": "Send Message"
+    },
+    "mapSection": {
+      "title": "Our Location",
+      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.1646759155656!2d7.534846376966431!3d51.54687930781805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b9112207af117d%3A0x91c056aa0191090f!2sPflegedienst%20Integra%20Gerling%20GmbH!5e0!3m2!1ses!2sde!4v1725482670831!5m2!1ses!2sde"
+    }
+  }
+  
     }
   
   
+    
