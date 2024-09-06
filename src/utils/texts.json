@@ -66,6 +66,38 @@
         }
       ]
     },
+    "formSection": {
+      "subtitle": "Get In Touch",
+      "title": "Feel Free Don't Hesitate To Contact With Us",
+      "description": "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      "image": "/assets/img/Bild1.jpg",
+      "contactForm": {
+        "title": "Clarify your Queries<br>Call Us Now!",
+        "inputFields": [
+          {
+            "type": "text",
+            "placeholder": "Full Name"
+          },
+          {
+            "type": "tel",
+            "placeholder": "Phone Number"
+          },
+          {
+            "type": "email",
+            "placeholder": "Email Address"
+          }
+        ],
+        "selectOptions": [
+          "Service Required",
+          "Option 1",
+          "Option 2",
+          "Option 3"
+        ],
+        "textareaPlaceholder": "Additional Message",
+        "buttonText": "Submit"
+      }
+    },
+
     "location": {
       "subtitle": "Locations",
       "title": "As Leading Care",
@@ -79,6 +111,7 @@
         { "value": "15K", "label": "Peoples Happy" }
       ]
     },
+
     "imageCarousel_2": {
       "title": "What We Offer",
       "subtitle": "We Take Care Senior Persons",
@@ -305,28 +338,127 @@
         { "label": "Contact", "url": "/contact" }
       ]
     },
-    "contactInfo": {
-      "title": "Get in Touch",
-      "subtitle": "We're Here to Help",
-      "description": "Have questions or need assistance? Our team is ready to provide you with the support you need. Reach out to us using the contact information below or fill out the form, and we'll get back to you as soon as possible.",
-      "phone": "+1 (555) 123-4567",
-      "email": "info@seniorcare.com",
-      "address": "123 Care Street, Cityville, State 12345",
-      "hours": "Monday - Friday: 9:00 AM - 5:00 PM"
-    },
-    "contactForm": {
-      "title": "Send Us a Message",
-      "fields": [
-        { "name": "name", "label": "Your Name", "type": "text", "placeholder": "John Doe" },
-        { "name": "email", "label": "Your Email", "type": "email", "placeholder": "john@example.com" },
-        { "name": "phone", "label": "Phone Number", "type": "tel", "placeholder": "+1 (555) 123-4567" },
-        { "name": "message", "label": "Your Message", "type": "textarea", "placeholder": "How can we help you?" }
-      ],
-      "submitButton": "Send Message"
-    },
     "mapSection": {
       "title": "Our Location",
       "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.1646759155656!2d7.534846376966431!3d51.54687930781805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b9112207af117d%3A0x91c056aa0191090f!2sPflegedienst%20Integra%20Gerling%20GmbH!5e0!3m2!1ses!2sde!4v1725482670831!5m2!1ses!2sde"
+    },
+    "contactText": {
+      "subtitle": "Get in Touch",
+      "title": "Let's Chat: Contact Us for Personalized Assistance!",
+      "description": "Have questions or need assistance? Our team is ready to provide you with the support you need. Reach out to us using the contact information below or fill out the form, and we'll get back to you as soon as possible.",
+      "contactOptions": [
+        {
+          "icon": "fa-globe",
+          "title": "Have Queries?",
+          "description": "Chat with live assistant"
+        },
+        {
+          "icon": "fa-map-marker-alt",
+          "title": "Locate & Visit Us",
+          "description": "123 Care Street, Cityville, State 12345"
+        },
+        {
+          "icon": "fa-phone-alt",
+          "title": "Call us Anytime",
+          "description": "+1 (555) 123-4567"
+        },
+        {
+          "icon": "fa-envelope",
+          "title": "Mail us Today",
+          "description": "info@seniorcare.com"
+        }
+      ],
+      "contactForm": {
+        "title": "Clarify your Queries<br>Call Us Now!",
+        "inputFields": [
+          {
+            "type": "text",
+            "placeholder": "Full Name"
+          },
+          {
+            "type": "tel",
+            "placeholder": "Phone Number"
+          },
+          {
+            "type": "email",
+            "placeholder": "Email Address"
+          }
+        ],
+        "selectOptions": [
+          "Service Required",
+          "Option 1",
+          "Option 2",
+          "Option 3"
+        ],
+        "textareaPlaceholder": "Additional Message",
+        "buttonText": "Submit"
+      }
+    },
+    "dortmundSection": {
+      "title": "Dortmund Office",
+      "address": "Seestrasse 123, 8000 Zurich, Switzerland",
+      "phoneNumber": "+41 123 456 789",
+      "email": "info@dortmund-office.com",
+      "openingHours": [
+        { "day": "Monday - Friday", "hours": "9:00 AM - 6:00 PM" },
+        { "day": "Saturday", "hours": "10:00 AM - 4:00 PM" },
+        { "day": "Sunday", "hours": "Closed" }
+      ],
+      "image": "/assets/img/dortmund-office.jpg"
+    }
+  },
+  "faq": {
+    "banner": {
+      "title": "Frequently Asked Questions",
+      "backgroundImage": "/assets/img/Bild1.jpg",
+      "breadcrumbs": [
+        { "label": "Home", "url": "/" },
+        { "label": "FAQ", "url": "/faq" }
+      ]
+    },
+    "faqContent": {
+      "title": "Common Questions",
+      "subtitle": "Find answers to frequently asked questions about our senior care services",
+      "faqItems": [
+        {
+          "question": "What types of care services do you offer?",
+          "answer": "We offer a wide range of senior care services including assisted living, memory care, home health care, and respite care. Our services are tailored to meet the individual needs of each senior."
+        },
+        {
+          "question": "How do I know if my loved one needs care?",
+          "answer": "Signs that your loved one may need care include difficulty with daily tasks, forgetfulness, changes in behavior, or increased isolation. We offer free consultations to assess care needs and recommend appropriate services."
+        },
+        {
+          "question": "What qualifications do your caregivers have?",
+          "answer": "Our caregivers are highly trained professionals with certifications in senior care. They undergo rigorous background checks and receive ongoing training to ensure they provide the best possible care."
+        },
+        {
+          "question": "How much do your services cost?",
+          "answer": "The cost of our services varies depending on the level of care needed and the specific services required. We offer personalized care plans and can provide a detailed quote after assessing your loved one's needs."
+        },
+        {
+          "question": "Do you accept insurance or Medicare?",
+          "answer": "We accept long-term care insurance and can assist with filing claims. Medicare may cover some home health services under certain conditions. Our team can help you understand your coverage options."
+        }
+      ],
+      "contactForm": {
+        "title": "Still Have Questions?",
+        "inputFields": [
+          { "type": "text", "placeholder": "Your Name" },
+          { "type": "email", "placeholder": "Your Email" },
+          { "type": "tel", "placeholder": "Your Phone" }
+        ],
+        "selectOptions": [
+          "Select a Topic",
+          "Care Services",
+          "Pricing",
+          "Insurance",
+          "Caregiver Qualifications",
+          "Other"
+        ],
+        "textareaPlaceholder": "Type your question here...",
+        "buttonText": "Submit Your Question"
+      }
     }
   }
   

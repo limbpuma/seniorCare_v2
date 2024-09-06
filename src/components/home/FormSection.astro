@@ -2,17 +2,45 @@
 import ContactForm from "../common/ContactForm.astro";
 import TitleCommon from "../common/TitleCommon.astro";
 
+interface Props {
+  subtitle: string;
+  title: string;
+  description: string;
+  image: string;
+  contactForm: {
+    title: string;
+    inputFields: {
+      type: "text" | "email" | "password" | "number" | "tel" | "url";
+      placeholder: string;
+    }[];
+    selectOptions: string[];
+    textareaPlaceholder: string;
+    buttonText: string;
+  };
+}
 
+const { subtitle, title, description, image, contactForm } = Astro.props;
 ---
 
-<section class="contact-form || bg-primary py-12 px-4 md:px-0 sm:py-0 max-h-[50%] relative mb-20">
-    <div class="container mx-auto grid grid-cols-1 sm:grid-cols-2 gap-20 relative top-20">
-        <ContactForm class="" />
-        <div>
-            <TitleCommon class="text-white md:text-left text-center" title="Feel Free Don’t Heisted To Contact With Us" subtitle="Get In Touch" desc="It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout." />
-            <div class="max-w-[638px] max-h-[365px] bg-slate-400 mt-12">
-                <img src="/assets/img/Bild1.jpg" class="object-cover w-full h-full" alt="">
-            </div>
+<section class="bg-primary py-4 sm:py-4 md:py-8 lg:py-8 relative">
+  <div class="container mx-auto px-4">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 ">
+      <div class="lg:order-1 relative z-10">
+        <div class="transform translate-y-16 sm:translate-y-20 md:translate-y-24 lg:translate-y-0 lg:-mb-28">
+          <ContactForm  {...contactForm} />
         </div>
+      </div>
+      <div class="lg:order-2 text-white">
+        <TitleCommon
+          class="md:text-left text-center mb-4 sm:mb-6 md:mb-8"
+          title={title}
+          subtitle={subtitle}
+          desc={description}
+        />
+        <div class="mt-4 sm:mt-6 md:mt-8 max-w-[638px] h-[200px] lg:h-[350px]">
+          <img src={image} class="object-cover w-full h-full " alt="Contact image" />
+        </div>
+      </div>
     </div>
+  </div>
 </section>

@@ -1,0 +1,58 @@
+---
+import ContactForm from "../common/ContactForm.astro";
+
+interface ContactOption {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+interface Props {
+  subtitle: string;
+  title: string;
+  description: string;
+  contactOptions: ContactOption[];
+  contactForm: {
+    title: string;
+    inputFields: {
+      type: "text" | "email" | "password" | "number" | "tel" | "url";
+      placeholder: string;
+    }[];
+    selectOptions: string[];
+    textareaPlaceholder: string;
+    buttonText: string;
+  };
+}
+
+const { subtitle, title, description, contactOptions, contactForm } = Astro.props;
+---
+
+<section class="bg-white py-12 px-4 sm:px-6 lg:px-8">
+  <div class="max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+      <div class="space-y-8">
+        <div>
+          <h3 class="text-blue-600 font-semibold text-lg">{subtitle}</h3>
+          <h2 class="text-3xl font-bold text-gray-900 mt-2">{title}</h2>
+          <p class="mt-4 text-gray-600">{description}</p>
+        </div>
+        <div class="space-y-6">
+          {contactOptions.map((option: ContactOption) => (
+            <div class="flex items-center space-x-4">
+              <div class="bg-orange-100 rounded-full p-3">
+                <i class={`fas ${option.icon} text-blue-600 text-xl`}></i>
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">{option.title}</h3>
+                <p class="text-gray-600">{option.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div>
+        <ContactForm size="medium" {...contactForm}/>
+      </div>
+    </div>
+  </div>
+</section>

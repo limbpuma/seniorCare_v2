@@ -11,8 +11,6 @@ import Testimonial from "@/components/common/Testimonial.astro";
 import texts from "@/utils/texts.json";
 import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
 import FormSection from "@/components/home/FormSection.astro";
-import TestimonialBasic from "@/components/common/TestimonialBasic.astro";
-import GalleryMosaicBasic from "@/components/common/GalleryMosaicBasic.astro";
 
 
 const title = 'Home';
@@ -27,11 +25,9 @@ const title = 'Home';
     <BannerSlider slides={texts.home.bannerSlides}/>
     <Experience {...texts.home.experience}/>
     <ImageCarrousel {...texts.home.imageCarousel} />
-    <FormSection />
+    <FormSection {...texts.home.formSection}/>
     <Location {...texts.home.location} />
     <ImageCarrousel_2 {...texts.home.imageCarousel_2} />
     <Testimonial testimonials={texts.home.testimonials} />
     <GalleryMosaic {...texts.home.galleryMosaic}/>
-    <TestimonialBasic testimonials={texts.home.testimonials} small/>
-    <GalleryMosaicBasic {...texts.home.galleryMosaic} />
 </Layout>

@@ -2,61 +2,93 @@
 import Button from "./Button.astro";
 
 type InputType = "text" | "email" | "password" | "number" | "tel" | "url";
+type FormSize = "large" | "medium" | "small";
 
 interface Props {
-  class?: string
+  class?: string;
+  title: string;
+  inputFields: {
+    type: InputType;
+    placeholder: string;
+  }[];
+  selectOptions: string[];
+  textareaPlaceholder: string;
+  buttonText: string;
+  size?: FormSize;
+  image?: string;
 }
 
-interface inputInfo {
-  type: InputType;
-  placeholder: string;
-}
+const { 
+  class: className, 
+  title, 
+  inputFields, 
+  selectOptions, 
+  textareaPlaceholder, 
+  buttonText,
+  size = "large",
+  image
+} = Astro.props;
 
-const classes =
-  "w-full  px-4 py-3 bg-inherit border-t-0 border-x-0 border-b border-primary text-primary-dark focus:outline-none";
+const sizeClasses = {
+  large: "max-w-[400px] sm:max-w-[450px] md:max-w-[500px] px-6 sm:px-8 md:px-10 py-10 sm:py-12 md:py-14",
+  medium: "max-w-[300px] sm:max-w-[350px] md:max-w-[400px] px-4 sm:px-5 md:px-6 py-6 sm:py-8 md:py-10",
+  small: "max-w-[250px] sm:max-w-[300px] md:max-w-[350px] px-3 sm:px-4 md:px-5 py-4 sm:py-6 md:py-8"
+};
 
-const inputInfo: inputInfo[] = [
-  {
-    type: "text",
-    placeholder: "Full Name",
-  },
-  {
-    type: "text",
-    placeholder: "Phone Number",
-  },
-  {
-    type: "email",
-    placeholder: "Email Address",
-  },
-];
+const titleClasses = {
+  large: "text-2xl sm:text-3xl md:text-ag-h4 mb-6 sm:mb-8",
+  medium: "text-lg sm:text-xl md:text-2xl mb-4 sm:mb-5",
+  small: "text-base sm:text-lg md:text-xl mb-2 sm:mb-3"
+};
 
-const { class: className } = Astro.props
+const spacingClasses = {
+  large: "space-y-4 sm:space-y-5 md:space-y-6",
+  medium: "space-y-2 sm:space-y-3 md:space-y-4",
+  small: size === "small" && image ? "space-y-1" : "space-y-1 sm:space-y-2 md:space-y-3"
+};
+
+const buttonClasses = {
+  large: "mt-6 sm:mt-8 md:mt-10",
+  medium: "mt-4 sm:mt-5 md:mt-6",
+  small: size === "small" && image ? "mt-2" : "mt-3 sm:mt-4 md:mt-5"
+};
+
+const inputClasses =
+  "w-full px-4 py-2 bg-inherit border-t-0 border-x-0 border-b border-primary text-primary-dark focus:outline-none";
+
+const getTextareaRows = () => {
+  if (size === "small" && image) return "2";
+  if (size === "small") return "3";
+  if (size === "medium") return "4";
+  return "6";
+};
 ---
 
 <form
   action=""
-  class={`bg-soft-orange max-w-[703px] max-h-[875px] mx-auto px-10 py-14  flex flex-col justify-between ${className}`}
+  class={`bg-soft-orange mx-auto flex flex-col justify-between shadow-lg ${sizeClasses[size]} ${className}`}
 >
-  <h2 class="font-ag-h4 text-ag-h4 text-primary text-center">
-    Clarify your Queries <br /> Call Us Now!
-  </h2>
-  <div class="space-y-6 mt-10">
+  {size === "small" && image && (
+    <div class="w-full h-24 overflow-hidden mb-2">
+      <img src={image} alt="Form header" class="w-full h-full object-cover" />
+    </div>
+  )}
+  <h2 class={`font-ag-h4 text-primary text-center ${titleClasses[size]}`} set:html={title} />
+  <div class={spacingClasses[size]}>
     {
-      inputInfo.map((input) => {
+      inputFields.map((input) => {
         const { type, placeholder } = input;
-        return <input type={type} placeholder={placeholder} class={classes} />;
+        return <input type={type} placeholder={placeholder} class={inputClasses} />;
       })
     }
-    <select class={classes}>
-      <option>Service Required</option>
-      <option>Option 1</option>
-      <option>Option 2</option>
-      <option>Option 3</option>
+    <select class={inputClasses}>
+      {selectOptions.map((option) => (
+        <option>{option}</option>
+      ))}
     </select>
-    <textarea placeholder="Additional Message" rows="8" class={classes}
-    ></textarea>
+    <textarea placeholder={textareaPlaceholder} rows={getTextareaRows()} class={inputClasses}></textarea>
   </div>
-  <Button variant="primary" fullWidth class="mt-10"> Submit </Button>
+  <Button variant="primary" fullWidth class={buttonClasses[size]}>{buttonText}</Button>
 </form>
 
 <style>

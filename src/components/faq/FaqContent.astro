@@ -1,0 +1,56 @@
+---
+import ContactForm from "../common/ContactForm.astro";
+
+interface FaqItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  faqItems: FaqItem[];
+  contactForm: {
+    title: string;
+    inputFields: {
+      type: "text" | "email" | "password" | "number" | "tel" | "url";
+      placeholder: string;
+    }[];
+    selectOptions: string[];
+    textareaPlaceholder: string;
+    buttonText: string;
+  };
+}
+
+const { title, subtitle, faqItems, contactForm } = Astro.props;
+---
+
+<section class="py-12 bg-gray-100">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl font-bold text-gray-900 mb-2">{title}</h2>
+      <p class="text-lg text-gray-600">{subtitle}</p>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <div class="space-y-6">
+        {faqItems.map((item, index) => (
+          <div class="bg-white rounded-lg shadow-md p-6">
+            <button
+              class="flex justify-between items-center w-full text-left"
+              onclick={`document.getElementById('faq-answer-${index}').classList.toggle('hidden')`}
+            >
+              <h3 class="text-xl font-semibold text-gray-900">{item.question}</h3>
+              <i class="fas fa-chevron-down text-blue-500"></i>
+            </button>
+            <p id={`faq-answer-${index}`} class="mt-4 text-gray-600 hidden">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+      <div>
+        <ContactForm image="/assets/img/Bild1.jpg" size="small" {...contactForm} />
+      </div>
+    </div>
+  </div>
+</section>
+
+<script src="https://kit.fontawesome.com/your-font-awesome-kit.js" crossorigin="anonymous"></script>

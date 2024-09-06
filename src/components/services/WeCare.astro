@@ -14,7 +14,7 @@ interface src {
 const { srcs } = Astro.props
 ---
 
-<section class="relative py-10 px-4 md:px-0 md:py-0 md:max-h-[550px]" >
+<section class="relative py-10 px-4 md:px-0 md:py-0 md:max-h-[550px] mb-10" >
   <div class="container mx-auto relative md:top-28">
     <TitleCommon title="Wide Range Of Services" subtitle="We Care" class="text-primary-dark text-center">
     <div class="mt-12 grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-6 md:gap-4">
@@ -23,9 +23,9 @@ const { srcs } = Astro.props
           const {label, src, href } = item
 
           return (
-          <div class="border md:border-none border-primary/40">
+          <div class="border md:border-none border-primary/40 ">
               <a class={`pos-${i+1} before-content block md:mt-0`} href={href}>
-                <img src={src} alt="" class="object-cover w-full h-full max-h-[350px]"/>
+                <img src={src} alt="" class="object-cover w-full h-full max-h-[350px] "/>
               </a>
               <span class="md:text-left text-center text-ag-testimonial-text font-bold font-ag-h5 block my-4">{label}</span>
             </div>
