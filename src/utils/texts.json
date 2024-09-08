@@ -190,19 +190,8 @@
         "title": "CEO, Company",
         "image": "/assets/img/Bild1.jpg",
         "desc": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
-      },
-      {
-        "name": "Jane Smith",
-        "title": "Marketing Director",
-        "image": "/assets/img/Bild1.jpg",
-        "desc": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-      },
-      {
-        "name": "Jane Smith",
-        "title": "Marketing Director",
-        "image": "/assets/img/Bild1.jpg",
-        "desc": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
       }
+      
     ],
     "galleryMosaic": {
       "subtitle": "Discover Moments",

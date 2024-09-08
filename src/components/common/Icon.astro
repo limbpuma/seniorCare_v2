@@ -1,39 +1,42 @@
 ---
-const { socials = [], size = 'medium', customSize = '' } = Astro.props;
+interface Props {
+  socials?: string[];
+  size?: 'tiny' | 'small' | 'medium' | 'large' | 'xl';
+  customSize?: string;
+}
+
+const { socials = [], size = 'medium', customSize } = Astro.props;
 
 const sizes = {
-  tiny: 'text-xs',                      // Muy pequeño
-  small: 'text-sm',                     // Pequeño
-  medium: 'text-ag-body-text',          // Medio (texto normal)
-  large: 'text-ag-h5',                  // Grande
-  xl: 'text-ag-h3',  
+  tiny: 'text-xs',
+  small: 'text-sm',
+  medium: 'text-base',
+  large: 'text-lg',
+  xl: 'text-xl'
 };
 
 const iconClass = customSize ? customSize : (sizes[size] || sizes.medium);
 
-const iconMap = {
-  facebook: 'fab fa-facebook-f',
+const iconMap: Record<string, string> = {
+  facebook: 'fab fa-facebook',
   twitter: 'fab fa-twitter',
   instagram: 'fab fa-instagram',
-  linkedin: 'fab fa-linkedin-in',
+  linkedin: 'fab fa-linkedin',
   youtube: 'fab fa-youtube',
   phone: 'fas fa-phone',
   mapMarker: 'fas fa-map-marker-alt',
   clock: 'fas fa-clock',
-  smile: 'far fa-smile',
-  handhelp: 'fa-solid fa-handshake-angle',
-  bed: 'fas fa-bed', 
+  smile: 'fas fa-smile',
+  handhelp: 'fas fa-hand-holding-heart',
+  bed: 'fas fa-bed',
   utensils: 'fas fa-utensils',
   'shield-alt': 'fas fa-shield-alt',
   seedling: 'fas fa-seedling',
   ambulance: 'fas fa-ambulance',
-  heart: 'fas fa-heart',
-
+  heart: 'fas fa-heart'
 };
 ---
 
-<div class="flex items-center justify-center gap-2 mx-2">
-  {socials.map(social => (
-    <i class={`${iconMap[social]} ${iconClass}`}></i>
-  ))}
-</div>
+{socials.map((social: string) => (
+  <i class={`${iconMap[social] || ''} ${iconClass}`}></i>
+))}

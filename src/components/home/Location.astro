@@ -25,12 +25,13 @@ const { subtitle, title, description, city, buttonText, stats } = Astro.props;
     
     <div class="bg-soft-orange p-6 md:p-12 ">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-        {stats.map(stat => (
-          <div class="flex flex-col items-center">
-            <p class="text-ag-h3 font-ag-h3 text-blue-900">{stat.value}</p>
-            <p class="text-ag-body-text font-ag-body-text text-black">{stat.label}</p>
-          </div>
-        ))}
+        
+        {stats.map((stat: { value: string; label: string }) => (
+        <div class="flex flex-col items-center">
+          <p class="text-ag-h3 font-ag-h3 text-blue-900">{stat.value}</p>
+          <p class="text-ag-body-text font-ag-body-text text-black">{stat.label}</p>
+        </div>
+      ))}
       </div>
     </div>
   </div>
