@@ -8,7 +8,7 @@ interface Props {
   class?: string;
   title: string;
   inputFields: {
-    type: InputType;
+    type: string;  // Changed from InputType to string
     placeholder: string;
   }[];
   selectOptions: string[];
@@ -78,7 +78,7 @@ const getTextareaRows = () => {
     {
       inputFields.map((input) => {
         const { type, placeholder } = input;
-        return <input type={type} placeholder={placeholder} class={inputClasses} />;
+        return <input  placeholder={placeholder} class={inputClasses} />;
       })
     }
     <select class={inputClasses}>
