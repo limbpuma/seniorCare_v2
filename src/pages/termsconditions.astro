@@ -1,0 +1,10 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import BannerSection from "@/components/common/BannerSection.astro";
+import texts from "@/utils/texts.json";
+const title = 'Terms & Conditions';
+---
+<Layout title={title}>
+    <BannerSection {...texts.termsconditions.banner} />
+
+</Layout>

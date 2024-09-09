@@ -1,6 +1,16 @@
 ---
 import Icon from '../common/Icon.astro';
 
+const Navlinks = [
+  { name: 'Legal', href: 'legal' },
+  { name: 'Privacy', href: 'privacypolicy' },
+  { name: 'Terms', href: 'termsconditions' },
+  { name: 'Home', href: '/' },
+  { name: 'About', href: 'about' },
+  { name: 'Services', href: 'services' },
+  { name: 'Contact', href: 'contact' },
+  { name: 'faq', href: 'faq' },
+];
 const footerTexts = {
     logoAlt: 'Company Logo',
     slogan: 'Caring for our seniors with love and compassion.',
@@ -86,9 +96,9 @@ const footerTexts = {
         <div class="sm:flex sm:items-center sm:justify-between text-center md:text-left text-white font-ag-body-text text-ag-body-text">
             <span>{footerTexts.copyright}</span>
             <div class="flex mt-4 sm:mt-0 justify-center md:justify-start space-x-4">
-                <a href="#" class="">{footerTexts.links.privacyPolicy}</a>
-                <a href="#" class="">{footerTexts.links.termsConditions}</a>
-                <a href="#" class="">{footerTexts.links.legal}</a>
+                {Navlinks.filter(link => ['Legal', 'Privacy', 'Terms'].includes(link.name)).map((link) => (
+                    <a href={link.href} class="hover:underline">{link.name}</a>
+                ))}
             </div>
         </div>
     </div>
