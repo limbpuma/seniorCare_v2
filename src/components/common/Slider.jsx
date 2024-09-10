@@ -70,7 +70,7 @@ const ReactSwiperSlider = ({
                 alt={slide.alt || "slide image"}
               />
             )}
-            <div className={wrapperClass}>
+            <div className={`${selectedDivClass} ${wrapperClass}`}>
               {slide.icon && <i className={`${slide.icon} ${iconClass}`}></i>}
               {slide.title && <h3 className={titleClass}>{slide.title}</h3>}
               {slide.text && <p className={textClass}>{slide.text}</p>}

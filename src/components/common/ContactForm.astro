@@ -1,14 +1,14 @@
 ---
 import Button from "./Button.astro";
 
-type InputType = "text" | "email" | "password" | "number" | "tel" | "url";
+
 type FormSize = "large" | "medium" | "small";
 
 interface Props {
   class?: string;
   title: string;
   inputFields: {
-    type: string;  // Changed from InputType to string
+    type: string;  
     placeholder: string;
   }[];
   selectOptions: string[];
