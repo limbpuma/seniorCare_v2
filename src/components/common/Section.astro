@@ -1,0 +1,61 @@
+---
+type Props = {
+  background: keyof typeof backgroundClasses;
+  class?: string;
+  noContainer?: boolean;
+  padingVertical: keyof typeof padingVerticalClasses
+  id?: string;
+  bgOpacity?: string;
+};
+
+const { class: className, background, id, noContainer, padingVertical, bgOpacity } = Astro.props;
+
+const padingVerticalClasses: { [key: string]: string } = {
+    "none": "py-0",
+    "xs": "py-2",
+    "small": "py-4",
+    "medium": "py-8",
+    "large": "py-20",
+}
+
+const backgroundClasses = {
+  white: "bg-white",
+  primary: "bg-primary-dark",
+  primaryLight: "bg-primary-light",
+  accent: "bg-accent",
+};
+
+const bgOpacityClasses = {
+  "0": "bg-opacity-0",
+  "5": "bg-opacity-5",
+  "10": "bg-opacity-10",
+  "15": "bg-opacity-[15%]",
+  "20": "bg-opacity-20",
+  "30": "bg-opacity-30",
+  "40": "bg-opacity-40",
+  "50": "bg-opacity-50",
+  "60": "bg-opacity-60",
+  "70": "bg-opacity-70",
+  "80": "bg-opacity-80",
+  "90": "bg-opacity-90",
+  "100": "bg-opacity-100",
+};
+
+const classes = [backgroundClasses[background as keyof typeof backgroundClasses], className, padingVerticalClasses[padingVertical as keyof typeof padingVerticalClasses], bgOpacityClasses[bgOpacity as keyof typeof bgOpacityClasses]];
+---
+
+<section id={id} class:list={classes}>
+  <div class={`${noContainer ? " " : "container"}`}>
+    <slot />
+  </div>
+</section>
+
+<style>
+  .container {
+		--_width: 1700px;
+		--_padingVertical: 1rem;
+
+		width: min(var(--_width), 100% - (2 * var(--_padding)));
+		margin-inline: auto;
+  }
+</style>

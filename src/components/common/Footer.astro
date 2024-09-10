@@ -1,5 +1,6 @@
 ---
 import Icon from '../common/Icon.astro';
+import Logo from './Logo.astro';
 
 const Navlinks = [
   { name: 'Legal', href: 'legal' },
@@ -37,7 +38,8 @@ const footerTexts = {
             <!-- Primera Columna: Logo, Texto y Social Media Links -->
             <div class="footer-top mb-6 md:mb-0">
                 <a href="/" class="flex justify-center md:justify-start items-center mb-4">
-                    <img src="/assets/logo/logo_integra.webp" class="h-12" alt={footerTexts.logoAlt} />
+                  <Logo class="h-12 max-w-fit" color="white"/>
+
                 </a>
                 <p class="text-white font-ag-body-text text-ag-body-text mb-4 text-center md:text-left lg:w-11/12">
                     {footerTexts.slogan}
@@ -46,7 +48,7 @@ const footerTexts = {
                     <Icon socials={['facebook', 'twitter', 'instagram']} size="small"/>
                 </div>
             </div>
-            
+
             <!-- Segunda Columna: Recursos -->
             <div class="text-center md:text-left">
                 <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5">{footerTexts.resourcesTitle}</h5>
@@ -59,7 +61,7 @@ const footerTexts = {
                     </li>
                 </ul>
             </div>
-            
+
             <!-- Tercera Columna: Siguenos -->
             <div class="text-center md:text-left">
                 <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5">{footerTexts.followUsTitle}</h5>
@@ -72,7 +74,7 @@ const footerTexts = {
                     </li>
                 </ul>
             </div>
-            
+
             <!-- Cuarta Columna: Legal -->
             <div class="text-center md:text-left">
                 <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5">{footerTexts.legalTitle}</h5>

@@ -1,6 +1,7 @@
 ---
 import Button from "../common/Button.astro";
 import Icon from '../common/Icon.astro';
+import Logo from "./Logo.astro";
 import Nav from "./Nav.astro";
 
 const HEADER_INFO = {
@@ -51,8 +52,7 @@ const BUTTON = {
 
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
   <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="/assets/logo/logo_integra.webp" class="h-16" alt="Flowbite Logo">
-      
+    <Logo class="h-16 max-w-fit" color="dark"/>
   </a>
   <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
     <Button class="hidden sm:flex" variant="primary" size="medium">
