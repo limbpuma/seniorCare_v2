@@ -8,7 +8,7 @@ const $$Head = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$Head;
   const { title } = Astro2.props;
   return renderTemplate`<head><meta charset="UTF-8"><meta name="description" content="Astro description"><meta name="viewport" content="width=device-width"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><meta name="generator"${addAttribute(Astro2.generator, "content")}><title>${title}</title><!-- Google Fonts --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">${renderHead()}</head>`;
-}, "C:/Users/limbp/Documents/Developer/Integra/seniorCare/src/components/meta/Head.astro", void 0);
+}, "E:/Lim/Developer/Projects/seniorCare/src/components/meta/Head.astro", void 0);
 
 const $$Astro$4 = createAstro();
 const $$Button = createComponent(($$result, $$props, $$slots) => {
@@ -35,7 +35,7 @@ const $$Button = createComponent(($$result, $$props, $$slots) => {
     className
   ];
   return renderTemplate`${maybeRenderHead()}<button${addAttribute(classes.join(" "), "class")}${spreadAttributes(props)}> <span${addAttribute(`font-ag-button-text text-ag-button-text ${flex && "flex"}`, "class")}> ${renderSlot($$result, $$slots["default"])} </span> </button>`;
-}, "C:/Users/limbp/Documents/Developer/Integra/seniorCare/src/components/common/Button.astro", void 0);
+}, "E:/Lim/Developer/Projects/seniorCare/src/components/common/Button.astro", void 0);
 
 const $$Astro$3 = createAstro();
 const $$Icon = createComponent(($$result, $$props, $$slots) => {
@@ -69,7 +69,7 @@ const $$Icon = createComponent(($$result, $$props, $$slots) => {
     heart: "fas fa-heart"
   };
   return renderTemplate`${socials.map((social) => renderTemplate`${maybeRenderHead()}<i${addAttribute(`${iconMap[social] || ""} ${iconClass}`, "class")}></i>`)}`;
-}, "C:/Users/limbp/Documents/Developer/Integra/seniorCare/src/components/common/Icon.astro", void 0);
+}, "E:/Lim/Developer/Projects/seniorCare/src/components/common/Icon.astro", void 0);
 
 const $$Astro$2 = createAstro();
 const $$Logo = createComponent(($$result, $$props, $$slots) => {
@@ -118,7 +118,7 @@ l-75 0 0 -29 c0 -64 65 -104 175 -105 117 -2 175 27 215 105 15 28 110 388
 c24 99 43 183 44 188 0 13 -160 8 -165 -5z"></path> <path${addAttribute(bgColor, "fill")} d="M2032 748 c-23 -101 -42 -186 -42 -190 0 -5 36 -8 80 -8 l79 0 11 43
 c38 155 67 197 138 197 l37 0 16 70 16 70 -34 0 c-24 0 -44 -10 -71 -34 l-38
 -35 4 35 4 34 -79 0 -78 0 -43 -182z"></path> </g> </svg>`;
-}, "C:/Users/limbp/Documents/Developer/Integra/seniorCare/src/components/common/Logo.astro", void 0);
+}, "E:/Lim/Developer/Projects/seniorCare/src/components/common/Logo.astro", void 0);
 
 const $$Astro$1 = createAstro();
 const $$Nav = createComponent(($$result, $$props, $$slots) => {
@@ -126,7 +126,7 @@ const $$Nav = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$Nav;
   const { links } = Astro2.props;
   return renderTemplate`${maybeRenderHead()}<nav> <ul class="flex flex-col font-medium p-4 md:p-0 mt-4 border border-gray-100 rounded-lg  md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700"> ${links.map(({ name, href }) => renderTemplate`<li> <a class="font-ag-button-text text-ag-button-text block py-2 px-3 text-black rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"${addAttribute(href, "href")}> ${name} </a> </li>`)} </ul> </nav>`;
-}, "C:/Users/limbp/Documents/Developer/Integra/seniorCare/src/components/common/Nav.astro", void 0);
+}, "E:/Lim/Developer/Projects/seniorCare/src/components/common/Nav.astro", void 0);
 
 const $$Header = createComponent(($$result, $$props, $$slots) => {
   const HEADER_INFO = {
@@ -146,8 +146,8 @@ const $$Header = createComponent(($$result, $$props, $$slots) => {
   };
   return renderTemplate`${maybeRenderHead()}<nav class=" bg-white border-gray-200 shadow-custom-light "> <div class="font-ag-body-text text-ag-body-text text-black flex flex-col md:flex-row md:justify-between items-center mx-auto max-w-screen-xl p-4"> <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-3 rtl:space-x-reverse gap-4"> <a href="tel:5541251234" class="hidden sm:flex items-center gap-2 text-center sm:text-left"> ${renderComponent($$result, "Icon", $$Icon, { "socials": ["mapMarker"], "size": "small" })} Am Bwwinkelhof 50, Dortmund
 </a> <a href="tel:5541251234" class="flex items-center gap-2 text-center sm:text-left"> ${renderComponent($$result, "Icon", $$Icon, { "socials": ["phone"], "size": "small" })} (555) 412-1234
-</a> </div> <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 rtl:space-x-reverse mt-2 md:mt-0"> <div class="flex items-center gap-2"> ${renderComponent($$result, "Icon", $$Icon, { "socials": ["clock"], "size": "small" })} ${HEADER_INFO.scheadule} </div> <ul class="hidden sm:flex"> <li class="space-x-2"> ${renderComponent($$result, "Icon", $$Icon, { "socials": ["facebook", "twitter", "instagram"], "size": "small" })} </li> </ul> </div> </div> </nav> <nav class="bg-light-gray bg-opacity-10 w-full z-20 start-0 border-b border-gray-200"> <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"> <a href="https://flowbite.com/" class="flex items-center space-x-3 rtl:space-x-reverse"> ${renderComponent($$result, "Logo", $$Logo, { "class": "h-16 max-w-fit", "color": "dark" })} </a> <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"> ${renderComponent($$result, "Button", $$Button, { "class": "hidden sm:flex", "variant": "primary", "size": "medium" }, { "default": ($$result2) => renderTemplate`${BUTTON.text}` })} <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 " aria-controls="navbar-cta" aria-expanded="false"> <span class="sr-only">Open main menu</span> <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path> </svg> </button> </div> <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta"> ${renderComponent($$result, "Nav", $$Nav, { "links": NAVIGATION })} </div> </div> </nav>`;
-}, "C:/Users/limbp/Documents/Developer/Integra/seniorCare/src/components/common/Header.astro", void 0);
+</a> </div> <div class="flex flex-col sm:flex-row items-center space-y-2 sm:space-y-0 sm:space-x-6 rtl:space-x-reverse mt-2 md:mt-0"> <div class="flex items-center gap-2"> ${renderComponent($$result, "Icon", $$Icon, { "socials": ["clock"], "size": "small" })} ${HEADER_INFO.scheadule} </div> <ul class="hidden sm:flex"> <li class="space-x-2"> ${renderComponent($$result, "Icon", $$Icon, { "socials": ["facebook", "twitter", "instagram"], "size": "small" })} </li> </ul> </div> </div> </nav> <nav class="bg-light-gray bg-opacity-10 w-full z-20 start-0 border-b border-gray-200"> <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4"> <a href="https://flowbite.com/" class="max-w-[200px] block"> ${renderComponent($$result, "Logo", $$Logo, { "class": "h-20 max-w-fit", "color": "dark" })} </a> <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse"> ${renderComponent($$result, "Button", $$Button, { "class": "hidden sm:flex", "variant": "primary", "size": "medium" }, { "default": ($$result2) => renderTemplate`${BUTTON.text}` })} <button data-collapse-toggle="navbar-cta" type="button" class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 " aria-controls="navbar-cta" aria-expanded="false"> <span class="sr-only">Open main menu</span> <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14"> <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"></path> </svg> </button> </div> <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-cta"> ${renderComponent($$result, "Nav", $$Nav, { "links": NAVIGATION })} </div> </div> </nav>`;
+}, "E:/Lim/Developer/Projects/seniorCare/src/components/common/Header.astro", void 0);
 
 const $$Footer = createComponent(($$result, $$props, $$slots) => {
   const Navlinks = [
@@ -178,7 +178,7 @@ const $$Footer = createComponent(($$result, $$props, $$slots) => {
     copyright: "\xA9 2023 Integra. All Rights Reserved."
   };
   return renderTemplate`${maybeRenderHead()}<footer class="bg-deep-blue mx-auto px-4"> <div class="container mx-auto p-4 py-6 lg:py-8"> <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 "> <div class="footer-top mb-6 md:mb-0"> <a href="/" class="flex justify-center md:justify-start items-center mb-4"> ${renderComponent($$result, "Logo", $$Logo, { "class": "h-12 max-w-fit", "color": "white" })} </a> <p class="text-white font-ag-body-text text-ag-body-text mb-4 text-center md:text-left lg:w-11/12"> ${footerTexts.slogan} </p> <div class="flex justify-center md:justify-start space-x-2 text-soft-orange"> ${renderComponent($$result, "Icon", $$Icon, { "socials": ["facebook", "twitter", "instagram"], "size": "small" })} </div> </div> <div class="text-center md:text-left"> <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5">${footerTexts.resourcesTitle}</h5> <ul class="text-white font-ag-body-text text-ag-body-text"> <li class="mb-4"> <a href="#" class="hover:underline">${footerTexts.links.blog}</a> </li> <li> <a href="#" class="hover:underline">${footerTexts.links.guides}</a> </li> </ul> </div> <div class="text-center md:text-left"> <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5">${footerTexts.followUsTitle}</h5> <ul class="text-white font-ag-body-text text-ag-body-text"> <li class="mb-4"> <a href="#" class="hover:underline">${footerTexts.links.github}</a> </li> <li> <a href="#" class="hover:underline">${footerTexts.links.linkedin}</a> </li> </ul> </div> <div class="text-center md:text-left"> <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5">${footerTexts.legalTitle}</h5> <ul class="text-white font-ag-body-text text-ag-body-text"> <li class="mb-4"> <a href="#" class="hover:underline">${footerTexts.links.privacyPolicy}</a> </li> <li> <a href="#" class="hover:underline">${footerTexts.links.termsConditions}</a> </li> <li> <a href="#" class="hover:underline">${footerTexts.links.legal}</a> </li> </ul> </div> </div> <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8"> <div class="sm:flex sm:items-center sm:justify-between text-center md:text-left text-white font-ag-body-text text-ag-body-text"> <span>${footerTexts.copyright}</span> <div class="flex mt-4 sm:mt-0 justify-center md:justify-start space-x-4"> ${Navlinks.filter((link) => ["Legal", "Privacy", "Terms"].includes(link.name)).map((link) => renderTemplate`<a${addAttribute(link.href, "href")} class="hover:underline">${link.name}</a>`)} </div> </div> </div> </footer>`;
-}, "C:/Users/limbp/Documents/Developer/Integra/seniorCare/src/components/common/Footer.astro", void 0);
+}, "E:/Lim/Developer/Projects/seniorCare/src/components/common/Footer.astro", void 0);
 
 const $$Astro = createAstro();
 const $$Layout = createComponent(($$result, $$props, $$slots) => {
@@ -186,7 +186,7 @@ const $$Layout = createComponent(($$result, $$props, $$slots) => {
   Astro2.self = $$Layout;
   const { title } = Astro2.props;
   return renderTemplate`<html lang="en"> ${renderComponent($$result, "Head", $$Head, { "title": title })}<link rel="stylesheet" href="/src/styles/main.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">${maybeRenderHead()}<body class="bg-white"> ${renderComponent($$result, "Header", $$Header, {})} ${renderSlot($$result, $$slots["default"])} ${renderComponent($$result, "Footer", $$Footer, {})} </body></html>`;
-}, "C:/Users/limbp/Documents/Developer/Integra/seniorCare/src/layouts/Layout.astro", void 0);
+}, "E:/Lim/Developer/Projects/seniorCare/src/layouts/Layout.astro", void 0);
 
 const home = {
 	hero: {
