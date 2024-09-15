@@ -25,7 +25,8 @@ const { srcs, subtitle, title,description, buttonText } = Astro.props;
         <div class=" mt-2 flex justify-center">
           
           <Button flex class="mt-2 md:mt-8 mx-auto md:mx-0">
-            <Icon socials={['instagram']} size="small"/>{buttonText}
+            <Icon icons={[{ name: 'instagram' }]} size="small" />
+            {buttonText}
           </Button>
         </div>
       </div>
@@ -70,7 +71,8 @@ const { srcs, subtitle, title,description, buttonText } = Astro.props;
         
         <div class="md:hidden mt-2 flex justify-center">
           <Button class="flex" variant="primary" size="medium">
-            <Icon socials={['instagram']} size="small"/>
+            <Icon icons={[{ name: 'instagram' }]} size="small" />
+
             {buttonText}
           </Button>
         </div>
