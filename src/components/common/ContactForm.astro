@@ -1,7 +1,6 @@
 ---
 import Button from "./Button.astro";
 
-
 type FormSize = "large" | "medium" | "small";
 
 interface Props {
@@ -64,43 +63,57 @@ const getTextareaRows = () => {
 };
 ---
 <div class="relative">
-<form
-  id="contact-form"
-  class={`bg-soft-orange mx-auto flex flex-col justify-between shadow-lg ${sizeClasses[size]} ${className}`}
->
-  {size === "small" && image && (
-    <div class="w-full h-24 overflow-hidden mb-2">
-      <img src={image} alt="Form header" class="w-full h-full object-cover" />
+  <form
+    id="contact-form"
+    class={`bg-soft-orange mx-auto flex flex-col justify-between shadow-lg ${sizeClasses[size]} ${className}`}
+  >
+    {size === "small" && image && (
+      <div class="w-full h-24 overflow-hidden mb-2">
+        <img src={image} alt="Form header" class="w-full h-full object-cover" />
+      </div>
+    )}
+    <h2 class={`font-ag-h4 text-primary text-center ${titleClasses[size]}`} set:html={title} />
+    <div class={spacingClasses[size]}>
+      {
+        inputFields.map((input) => {
+        const { type, placeholder } = input;
+        let name = type;
+        if (type === 'tel') name = 'phone';
+        if (type === 'text' && placeholder.toLowerCase().includes('name')) name = 'name';
+        return <input type={type as astroHTML.JSX.HTMLInputTypeAttribute} name={name} placeholder={placeholder} class={inputClasses} required />;
+      })
+      }
+      <select name="subject" class={inputClasses} required>
+        {selectOptions.map((option) => (
+          <option>{option}</option>
+        ))}
+      </select>
+      <textarea name="message" placeholder={textareaPlaceholder} rows={getTextareaRows()} class={inputClasses} required></textarea>
     </div>
-  )}
-  <h2 class={`font-ag-h4 text-primary text-center ${titleClasses[size]}`} set:html={title} />
-  <div class={spacingClasses[size]}>
-    {
-      inputFields.map((input) => {
-      const { type, placeholder } = input;
-      let name = type;
-      if (type === 'tel') name = 'phone';
-      if (type === 'text' && placeholder.toLowerCase().includes('name')) name = 'name';
-      return <input type={type as astroHTML.JSX.HTMLInputTypeAttribute} name={name} placeholder={placeholder} class={inputClasses} required />;
-    })
-    }
-    <select name="subject" class={inputClasses} required>
-      {selectOptions.map((option) => (
-        <option>{option}</option>
-      ))}
-    </select>
-    <textarea name="message" placeholder={textareaPlaceholder} rows={getTextareaRows()} class={inputClasses} required></textarea>
-  </div>
-  <Button type="submit" variant="primary" fullWidth class={buttonClasses[size]}>{buttonText}</Button>
-  <div id="success-message" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <Button type="submit" variant="primary" fullWidth class={buttonClasses[size]}>{buttonText}</Button>
+    <div class="flex items-start mt-4">
+      <input
+        type="checkbox"
+        id="consent"
+        name="consent"
+        class="mt-1 mr-2"
+        required
+      />
+      <label for="consent" class="text-sm text-primary-dark">
+        "Ich stimme der Verwendung meiner Daten zu. Mehr Infos in der <a href="/privacypolicy" class="text-primary underline">Datenschutz</a>."
+      </label>
+    </div>
+
+  </form>
+  <div id="message-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
     <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-4">
-      <h3 class="text-ag-h3 font-bold text-primary mb-2">Nachricht gesendet!</h3>
-      <p class="text-ag-body-text text-primary-dark mb-4">Vielen Dank für Ihre Kontaktaufnahme. Wir werden uns bald bei Ihnen melden.</p>
-      <button id="close-success" class="w-full px-4 py-2 bg-deep-blue hover:bg-soft-blue text-white rounded-full transition-colors duration-300 focus:outline-none font-ag-button-text text-ag-button-text">Schließen</button>
+      <h3 id="modal-title" class="text-ag-h3 font-bold text-primary mb-2"></h3>
+      <p id="modal-message" class="text-ag-body-text text-primary-dark mb-4"></p>
+      <button id="close-modal" class="w-full px-4 py-2 bg-deep-blue hover:bg-soft-blue text-white rounded-full transition-colors duration-300 focus:outline-none font-ag-button-text text-ag-button-text">Schließen</button>
     </div>
   </div>
-</form>
 </div>
+
 <style>
   *:focus {
     box-shadow: none;
@@ -109,14 +122,34 @@ const getTextareaRows = () => {
 
 <script>
   const form = document.getElementById('contact-form') as HTMLFormElement;
-  const successMessage = document.getElementById('success-message') as HTMLDivElement;
-  const closeSuccessButton = document.getElementById('close-success') as HTMLButtonElement;
+  const messageModal = document.getElementById('message-modal') as HTMLDivElement;
+  const modalTitle = document.getElementById('modal-title') as HTMLHeadingElement;
+  const modalMessage = document.getElementById('modal-message') as HTMLParagraphElement;
+  const closeModalButton = document.getElementById('close-modal') as HTMLButtonElement;
+  const consentCheckbox = document.getElementById('consent') as HTMLInputElement;
+
+  function isValidGermanPhoneNumber(phone: string): boolean {
+    // Regex for German phone numbers
+    const germanPhoneRegex = /^(\+49|0)[1-9]\d{1,14}$/;
+    return germanPhoneRegex.test(phone.replace(/\s/g, ''));
+  }
   
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+
+    if (!consentCheckbox.checked) {
+      showModal('Fehler', 'Bitte bestätigen Sie die Datenschutzerklärung, um fortzufahren.');
+      return;
+    }
     
     const formData = new FormData(form);
-    
+    const phone = formData.get('phone') as string;
+
+    if (!isValidGermanPhoneNumber(phone)) {
+      showModal('Ungültige Telefonnummer', 'Bitte geben Sie eine gültige deutsche Telefonnummer ein.');
+      return;
+    }
+
     try {
       const response = await fetch('/api/send-email', {
         method: 'POST',
@@ -126,17 +159,30 @@ const getTextareaRows = () => {
       const result = await response.json();
       
       if (result.success) {
-        successMessage.classList.remove('hidden');
+        showModal('Nachricht gesendet!', 'Vielen Dank für Ihre Kontaktaufnahme. Wir werden uns bald bei Ihnen melden.');
         form.reset();
       } else {
-        alert('Error sending message: ' + result.error);
+        showModal('Fehler', 'Beim Senden der Nachricht ist ein Fehler aufgetreten: ' + result.error);
       }
     } catch (error) {
-      alert('An unexpected error occurred. Please try again later.');
+      showModal('Fehler', 'Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
     }
   });
 
-  closeSuccessButton.addEventListener('click', () => {
-    successMessage.classList.add('hidden');
+  function showModal(title: string, message: string) {
+    modalTitle.textContent = title;
+    modalMessage.textContent = message;
+    messageModal.classList.remove('hidden');
+  }
+
+  closeModalButton.addEventListener('click', () => {
+    messageModal.classList.add('hidden');
+  });
+
+  // Close the modal when clicking outside of it
+  messageModal.addEventListener('click', (e) => {
+    if (e.target === messageModal) {
+      messageModal.classList.add('hidden');
+    }
   });
 </script>
