@@ -6,11 +6,12 @@ interface Props {
   srcs: string[];
   subtitle: string;
   title: string;
+  description: string;
   buttonText: string;
   class?: string;
 }
 
-const { srcs, subtitle, title, buttonText } = Astro.props;
+const { srcs, subtitle, title,description, buttonText } = Astro.props;
 ---
 
 <section class="py-12 lg:py-20">
@@ -19,8 +20,8 @@ const { srcs, subtitle, title, buttonText } = Astro.props;
 
       <div class="lg:w-1/3 flex flex-col justify-center items-center lg:items-start text-center lg:text-left">
         <p class="text-ag-sub-heading mb-2 font-ag-sub-heading">{subtitle}</p>
-        <h2 class="text-ag-h3 font-ag-h3 mb-6">{title}</h2>
-        
+        <h2 class="text-ag-h3 font-ag-h3 mb-6 text-deep-blue">{title}</h2>
+        <p class="text-ag-sub-heading mb-2 font-ag-sub-heading">{description}</p>
         <div class=" mt-2 flex justify-center">
           
           <Button flex class="mt-2 md:mt-8 mx-auto md:mx-0">

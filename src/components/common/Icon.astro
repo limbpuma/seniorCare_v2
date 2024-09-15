@@ -1,11 +1,17 @@
 ---
-interface Props {
-  socials?: string[];
-  size?: 'tiny' | 'small' | 'medium' | 'large' | 'xl';
-  customSize?: string;
+interface IconData {
+  name: string;
+  href?: string;
 }
 
-const { socials = [], size = 'medium', customSize } = Astro.props;
+interface Props {
+  icons: IconData[];
+  size?: 'tiny' | 'small' | 'medium' | 'large' | 'xl';
+  customSize?: string;
+  variant?: 'default' | 'light' | 'accent';
+}
+
+const { icons = [], size = 'medium', customSize, variant = 'default' } = Astro.props;
 
 const sizes = {
   tiny: 'text-xs',
@@ -33,10 +39,34 @@ const iconMap: Record<string, string> = {
   'shield-alt': 'fas fa-shield-alt',
   seedling: 'fas fa-seedling',
   ambulance: 'fas fa-ambulance',
-  heart: 'fas fa-heart'
+  heart: 'fas fa-heart',
+  check: 'fas fa-check',
+  envelope: 'fas fa-envelope',
+  location: 'fas fa-map-marker-alt',
+  mobilePhone: 'fas fa-mobile-alt',
+  globe: 'fas fa-globe',
 };
+
+const variantClasses = {
+  default: 'text-[#161616] hover:text-[#5a8bba]',
+  light: 'text-[#ffffff] hover:text-[#F2B98A]',
+  accent: 'text-[#F2B98A] hover:text-[#ffffff]'
+};
+
 ---
 
-{socials.map((social: string) => (
-  <i class={`${iconMap[social] || ''} ${iconClass}`}></i>
-))}
+{icons.map((icon) => {
+  const IconComponent = (
+    <i class={`${iconMap[icon.name] || ''} ${iconClass} ${variantClasses[variant]} transition-colors duration-300`}></i>
+  );
+
+  return icon.href ? (
+    <a href={icon.href} class=" inline-block" target="_blank" rel="noopener noreferrer">
+      {IconComponent}
+    </a>
+  ) : (
+    <span class=" inline-block">
+      {IconComponent}
+    </span>
+  );
+})}

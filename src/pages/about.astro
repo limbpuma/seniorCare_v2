@@ -15,10 +15,10 @@ const title = 'About Us';
 
 <Layout title={title}>
   <BannerSection {...texts.about.banner} />
-  <AboutSection {...texts.about.aboutSection} />
+  <AboutSection {...texts.home.about} />
   <BannerSlider slides={texts.about.bannerSlider.slides} />
   <ExpertSection {...texts.about.expertSection} />
-  <DiscoverIcons  />
+  <DiscoverIcons  {...texts.about.discoverIcons} />
   <Testimonial testimonials={texts.home.testimonials} />
   
 </Layout>

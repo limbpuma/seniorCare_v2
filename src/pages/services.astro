@@ -6,22 +6,17 @@ import ImageCarrousel_3 from '@/components/common/ImageCarrousel_3.astro';
 import Testimonial from '@/components/common/Testimonial.astro';
 import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
 import texts from "@/utils/texts.json";
-import VideoServices from '@/components/services/VideoServices.astro';
 import WeCare from '@/components/services/WeCare.astro';
 const title = 'Services';
 ---
 
 <Layout title={title}>
   <BannerSection {...texts.services.banner}/>
-  <WeCare srcs={[
-    {label: 'Meal Services', src: '/assets/img/Bild1.jpg'},
-    {label: 'Personal Care', src: '/assets/img/Bild1.jpg', href: '/'},
-    {label: 'Assited Living', src: '/assets/img/Bild1.jpg'},
-    ]} />
-  <DiscoverIcons />
-  <VideoServices {...texts.services.videoservices}/>
+  <WeCare {...texts.services.weCare} />
+  <DiscoverIcons {...texts.about.discoverIcons} />
+  
   <ImageCarrousel_3 {...texts.services.imageCarousel_3}/>
-  <Testimonial testimonials={texts.home.testimonials} />
+  <Testimonial testimonials={texts.home.testimonials}/>
   <GalleryMosaic {...texts.home.galleryMosaic}/>
 
   

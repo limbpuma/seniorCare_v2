@@ -1,5 +1,6 @@
 ---
 import ContactForm from "../common/ContactForm.astro";
+import Icon from '../common/Icon.astro';
 
 interface ContactOption {
   icon: string;
@@ -25,6 +26,14 @@ interface Props {
 }
 
 const { subtitle, title, description, contactOptions, contactForm } = Astro.props;
+
+// Map the icon names to the ones used in Icon.astro
+const iconNameMap: Record<string, string> = {
+  'fa-globe': 'globe',
+  'fa-map-marker-alt': 'location',
+  'fa-phone-alt': 'mobilePhone',
+  'fa-envelope': 'envelope',
+};
 ---
 
 <section class="bg-white py-12 px-4 sm:px-6 lg:px-8">
@@ -32,15 +41,21 @@ const { subtitle, title, description, contactOptions, contactForm } = Astro.prop
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div class="space-y-8">
         <div>
-          <h3 class="text-blue-600 font-semibold text-lg">{subtitle}</h3>
-          <h2 class="text-3xl font-bold text-gray-900 mt-2">{title}</h2>
-          <p class="mt-4 text-gray-600">{description}</p>
+          <h3 class="text-ag-sub-heading font-ag-sub-heading font-semibold ">{subtitle}</h3>
+          <h2 class="text-ag-h3 font-ag-h3 font-bold mt-2 text-deep-blue">{title}</h2>
+          <p class="mt-4 text-ag-body-text font-ag-body-text text-gray-600">{description}</p>
         </div>
         <div class="space-y-6">
           {contactOptions.map((option: ContactOption) => (
             <div class="flex items-center space-x-4">
-              <div class="bg-orange-100 rounded-full p-3">
-                <i class={`fas ${option.icon} text-blue-600 text-xl`}></i>
+              <div class="bg-orange-100 rounded-full p-3 text-deep-blue">
+                <Icon 
+                  icons={[{ name: iconNameMap[option.icon] || option.icon }]}
+                  size="large"
+                  variant="default"
+                  customSize="text-xl"
+                  
+                />
               </div>
               <div>
                 <h3 class="font-semibold text-gray-900">{option.title}</h3>
