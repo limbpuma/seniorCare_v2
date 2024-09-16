@@ -1,19 +1,19 @@
-import type { APIRoute } from 'astro';
-import { Resend } from 'resend';
+import type { APIRoute } from "astro";
+import { Resend } from "resend";
 
 const resend = new Resend(import.meta.env.RESEND_API_KEY);
 
 export const POST: APIRoute = async ({ request }) => {
   const data = await request.formData();
-  const name = data.get('name');
-  const email = data.get('email');
-  const phone = data.get('phone');
-  const subject = data.get('subject');
-  const message = data.get('message');
+  const name = data.get("name");
+  const email = data.get("email");
+  const phone = data.get("phone");
+  const subject = data.get("subject");
+  const message = data.get("message");
 
-  
-  const logoUrl = 'https://seniorcare-rust.vercel.app/assets/logo/logo_integra.webp';
-  const websiteUrl = 'https://seniorcare-rust.vercel.app/';
+  const logoUrl =
+    "https://seniorcare-rust.vercel.app/assets/logo/logo_integra.webp";
+  const websiteUrl = "https://seniorcare-rust.vercel.app/";
 
   const plainText = `
   Neue Kontaktformular-Einreichung
@@ -33,8 +33,8 @@ export const POST: APIRoute = async ({ request }) => {
 
   try {
     const { data, error } = await resend.emails.send({
-      from: 'Your Name <onboarding@resend.dev>',
-      to: ['limbpuma_de@hotmail.com'],
+      from: "Your Name <onboarding@resend.dev>",
+      to: ["limbpuma_de@hotmail.com"],
       subject: `New contact form submission: ${subject}`,
       text: plainText,
       html: `
@@ -152,18 +152,21 @@ export const POST: APIRoute = async ({ request }) => {
     if (error) {
       return new Response(JSON.stringify({ error: error.message }), {
         status: 400,
-        headers: { 'Content-Type': 'application/json' }
+        headers: { "Content-Type": "application/json" },
       });
     }
 
     return new Response(JSON.stringify({ success: true, data }), {
       status: 200,
-      headers: { 'Content-Type': 'application/json' }
+      headers: { "Content-Type": "application/json" },
     });
   } catch (error) {
-    return new Response(JSON.stringify({ error: 'An unexpected error occurred' }), {
-      status: 500,
-      headers: { 'Content-Type': 'application/json' }
-    });
+    return new Response(
+      JSON.stringify({ error: "An unexpected error occurred" }),
+      {
+        status: 500,
+        headers: { "Content-Type": "application/json" },
+      },
+    );
   }
 };

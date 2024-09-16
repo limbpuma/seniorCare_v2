@@ -1,8 +1,7 @@
 ---
-import ReactSwiperSlider from './Slider.jsx';
+import ReactSwiperSlider from "./Slider.jsx";
 
 const { images, subtitle, title } = Astro.props;
-
 
 const imageClasses = "w-full h-[250px] object-cover";
 const titleClasses = "text-white text-xl font-bold";
@@ -14,30 +13,58 @@ const wrapperClasses = "absolute bottom-0 left-0 bg-blue-900 p-2";
   <div class="container mx-auto px-4">
     <div class="flex justify-between items-center mb-8">
       <div class="flex flex-col">
-        <h2 class="text-white text-ag-sub-heading font-ag-sub-heading">{subtitle}</h2>
-        <h2 class="text-white font-ag-h3  text-ag-h3 ">{title}</h2>
+        <h2 class="text-white text-ag-sub-heading font-ag-sub-heading">
+          {subtitle}
+        </h2>
+        <h2 class="text-white font-ag-h3 text-ag-h3">{title}</h2>
       </div>
       <div class="flex space-x-4">
-        <button class="text-white hover:text-blue-200 focus:outline-none" aria-label="Previous slide">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+        <button
+          class="text-white hover:text-blue-200 focus:outline-none"
+          aria-label="Previous slide"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 19l-7-7 7-7"></path>
           </svg>
         </button>
-        <button class="text-white hover:text-blue-200 focus:outline-none" aria-label="Next slide">
-          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+        <button
+          class="text-white hover:text-blue-200 focus:outline-none"
+          aria-label="Next slide"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M9 5l7 7-7 7"></path>
           </svg>
         </button>
       </div>
     </div>
     <div class="w-full relative">
-      <ReactSwiperSlider 
-        slides={images} 
-        imgClass={imageClasses} 
+      <ReactSwiperSlider
+        slides={images}
+        imgClass={imageClasses}
         titleClass={titleClasses}
-        textClass={textClasses} 
+        textClass={textClasses}
         wrapperClass={wrapperClasses}
-        isImageSlider={false} 
+        isImageSlider={false}
         divType="flex-col"
         client:load
       />

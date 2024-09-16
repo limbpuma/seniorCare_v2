@@ -1,5 +1,5 @@
 ---
-import ReactSwiperSlider from './Slider.jsx';
+import ReactSwiperSlider from "./Slider.jsx";
 
 const iconClasses = "text-ag-h2 lg:text-ag-h2 text-deep-blue";
 const textClasses = "text-ag-h2 lg:text-ag-h2 font-bold text-deep-blue";
@@ -9,5 +9,12 @@ const { slides } = Astro.props;
 ---
 
 <div class="bg-soft-orange py-12 w-full">
-  <ReactSwiperSlider slides={slides} iconClass={iconClasses} textClass={textClasses} wrapperClass={wrapperClasses} divType="flex-center" client:load/>
+  <ReactSwiperSlider
+    slides={slides}
+    iconClass={iconClasses}
+    textClass={textClasses}
+    wrapperClass={wrapperClasses}
+    divType="flex-center"
+    client:load
+  />
 </div>

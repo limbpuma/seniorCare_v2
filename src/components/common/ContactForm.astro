@@ -7,7 +7,7 @@ interface Props {
   class?: string;
   title: string;
   inputFields: {
-    type: string;  
+    type: string;
     placeholder: string;
   }[];
   selectOptions: string[];
@@ -17,39 +17,45 @@ interface Props {
   image?: string;
 }
 
-const { 
-  class: className, 
-  title, 
-  inputFields, 
-  selectOptions, 
-  textareaPlaceholder, 
+const {
+  class: className,
+  title,
+  inputFields,
+  selectOptions,
+  textareaPlaceholder,
   buttonText,
   size = "large",
-  image
+  image,
 } = Astro.props;
 
 const sizeClasses = {
-  large: "max-w-[400px] sm:max-w-[450px] md:max-w-[500px] px-6 sm:px-8 md:px-10 py-10 sm:py-12 md:py-14",
-  medium: "max-w-[300px] sm:max-w-[350px] md:max-w-[400px] px-4 sm:px-5 md:px-6 py-6 sm:py-8 md:py-10",
-  small: "max-w-[250px] sm:max-w-[300px] md:max-w-[350px] px-3 sm:px-4 md:px-5 py-4 sm:py-6 md:py-8"
+  large:
+    "max-w-[400px] sm:max-w-[450px] md:max-w-[500px] px-6 sm:px-8 md:px-10 py-10 sm:py-12 md:py-14",
+  medium:
+    "max-w-[300px] sm:max-w-[350px] md:max-w-[400px] px-4 sm:px-5 md:px-6 py-6 sm:py-8 md:py-10",
+  small:
+    "max-w-[250px] sm:max-w-[300px] md:max-w-[350px] px-3 sm:px-4 md:px-5 py-4 sm:py-6 md:py-8",
 };
 
 const titleClasses = {
   large: "text-2xl sm:text-3xl md:text-ag-h4 mb-6 sm:mb-8",
   medium: "text-lg sm:text-xl md:text-2xl mb-4 sm:mb-5",
-  small: "text-base sm:text-lg md:text-xl mb-2 sm:mb-3"
+  small: "text-base sm:text-lg md:text-xl mb-2 sm:mb-3",
 };
 
 const spacingClasses = {
   large: "space-y-4 sm:space-y-5 md:space-y-6",
   medium: "space-y-2 sm:space-y-3 md:space-y-4",
-  small: size === "small" && image ? "space-y-1" : "space-y-1 sm:space-y-2 md:space-y-3"
+  small:
+    size === "small" && image
+      ? "space-y-1"
+      : "space-y-1 sm:space-y-2 md:space-y-3",
 };
 
 const buttonClasses = {
   large: "mt-6 sm:mt-8 md:mt-10",
   medium: "mt-4 sm:mt-5 md:mt-6",
-  small: size === "small" && image ? "mt-2" : "mt-3 sm:mt-4 md:mt-5"
+  small: size === "small" && image ? "mt-2" : "mt-3 sm:mt-4 md:mt-5",
 };
 
 const inputClasses =
@@ -62,35 +68,62 @@ const getTextareaRows = () => {
   return "6";
 };
 ---
+
 <div class="relative">
   <form
     id="contact-form"
     class={`bg-soft-orange mx-auto flex flex-col justify-between shadow-lg ${sizeClasses[size]} ${className}`}
   >
-    {size === "small" && image && (
-      <div class="w-full h-24 overflow-hidden mb-2">
-        <img src={image} alt="Form header" class="w-full h-full object-cover" />
-      </div>
-    )}
-    <h2 class={`font-ag-h4 text-primary text-center ${titleClasses[size]}`} set:html={title} />
+    {
+      size === "small" && image && (
+        <div class="w-full h-24 overflow-hidden mb-2">
+          <img
+            src={image}
+            alt="Form header"
+            class="w-full h-full object-cover"
+          />
+        </div>
+      )
+    }
+    <h2
+      class={`font-ag-h4 text-primary text-center ${titleClasses[size]}`}
+      set:html={title}
+    />
     <div class={spacingClasses[size]}>
       {
         inputFields.map((input) => {
-        const { type, placeholder } = input;
-        let name = type;
-        if (type === 'tel') name = 'phone';
-        if (type === 'text' && placeholder.toLowerCase().includes('name')) name = 'name';
-        return <input type={type as astroHTML.JSX.HTMLInputTypeAttribute} name={name} placeholder={placeholder} class={inputClasses} required />;
-      })
+          const { type, placeholder } = input;
+          let name = type;
+          if (type === "tel") name = "phone";
+          if (type === "text" && placeholder.toLowerCase().includes("name"))
+            name = "name";
+          return (
+            <input
+              type={type as astroHTML.JSX.HTMLInputTypeAttribute}
+              name={name}
+              placeholder={placeholder}
+              class={inputClasses}
+              required
+            />
+          );
+        })
       }
       <select name="subject" class={inputClasses} required>
-        {selectOptions.map((option) => (
-          <option>{option}</option>
-        ))}
+        {selectOptions.map((option) => <option>{option}</option>)}
       </select>
-      <textarea name="message" placeholder={textareaPlaceholder} rows={getTextareaRows()} class={inputClasses} required></textarea>
+      <textarea
+        name="message"
+        placeholder={textareaPlaceholder}
+        rows={getTextareaRows()}
+        class={inputClasses}
+        required></textarea>
     </div>
-    <Button type="submit" variant="primary" fullWidth class={buttonClasses[size]}>{buttonText}</Button>
+    <Button
+      type="submit"
+      variant="primary"
+      fullWidth
+      class={buttonClasses[size]}>{buttonText}</Button
+    >
     <div class="flex items-start mt-4">
       <input
         type="checkbox"
@@ -100,16 +133,26 @@ const getTextareaRows = () => {
         required
       />
       <label for="consent" class="text-sm text-primary-dark">
-        "Ich stimme der Verwendung meiner Daten zu. Mehr Infos in der <a href="/privacypolicy" class="text-primary underline">Datenschutz</a>."
+        "Ich stimme der Verwendung meiner Daten zu. Mehr Infos in der <a
+          href="/privacypolicy"
+          class="text-primary underline">Datenschutz</a
+        >."
       </label>
     </div>
-
   </form>
-  <div id="message-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div
+    id="message-modal"
+    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+  >
     <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-4">
       <h3 id="modal-title" class="text-ag-h3 font-bold text-primary mb-2"></h3>
-      <p id="modal-message" class="text-ag-body-text text-primary-dark mb-4"></p>
-      <button id="close-modal" class="w-full px-4 py-2 bg-deep-blue hover:bg-soft-blue text-white rounded-full transition-colors duration-300 focus:outline-none font-ag-button-text text-ag-button-text">Schließen</button>
+      <p id="modal-message" class="text-ag-body-text text-primary-dark mb-4">
+      </p>
+      <button
+        id="close-modal"
+        class="w-full px-4 py-2 bg-deep-blue hover:bg-soft-blue text-white rounded-full transition-colors duration-300 focus:outline-none font-ag-button-text text-ag-button-text"
+        >Schließen</button
+      >
     </div>
   </div>
 </div>
@@ -121,68 +164,94 @@ const getTextareaRows = () => {
 </style>
 
 <script>
-  const form = document.getElementById('contact-form') as HTMLFormElement;
-  const messageModal = document.getElementById('message-modal') as HTMLDivElement;
-  const modalTitle = document.getElementById('modal-title') as HTMLHeadingElement;
-  const modalMessage = document.getElementById('modal-message') as HTMLParagraphElement;
-  const closeModalButton = document.getElementById('close-modal') as HTMLButtonElement;
-  const consentCheckbox = document.getElementById('consent') as HTMLInputElement;
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const messageModal = document.getElementById(
+    "message-modal",
+  ) as HTMLDivElement;
+  const modalTitle = document.getElementById(
+    "modal-title",
+  ) as HTMLHeadingElement;
+  const modalMessage = document.getElementById(
+    "modal-message",
+  ) as HTMLParagraphElement;
+  const closeModalButton = document.getElementById(
+    "close-modal",
+  ) as HTMLButtonElement;
+  const consentCheckbox = document.getElementById(
+    "consent",
+  ) as HTMLInputElement;
 
   function isValidGermanPhoneNumber(phone: string): boolean {
     // Regex for German phone numbers
     const germanPhoneRegex = /^(\+49|0)[1-9]\d{1,14}$/;
-    return germanPhoneRegex.test(phone.replace(/\s/g, ''));
+    return germanPhoneRegex.test(phone.replace(/\s/g, ""));
   }
-  
-  form.addEventListener('submit', async (e) => {
+
+  form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     if (!consentCheckbox.checked) {
-      showModal('Fehler', 'Bitte bestätigen Sie die Datenschutzerklärung, um fortzufahren.');
+      showModal(
+        "Fehler",
+        "Bitte bestätigen Sie die Datenschutzerklärung, um fortzufahren.",
+      );
       return;
     }
-    
+
     const formData = new FormData(form);
-    const phone = formData.get('phone') as string;
+    const phone = formData.get("phone") as string;
 
     if (!isValidGermanPhoneNumber(phone)) {
-      showModal('Ungültige Telefonnummer', 'Bitte geben Sie eine gültige deutsche Telefonnummer ein.');
+      showModal(
+        "Ungültige Telefonnummer",
+        "Bitte geben Sie eine gültige deutsche Telefonnummer ein.",
+      );
       return;
     }
 
     try {
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
+      const response = await fetch("/api/send-email", {
+        method: "POST",
         body: formData,
       });
-      
+
       const result = await response.json();
-      
+
       if (result.success) {
-        showModal('Nachricht gesendet!', 'Vielen Dank für Ihre Kontaktaufnahme. Wir werden uns bald bei Ihnen melden.');
+        showModal(
+          "Nachricht gesendet!",
+          "Vielen Dank für Ihre Kontaktaufnahme. Wir werden uns bald bei Ihnen melden.",
+        );
         form.reset();
       } else {
-        showModal('Fehler', 'Beim Senden der Nachricht ist ein Fehler aufgetreten: ' + result.error);
+        showModal(
+          "Fehler",
+          "Beim Senden der Nachricht ist ein Fehler aufgetreten: " +
+            result.error,
+        );
       }
     } catch (error) {
-      showModal('Fehler', 'Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.');
+      showModal(
+        "Fehler",
+        "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
+      );
     }
   });
 
   function showModal(title: string, message: string) {
     modalTitle.textContent = title;
     modalMessage.textContent = message;
-    messageModal.classList.remove('hidden');
+    messageModal.classList.remove("hidden");
   }
 
-  closeModalButton.addEventListener('click', () => {
-    messageModal.classList.add('hidden');
+  closeModalButton.addEventListener("click", () => {
+    messageModal.classList.add("hidden");
   });
 
   // Close the modal when clicking outside of it
-  messageModal.addEventListener('click', (e) => {
+  messageModal.addEventListener("click", (e) => {
     if (e.target === messageModal) {
-      messageModal.classList.add('hidden');
+      messageModal.classList.add("hidden");
     }
   });
 </script>

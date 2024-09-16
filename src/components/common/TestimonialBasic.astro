@@ -1,47 +1,51 @@
 ---
-import TitleCommon from './TitleCommon.astro';
-
+import Section from "./Section.astro";
+import TitleCommon from "./TitleCommon.astro";
 
 interface Props {
-    testimonials: Testimonial[];
-    small?: boolean
+  testimonials: Testimonial[];
+  small?: boolean;
 }
 
 interface Testimonial {
-    name: string;
-    title: string;
-    image: string;
-    desc: string;
+  name: string;
+  title: string;
+  image: string;
+  desc: string;
 }
 
 let { testimonials, small } = Astro.props;
-small && (testimonials = testimonials.slice(0,3))
+small && (testimonials = testimonials.slice(0, 3));
 ---
-<section class="py-12 lg:py-20">
-  <TitleCommon class="text-center text-primary-dark" title="What Our Clients Say About" subtitle='Testimonials'/>
-  <div class=" px-4 py-6 lg:py-8">
+
+<Section padingVertical={"large"}>
+  <TitleCommon
+    class="text-center text-primary-dark"
+    title="What Our Clients Say About"
+    subtitle="Testimonials"
+  />
+  <div class="py-6 lg:py-8">
     <div class="flex gap-x-3 gap-y-6 my-12 justify-center flex-wrap">
       {
         testimonials.map((testimonial) => {
           const { name, title, image, desc } = testimonial;
           return (
-
             <div class="border-[2px] border-accent p-10 max-w-[500px] grid gap-8 text-primary-dark">
               <p class="font-ag-testimonial-text text-ag-sub-heading md:text-ag-testimonial-text italic">
                 {desc}
               </p>
               <div class="font-ag-testimonial-text text-ag-testimonial-text flex justify-between ">
                 <div class="pt-6">
-                  <h5 class="font-ag-h5 text-ag-testimonial-text md:text-ag-h5">{name}</h5>
+                  <h5 class="font-ag-h5 text-ag-testimonial-text md:text-ag-h5">
+                    {name}
+                  </h5>
                   <span class="text-ag-body-text font-ag-body-text">
                     {title}
                   </span>
                 </div>
                 <div class="relative">
-
                   <div class="img-container relative size-[100px] md:max-size-[140px] border-none rounded-full bg-slate-200">
-
-                    <i class="fa-solid fa-quote-right text-ag-h3 text-deep-blue absolute top-[10px] left-[-10px] z-10"></i>
+                    <i class="fa-solid fa-quote-right text-ag-h3 text-deep-blue absolute top-[10px] left-[-10px] z-10" />
                     <img
                       src={image}
                       alt=""
@@ -56,4 +60,4 @@ small && (testimonials = testimonials.slice(0,3))
       }
     </div>
   </div>
-</section>
+</Section>

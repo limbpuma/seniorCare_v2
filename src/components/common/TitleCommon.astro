@@ -1,17 +1,21 @@
 ---
 interface Props {
-    subtitle?: string;
-    title: string;
-    desc?: string;
-    class?: string
+  subtitle?: string;
+  title: string;
+  desc?: string;
+  class?: string;
 }
 
 const { subtitle, title, desc, class: className } = Astro.props;
 ---
 
 <div class={`flex flex-col justify-center gap-2 ${className}`}>
-    {subtitle && <p class="font-ag-sub-heading text-ag-sub-heading">{subtitle}</p>}
-    <h2 class="font-ag-h3 text-ag-h4 md:text-ag-h3">{title}</h2>
-    {desc && <p class={`font-ag-body text-ag-body`}>{desc}</p>}
-    <slot />
+  {
+    subtitle && (
+      <p class="font-ag-sub-heading text-ag-sub-heading">{subtitle}</p>
+    )
+  }
+  <h2 class="font-ag-h3 text-ag-h4 md:text-ag-h3">{title}</h2>
+  {desc && <p class={`font-ag-body text-ag-body`}>{desc}</p>}
+  <slot />
 </div>

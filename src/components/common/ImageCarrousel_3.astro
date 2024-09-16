@@ -1,5 +1,5 @@
 ---
-import ReactSwiperSlider from './Slider.jsx';
+import ReactSwiperSlider from "./Slider.jsx";
 
 interface Props {
   subtitle: string;
@@ -21,16 +21,18 @@ const wrapperClasses = "absolute bottom-0 left-0 bg-blue-900 p-4";
 <section class="bg-deep-blue py-16">
   <div class="container mx-auto px-4 max-w-screen-xl">
     <div class="text-center mb-12">
-      <p class="text-ag-sub-heading font-ag-sub-heading text-white mb-2">{subtitle}</p>
+      <p class="text-ag-sub-heading font-ag-sub-heading text-white mb-2">
+        {subtitle}
+      </p>
       <h2 class="text-ag-h3 font-ag-h3 font-bold text-white">{title}</h2>
     </div>
     <div class="w-full relative">
-      <ReactSwiperSlider 
-        slides={offerings} 
-        imgClass={imageClasses} 
+      <ReactSwiperSlider
+        slides={offerings}
+        imgClass={imageClasses}
         textClass={textClasses}
         wrapperClass={wrapperClasses}
-        isImageSlider={true} 
+        isImageSlider={true}
         divType="flex-col"
         client:load
       />

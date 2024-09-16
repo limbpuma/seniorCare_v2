@@ -8,7 +8,7 @@ interface Props {
 const { title, breadcrumbs, backgroundImage } = Astro.props;
 ---
 
-<div 
+<div
   class="relative py-16 bg-cover bg-center bg-no-repeat"
   style={`background-image: url(${backgroundImage});`}
 >
@@ -17,17 +17,23 @@ const { title, breadcrumbs, backgroundImage } = Astro.props;
     <h1 class="text-ag-h2 font-ag-h2 text-white mb-4">{title}</h1>
     <nav class="text-sm" aria-label="Breadcrumb">
       <ol class="list-none p-0 inline-flex">
-        {breadcrumbs.map((item, index) => (
-          <li class="flex items-center">
-            {index > 0 && <span class="mx-2 text-gray-300 ">/</span>}
-            <a
-              href={item.url}
-              class={index === breadcrumbs.length - 1 ? "text-gray-300 text-body-text font-body-text" : "text-white text-body-text font-body-text hover:text-gray-200 "}
-            >
-              {item.label}
-            </a>
-          </li>
-        ))}
+        {
+          breadcrumbs.map((item, index) => (
+            <li class="flex items-center">
+              {index > 0 && <span class="mx-2 text-gray-300 ">/</span>}
+              <a
+                href={item.url}
+                class={
+                  index === breadcrumbs.length - 1
+                    ? "text-gray-300 text-body-text font-body-text"
+                    : "text-white text-body-text font-body-text hover:text-gray-200 "
+                }
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
       </ol>
     </nav>
   </div>

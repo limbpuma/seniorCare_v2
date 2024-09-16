@@ -1,26 +1,37 @@
 ---
-import ReactSwiperSlider from './Slider.jsx';
+import ReactSwiperSlider from "./Slider.jsx";
+import TitleCommon from "./TitleCommon.astro";
 
 const { images, title, subtitle } = Astro.props;
 
 const imagenclases = "w-auto h-[192px] object-cover";
-const textclasses = "mt-2 text-white text-ag-body-text font-ag-body-text text-left";
+const textclasses =
+  "mt-2 text-white text-ag-body-text font-ag-body-text text-left";
 const wrapperClasses = "relative overflow-hidden";
 ---
 
-<section class="relative py-12 sm:py-16 ">
+<section class="relative py-12 sm:py-16">
   <div class="container mx-auto px-4">
     <div class="absolute inset-0 w-full h-full">
       <div class="w-full h-1/2 bg-white"></div>
       <div class="w-full h-1/2 bg-deep-blue"></div>
     </div>
     <div class="relative mx-auto w-full z-10">
-      <div class="text-center mb-8">
-        <p class="text-deep-blue text-ag-sub-heading font-ag-sub-heading">{subtitle}</p>
-        <h2 class="text-deep-blue font-ag-h3 text-ag-h3">{title}</h2>
-      </div>
+      <TitleCommon
+        title={title}
+        subtitle={subtitle}
+        class="text-center text-deep-blue mb-8"
+      />
       <div class="w-full relative">
-        <ReactSwiperSlider slides={images} imgClass={imagenclases} textClass={textclasses} wrapperClass={wrapperClasses} isImageSlider={true} divType="flex-col" client:load />
+        <ReactSwiperSlider
+          slides={images}
+          imgClass={imagenclases}
+          textClass={textclasses}
+          wrapperClass={wrapperClasses}
+          isImageSlider={true}
+          divType="flex-col"
+          client:load
+        />
       </div>
     </div>
   </div>

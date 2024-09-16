@@ -1,47 +1,57 @@
 ---
+import Section from "./Section.astro";
+
 interface Props {
-    testimonials: Testimonial[];
+  testimonials: Testimonial[];
 }
 
 interface Testimonial {
-    name: string;
-    title: string;
-    image: string;
-    desc: string;
+  name: string;
+  title: string;
+  image: string;
+  desc: string;
 }
 
 const { testimonials } = Astro.props;
 ---
 
-<section class="bg-gray-100 py-16 px-4 sm:px-6 lg:px-8">
-  <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-12">
-          <p class="text-ag-sub-heading font-semibold mb-2">Testimonials</p>
-          <h2 class="text-ag-h3 font-ag-h3 text-primary-dark">What Our Clients Say About Us</h2>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {testimonials.map((testimonial) => (
-              <div class="bg-white border-soft-orange p-6 rounded-lg shadow-md border h-full flex flex-col">
-                  <p class="text-ag-body-text font-ag-body-text italic text-deep-blue mb-4 flex-grow">{testimonial.desc}</p>
-                  <div class="flex items-center mt-4">
-                      <div class="flex-shrink-0 mr-4">
-                          <div class="relative w-16 h-16 sm:w-20 sm:h-20">
-                              <i class="fa-solid fa-quote-right text-ag-h3 text-deep-blue absolute -top-2 -left-2 z-10"></i>
-                              <img
-                                  src={testimonial.image}
-                                  alt={testimonial.name}
-                                  class="w-full h-full object-cover rounded-full"
-                              />
-                          </div>
-                      </div>
-                      <div>
-                          <h3 class="font-ag-sub-heading font-bold text-ag-sub-heading text-black">{testimonial.name}</h3>
-                          <p class="text-ag-body-text font-ag-body-text text-deep-blue">{testimonial.title}</p>
-                      </div>
-                  </div>
-              </div>
-          ))}
-      </div>
+<Section padingVertical={"large"}>
+  <div class="text-center mb-12">
+    <p class="text-ag-sub-heading font-semibold mb-2">Testimonials</p>
+    <h2 class="text-ag-h3 font-ag-h3 text-primary-dark">
+      What Our Clients Say About Us
+    </h2>
   </div>
-</section>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+    {
+      testimonials.map((testimonial) => (
+        <div class="bg-white border-soft-orange p-6 rounded-lg shadow-md border h-full flex flex-col">
+          <p class="text-ag-body-text font-ag-body-text italic text-deep-blue mb-4 flex-grow">
+            {testimonial.desc}
+          </p>
+          <div class="flex items-center mt-4">
+            <div class="flex-shrink-0 mr-4">
+              <div class="relative w-16 h-16 sm:w-20 sm:h-20">
+                <i class="fa-solid fa-quote-right text-ag-h3 text-deep-blue absolute -top-2 -left-2 z-10" />
+                <img
+                  src={testimonial.image}
+                  alt={testimonial.name}
+                  class="w-full h-full object-cover rounded-full"
+                />
+              </div>
+            </div>
+            <div>
+              <h3 class="font-ag-sub-heading font-bold text-ag-sub-heading text-black">
+                {testimonial.name}
+              </h3>
+              <p class="text-ag-body-text font-ag-body-text text-deep-blue">
+                {testimonial.title}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+</Section>

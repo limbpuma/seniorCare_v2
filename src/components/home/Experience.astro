@@ -1,26 +1,40 @@
 ---
 import Button from "../common/Button.astro";
-import Icon from '../common/Icon.astro';
+import Icon from "../common/Icon.astro";
+import Section from "../common/Section.astro";
+import TitleCommon from "../common/TitleCommon.astro";
 
 const { heading, title, description, buttonText } = Astro.props;
 ---
 
-<section class:list={["py-12 lg:py-20"]}>
-  <div class="container mx-auto px-4 p-4 py-6 flex flex-col lg:flex-row items-center lg:justify-between ">
+<Section padingVertical={"large"}>
+  <div class="py-6 flex flex-col lg:flex-row items-center lg:justify-between">
     <div class="relative w-full lg:w-1/2 bg-gray-200">
-      <img src="/assets/img/Bild1.jpg" alt="Image Description" class="w-full h-full object-cover" />
-      <div class="absolute bottom-0 left-0 bg-deep-blue p-12 flex flex-col items-center text-soft-orange">
-        <Icon icons={[{ name: 'handhelp' }]} size="xl" />
+      <img
+        src="/assets/img/Bild1.jpg"
+        alt="Image Description"
+        class="w-full h-full object-cover"
+      />
+      <div
+        class="absolute bottom-0 left-0 bg-deep-blue p-12 flex flex-col items-center text-soft-orange"
+      >
+        <Icon icons={[{ name: "handhelp" }]} size="xl" />
         <p class="text-white ag-h5 font-ag-h5 font-bold">Safe & Security</p>
       </div>
     </div>
     <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-12">
-      <h5 class="text-soft-blue font-ag-sub-heading text-ag-sub-heading mb-4">{heading}</h5>
-      <h3 class="text-deep-blue font-ag-h3 text-ag-h3 mb-4">{title}</h3>
-      <p class="text-gray-600 text-ag-body-text font-ag-body-text mb-6">{description}</p>
-      <Button variant="primary" size="medium">
-        {buttonText}
-      </Button>
+      <TitleCommon
+        class="text-deep-blue text-center md:text-left"
+        title={title}
+        subtitle={heading}
+      >
+        <p class="text-gray-600 text-ag-body-text font-ag-body-text mb-6">
+          {description}
+        </p>
+        <Button variant="primary" class="mx-auto md:mx-0 mt-4" size="medium">
+          {buttonText}
+        </Button>
+      </TitleCommon>
     </div>
   </div>
-</section>
+</Section>

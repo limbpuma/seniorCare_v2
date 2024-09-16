@@ -241,7 +241,7 @@
       ]
     }
   },
-    "about": {
+  "about": {
     "banner": {
       "title": "Über Uns",
       "backgroundImage": "/assets/img/Bild1.jpg",
@@ -358,11 +358,31 @@
       "subtitle": "Außergewöhnliche Pflege",
       "title": "Unsere Top-Leistungen",
       "offerings": [
-        { "src": "/assets/img/Bild1.jpg", "alt": "Häusliche Pflege", "text": "Häusliche Pflege" },
-        { "src": "/assets/img/Bild1.jpg", "alt": "Gesundheitsdienstleistungen", "text": "Gesundheitsdienstleistungen" },
-        { "src": "/assets/img/Bild1.jpg", "alt": "Mahlzeitendienste", "text": "Mahlzeitendienste" },
-        { "src": "/assets/img/Bild1.jpg", "alt": "Hauswirtschaft", "text": "Hauswirtschaft" },
-        { "src": "/assets/img/Bild1.jpg", "alt": "Demenzbetreuung", "text": "Demenzbetreuung" }
+        {
+          "src": "/assets/img/Bild1.jpg",
+          "alt": "Häusliche Pflege",
+          "text": "Häusliche Pflege"
+        },
+        {
+          "src": "/assets/img/Bild1.jpg",
+          "alt": "Gesundheitsdienstleistungen",
+          "text": "Gesundheitsdienstleistungen"
+        },
+        {
+          "src": "/assets/img/Bild1.jpg",
+          "alt": "Mahlzeitendienste",
+          "text": "Mahlzeitendienste"
+        },
+        {
+          "src": "/assets/img/Bild1.jpg",
+          "alt": "Hauswirtschaft",
+          "text": "Hauswirtschaft"
+        },
+        {
+          "src": "/assets/img/Bild1.jpg",
+          "alt": "Demenzbetreuung",
+          "text": "Demenzbetreuung"
+        }
       ]
     },
     "weCare": {
@@ -515,15 +535,9 @@
     }
   },
   "error404": {
-  "title": "404",
-  "subtitle": "Seite nicht gefunden",
-  "description": "Es tut uns leid, aber die gesuchte Seite konnte nicht gefunden werden. Unsere Pflegekräfte sind rund um die Uhr für Sie da, aber leider können sie diese Seite nicht wiederherstellen. Lassen Sie uns gemeinsam zurück zur Startseite gehen.",
-  "buttonText": "Zurück zur Startseite"
+    "title": "404",
+    "subtitle": "Seite nicht gefunden",
+    "description": "Es tut uns leid, aber die gesuchte Seite konnte nicht gefunden werden. Unsere Pflegekräfte sind rund um die Uhr für Sie da, aber leider können sie diese Seite nicht wiederherstellen. Lassen Sie uns gemeinsam zurück zur Startseite gehen.",
+    "buttonText": "Zurück zur Startseite"
+  }
 }
-  
-  
-  
-    }
-  
-  
-    

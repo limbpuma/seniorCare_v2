@@ -1,6 +1,10 @@
 # build output
 dist/
+
+# lock files
 bun.lockb
+package-lock.json
+
 # generated types
 .astro/
 

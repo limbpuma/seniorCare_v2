@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
+    "lint": "eslint .",
+    "prettier": "prettier -w .",
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
@@ -23,12 +25,17 @@
     "@fortawesome/free-solid-svg-icons": "^6.6.0",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@tailwindcss/typography": "^0.5.14",
+    "@typescript-eslint/parser": "^8.5.0",
     "astro": "^4.15.5",
+    "eslint": "^9.10.0",
+    "eslint-plugin-astro": "^1.2.4",
     "flowbite": "^2.5.1",
     "prettier": "^3.3.3",
+    "prettier-plugin-astro": "^0.14.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "resend": "^4.0.0",
+    "seniorcare": ".",
     "swiper": "^11.1.9",
     "tailwindcss": "^3.4.9",
     "typescript": "^5.5.4"

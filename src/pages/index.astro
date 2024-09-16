@@ -11,23 +11,23 @@ import Testimonial from "@/components/common/Testimonial.astro";
 import texts from "@/utils/texts.json";
 import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
 import FormSection from "@/components/home/FormSection.astro";
+import Newsletter from "@/components/common/Newsletter.astro";
+import Cookiepopup from "@/components/common/Cookiepopup.astro";
 
-
-const title = 'Home';
-
-
-
+const title = "Home";
 ---
 
 <Layout title={title}>
-    <Hero {...texts.home.hero} />
-    <AboutSection {...texts.home.about}/>
-    <BannerSlider slides={texts.home.bannerSlides}/>
-    <Experience {...texts.home.experience}/>
-    <ImageCarrousel {...texts.home.imageCarousel} />
-    <FormSection {...texts.home.formSection}/>
-    <Location {...texts.home.location} />
-    <ImageCarrousel_2 {...texts.home.imageCarousel_2} />
-    <Testimonial testimonials={texts.home.testimonials} />
-    <GalleryMosaic {...texts.home.galleryMosaic}/>
+  <Newsletter />
+  <Hero {...texts.home.hero} />
+  <AboutSection {...texts.home.about} />
+  <BannerSlider slides={texts.home.bannerSlides} />
+  <Experience {...texts.home.experience} />
+  <ImageCarrousel {...texts.home.imageCarousel} />
+  <FormSection {...texts.home.formSection} />
+  <Location {...texts.home.location} />
+  <ImageCarrousel_2 {...texts.home.imageCarousel_2} />
+  <Testimonial testimonials={texts.home.testimonials} />
+  <GalleryMosaic {...texts.home.galleryMosaic} />
+  <Cookiepopup />
 </Layout>

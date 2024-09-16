@@ -26,7 +26,9 @@ const { subtitle, title, description, image, contactForm } = Astro.props;
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
       <div class="lg:order-1 relative z-10">
-        <div class="transform translate-y-0 sm:translate-y-8 md:translate-y-12 lg:translate-y-0 lg:-mb-28">
+        <div
+          class="transform translate-y-0 sm:translate-y-8 md:translate-y-12 lg:translate-y-0 lg:-mb-28"
+        >
           <ContactForm {...contactForm} />
         </div>
       </div>
@@ -37,8 +39,14 @@ const { subtitle, title, description, image, contactForm } = Astro.props;
           subtitle={subtitle}
           desc={description}
         />
-        <div class="mt-6 sm:mt-8 md:mt-10 max-w-[638px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] mx-auto lg:mx-0">
-          <img src={image} class="object-cover w-full h-full rounded-lg shadow-lg" alt="Contact image" />
+        <div
+          class="mt-6 sm:mt-8 md:mt-10 max-w-[638px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] mx-auto lg:mx-0"
+        >
+          <img
+            src={image}
+            class="object-cover w-full h-full rounded-lg shadow-lg"
+            alt="Contact image"
+          />
         </div>
       </div>
     </div>
