@@ -1,42 +1,61 @@
 ---
 import Button from "../common/Button.astro";
 import Section from "../common/Section.astro";
+import TextBlock from "../common/TextBlock.astro";
+import ParallaxMedia from "../common/ParallaxMedia.astro";
 
-const { subtitle, title, description, buttonText } = Astro.props;
+const { subtitle, title, description, buttonText, videoSrc, posterSrc } = Astro.props;
 ---
 
 <Section
-  padingVertical={"none"}
-  class="bg-center bg-no-repeat bg-cover bg-[url('/assets/img/senior_couple__in_the_park.webp')] bg-blend-multiply"
+  padding="large"
+  width="full"
+  height="h-full"
+  id="hero-section"
+  
+  class="relative overflow-hidden"
 >
+  <div class="absolute inset-0 w-full h-full parallax-container">
+    <ParallaxMedia 
+    type="video" 
+    src={videoSrc}
+    posterSrc={posterSrc}
+  />
+  </div>
   <div
-    class="text-center lg:text-left py-16 sm:py-24 lg:py-48 flex flex-col lg:flex-row lg:items-center"
+    class="relative z-10 "
   >
-    <div class="lg:w-1/2 w-full px-4">
-      <h3
-        class="text-deep-blue text-ag-body-text font-ag-body-text md:text-ag-sub-heading md:font-ag-sub-heading mb-2 sm:mb-4"
-      >
-        {subtitle}
-      </h3>
-      <h1
-        class="text-deep-blue mb-4 md:text-ag-h2 text-ag-h4 md:font-ag-h2 font-ag-h4 tracking-tight leading-tight sm:text-ag-h2 sm:leading-tight"
-      >
-        {title}
-      </h1>
-      <p
-        class="text-deep-blue mb-8 text-ag-body-text font-ag-body-text sm:text-lg lg:text-xl"
-      >
-        {description}
-      </p>
+    <div class="lg:w-1/2 w-full px-4 font-bold">
+      <TextBlock
+        subtitle={subtitle}
+        title={title}
+        descriptionBold={description}
+        alignment="left"
+        textColor="text-deep-blue"
+        
+      />
+      
       <div
         class="flex flex-col space-y-4 sm:flex-row sm:justify-center lg:justify-start sm:space-y-0"
       >
-        <Button variant="primary" size="medium" class="mx-auto sm:mx-0">
+        <Button variant="primary" size="medium" class="mx-auto sm:mx-0 lg:ml-8">
           {buttonText}
         </Button>
       </div>
     </div>
-    <!-- Parte derecha vacía para pantallas grandes -->
     <div class="hidden lg:block lg:w-1/2"></div>
   </div>
 </Section>
+
+
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const video = document.querySelector('.parallax-video') as HTMLVideoElement;
+    if (video) {
+      video.play().catch(error => {
+        console.error("Auto-play was prevented:", error);
+        // Puedes agregar aquí una lógica alternativa si el auto-play falla
+      });
+    }
+  });
+</script>

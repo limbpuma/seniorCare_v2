@@ -37,11 +37,18 @@
   },
 
   "home": {
-    "hero": {
+    "heroVideo": {
+      "videoSrc":"/assets/video/senior_couple_beach.mov ",
       "subtitle": "Professionelle Pflege und Unterstützung",
       "title": "Selbstbestimmt zu Hause leben",
       "description": "Bei Integra steht das selbstbestimmte Leben unserer Klientinnen und Klienten im Mittelpunkt. Unsere qualifizierten Pflegekräfte bieten individuelle Betreuung, um eine hohe Lebensqualität in einer vertrauten Umgebung zu gewährleisten.",
-      "buttonText": "Kostenlose Beratung"
+      "alignment": "left",
+      "textColor": "text-deep-blue",
+      "buttonText": "Jetzt Termin buchen",
+      "buttonHref": "/contact",
+      "buttonSize": "medium",
+      "buttonColor": "primary"
+      
     },
     "about": {
       "services": [
@@ -60,8 +67,8 @@
     "bannerSlides": [
       { "text": "Selbstbestimmung", "icon": "fa-solid fa-user-nurse" },
       { "text": "Empathie", "icon": "fa-solid fa-heart-pulse" },
-      { "text": "Familiäre Atmosphäre", "icon": "fa-solid fa-house-heart" },
-      { "text": "Ganzheitliche Pflege", "icon": "fa-solid fa-hands-heart" },
+      { "text": "Familiäre Atmosphäre", "icon": "fa-solid fa-user-doctor" },
+      { "text": "Ganzheitliche Pflege", "icon": "fa-solid fa-heart-pulse" },
       { "text": "Vertrauen", "icon": "fa-solid fa-handshake" },
       { "text": "Kompetenz", "icon": "fa-solid fa-user-doctor" }
     ],
@@ -69,7 +76,8 @@
       "heading": "Warum Integra?",
       "title": "Erfahrene Pflegekräfte",
       "description": "Mit über 10 Jahren Erfahrung verstehen wir die einzigartigen Bedürfnisse unserer Klientinnen und Klienten. Unser Team bietet nicht nur professionelle Pflege, sondern auch emotionale Unterstützung und Begleitung im Alltag.",
-      "buttonText": "Mehr erfahren"
+      "buttonText": "Mehr erfahren",
+      "icontext": "Unsere Leistungen"
     },
     "imageCarousel": {
       "title": "Unsere Dienstleistungen",
@@ -201,7 +209,10 @@
         }
       ]
     },
-    "testimonials": [
+    "testimonials": {
+    "titlesection": "Was unsere Kunden sagen",
+    "subtitlesection": "Erfahrungen und Eindrücke von Menschen, die Integra vertrauen",
+    "items": [
       {
         "name": "Helga Schmidt",
         "title": "Zufriedene Klientin",
@@ -226,7 +237,8 @@
         "image": "/assets/img/Bild1.jpg",
         "desc": "Die Zusammenarbeit mit Integra ist ausgezeichnet. Ihre Pflegekräfte sind kompetent und zuverlässig in der Betreuung meiner Patienten."
       }
-    ],
+    ]
+  },
     "galleryMosaic": {
       "subtitle": "Einblicke in unseren Alltag",
       "title": "Momente der Fürsorge",
@@ -250,19 +262,13 @@
         { "label": "Über Uns", "url": "/about" }
       ]
     },
-    "aboutSection": {
-      "services": [
-        "Häusliche Pflege",
-        "Gesundheitszentrum",
-        "Aktiv Altern Club"
-      ],
-      "stats": [
-        { "number": "1k", "label": "Betreute Senioren" },
-        { "number": "10+", "label": "Jahre Erfahrung" }
-      ],
-      "buttonText": "Termin vereinbaren",
-      "description": "Integra stellt das selbstbestimmte Leben unserer Klienten in den Vordergrund. Mit maßgeschneiderten Pflegekonzepten und einem engagierten Team bieten wir die beste Betreuung in einem familiären Umfeld.",
-      "phoneNumber": "0174 - 621 5814"
+    "aboutVideo": {
+      "videoSrc":"/assets/video/senior_couple_beach.mov ",
+      "subtitle": "Professionelle Pflege und Unterstützung",
+      "title": "Selbstbestimmt zu Hause leben",
+      "description": "Bei Integra steht das selbstbestimmte Leben unserer Klientinnen und Klienten im Mittelpunkt. Unsere qualifizierten Pflegekräfte bieten individuelle Betreuung, um eine hohe Lebensqualität in einer vertrauten Umgebung zu gewährleisten.",
+      "alignment": "center",
+      "textColor": "text-deep-blue"
     },
     "bannerSlider": {
       "slides": [
@@ -354,6 +360,14 @@
         { "icon": "fa-solid fa-users", "text": "Soziale Interaktion" }
       ]
     },
+    "servicesVideo": {
+      "videoSrc":"/assets/video/senior_couple_beach.mov ",
+      "subtitle": "Professionelle Pflege und Unterstützung",
+      "title": "Selbstbestimmt zu Hause leben",
+      "description": "Bei Integra steht das selbstbestimmte Leben unserer Klientinnen und Klienten im Mittelpunkt. Unsere qualifizierten Pflegekräfte bieten individuelle Betreuung, um eine hohe Lebensqualität in einer vertrauten Umgebung zu gewährleisten.",
+      "alignment": "center",
+      "textColor": "text-deep-blue"
+    },
     "imageCarousel_3": {
       "subtitle": "Außergewöhnliche Pflege",
       "title": "Unsere Top-Leistungen",
@@ -417,7 +431,9 @@
       ]
     },
     "mapSection": {
-      "title": "Unser Standort",
+      "title": "Wilkommen bei Integra",
+      "subtitle": "Unser Standort",
+      "description": "Wir finden uns in Dortmund Scharnhorst, um eine flächendeckende Versorgung in der Region zu gewährleisten. Besuchen Sie uns oder kontaktieren Sie uns über die unten stehenden Informationen.",
       "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.1646759155656!2d7.534846376966431!3d51.54687930781805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b9112207af117d%3A0x91c056aa0191090f!2sPflegedienst%20Integra%20Gerling%20GmbH!5e0!3m2!1ses!2sde!4v1725482670831!5m2!1ses!2sde"
     },
     "contactText": {

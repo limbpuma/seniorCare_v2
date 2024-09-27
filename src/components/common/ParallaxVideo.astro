@@ -1,0 +1,41 @@
+---
+import Section from "./Section.astro";
+import TextBlock from "./TextBlock.astro";
+import ParallaxMedia from "./ParallaxMedia.astro";
+
+
+
+const { subtitle, title, description, videoSrc, posterSrc, alignment, textColor ,buttonHref, buttonSize, buttonVariant, buttonText} = Astro.props;
+---
+
+<Section
+  padding="large"
+  width="full"
+  height="h-screen"
+  id="hero-parallax-section"
+  class="relative overflow-hidden"
+>
+  <div class="absolute inset-0 w-full h-full parallax-container">
+    <ParallaxMedia 
+      type="video" 
+      src={videoSrc}
+      posterSrc={posterSrc}
+    />
+  </div>
+  <div class="relative z-10 container mx-auto h-full flex items-center justify-center lg:justify-start">
+    <div class="w-full max-w-3xl lg:max-w-none lg:w-1/2 px-4 text-center lg:text-left">
+      <TextBlock
+        subtitle={subtitle}
+        title={title}
+        descriptionBold={description}
+        alignment={alignment === 'left' ? 'center lg:left' : alignment}
+        textColor={textColor}
+        buttonText={buttonText}
+        buttonVariant={buttonVariant}
+        buttonSize={buttonSize}
+        buttonHref={buttonHref}
+      />
+      
+    </div>
+  </div>
+</Section>

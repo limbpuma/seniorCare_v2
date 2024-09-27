@@ -64,7 +64,7 @@ const ReactSwiperSlider = ({
         <SwiperSlide key={index} style={{ width: "auto" }}>
           <div className="relative">
             {slide.src && (
-              <img
+              <img loading="lazy"
                 src={slide.src}
                 className={`${imgClass} w-full h-[400px] object-cover`}
                 alt={slide.alt || "slide image"}

@@ -1,5 +1,7 @@
 ---
 import Icon from "../common/Icon.astro";
+import Section from "./Section.astro";
+import TextBlock from "./TextBlock.astro";
 
 interface Feature {
   icon: string;
@@ -18,30 +20,33 @@ interface Props {
 const { class: className, subtitle, title, features } = Astro.props;
 ---
 
-<section class={`features py-12 sm:py-16 bg-soft-orange ${className}`}>
+<Section animation="fade-in" class={`features py-12 sm:py-16 bg-soft-orange ${className}`}>
   <div class="container mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
     <div class="text-center mb-12">
-      <h5 class="text-deep-blue font-ag-sub-heading text-ag-sub-heading mb-2">
-        {subtitle}
-      </h5>
-      <h2 class="text-deep-blue font-ag-h3 md:text-ag-h3 text-ag-h4 mb-4">
-        {title}
-      </h2>
+      <TextBlock
+      subtitle={subtitle}
+      title={title}
+      alignment="center"
+      textColor="text-deep-blue"
+    />
+      
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
       {
         features.map((feature, index) => (
           <div
-            class={`relative p-6 rounded-lg ${index === 1 ? "bg-soft-beige " : "bg-soft-orange hover:bg-soft-beige transition duration-300"} shadow-md hover:shadow-lg transition-shadow duration-300 `}
+            class={`relative p-6 rounded-lg ${index === 1 ? "bg-soft-beige " : "bg-soft-orange hover:bg-soft-beige transition duration-300"} shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden`}
           >
-            <div class="flex flex-col mb-4">
-              <div class="text-black mb-4">
-                <Icon icons={[{ name: feature.icon }]} size="large" />
+            <div class="flex flex-col mb-4 relative z-10">
+              <div class="text-black mb-4 flex justify-center items-center h-16 w-16 ">
+                <div class="transform scale-150">
+                  <Icon icons={[{ name: feature.icon }]} size="xl" />
+                </div>
               </div>
-              <h3 class="text-deep-blue font-ag-h5 text-ag-h5 mb-2">
+              <h3 class="text-ag-body-text sm:text-ag-h6 md:text-ag-h5 font-ag-h5 mb-2 sm:mb-3 md:mb-4 leading-tight text-deep-blue">
                 {feature.title}
               </h3>
-              <p class="text-black text-ag-body-text font-ag-body-text">
+              <p class="text-ag-body-text font-ag-body-text mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto">
                 {feature.description}
               </p>
             </div>
@@ -53,4 +58,4 @@ const { class: className, subtitle, title, features } = Astro.props;
       }
     </div>
   </div>
-</section>
+</Section>

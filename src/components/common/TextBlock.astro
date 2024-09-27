@@ -1,0 +1,92 @@
+---
+import Button from "./Button.astro";
+
+interface Props {
+  subtitle?: string;
+  title?: string;
+  secondTitle?: string;
+  thirdTitle?: string;
+  description?: string;
+  descriptionBold?: string;
+  testimonial?: string;
+  alignment?: 'left' | 'center' | 'right';
+  textColor?: string;
+  buttonText?: string;
+  buttonVariant?: "primary" | "secondary" | "accent";
+  buttonSize?: "small" | "medium" | "large";
+  buttonHref?: string;
+}
+
+const {
+  subtitle,
+  title,
+  secondTitle,
+  thirdTitle,
+  description,
+  descriptionBold,
+  testimonial,
+  alignment = 'left',
+  textColor = 'text-deep-blue',
+  buttonText,
+  buttonVariant = "primary",
+  buttonSize = "medium",
+  buttonHref
+} = Astro.props;
+
+const alignmentClasses = {
+  left: 'text-left',
+  center: 'text-center',
+  right: 'text-right'
+};
+
+const alignmentClass = alignmentClasses[alignment];
+---
+
+<div class={`${alignmentClass} ${textColor} max-w-4xl mx-auto px-4 sm:px-6 lg:px-8`}>
+  {subtitle && (
+    <h3 class="text-ag-sub-heading font-ag-sub-heading mb-2 sm:mb-3 md:mb-4">
+      {subtitle}
+    </h3>
+  )}
+  {title && (
+    <h2 class="text-ag-h4 sm:text-ag-h3 md:text-ag-h2 lg:text-[56px] xl:text-[60px] font-ag-h2 mb-4 sm:mb-6 md:mb-8 leading-tight">
+      {title}
+    </h2>
+  )}
+  {secondTitle && (
+    <h3 class="text-ag-h5 sm:text-ag-h4 md:text-ag-h3 lg:text-[40px] xl:text-[44px] font-ag-h3 mb-3 sm:mb-4 md:mb-6 leading-tight">
+      {secondTitle}
+    </h3>
+  )}
+  {thirdTitle && (
+    <h4 class="text-ag-body-text sm:text-ag-h5 md:text-ag-h4 lg:text-[32px] xl:text-[34px] font-ag-h4 mb-2 sm:mb-3 md:mb-4 leading-tight">
+      {thirdTitle}
+    </h4>
+  )}
+  {description && (
+    <p class="text-ag-body-text font-ag-body-text mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto">
+      {description}
+    </p>
+  )}
+  {descriptionBold && (
+    <p class="font-bold text-ag-body-text font-ag-body-text mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto">
+      {descriptionBold}
+    </p>
+  )}
+  {testimonial && (
+    <blockquote class="text-ag-testimonial-text font-ag-testimonial-text italic mb-6 sm:mb-8 md:mb-10 max-w-2xl mx-auto">
+      "{testimonial}"
+    </blockquote>
+  )}
+  {buttonText && (
+    <div class={`mt-6 sm:mt-8 md:mt-10 ${alignment === 'center' ? 'text-center' : ''}`}>
+      <Button
+        href={buttonHref}
+        variant={buttonVariant}
+        size={buttonSize}
+      >
+        {buttonText}
+      </Button>
+    </div>
+  )}
+</div>

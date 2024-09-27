@@ -1,0 +1,33 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Hero from "@/components/home/Hero.astro";
+import AboutSection from "@/components/common/AboutSection.astro";
+import BannerSlider from "@/components/common/BannerSlider.astro";
+import Experience from "@/components/home/Experience.astro";
+import ImageCarrousel from "@/components/common/ImageCarrousel.astro";
+import ImageCarrousel_2 from "@/components/common/ImageCarrousel_2.astro";
+import Location from "@/components/home/Location.astro";
+import Testimonial from "@/components/common/Testimonial.astro";
+import texts from "@/utils/texts.json";
+import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
+import FormSection from "@/components/home/FormSection.astro";
+
+import Cookiepopup from "@/components/common/Cookiepopup.astro";
+
+const title = "Home";
+---
+
+<Layout title={title}>
+  
+  <Hero {...texts.home.hero} />
+  <AboutSection {...texts.home.about} />
+  <BannerSlider slides={texts.home.bannerSlides} />
+  <Experience {...texts.home.experience} />
+  <ImageCarrousel {...texts.home.imageCarousel} />
+  <FormSection {...texts.home.formSection} />
+  <Location {...texts.home.location} />
+  <ImageCarrousel_2 {...texts.home.imageCarousel_2} />
+  <Testimonial {...texts.home.testimonials} />
+  <GalleryMosaic {...texts.home.galleryMosaic} />
+  
+</Layout>

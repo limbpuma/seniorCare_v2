@@ -45,3 +45,107 @@
 body {
   font-family: "Montserrat", sans-serif; /* Fuente predeterminada */
 }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes gridIn {
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.show {
+  opacity: 1;
+}
+
+.fade-in.show { 
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.slide-in.show {
+  animation: slideIn 0.8s ease-out forwards;
+}
+
+.zoom-in.show {
+  animation: zoomIn 0.8s ease-out forwards;
+}
+
+.grid-in.show {
+  animation: gridIn 0.8s ease-out forwards;
+}
+
+.parallax {
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax.show .parallax-bg {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .fade-in.show,
+  .slide-in.show,
+  .zoom-in.show,
+  .grid-in.show,
+  .parallax.show .parallax-bg {
+    transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+.parallax.show::before {
+  animation: parallaxEffect 0.6s forwards;
+}
+.parallax-container {
+  clip: rect(0, auto, auto, 0);
+}
+
+.parallax-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-image {
+    position: absolute;
+  }
+}
+
+.parallax-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  object-fit: cover;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .parallax-video {
+    position: absolute;
+  }
+}

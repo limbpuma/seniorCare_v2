@@ -1,5 +1,7 @@
 ---
 import ReactSwiperSlider from "./Slider.jsx";
+import Section from "./Section.astro";
+import TextBlock from "./TextBlock.astro";
 
 const { images, subtitle, title } = Astro.props;
 
@@ -9,14 +11,24 @@ const textClasses = "text-white text-ag-body-text font-ag-body-text text-sm";
 const wrapperClasses = "absolute bottom-0 left-0 bg-blue-900 p-2";
 ---
 
-<section class="py-12 lg:py-20 bg-deep-blue">
+<Section background="primary"
+padding="large"
+width="full"
+height="auto"
+id="experience-section"
+animation="zoom-in"
+>
   <div class="container mx-auto px-4">
     <div class="flex justify-between items-center mb-8">
       <div class="flex flex-col">
-        <h2 class="text-white text-ag-sub-heading font-ag-sub-heading">
-          {subtitle}
-        </h2>
-        <h2 class="text-white font-ag-h3 text-ag-h3">{title}</h2>
+        <TextBlock
+          subtitle={subtitle}
+          title={title}
+          
+          alignment="left"
+          textColor="text-white"
+        />
+        
       </div>
       <div class="flex space-x-4">
         <button
@@ -70,4 +82,4 @@ const wrapperClasses = "absolute bottom-0 left-0 bg-blue-900 p-2";
       />
     </div>
   </div>
-</section>
+</Section>

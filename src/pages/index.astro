@@ -11,15 +11,15 @@ import Testimonial from "@/components/common/Testimonial.astro";
 import texts from "@/utils/texts.json";
 import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
 import FormSection from "@/components/home/FormSection.astro";
-import Newsletter from "@/components/common/Newsletter.astro";
+import ParallaxVideo from "@/components/common/ParallaxVideo.astro";
 import Cookiepopup from "@/components/common/Cookiepopup.astro";
 
 const title = "Home";
 ---
 
 <Layout title={title}>
-  <Newsletter />
-  <Hero {...texts.home.hero} />
+  
+  <ParallaxVideo {...texts.home.heroVideo} />
   <AboutSection {...texts.home.about} />
   <BannerSlider slides={texts.home.bannerSlides} />
   <Experience {...texts.home.experience} />
@@ -27,7 +27,18 @@ const title = "Home";
   <FormSection {...texts.home.formSection} />
   <Location {...texts.home.location} />
   <ImageCarrousel_2 {...texts.home.imageCarousel_2} />
-  <Testimonial testimonials={texts.home.testimonials} />
+  <Testimonial {...texts.home.testimonials} />
   <GalleryMosaic {...texts.home.galleryMosaic} />
-  <Cookiepopup />
+  
 </Layout>
+<script>
+  document.addEventListener('astro:page-load', () => {
+    const video = document.querySelector('.parallax-video') as HTMLVideoElement;
+    if (video) {
+      video.play().catch(error => {
+        console.error("Auto-play was prevented:", error);
+        // Puedes agregar aquí una lógica alternativa si el auto-play falla
+      });
+    }
+  });
+</script>

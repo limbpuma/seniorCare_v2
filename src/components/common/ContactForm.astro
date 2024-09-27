@@ -1,6 +1,7 @@
 ---
 import Button from "./Button.astro";
 
+
 type FormSize = "large" | "medium" | "small";
 
 interface Props {
@@ -29,40 +30,32 @@ const {
 } = Astro.props;
 
 const sizeClasses = {
-  large:
-    "max-w-[400px] sm:max-w-[450px] md:max-w-[500px] px-6 sm:px-8 md:px-10 py-10 sm:py-12 md:py-14",
-  medium:
-    "max-w-[300px] sm:max-w-[350px] md:max-w-[400px] px-4 sm:px-5 md:px-6 py-6 sm:py-8 md:py-10",
-  small:
-    "max-w-[250px] sm:max-w-[300px] md:max-w-[350px] px-3 sm:px-4 md:px-5 py-4 sm:py-6 md:py-8",
+  large: "max-w-lg w-full px-6 sm:px-8 md:px-10 py-10 sm:py-12 md:py-14",
+  medium: "max-w-md w-full px-4 sm:px-6 md:px-8 py-8 sm:py-10 md:py-12",
+  small: "max-w-sm w-full px-3 sm:px-4 md:px-6 py-6 sm:py-8 md:py-10",
 };
 
 const titleClasses = {
-  large: "text-2xl sm:text-3xl md:text-ag-h4 mb-6 sm:mb-8",
-  medium: "text-lg sm:text-xl md:text-2xl mb-4 sm:mb-5",
-  small: "text-base sm:text-lg md:text-xl mb-2 sm:mb-3",
+  large: "text-ag-h4 sm:text-ag-h3 md:text-ag-h2 mb-6 sm:mb-8 md:mb-10",
+  medium: "text-ag-h5 sm:text-ag-h4 md:text-ag-h3 mb-4 sm:mb-6 md:mb-8",
+  small: "text-ag-body-text sm:text-ag-h5 md:text-ag-h4 mb-3 sm:mb-4 md:mb-6",
 };
 
 const spacingClasses = {
-  large: "space-y-4 sm:space-y-5 md:space-y-6",
-  medium: "space-y-2 sm:space-y-3 md:space-y-4",
-  small:
-    size === "small" && image
-      ? "space-y-1"
-      : "space-y-1 sm:space-y-2 md:space-y-3",
+  large: "space-y-6 sm:space-y-7 md:space-y-8",
+  medium: "space-y-4 sm:space-y-5 md:space-y-6",
+  small: "space-y-3 sm:space-y-4 md:space-y-5",
 };
 
 const buttonClasses = {
-  large: "mt-6 sm:mt-8 md:mt-10",
-  medium: "mt-4 sm:mt-5 md:mt-6",
-  small: size === "small" && image ? "mt-2" : "mt-3 sm:mt-4 md:mt-5",
+  large: "mt-8 sm:mt-10 md:mt-12",
+  medium: "mt-6 sm:mt-8 md:mt-10",
+  small: "mt-4 sm:mt-6 md:mt-8",
 };
 
-const inputClasses =
-  "w-full px-4 py-2 bg-inherit border-t-0 border-x-0 border-b border-primary text-primary-dark focus:outline-none";
+const inputClasses = "w-full px-4 py-2 bg-inherit border-t-0 border-x-0 border-b border-primary text-primary-dark focus:outline-none text-ag-body-text font-ag-body-text";
 
 const getTextareaRows = () => {
-  if (size === "small" && image) return "2";
   if (size === "small") return "3";
   if (size === "medium") return "4";
   return "6";
@@ -72,42 +65,39 @@ const getTextareaRows = () => {
 <div class="relative">
   <form
     id="contact-form"
-    class={`bg-soft-orange mx-auto flex flex-col justify-between shadow-lg ${sizeClasses[size]} ${className}`}
+    class={`bg-soft-orange mx-auto flex flex-col justify-between shadow-lg rounded-lg md:mb-8 ${sizeClasses[size]} ${className}`}
   >
-    {
-      size === "small" && image && (
-        <div class="w-full h-24 overflow-hidden mb-2">
-          <img
-            src={image}
-            alt="Form header"
-            class="w-full h-full object-cover"
-          />
-        </div>
-      )
-    }
+    {size === "small" && image && (
+      <div class="w-full h-32 sm:h-40 md:h-48 overflow-hidden mb-4 rounded-t-lg">
+        <img
+          src={image}
+          alt="Form header"
+          class="w-full h-full object-cover"
+          loading="lazy"
+        />
+      </div>
+    )}
     <h2
-      class={`font-ag-h4 text-primary text-center ${titleClasses[size]}`}
+      class={`text-ag-body-text sm:text-ag-h5 md:text-ag-h4 lg:text-[32px] xl:text-[34px] font-ag-h4 mb-2 sm:mb-3 md:mb-4 leading-tight text-center text-deep-blue uppercase ${titleClasses[size]}`}
       set:html={title}
     />
     <div class={spacingClasses[size]}>
-      {
-        inputFields.map((input) => {
-          const { type, placeholder } = input;
-          let name = type;
-          if (type === "tel") name = "phone";
-          if (type === "text" && placeholder.toLowerCase().includes("name"))
-            name = "name";
-          return (
-            <input
-              type={type as astroHTML.JSX.HTMLInputTypeAttribute}
-              name={name}
-              placeholder={placeholder}
-              class={inputClasses}
-              required
-            />
-          );
-        })
-      }
+      {inputFields.map((input) => {
+        const { type, placeholder } = input;
+        let name = type;
+        if (type === "tel") name = "phone";
+        if (type === "text" && placeholder.toLowerCase().includes("name"))
+          name = "name";
+        return (
+          <input
+            type={type as astroHTML.JSX.HTMLInputTypeAttribute}
+            name={name}
+            placeholder={placeholder}
+            class={inputClasses}
+            required
+          />
+        );
+      })}
       <select name="subject" class={inputClasses} required>
         {selectOptions.map((option) => <option>{option}</option>)}
       </select>
@@ -116,14 +106,17 @@ const getTextareaRows = () => {
         placeholder={textareaPlaceholder}
         rows={getTextareaRows()}
         class={inputClasses}
-        required></textarea>
+        required
+      ></textarea>
     </div>
     <Button
       type="submit"
       variant="primary"
       fullWidth
-      class={buttonClasses[size]}>{buttonText}</Button
+      class={buttonClasses[size]}
     >
+      {buttonText}
+    </Button>
     <div class="flex items-start mt-4">
       <input
         type="checkbox"
@@ -132,11 +125,11 @@ const getTextareaRows = () => {
         class="mt-1 mr-2"
         required
       />
-      <label for="consent" class="text-sm text-primary-dark">
-        "Ich stimme der Verwendung meiner Daten zu. Mehr Infos in der <a
+      <label for="consent" class="text-ag-body-text font-ag-body-text mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto">
+        Ich stimme der Verwendung meiner Daten zu. Mehr Infos in der <a
           href="/privacypolicy"
           class="text-primary underline">Datenschutz</a
-        >."
+        >.
       </label>
     </div>
   </form>
@@ -145,14 +138,14 @@ const getTextareaRows = () => {
     class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
   >
     <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-4">
-      <h3 id="modal-title" class="text-ag-h3 font-bold text-primary mb-2"></h3>
-      <p id="modal-message" class="text-ag-body-text text-primary-dark mb-4">
-      </p>
+      <h4 id="modal-title" class="text-ag-h5 sm:text-ag-h4 md:text-ag-h3 font-ag-h3 mb-4"></h4>
+      <p id="modal-message" class="text-ag-body-text font-ag-body-text mb-6"></p>
       <button
         id="close-modal"
         class="w-full px-4 py-2 bg-deep-blue hover:bg-soft-blue text-white rounded-full transition-colors duration-300 focus:outline-none font-ag-button-text text-ag-button-text"
-        >Schließen</button
       >
+        Schließen
+      </button>
     </div>
   </div>
 </div>
@@ -165,24 +158,13 @@ const getTextareaRows = () => {
 
 <script>
   const form = document.getElementById("contact-form") as HTMLFormElement;
-  const messageModal = document.getElementById(
-    "message-modal",
-  ) as HTMLDivElement;
-  const modalTitle = document.getElementById(
-    "modal-title",
-  ) as HTMLHeadingElement;
-  const modalMessage = document.getElementById(
-    "modal-message",
-  ) as HTMLParagraphElement;
-  const closeModalButton = document.getElementById(
-    "close-modal",
-  ) as HTMLButtonElement;
-  const consentCheckbox = document.getElementById(
-    "consent",
-  ) as HTMLInputElement;
+  const messageModal = document.getElementById("message-modal") as HTMLDivElement;
+  const modalTitle = document.getElementById("modal-title") as HTMLHeadingElement;
+  const modalMessage = document.getElementById("modal-message") as HTMLParagraphElement;
+  const closeModalButton = document.getElementById("close-modal") as HTMLButtonElement;
+  const consentCheckbox = document.getElementById("consent") as HTMLInputElement;
 
   function isValidGermanPhoneNumber(phone: string): boolean {
-    // Regex for German phone numbers
     const germanPhoneRegex = /^(\+49|0)[1-9]\d{1,14}$/;
     return germanPhoneRegex.test(phone.replace(/\s/g, ""));
   }
@@ -193,7 +175,7 @@ const getTextareaRows = () => {
     if (!consentCheckbox.checked) {
       showModal(
         "Fehler",
-        "Bitte bestätigen Sie die Datenschutzerklärung, um fortzufahren.",
+        "Bitte bestätigen Sie die Datenschutzerklärung, um fortzufahren."
       );
       return;
     }
@@ -204,7 +186,7 @@ const getTextareaRows = () => {
     if (!isValidGermanPhoneNumber(phone)) {
       showModal(
         "Ungültige Telefonnummer",
-        "Bitte geben Sie eine gültige deutsche Telefonnummer ein.",
+        "Bitte geben Sie eine gültige deutsche Telefonnummer ein."
       );
       return;
     }
@@ -220,20 +202,19 @@ const getTextareaRows = () => {
       if (result.success) {
         showModal(
           "Nachricht gesendet!",
-          "Vielen Dank für Ihre Kontaktaufnahme. Wir werden uns bald bei Ihnen melden.",
+          "Vielen Dank für Ihre Kontaktaufnahme. Wir werden uns bald bei Ihnen melden."
         );
         form.reset();
       } else {
         showModal(
           "Fehler",
-          "Beim Senden der Nachricht ist ein Fehler aufgetreten: " +
-            result.error,
+          "Beim Senden der Nachricht ist ein Fehler aufgetreten: " + result.error
         );
       }
     } catch (error) {
       showModal(
         "Fehler",
-        "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.",
+        "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
       );
     }
   });
@@ -248,7 +229,6 @@ const getTextareaRows = () => {
     messageModal.classList.add("hidden");
   });
 
-  // Close the modal when clicking outside of it
   messageModal.addEventListener("click", (e) => {
     if (e.target === messageModal) {
       messageModal.classList.add("hidden");

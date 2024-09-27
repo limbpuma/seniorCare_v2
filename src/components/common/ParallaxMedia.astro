@@ -1,0 +1,46 @@
+---
+import { Image } from 'astro:assets';
+
+interface Props {
+  type: 'image' | 'video';
+  src: string | ImageMetadata;
+  alt?: string;
+  width?: number;
+  height?: number;
+  posterSrc?: string;
+}
+
+const { 
+  type, 
+  src, 
+  alt = "", 
+  width = 1920, 
+  height = 1080, 
+  posterSrc 
+} = Astro.props;
+---
+        
+<div class="absolute inset-0 w-full h-full parallax-container">
+  {type === 'image' ? (
+    <Image
+      src={src as ImageMetadata}
+      alt={alt}
+      width={width}
+      height={height}
+      class="object-cover w-full h-full parallax-image"
+      loading="eager"
+      />
+      ) : (
+      <video
+      class="object-cover w-full full parallax-image"
+      autoplay
+      loop
+      muted
+      playsinline
+      poster={posterSrc}
+      >
+      <source src={src as string} type="video/mp4" />
+      Your browser does not support the video tag.
+      </video>
+    )}
+</div>

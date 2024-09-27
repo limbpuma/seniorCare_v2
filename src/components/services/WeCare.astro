@@ -1,5 +1,6 @@
 ---
 import TitleCommon from "../common/TitleCommon.astro";
+import Section from "../common/Section.astro";
 
 interface Service {
   label: string;
@@ -16,71 +17,43 @@ interface Props {
 const { title, subtitle, services } = Astro.props;
 ---
 
-<section class="relative py-10 px-4 md:px-0 md:py-0 md:max-h-[550px] mb-10">
-  <div class="container mx-auto relative md:top-28">
+<Section
+  background="white"
+  padding="large"
+  width="full"
+  height="auto"
+  id="wecare-section"
+>
+  <div class="container mx-auto relative px-4 sm:px-6 lg:px-8">
     <TitleCommon
       title={title}
       subtitle={subtitle}
-      class="text-primary-dark text-center"
+      class="text-primary-dark text-center mb-12"
     />
-    <div
-      class="mt-12 grid grid-cols-1 md:grid-cols-[1fr_2fr_1fr] gap-6 md:gap-4"
-    >
-      {
-        services.map((service, i) => (
-          <div class="border md:border-none border-primary/40">
-            <a
-              class={`pos-${i + 1} before-content block md:mt-0`}
-              href={service.href}
-            >
-              <img
-                src={service.src}
-                alt={service.label}
-                class="object-cover w-full h-full max-h-[350px]"
-              />
-            </a>
-            <span class="md:text-left text-center text-ag-testimonial-text font-bold font-ag-h5 block my-4">
-              {service.label}
-            </span>
-          </div>
-        ))
-      }
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-[1fr_2fr_1fr] gap-6 md:gap-4">
+      {services.map((service, i) => (
+        <div class="border border-primary/40 md:border-none overflow-hidden rounded-lg shadow-md transition-shadow duration-300 hover:shadow-lg">
+          <a
+            class="block relative overflow-hidden group"
+            href={service.href}
+          >
+            <img
+              src={service.src}
+              alt={service.label}
+              class="object-cover w-full h-full max-h-[350px] transition-transform duration-300 group-hover:scale-105"
+              loading="lazy"
+            />
+            <div class="absolute inset-0 bg-gradient-to-t from-deep-blue to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end justify-center pb-4">
+              <span class="text-white font-semibold text-lg sm:text-xl md:text-2xl">
+                Mehr erfahren
+              </span>
+            </div>
+          </a>
+          <span class="block text-center md:text-left text-ag-testimonial-text font-bold font-ag-h5 my-4 px-4">
+            {service.label}
+          </span>
+        </div>
+      ))}
     </div>
   </div>
-</section>
-
-<style>
-  .before-content {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .before-content::before {
-    content: "Mehr erfahren";
-    @apply text-white font-ag-list-text pt-60 font-semibold;
-    font-size: 18px;
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
-    background: linear-gradient(
-      0deg,
-      rgba(0, 93, 122, 1) 0%,
-      rgba(0, 93, 122, 0.02) 100%
-    );
-    transition: transform 0.3s;
-  }
-
-  @media (min-width: 768px) {
-    .before-content::before {
-      font-size: 21px;
-      transform: translateY(100%);
-    }
-  }
-
-  .before-content:hover::before {
-    transform: translateY(0);
-    cursor: pointer;
-  }
-</style>
+</Section>

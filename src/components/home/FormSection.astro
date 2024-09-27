@@ -1,7 +1,8 @@
 ---
 import ContactForm from "../common/ContactForm.astro";
 import TitleCommon from "../common/TitleCommon.astro";
-
+import Section from "../common/Section.astro";
+import TextBlock from "../common/TextBlock.astro";
 interface Props {
   subtitle: string;
   title: string;
@@ -22,7 +23,14 @@ interface Props {
 const { subtitle, title, description, image, contactForm } = Astro.props;
 ---
 
-<section class="bg-primary py-8 sm:py-12 md:py-16 lg:py-20 relative">
+<Section  
+background="primary"
+padding="large"
+width="wide"
+height="auto"
+id="experience-section"
+animation="fade-in"
+>
   <div class="container mx-auto px-4 sm:px-6 lg:px-8">
     <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
       <div class="lg:order-1 relative z-10">
@@ -33,11 +41,13 @@ const { subtitle, title, description, image, contactForm } = Astro.props;
         </div>
       </div>
       <div class="lg:order-2 text-white">
-        <TitleCommon
-          class="text-center lg:text-left mb-6 sm:mb-8 md:mb-10"
-          title={title}
+        
+        <TextBlock
           subtitle={subtitle}
-          desc={description}
+          title={title}
+          description={description}
+          alignment="left"
+          textColor="white"
         />
         <div
           class="mt-6 sm:mt-8 md:mt-10 max-w-[638px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] mx-auto lg:mx-0"
@@ -46,9 +56,10 @@ const { subtitle, title, description, image, contactForm } = Astro.props;
             src={image}
             class="object-cover w-full h-full rounded-lg shadow-lg"
             alt="Contact image"
+            loading="lazy"
           />
         </div>
       </div>
     </div>
   </div>
-</section>
+</Section>

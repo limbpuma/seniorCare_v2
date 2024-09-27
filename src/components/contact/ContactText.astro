@@ -1,6 +1,8 @@
 ---
 import ContactForm from "../common/ContactForm.astro";
 import Icon from "../common/Icon.astro";
+import Section from "../common/Section.astro";
+import TextBlock from "../common/TextBlock.astro";
 
 interface ContactOption {
   icon: string;
@@ -37,35 +39,41 @@ const iconNameMap: Record<string, string> = {
 };
 ---
 
-<section class="bg-white py-12 px-4 sm:px-6 lg:px-8">
+<Section background="white"
+  padding="large"
+  width="full"
+  height="auto"
+  id="experience-section"
+  animation="fade-in"
+  >
   <div class="max-w-7xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div class="space-y-8">
         <div>
-          <h3 class="text-ag-sub-heading font-ag-sub-heading font-semibold">
-            {subtitle}
-          </h3>
-          <h2 class="text-ag-h3 font-ag-h3 font-bold mt-2 text-deep-blue">
-            {title}
-          </h2>
-          <p class="mt-4 text-ag-body-text font-ag-body-text text-gray-600">
-            {description}
-          </p>
+          <TextBlock
+          subtitle={subtitle}
+          title={title}
+          description={description}
+          alignment="left"
+          textColor="text-deep-blue"
+    />
+          
         </div>
         <div class="space-y-6">
           {
             contactOptions.map((option: ContactOption) => (
-              <div class="flex items-center space-x-4">
-                <div class="bg-orange-100 rounded-full p-3 text-deep-blue">
+              <div class="flex items-center space-x-4 lg:ml-8">
+                <div class="bg-soft-orange p-4 rounded-full text-deep-blue">
                   <Icon
                     icons={[{ name: iconNameMap[option.icon] || option.icon }]}
                     size="large"
                     variant="default"
                     customSize="text-xl"
+                    
                   />
                 </div>
-                <div>
-                  <h3 class="font-semibold text-gray-900">{option.title}</h3>
+                <div class="text-ag-body-text font-ag-body-text mb-2 sm:mb-2 md:mb-2 max-w-3xl mx-auto">
+                  <h3 class="font-semibold">{option.title}</h3>
                   <p class="text-gray-600">{option.description}</p>
                 </div>
               </div>
@@ -78,4 +86,4 @@ const iconNameMap: Record<string, string> = {
       </div>
     </div>
   </div>
-</section>
+</Section>

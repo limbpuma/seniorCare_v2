@@ -2,39 +2,49 @@
 import Button from "../common/Button.astro";
 import Icon from "../common/Icon.astro";
 import Section from "../common/Section.astro";
-import TitleCommon from "../common/TitleCommon.astro";
+import TextBlock from "../common/TextBlock.astro";
 
-const { heading, title, description, buttonText } = Astro.props;
+const { heading, title, description, buttonText, icontext } = Astro.props;
 ---
 
-<Section padingVertical={"large"}>
+<Section 
+background="white"
+  padding="large"
+  width="full"
+  height="auto"
+  id="experience-section"
+  animation="slide-in"
+  >
   <div class="py-6 flex flex-col lg:flex-row items-center lg:justify-between">
     <div class="relative w-full lg:w-1/2 bg-gray-200">
       <img
         src="/assets/img/Bild1.jpg"
         alt="Image Description"
         class="w-full h-full object-cover"
+        loading="lazy"
       />
       <div
         class="absolute bottom-0 left-0 bg-deep-blue p-12 flex flex-col items-center text-soft-orange"
       >
-        <Icon icons={[{ name: "handhelp" }]} size="xl" />
-        <p class="text-white ag-h5 font-ag-h5 font-bold">Safe & Security</p>
+        <div class="transform scale-150 mb-4">
+          <Icon icons={[{ name: "handhelp" }]} size="xl" variant="light"/>
+        </div>
+        <p class="text-white ag-h5 font-ag-h5 font-bold">{icontext}</p>
       </div>
     </div>
     <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-12">
-      <TitleCommon
-        class="text-deep-blue text-center md:text-left"
-        title={title}
+      <TextBlock
         subtitle={heading}
-      >
-        <p class="text-gray-600 text-ag-body-text font-ag-body-text mb-6">
-          {description}
-        </p>
-        <Button variant="primary" class="mx-auto md:mx-0 mt-4" size="medium">
-          {buttonText}
-        </Button>
-      </TitleCommon>
+        title={title}
+        description={description}
+        alignment="left"
+        textColor="text-deep-blue"
+        buttonText={buttonText}
+        buttonVariant="primary"
+        buttonSize="medium"
+        buttonHref="/services"
+        />
+      
     </div>
   </div>
 </Section>

@@ -1,6 +1,7 @@
 ---
 import ReactSwiperSlider from "./Slider.jsx";
-import TitleCommon from "./TitleCommon.astro";
+import TextBlock from "./TextBlock.astro";
+import Section from "./Section.astro";
 
 const { images, title, subtitle } = Astro.props;
 
@@ -10,18 +11,21 @@ const textclasses =
 const wrapperClasses = "relative overflow-hidden";
 ---
 
-<section class="relative py-12 sm:py-16">
+<Section width="full" height="auto"
+id="ImageCarrousel-section" class="relative" animation="zoom-in">
   <div class="container mx-auto px-4">
     <div class="absolute inset-0 w-full h-full">
       <div class="w-full h-1/2 bg-white"></div>
       <div class="w-full h-1/2 bg-deep-blue"></div>
     </div>
     <div class="relative mx-auto w-full z-10">
-      <TitleCommon
-        title={title}
-        subtitle={subtitle}
-        class="text-center text-deep-blue mb-8"
-      />
+      <TextBlock
+          subtitle={subtitle}
+          title={title}
+          alignment="center"
+          textColor="text-deep-blue"
+        />
+      
       <div class="w-full relative">
         <ReactSwiperSlider
           slides={images}
@@ -35,4 +39,4 @@ const wrapperClasses = "relative overflow-hidden";
       </div>
     </div>
   </div>
-</section>
+</Section>

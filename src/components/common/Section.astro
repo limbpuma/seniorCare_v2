@@ -1,56 +1,74 @@
 ---
-type Props = {
-  background?: keyof typeof backgroundClasses;
+type BackgroundType = "white" | "primary" | "primaryLight" | "accent" | "transparent";
+type PaddingType = "none" | "xs" | "small" | "medium" | "large" | "xl";
+type WidthType = "full" | "wide" | "medium" | "narrow";
+type AnimationType = "fade-in" | "slide-in" | "zoom-in" | "grid-in" | "parallax" | "none";
+
+interface Props {
+  background?: BackgroundType;
+  padding?: PaddingType;
+  width?: WidthType;
+  height?: string;
   class?: string;
-  noContainer?: boolean;
-  padingVertical: keyof typeof padingVerticalClasses;
-  bgOpacity?: string;
-};
+  id?: string;
+  animation?: AnimationType;
+}
 
 const {
-  class: className,
   background = "white",
-  noContainer,
-  padingVertical,
+  padding = "medium",
+  width = "full",
+  height = "100",
+  class: className,
+  id,
+  animation = "none",
   ...props
 } = Astro.props;
 
-const padingVerticalClasses: { [key: string]: string } = {
-  none: "py-0",
-  xs: "py-0 lg:py-2",
-  small: "py-2 lg:py-4",
-  medium: "py-4 lg:py-8",
-  large: "py-12 lg:py-20",
-};
-
-const padingHorizontalClasses: { [key: string]: string } = {};
-
-const backgroundClasses = {
+const backgroundClasses: Record<BackgroundType, string> = {
   white: "bg-white",
   primary: "bg-deep-blue",
   primaryLight: "bg-primary-light",
   accent: "bg-accent",
+  transparent: "bg-transparent",
 };
 
-const classes = [
-  backgroundClasses[background as keyof typeof backgroundClasses],
+const paddingClasses: Record<PaddingType, string> = {
+  none: "",
+  xs: "py-2 px-4 sm:py-2 sm:px-4 md:py-3 md:px-6 lg:py-3 lg:px-6 xl:py-4 xl:px-8 2xl:py-4 2xl:px-8",
+  small: "py-4 px-6 sm:py-5 sm:px-7 md:py-6 md:px-8 lg:py-7 lg:px-9 xl:py-8 xl:px-10 2xl:py-9 2xl:px-11",
+  medium: "py-8 px-6 sm:py-10 sm:px-8 md:py-12 md:px-10 lg:py-14 lg:px-12 xl:py-16 xl:px-14 2xl:py-18 2xl:px-16",
+  large: "py-12 px-6 sm:py-16 sm:px-8 md:py-20 md:px-10 lg:py-24 lg:px-12 xl:py-28 xl:px-14 2xl:py-32 2xl:px-16",
+  xl: "py-16 px-6 sm:py-20 sm:px-8 md:py-24 md:px-10 lg:py-28 lg:px-12 xl:py-32 xl:px-14 2xl:py-36 2xl:px-16",
+};
+
+const widthClasses: Record<WidthType, string> = {
+  full: "w-full",
+  wide: "w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8",
+  medium: "w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8",
+  narrow: "w-full max-w-3xl mx-auto px-4 sm:px-6 lg:px-8",
+};
+
+const animationClass = animation !== "none" ? `${animation} animate-on-scroll` : "";
+
+const innerClasses = [
+  paddingClasses[padding],
+  widthClasses[width],
+  "transition-all duration-300 ease-in-out will-change-auto",
+  animationClass,
   className,
-  padingVerticalClasses[padingVertical as keyof typeof padingVerticalClasses],
-];
+].filter(Boolean);
 ---
 
-<section class:list={classes} {...props}>
-  <div class={`px-3 md:px-0 ${noContainer ? " " : "container"}`}>
-    <slot />
+<section 
+  id={id} 
+  class:list={[backgroundClasses[background], "w-full, animationClass"]}
+  style={`min-height: ${height};`} 
+  {...props}
+>
+  <div class:list={innerClasses}>
+    <div class="w-full h-full flex flex-col justify-center">
+      <slot />
+    </div>
   </div>
 </section>
-
-<style>
-  .container {
-    --_width: 1700px;
-    --_padingVertical: 1rem;
-
-    width: min(var(--_width), 100% - (2 * var(--_padding)));
-    margin-inline: auto;
-  }
-</style>
