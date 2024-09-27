@@ -1,8 +1,8 @@
 /* empty css                                 */
-import { c as createComponent, r as renderTemplate, b as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_CSlR2sdS.mjs';
+import { c as createComponent, r as renderTemplate, a as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
-import { b as $$Layout } from '../chunks/Layout_Cep_kP_F.mjs';
-import { $ as $$BannerSection } from '../chunks/BannerSection_BpsDFL6R.mjs';
+import { b as $$Layout } from '../chunks/Layout_D2qM0WZL.mjs';
+import { $ as $$BannerSection } from '../chunks/BannerSection_DPr9JwHY.mjs';
 import { l as legal_texts } from '../chunks/legal_texts_C6jdME9K.mjs';
 export { renderers } from '../renderers.mjs';
 
