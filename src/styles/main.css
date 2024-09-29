@@ -128,7 +128,7 @@ body {
   height: 100%;
   will-change: transform;
   object-fit: cover;
-  opacity: 0.8;
+  opacity: 0.9;
 }
 
 @media (prefers-reduced-motion: reduce) {

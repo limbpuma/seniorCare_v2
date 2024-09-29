@@ -1,12 +1,12 @@
 /* empty css                                 */
 import { c as createComponent, r as renderTemplate, a as renderComponent, b as createAstro, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
-import { $ as $$Icon, t as texts, b as $$Layout } from '../chunks/Layout_UQBh6AIC.mjs';
-import { $ as $$AboutSection, b as $$BannerSlider, a as $$ImageCarrousel2 } from '../chunks/ImageCarrousel_2_DZ5A3gyu.mjs';
-import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_DSll7Wvq.mjs';
-import { R as ReactSwiperSlider, $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_BAuTrEEL.mjs';
-import { $ as $$GalleryMosaic } from '../chunks/GalleryMosaic_EmxW6_Ki.mjs';
-import { $ as $$ContactForm } from '../chunks/ContactForm_BsXKQTte.mjs';
+import { $ as $$Icon, t as texts, b as $$Layout } from '../chunks/Layout_JG5L-0Pb.mjs';
+import { $ as $$AboutSection, b as $$BannerSlider, a as $$ImageCarrousel2 } from '../chunks/ImageCarrousel_2_JoMhoInT.mjs';
+import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_CTa1Hlmr.mjs';
+import { R as ReactSwiperSlider, $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_B8ZBWOko.mjs';
+import { $ as $$GalleryMosaic } from '../chunks/GalleryMosaic_14wUNJdC.mjs';
+import { $ as $$ContactForm } from '../chunks/ContactForm_DH6vgP1C.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro$3 = createAstro();
