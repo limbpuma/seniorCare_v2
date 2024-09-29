@@ -3,7 +3,7 @@ import { c as createComponent, r as renderTemplate, a as renderComponent, b as c
 import 'kleur/colors';
 import { b as $$Layout } from '../chunks/Layout_UQBh6AIC.mjs';
 import { a as $$Section, $ as $$TextBlock } from '../chunks/TextBlock_DSll7Wvq.mjs';
-import { $ as $$ParallaxMedia } from '../chunks/ParallaxMedia_B7La0Fpy.mjs';
+import { $ as $$ParallaxMedia } from '../chunks/ParallaxMedia_CU6CzBKf.mjs';
 export { renderers } from '../renderers.mjs';
 
 const seniorCoupleImage = new Proxy({"src":"/_astro/doctor_senior_care_help_6.CUcbXRxA.webp","width":1840,"height":1228,"format":"webp"}, {
