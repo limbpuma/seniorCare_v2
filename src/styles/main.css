@@ -119,21 +119,7 @@ body {
   clip: rect(0, auto, auto, 0);
 }
 
-.parallax-image {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  will-change: transform;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .parallax-image {
-    position: absolute;
-  }
-}
-
+.parallax-image,
 .parallax-video {
   position: fixed;
   top: 0;
@@ -142,9 +128,11 @@ body {
   height: 100%;
   will-change: transform;
   object-fit: cover;
+  opacity: 0.8;
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .parallax-image,
   .parallax-video {
     position: absolute;
   }

@@ -2,10 +2,10 @@
 import { c as createComponent, r as renderTemplate, a as renderComponent, b as createAstro, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
 import { $ as $$BannerSection } from '../chunks/BannerSection_DPr9JwHY.mjs';
-import { $ as $$AboutSection, a as $$ImageCarrousel2, b as $$BannerSlider } from '../chunks/ImageCarrousel_2_CNpL-ZqH.mjs';
+import { $ as $$AboutSection, a as $$ImageCarrousel2, b as $$BannerSlider } from '../chunks/ImageCarrousel_2_BE0VqwxQ.mjs';
 import { $ as $$Icon, a as $$Button, t as texts, b as $$Layout } from '../chunks/Layout_UQBh6AIC.mjs';
 import { $ as $$DiscoverIcons } from '../chunks/DiscoverIcons_CJPY1lpg.mjs';
-import { $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_fQYH8JaA.mjs';
+import { $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_DKdA4K6N.mjs';
 import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_DSll7Wvq.mjs';
 export { renderers } from '../renderers.mjs';
 

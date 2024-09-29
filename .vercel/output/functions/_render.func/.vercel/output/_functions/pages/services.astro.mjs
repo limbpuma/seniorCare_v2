@@ -4,7 +4,7 @@ import 'kleur/colors';
 import { $ as $$BannerSection } from '../chunks/BannerSection_DPr9JwHY.mjs';
 import { t as texts, b as $$Layout } from '../chunks/Layout_UQBh6AIC.mjs';
 import { $ as $$DiscoverIcons } from '../chunks/DiscoverIcons_CJPY1lpg.mjs';
-import { R as ReactSwiperSlider, $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_fQYH8JaA.mjs';
+import { R as ReactSwiperSlider, $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_DKdA4K6N.mjs';
 import { a as $$Section } from '../chunks/TextBlock_DSll7Wvq.mjs';
 import { $ as $$GalleryMosaic } from '../chunks/GalleryMosaic_EmxW6_Ki.mjs';
 export { renderers } from '../renderers.mjs';
