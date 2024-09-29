@@ -4,7 +4,6 @@ import Icon from "../common/Icon.astro";
 import Logo from "./Logo.astro";
 import Nav from "./Nav.astro";
 import texts from "@/utils/texts.json";
-import Section from "./Section.astro";
 
 const headerTexts = texts.header;
 
@@ -83,7 +82,11 @@ const NAVIGATION = [
         </a>
 
         <div class="flex md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-          <Button class="hidden sm:flex" variant="primary" size="medium">
+          <Button class="hidden sm:flex" 
+          variant="primary" 
+          size="medium"
+          href={`tel:${headerTexts.phone}`}
+        >
             {headerTexts.buttonText}
           </Button>
           <button

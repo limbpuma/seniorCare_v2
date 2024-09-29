@@ -1,6 +1,5 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Hero from "@/components/home/Hero.astro";
 import AboutSection from "@/components/common/AboutSection.astro";
 import BannerSlider from "@/components/common/BannerSlider.astro";
 import Experience from "@/components/home/Experience.astro";
@@ -12,14 +11,13 @@ import texts from "@/utils/texts.json";
 import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
 import FormSection from "@/components/home/FormSection.astro";
 import ParallaxVideo from "@/components/common/ParallaxVideo.astro";
-import Cookiepopup from "@/components/common/Cookiepopup.astro";
 
 const title = "Home";
 ---
 
 <Layout title={title}>
   
-  <ParallaxVideo {...texts.home.heroVideo} />
+  <ParallaxVideo {...texts.home.heroVideo} preload="metadata"/>
   <AboutSection {...texts.home.about} />
   <BannerSlider slides={texts.home.bannerSlides} />
   <Experience {...texts.home.experience} />

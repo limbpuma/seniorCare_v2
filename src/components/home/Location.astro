@@ -1,6 +1,5 @@
 ---
 import Section from "../common/Section.astro";
-import Button from "../common/Button.astro";
 import TextBlock from "../common/TextBlock.astro";
 
 const { subtitle, title, description, city, buttonText, stats } = Astro.props;
@@ -14,11 +13,11 @@ height="auto"
 id="experience-section"
 animation="slide-in"
 >
-  <div class="container mx-auto px-4 text-white">
+  <div class="container mx-auto text-white">
     <div class="flex flex-col md:flex-row items-center">
       <div class="w-full md:w-3/5 lg:w-2/3 mb-0">
         <img
-          src="/assets/img/Bild1.jpg"
+          src="/assets/img/doctor_senior_care_tablet.webp"
           alt="World map with location markers"
           class="w-full h-[250px] md:h-[600px] object-cover"
           loading="lazy"
@@ -34,7 +33,7 @@ animation="slide-in"
           buttonText={buttonText}
           buttonVariant="primary"
           buttonSize="medium"
-          buttonHref="/services"
+          buttonHref="/contact"
         />
       
 

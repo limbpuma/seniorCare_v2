@@ -2,6 +2,7 @@
 import Head from "@/components/meta/Head.astro";
 import Header from "@/components/common/Header.astro";
 import Footer from "@/components/common/Footer.astro";
+import CookieConsent from "@/components/common/CookieConsent.tsx";
 
 interface Props {
   title: string;
@@ -19,13 +20,13 @@ const { title } = Astro.props;
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
   />
-  <link rel="preload" as="image" href="/assets/img/senior-couple.webp" type="image/webp">
   <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"
   ></script>
   <body class="bg-white">
     <Header />
     <main class="relative">
       <slot />
+      <CookieConsent client:load />
     </main>
     <Footer />
   </body>

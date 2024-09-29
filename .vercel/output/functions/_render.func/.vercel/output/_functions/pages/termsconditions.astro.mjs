@@ -1,7 +1,7 @@
 /* empty css                                 */
 import { c as createComponent, r as renderTemplate, a as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
-import { b as $$Layout } from '../chunks/Layout_D2qM0WZL.mjs';
+import { b as $$Layout } from '../chunks/Layout_UQBh6AIC.mjs';
 import { $ as $$BannerSection } from '../chunks/BannerSection_DPr9JwHY.mjs';
 import { l as legal_texts } from '../chunks/legal_texts_C6jdME9K.mjs';
 export { renderers } from '../renderers.mjs';

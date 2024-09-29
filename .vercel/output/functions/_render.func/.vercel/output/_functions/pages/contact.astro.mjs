@@ -1,10 +1,10 @@
 /* empty css                                 */
 import { c as createComponent, r as renderTemplate, a as renderComponent, b as createAstro, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
-import { $ as $$Icon, t as texts, b as $$Layout } from '../chunks/Layout_D2qM0WZL.mjs';
+import { $ as $$Icon, t as texts, b as $$Layout } from '../chunks/Layout_UQBh6AIC.mjs';
 import { $ as $$BannerSection } from '../chunks/BannerSection_DPr9JwHY.mjs';
-import { $ as $$ContactForm } from '../chunks/ContactForm_DmiNmcLV.mjs';
-import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_PJ7UOJOP.mjs';
+import { $ as $$ContactForm } from '../chunks/ContactForm_BsXKQTte.mjs';
+import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_DSll7Wvq.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro$1 = createAstro();
@@ -26,7 +26,7 @@ const $$MapSection = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
   Astro2.self = $$MapSection;
   const { title, subtitle, description, mapEmbedUrl } = Astro2.props;
-  return renderTemplate`${renderComponent($$result, "Section", $$Section, { "animation": "zoom-in", "padding": "large", "width": "full", "height": "auto" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<div class="container mx-auto px-4"> ${renderComponent($$result2, "TextBlock", $$TextBlock, { "subtitle": subtitle, "title": title, "description": description, "alignment": "center", "textColor": "text-deep-blue" })} <div class="w-full h-0 pb-[56.25%] relative"> <iframe${addAttribute(mapEmbedUrl, "src")} class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> </div> </div> ` })}`;
+  return renderTemplate`${renderComponent($$result, "Section", $$Section, { "animation": "zoom-in", "padding": "medium", "width": "full", "height": "auto" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<div class="container mx-auto px-4"> ${renderComponent($$result2, "TextBlock", $$TextBlock, { "subtitle": subtitle, "title": title, "description": description, "alignment": "center", "textColor": "text-deep-blue" })} <div class="w-full h-0 pb-[56.25%] relative"> <iframe${addAttribute(mapEmbedUrl, "src")} class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe> </div> </div> ` })}`;
 }, "D:/Lim/Developer/Projects/Integra/seniorCare/src/components/contact/MapSection.astro", void 0);
 
 const $$Contact = createComponent(($$result, $$props, $$slots) => {

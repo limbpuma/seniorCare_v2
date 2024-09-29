@@ -1,7 +1,6 @@
 ---
 import Button from "../common/Button.astro";
 import Section from "./Section.astro";
-import TextBlock from "./TextBlock.astro";
 
 interface Stat {
   number: string;
@@ -44,9 +43,9 @@ background="primary"
     >
       <div class="relative w-full pb-[100%] mb-8">
         <img
-          src="/assets/img/Bild1.jpg"
+          src="/assets/img/nurse_doctor_senior_care_1.webp"
           alt="Smiley Icon"
-          class="absolute inset-0 w-full h-full object-cover rounded-full bg-gray-blue"
+          class="absolute inset-0 w-full h-full object-cover rounded-full bg-gray-blue sm:mx-4 mx-auto"
           loading="lazy"
           />
       </div>
@@ -88,7 +87,7 @@ background="primary"
         <div
           class="flex flex-col sm:flex-row items-center justify-center sm:justify-start lg:justify-end space-y-4 sm:space-y-0 sm:space-x-12 mx-auto"
         >
-          <Button variant="accent" size="medium">
+          <Button variant="accent" size="medium" href={`tel:+49 123 456 7890`}>
             <i class="fa fa-phone mr-2 text-deep-blue"></i>
             {phoneNumber}
             

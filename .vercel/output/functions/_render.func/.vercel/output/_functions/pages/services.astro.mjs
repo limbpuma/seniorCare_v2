@@ -2,11 +2,11 @@
 import { c as createComponent, r as renderTemplate, a as renderComponent, b as createAstro, m as maybeRenderHead } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
 import { $ as $$BannerSection } from '../chunks/BannerSection_DPr9JwHY.mjs';
-import { t as texts, b as $$Layout } from '../chunks/Layout_D2qM0WZL.mjs';
-import { $ as $$DiscoverIcons } from '../chunks/DiscoverIcons_C1d_1cwU.mjs';
-import { R as ReactSwiperSlider, $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_dkUhj0zF.mjs';
-import { a as $$Section } from '../chunks/TextBlock_PJ7UOJOP.mjs';
-import { $ as $$GalleryMosaic } from '../chunks/GalleryMosaic_CDhVeZiV.mjs';
+import { t as texts, b as $$Layout } from '../chunks/Layout_UQBh6AIC.mjs';
+import { $ as $$DiscoverIcons } from '../chunks/DiscoverIcons_CJPY1lpg.mjs';
+import { R as ReactSwiperSlider, $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_fQYH8JaA.mjs';
+import { a as $$Section } from '../chunks/TextBlock_DSll7Wvq.mjs';
+import { $ as $$GalleryMosaic } from '../chunks/GalleryMosaic_EmxW6_Ki.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro = createAstro();
@@ -17,7 +17,7 @@ const $$ImageCarrousel3 = createComponent(($$result, $$props, $$slots) => {
   const imageClasses = "w-full h-[224px] object-cover";
   const textClasses = "text-white text-xl font-bold";
   const wrapperClasses = "absolute bottom-0 left-0 bg-blue-900 p-4";
-  return renderTemplate`${renderComponent($$result, "Section", $$Section, { "background": "primary", "padding": "large", "width": "full", "height": "auto", "id": "experience-section", "animation": "zoom-in" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<div class="container mx-auto px-4 max-w-screen-xl"> <div class="text-center mb-12"> <p class="text-ag-sub-heading font-ag-sub-heading text-white mb-2"> ${subtitle} </p> <h2 class="text-ag-h3 font-ag-h3 font-bold text-white">${title}</h2> </div> <div class="w-full relative"> ${renderComponent($$result2, "ReactSwiperSlider", ReactSwiperSlider, { "slides": offerings, "imgClass": imageClasses, "textClass": textClasses, "wrapperClass": wrapperClasses, "isImageSlider": true, "divType": "flex-col", "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Lim/Developer/Projects/Integra/seniorCare/src/components/common/Slider.jsx", "client:component-export": "default" })} </div> </div> ` })}`;
+  return renderTemplate`${renderComponent($$result, "Section", $$Section, { "background": "primary", "padding": "large", "width": "full", "height": "auto", "id": "experience-section", "animation": "zoom-in" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<div class="container mx-auto max-w-screen-xl"> <div class="text-center mb-12"> <p class="text-ag-sub-heading font-ag-sub-heading text-white mb-2"> ${subtitle} </p> <h2 class="text-ag-h3 font-ag-h3 font-bold text-white">${title}</h2> </div> <div class="w-full relative"> ${renderComponent($$result2, "ReactSwiperSlider", ReactSwiperSlider, { "slides": offerings, "imgClass": imageClasses, "textClass": textClasses, "wrapperClass": wrapperClasses, "isImageSlider": true, "divType": "flex-col", "client:load": true, "client:component-hydration": "load", "client:component-path": "D:/Lim/Developer/Projects/Integra/seniorCare/src/components/common/Slider.jsx", "client:component-export": "default" })} </div> </div> ` })}`;
 }, "D:/Lim/Developer/Projects/Integra/seniorCare/src/components/common/ImageCarrousel_3.astro", void 0);
 
 const $$Services = createComponent(($$result, $$props, $$slots) => {

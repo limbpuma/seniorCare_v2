@@ -1,46 +1,49 @@
 ---
-import Layout from "@/layouts/Layout.astro";
-import texts from "@/utils/texts.json";
-import Button from "../components/common/Button.astro";
+import Layout from "../layouts/Layout.astro";
 import Section from "../components/common/Section.astro";
-import TextBlock from "@/components/common/TextBlock.astro";
+import TextBlock from "../components/common/TextBlock.astro";
+import ParallaxMedia from "../components/common/ParallaxMedia.astro";
+import seniorCoupleImage from "/public/assets/img/doctor_senior_care_help_6.webp";
 
-const title = "Error 404";
+interface Props {
+  alignment?: 'left' | 'center' | 'right';
 
-const { subtitle, title: pageTitle, description, buttonText } = texts.error404;
+}
+
+const { alignment = 'left' } = Astro.props;
+
 ---
 
-<Layout title={title}>
-  <Section padding="large"
-  width="full"
-  height="auto"
-  id="experience-section"
-    class="bg-center bg-no-repeat bg-cover bg-[url('/assets/img/senior_couple__in_the_park.webp')] bg-blend-multiply"
+<Layout title="404 - Page Not Found">
+  <Section 
+    padding="large"
+    width="full"
+    height="h-screen"
+    id="hero-parallax-section"
+    class="relative overflow-hidden "
   >
-    <div
-      class="px-4 mx-auto max-w-screen-xl text-center lg:text-left py-16 sm:py-24 lg:py-48 flex flex-col lg:flex-row lg:items-center"
-    >
-      <div class="lg:w-1/2 w-full px-4">
-        <TextBlock
-        subtitle={subtitle}
-        title={title}
-        description={description}
-        alignment="left"
-        textColor="text-deep-blue"
+    <div class="absolute inset-0 w-full h-full parallax-container">
+      <ParallaxMedia 
+        type="image"
+        src={seniorCoupleImage}
+        alt="404 Error - Senior couple"
       />
-
-        <div
-          class="flex flex-col space-y-4 sm:flex-row sm:justify-center lg:justify-start sm:space-y-0"
-        >
-          <a href="/" class="inline-block mx-auto sm:mx-0">
-            <Button variant="primary" size="medium">
-              {buttonText}
-            </Button>
-          </a>
-        </div>
+    </div>
+    <div class="relative z-10 container mx-auto h-full flex items-center justify-center lg:justify-start">
+      <div class="w-full max-w-3xl lg:max-w-none lg:w-1/2 px-4 text-center lg:text-left">
+        <TextBlock
+          subtitle="Seite nicht gefunden"
+          title="404"
+          descriptionBold="Es tut uns leid, aber die gesuchte Seite konnte nicht gefunden werden"
+          alignment={alignment}        
+          textColor="white"
+          buttonText="Zurück zur Startseite"
+          buttonVariant="primary"
+          buttonSize="medium"
+          buttonHref="/"
+        />
+        
       </div>
-
-      <div class="hidden lg:block lg:w-1/2"></div>
     </div>
   </Section>
 </Layout>

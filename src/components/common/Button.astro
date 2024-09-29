@@ -48,10 +48,20 @@ const classes = [
 ];
 ---
 
-<button class:list={classes} {...props}>
-  <span
-    class={`font-ag-button-text text-ag-button-text ${flex && "flex gap-2"}`}
-  >
-    <slot />
-  </span>
-</button>
+{href ? (
+  <a href={href} class:list={classes} {...props}>
+    <span
+      class={`font-ag-button-text text-ag-button-text ${flex && "flex gap-2"}`}
+    >
+      <slot />
+    </span>
+  </a>
+) : (
+  <button class:list={classes} {...props}>
+    <span
+      class={`font-ag-button-text text-ag-button-text ${flex && "flex gap-2"}`}
+    >
+      <slot />
+    </span>
+  </button>
+)}

@@ -11,11 +11,11 @@ const { subtitle, title, description, videoSrc, posterSrc, alignment, textColor 
 <Section
   padding="large"
   width="full"
-  height="h-screen"
+  height="h-full"
   id="hero-parallax-section"
   class="relative overflow-hidden"
 >
-  <div class="absolute inset-0 w-full h-full parallax-container">
+  <div class="absolute inset-0 w-full h-full parallax-container ">
     <ParallaxMedia 
       type="video" 
       src={videoSrc}
@@ -23,12 +23,12 @@ const { subtitle, title, description, videoSrc, posterSrc, alignment, textColor 
     />
   </div>
   <div class="relative z-10 container mx-auto h-full flex items-center justify-center lg:justify-start">
-    <div class="w-full max-w-3xl lg:max-w-none lg:w-1/2 px-4 text-center lg:text-left">
+    <div class="w-full max-w-3xl lg:max-w-none sm:text-center sm:align-center lg:w-2/5 px-4 text-center lg:text-left">
       <TextBlock
         subtitle={subtitle}
         title={title}
         descriptionBold={description}
-        alignment={alignment === 'left' ? 'center lg:left' : alignment}
+        alignment={alignment}
         textColor={textColor}
         buttonText={buttonText}
         buttonVariant={buttonVariant}

@@ -38,7 +38,7 @@
 
   "home": {
     "heroVideo": {
-      "videoSrc":"/assets/video/senior_couple_beach.mov ",
+      "videoSrc":"/assets/video/nurse_talking_senior_wheelchair_4.webm",
       "subtitle": "Professionelle Pflege und Unterstützung",
       "title": "Selbstbestimmt zu Hause leben",
       "description": "Bei Integra steht das selbstbestimmte Leben unserer Klientinnen und Klienten im Mittelpunkt. Unsere qualifizierten Pflegekräfte bieten individuelle Betreuung, um eine hohe Lebensqualität in einer vertrauten Umgebung zu gewährleisten.",
@@ -84,27 +84,27 @@
       "subtitle": "Umfassende Pflege und Betreuung",
       "images": [
         {
-          "src": "/assets/img/Bild1.jpg",
+          "src": "/assets/img/doctor_senior_care_help_6.webp",
           "alt": "Häusliche Pflege",
           "text": "Häusliche Pflege"
         },
         {
-          "src": "/assets/img/Bild1.jpg",
+          "src": "/assets/img/doctor_senior_care_help_5.webp",
           "alt": "Medizinische Versorgung",
           "text": "Medizinische Versorgung"
         },
         {
-          "src": "/assets/img/Bild1.jpg",
+          "src": "/assets/img/nurse_doctor_senior_care_2.webp",
           "alt": "Intensivpflege",
           "text": "Intensivpflege"
         },
         {
-          "src": "/assets/img/Bild1.jpg",
+          "src": "/assets/img/nurse_doctor_senior_1.webp",
           "alt": "Unterstützung und Begleitung",
           "text": "Unterstützung und Begleitung"
         },
         {
-          "src": "/assets/img/Bild1.jpg",
+          "src": "/assets/img/doctor_senior_care_help_2.webp",
           "alt": "Sicherheitsbesuche",
           "text": "Sicherheitsbesuche"
         }
@@ -114,7 +114,7 @@
       "subtitle": "Kontaktieren Sie uns",
       "title": "Wir sind für Sie da - jederzeit",
       "description": "Haben Sie Fragen zu unseren Leistungen oder möchten Sie eine individuelle Beratung? Unser Team steht Ihnen jederzeit zur Verfügung.",
-      "image": "/assets/img/Bild1.jpg",
+      "image": "/assets/img/shot_of_a_nurse_2.webp",
       "contactForm": {
         "title": "Ihre Fragen<br>Unser Expertenrat!",
         "inputFields": [
@@ -160,52 +160,28 @@
       "subtitle": "Pflegekräfte mit Herz",
       "images": [
         {
-          "src": "/assets/img/Bild1.jpg",
+          "src": "/assets/img/nurse_doctor_senior.webp",
           "alt": "Lukas Müller",
           "title": "Lukas Müller",
           "text": "Pflegefachkraft"
         },
         {
-          "src": "/assets/img/Bild1.jpg",
+          "src": "/assets/img/female_care_worker.webp",
           "alt": "Tanja Schulz",
           "title": "Tanja Schulz",
           "text": "Altenpflegerin"
         },
         {
-          "src": "/assets/img/Bild1.jpg",
-          "alt": "Karl Maier",
-          "title": "Karl Maier",
+          "src": "/assets/img/shot_of_a_nurse_2.webp",
+          "alt": "Karla Maier",
+          "title": "Karla Maier",
           "text": "Physiotherapeut"
         },
         {
-          "src": "/assets/img/Bild1.jpg",
+          "src": "/assets/img/senior_woman_talking_nurse.webp",
           "alt": "Anna Becker",
           "title": "Anna Becker",
           "text": "Ergotherapeutin"
-        },
-        {
-          "src": "/assets/img/Bild1.jpg",
-          "alt": "Michael Schmidt",
-          "title": "Michael Schmidt",
-          "text": "Pflegehelfer"
-        },
-        {
-          "src": "/assets/img/Bild1.jpg",
-          "alt": "Sophie Wagner",
-          "title": "Sophie Wagner",
-          "text": "Sozialarbeiterin"
-        },
-        {
-          "src": "/assets/img/Bild1.jpg",
-          "alt": "Klaus Hoffmann",
-          "title": "Klaus Hoffmann",
-          "text": "Pflegedienstleiter"
-        },
-        {
-          "src": "/assets/img/Bild1.jpg",
-          "alt": "Petra Klein",
-          "title": "Petra Klein",
-          "text": "Ernährungsberaterin"
         }
       ]
     },
@@ -215,26 +191,26 @@
     "items": [
       {
         "name": "Helga Schmidt",
-        "title": "Zufriedene Klientin",
-        "image": "/assets/img/Bild1.jpg",
+        "title": "Zufriedene Kundenin",
+        "image": "/assets/img/senior_citizen_face_women.webp",
         "desc": "Die Pflege und Unterstützung durch Integra hat mein Leben enorm verbessert. Ich fühle mich sicher und gut umsorgt in meinem eigenen Zuhause."
       },
       {
         "name": "Thomas Bauer",
-        "title": "Sohn einer Klientin",
-        "image": "/assets/img/Bild1.jpg",
+        "title": "Zufriedene Kunde",
+        "image": "/assets/img/senior_citizen_face.webp",
         "desc": "Das Team von Integra kümmert sich hervorragend um meine Mutter. Ihre Professionalität und ihr Mitgefühl sind wirklich beeindruckend."
       },
       {
         "name": "Gisela Meyer",
-        "title": "Langjährige Klientin",
-        "image": "/assets/img/Bild1.jpg",
+        "title": "Langjährige Kundenin",
+        "image": "/assets/img/senior_citizen_face_women_seat.webp",
         "desc": "Dank Integra kann ich trotz meiner Einschränkungen selbstständig in meiner vertrauten Umgebung leben. Das bedeutet mir sehr viel."
       },
       {
         "name": "Dr. Frank Weber",
-        "title": "Kooperierender Hausarzt",
-        "image": "/assets/img/Bild1.jpg",
+        "title": "Zufriedene Kunde",
+        "image": "/assets/img/senior_couple_walking_autumn_2.webp",
         "desc": "Die Zusammenarbeit mit Integra ist ausgezeichnet. Ihre Pflegekräfte sind kompetent und zuverlässig in der Betreuung meiner Patienten."
       }
     ]
@@ -245,25 +221,25 @@
       "buttonText": "Galerie ansehen",
       "description": "Erleben Sie die fürsorgliche Atmosphäre bei Integra.",
       "srcs": [
-        "/assets/img/Bild1.jpg",
-        "/assets/img/Bild1.jpg",
-        "/assets/img/Bild1.jpg",
-        "/assets/img/Bild1.jpg",
-        "/assets/img/Bild1.jpg"
+        "/assets/img/nurse_doctor_senior.webp",
+        "/assets/img/doctor_senior_care_help_3.webp",
+        "/assets/img/nurse_doctor_senior_care_3.webp",
+        "/assets/img/doctor_senior_care_help_3.webp",
+        "/assets/img/doctor_senior_care_help_5.webp"
       ]
     }
   },
   "about": {
     "banner": {
       "title": "Über Uns",
-      "backgroundImage": "/assets/img/Bild1.jpg",
+      "backgroundImage": "/assets/img/senior_woman_nurse.webp",
       "breadcrumbs": [
         { "label": "Startseite", "url": "/" },
         { "label": "Über Uns", "url": "/about" }
       ]
     },
     "aboutVideo": {
-      "videoSrc":"/assets/video/senior_couple_beach.mov ",
+      "videoSrc":"/assets/video/social_worker_helps_wheelchair.webm",
       "subtitle": "Professionelle Pflege und Unterstützung",
       "title": "Selbstbestimmt zu Hause leben",
       "description": "Bei Integra steht das selbstbestimmte Leben unserer Klientinnen und Klienten im Mittelpunkt. Unsere qualifizierten Pflegekräfte bieten individuelle Betreuung, um eine hohe Lebensqualität in einer vertrauten Umgebung zu gewährleisten.",
@@ -293,8 +269,8 @@
       ],
       "buttonText": "Mehr erfahren",
       "buttonLink": "/services",
-      "mainImage": "/assets/img/Bild1.jpg",
-      "overlayImage": "/assets/img/Bild1.jpg"
+      "mainImage": "/assets/img/nurse_woman_doctor_medica.webp",
+      "overlayImage": "/assets/img/senior_woman_nurse.webp"
     },
     "discoverIcons": {
       "subtitle": "Seniorenpflege",
@@ -342,7 +318,7 @@
   "services": {
     "banner": {
       "title": "Unsere Leistungen",
-      "backgroundImage": "/assets/img/Bild1.jpg",
+      "backgroundImage": "/assets/img/doctor_senior_care_help_6.webp",
       "breadcrumbs": [
         { "label": "Startseite", "url": "/" },
         { "label": "Leistungen", "url": "/services" }
@@ -361,7 +337,7 @@
       ]
     },
     "servicesVideo": {
-      "videoSrc":"/assets/video/senior_couple_beach.mov ",
+      "videoSrc":"/assets/video/nurse_talking_senior_wheelchair_2.webm",
       "subtitle": "Professionelle Pflege und Unterstützung",
       "title": "Selbstbestimmt zu Hause leben",
       "description": "Bei Integra steht das selbstbestimmte Leben unserer Klientinnen und Klienten im Mittelpunkt. Unsere qualifizierten Pflegekräfte bieten individuelle Betreuung, um eine hohe Lebensqualität in einer vertrauten Umgebung zu gewährleisten.",
@@ -373,58 +349,38 @@
       "title": "Unsere Top-Leistungen",
       "offerings": [
         {
-          "src": "/assets/img/Bild1.jpg",
+          "src": "/assets/img/shot_of_a_nurse_1.webp",
           "alt": "Häusliche Pflege",
           "text": "Häusliche Pflege"
         },
         {
-          "src": "/assets/img/Bild1.jpg",
+          "src": "/assets/img/nurse_doctor_senior_care.webp",
           "alt": "Gesundheitsdienstleistungen",
           "text": "Gesundheitsdienstleistungen"
         },
         {
-          "src": "/assets/img/Bild1.jpg",
+          "src": "/assets/img/doctor_senior_care_tablet.webp",
           "alt": "Mahlzeitendienste",
           "text": "Mahlzeitendienste"
         },
         {
-          "src": "/assets/img/Bild1.jpg",
+          "src": "/assets/img/shot_nurse_caring_senior_woman.webp",
           "alt": "Hauswirtschaft",
           "text": "Hauswirtschaft"
         },
         {
-          "src": "/assets/img/Bild1.jpg",
+          "src": "/assets/img/shot_of_a_nurse_2.webp",
           "alt": "Demenzbetreuung",
           "text": "Demenzbetreuung"
         }
       ]
-    },
-    "weCare": {
-      "title": "Breites Leistungsspektrum",
-      "subtitle": "Unsere Fürsorge",
-      "services": [
-        {
-          "label": "Mahlzeitendienste",
-          "src": "/assets/img/Bild1.jpg",
-          "href": "/meal-services"
-        },
-        {
-          "label": "Persönliche Pflege",
-          "src": "/assets/img/Bild1.jpg",
-          "href": "/personal-care"
-        },
-        {
-          "label": "Betreutes Wohnen",
-          "src": "/assets/img/Bild1.jpg",
-          "href": "/assisted-living"
-        }
-      ]
     }
+    
   },
   "contact": {
     "banner": {
       "title": "Kontakt",
-      "backgroundImage": "/assets/img/Bild1.jpg",
+      "backgroundImage": "/assets/img/shot_nurse_caring_senior_woman.webp",
       "breadcrumbs": [
         { "label": "Startseite", "url": "/" },
         { "label": "Kontakt", "url": "/contact" }
@@ -499,7 +455,7 @@
   "faq": {
     "banner": {
       "title": "Häufig gestellte Fragen",
-      "backgroundImage": "/assets/img/Bild1.jpg",
+      "backgroundImage": "/assets/img/doctor_senior_care_help_6.webp",
       "breadcrumbs": [
         { "label": "Startseite", "url": "/" },
         { "label": "FAQ", "url": "/faq" }
@@ -551,9 +507,12 @@
     }
   },
   "error404": {
+    "imageSrc": "/assets/img/senior-couple.webp",
+    "imageAlt": "404 Error",
     "title": "404",
     "subtitle": "Seite nicht gefunden",
     "description": "Es tut uns leid, aber die gesuchte Seite konnte nicht gefunden werden. Unsere Pflegekräfte sind rund um die Uhr für Sie da, aber leider können sie diese Seite nicht wiederherstellen. Lassen Sie uns gemeinsam zurück zur Startseite gehen.",
     "buttonText": "Zurück zur Startseite"
+    
   }
 }
