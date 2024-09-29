@@ -4,10 +4,12 @@ import BannerSection from "@/components/common/BannerSection.astro";
 import ContactText from "@/components/contact/ContactText.astro";
 import MapSection from "@/components/contact/MapSection.astro";
 import texts from "@/utils/texts.json";
+
 const title = "Contact Us";
+const page = "contact";
 ---
 
-<Layout title={title}>
+<Layout title={title} page={page}>
   <BannerSection {...texts.contact.banner} />
   <ContactText {...texts.contact.contactText} />
   <MapSection {...texts.contact.mapSection} />

@@ -3,9 +3,10 @@ import Layout from "@/layouts/Layout.astro";
 import BannerSection from "@/components/common/BannerSection.astro";
 import legal_texts from "@/utils/legal_texts.json";
 const title = "Terms & Conditions";
+const page = "Agb";
 ---
 
-<Layout title={title}>
+<Layout title={title} page={page}>
   <BannerSection {...legal_texts.termsconditions.banner} />
   <div class="container mx-auto px-4">
     <h2 class="text-2xl font-bold mb-6">Impressum</h2>

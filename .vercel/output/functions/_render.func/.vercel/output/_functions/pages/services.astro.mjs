@@ -2,11 +2,11 @@
 import { c as createComponent, r as renderTemplate, a as renderComponent, b as createAstro, m as maybeRenderHead } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
 import { $ as $$BannerSection } from '../chunks/BannerSection_DPr9JwHY.mjs';
-import { t as texts, b as $$Layout } from '../chunks/Layout_JG5L-0Pb.mjs';
-import { $ as $$DiscoverIcons } from '../chunks/DiscoverIcons_CQDR0DBl.mjs';
-import { R as ReactSwiperSlider, $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_B8ZBWOko.mjs';
-import { a as $$Section } from '../chunks/TextBlock_CTa1Hlmr.mjs';
-import { $ as $$GalleryMosaic } from '../chunks/GalleryMosaic_14wUNJdC.mjs';
+import { t as texts, b as $$Layout } from '../chunks/Layout_Wn457XD9.mjs';
+import { $ as $$DiscoverIcons } from '../chunks/DiscoverIcons_BUlCxOMm.mjs';
+import { R as ReactSwiperSlider, $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_MizwZx6m.mjs';
+import { a as $$Section } from '../chunks/TextBlock_BoL9Q4cv.mjs';
+import { $ as $$GalleryMosaic } from '../chunks/GalleryMosaic_BIU-mJ9Q.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro = createAstro();
@@ -22,7 +22,8 @@ const $$ImageCarrousel3 = createComponent(($$result, $$props, $$slots) => {
 
 const $$Services = createComponent(($$result, $$props, $$slots) => {
   const title = "Services";
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": title }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "BannerSection", $$BannerSection, { ...texts.services.banner })} ${renderComponent($$result2, "DiscoverIcons", $$DiscoverIcons, { ...texts.about.discoverIcons })} ${renderComponent($$result2, "ParallaxVideo", $$ParallaxVideo, { ...texts.services.servicesVideo })} ${renderComponent($$result2, "ImageCarrousel_3", $$ImageCarrousel3, { ...texts.services.imageCarousel_3 })} ${renderComponent($$result2, "Testimonial", $$Testimonial, { ...texts.home.testimonials })} ${renderComponent($$result2, "GalleryMosaic", $$GalleryMosaic, { ...texts.home.galleryMosaic })} ` })}`;
+  const page = "services";
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": title, "page": page }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "BannerSection", $$BannerSection, { ...texts.services.banner })} ${renderComponent($$result2, "DiscoverIcons", $$DiscoverIcons, { ...texts.about.discoverIcons })} ${renderComponent($$result2, "ParallaxVideo", $$ParallaxVideo, { ...texts.services.servicesVideo })} ${renderComponent($$result2, "ImageCarrousel_3", $$ImageCarrousel3, { ...texts.services.imageCarousel_3 })} ${renderComponent($$result2, "Testimonial", $$Testimonial, { ...texts.home.testimonials })} ${renderComponent($$result2, "GalleryMosaic", $$GalleryMosaic, { ...texts.home.galleryMosaic })} ` })}`;
 }, "D:/Lim/Developer/Projects/Integra/seniorCare/src/pages/services.astro", void 0);
 
 const $$file = "D:/Lim/Developer/Projects/Integra/seniorCare/src/pages/services.astro";

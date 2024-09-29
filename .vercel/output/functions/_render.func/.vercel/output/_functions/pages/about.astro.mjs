@@ -2,11 +2,11 @@
 import { c as createComponent, r as renderTemplate, a as renderComponent, b as createAstro, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
 import { $ as $$BannerSection } from '../chunks/BannerSection_DPr9JwHY.mjs';
-import { $ as $$AboutSection, a as $$ImageCarrousel2, b as $$BannerSlider } from '../chunks/ImageCarrousel_2_JoMhoInT.mjs';
-import { $ as $$Icon, a as $$Button, t as texts, b as $$Layout } from '../chunks/Layout_JG5L-0Pb.mjs';
-import { $ as $$DiscoverIcons } from '../chunks/DiscoverIcons_CQDR0DBl.mjs';
-import { $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_B8ZBWOko.mjs';
-import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_CTa1Hlmr.mjs';
+import { $ as $$AboutSection, a as $$ImageCarrousel2, b as $$BannerSlider } from '../chunks/ImageCarrousel_2_DWBKL-C8.mjs';
+import { $ as $$Icon, a as $$Button, t as texts, b as $$Layout } from '../chunks/Layout_Wn457XD9.mjs';
+import { $ as $$DiscoverIcons } from '../chunks/DiscoverIcons_BUlCxOMm.mjs';
+import { $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_MizwZx6m.mjs';
+import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_BoL9Q4cv.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro = createAstro();
@@ -28,7 +28,8 @@ const $$ExpertSection = createComponent(($$result, $$props, $$slots) => {
 
 const $$About = createComponent(($$result, $$props, $$slots) => {
   const title = "About Us";
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": title }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "BannerSection", $$BannerSection, { ...texts.about.banner })} ${renderComponent($$result2, "AboutSection", $$AboutSection, { ...texts.home.about })} ${renderComponent($$result2, "ParallaxVideo", $$ParallaxVideo, { ...texts.about.aboutVideo })} ${renderComponent($$result2, "ImageCarrousel_2", $$ImageCarrousel2, { ...texts.home.imageCarousel_2 })} ${renderComponent($$result2, "BannerSlider", $$BannerSlider, { "slides": texts.about.bannerSlider.slides })} ${renderComponent($$result2, "ExpertSection", $$ExpertSection, { ...texts.about.expertSection })} ${renderComponent($$result2, "DiscoverIcons", $$DiscoverIcons, { ...texts.about.discoverIcons })} ${renderComponent($$result2, "Testimonial", $$Testimonial, { ...texts.home.testimonials })} ` })}`;
+  const page = "about";
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": title, "page": page }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "BannerSection", $$BannerSection, { ...texts.about.banner })} ${renderComponent($$result2, "AboutSection", $$AboutSection, { ...texts.home.about })} ${renderComponent($$result2, "ParallaxVideo", $$ParallaxVideo, { ...texts.about.aboutVideo })} ${renderComponent($$result2, "ImageCarrousel_2", $$ImageCarrousel2, { ...texts.home.imageCarousel_2 })} ${renderComponent($$result2, "BannerSlider", $$BannerSlider, { "slides": texts.about.bannerSlider.slides })} ${renderComponent($$result2, "ExpertSection", $$ExpertSection, { ...texts.about.expertSection })} ${renderComponent($$result2, "DiscoverIcons", $$DiscoverIcons, { ...texts.about.discoverIcons })} ${renderComponent($$result2, "Testimonial", $$Testimonial, { ...texts.home.testimonials })} ` })}`;
 }, "D:/Lim/Developer/Projects/Integra/seniorCare/src/pages/about.astro", void 0);
 
 const $$file = "D:/Lim/Developer/Projects/Integra/seniorCare/src/pages/about.astro";

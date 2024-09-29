@@ -1,12 +1,12 @@
 /* empty css                                 */
 import { c as createComponent, r as renderTemplate, a as renderComponent, b as createAstro, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
-import { $ as $$Icon, t as texts, b as $$Layout } from '../chunks/Layout_JG5L-0Pb.mjs';
-import { $ as $$AboutSection, b as $$BannerSlider, a as $$ImageCarrousel2 } from '../chunks/ImageCarrousel_2_JoMhoInT.mjs';
-import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_CTa1Hlmr.mjs';
-import { R as ReactSwiperSlider, $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_B8ZBWOko.mjs';
-import { $ as $$GalleryMosaic } from '../chunks/GalleryMosaic_14wUNJdC.mjs';
-import { $ as $$ContactForm } from '../chunks/ContactForm_DH6vgP1C.mjs';
+import { $ as $$Icon, t as texts, b as $$Layout } from '../chunks/Layout_Wn457XD9.mjs';
+import { $ as $$AboutSection, b as $$BannerSlider, a as $$ImageCarrousel2 } from '../chunks/ImageCarrousel_2_DWBKL-C8.mjs';
+import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_BoL9Q4cv.mjs';
+import { R as ReactSwiperSlider, $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_MizwZx6m.mjs';
+import { $ as $$GalleryMosaic } from '../chunks/GalleryMosaic_BIU-mJ9Q.mjs';
+import { $ as $$ContactForm } from '../chunks/ContactForm_BHDR7f0A.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro$3 = createAstro();
@@ -46,7 +46,8 @@ const $$FormSection = createComponent(($$result, $$props, $$slots) => {
 
 const $$Index = createComponent(($$result, $$props, $$slots) => {
   const title = "Home";
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": title }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "ParallaxVideo", $$ParallaxVideo, { ...texts.home.heroVideo, "preload": "metadata" })} ${renderComponent($$result2, "AboutSection", $$AboutSection, { ...texts.home.about })} ${renderComponent($$result2, "BannerSlider", $$BannerSlider, { "slides": texts.home.bannerSlides })} ${renderComponent($$result2, "Experience", $$Experience, { ...texts.home.experience })} ${renderComponent($$result2, "ImageCarrousel", $$ImageCarrousel, { ...texts.home.imageCarousel })} ${renderComponent($$result2, "FormSection", $$FormSection, { ...texts.home.formSection })} ${renderComponent($$result2, "Location", $$Location, { ...texts.home.location })} ${renderComponent($$result2, "ImageCarrousel_2", $$ImageCarrousel2, { ...texts.home.imageCarousel_2 })} ${renderComponent($$result2, "Testimonial", $$Testimonial, { ...texts.home.testimonials })} ${renderComponent($$result2, "GalleryMosaic", $$GalleryMosaic, { ...texts.home.galleryMosaic })} ` })} `;
+  const page = "home";
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": title, "page": page }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "ParallaxVideo", $$ParallaxVideo, { ...texts.home.heroVideo, "preload": "metadata" })} ${renderComponent($$result2, "AboutSection", $$AboutSection, { ...texts.home.about })} ${renderComponent($$result2, "BannerSlider", $$BannerSlider, { "slides": texts.home.bannerSlides })} ${renderComponent($$result2, "Experience", $$Experience, { ...texts.home.experience })} ${renderComponent($$result2, "ImageCarrousel", $$ImageCarrousel, { ...texts.home.imageCarousel })} ${renderComponent($$result2, "FormSection", $$FormSection, { ...texts.home.formSection })} ${renderComponent($$result2, "Location", $$Location, { ...texts.home.location })} ${renderComponent($$result2, "ImageCarrousel_2", $$ImageCarrousel2, { ...texts.home.imageCarousel_2 })} ${renderComponent($$result2, "Testimonial", $$Testimonial, { ...texts.home.testimonials })} ${renderComponent($$result2, "GalleryMosaic", $$GalleryMosaic, { ...texts.home.galleryMosaic })} ` })} `;
 }, "D:/Lim/Developer/Projects/Integra/seniorCare/src/pages/index.astro", void 0);
 
 const $$file = "D:/Lim/Developer/Projects/Integra/seniorCare/src/pages/index.astro";

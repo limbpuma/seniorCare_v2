@@ -3,45 +3,46 @@ import Layout from "@/layouts/Layout.astro";
 import BannerSection from "@/components/common/BannerSection.astro";
 import legal_texts from "@/utils/legal_texts.json";
 const title = "Legal";
+const page = "impressum";
 ---
 
-<Layout title={title}>
+<Layout title={title} page={page}>
   <BannerSection {...legal_texts.legal.banner} />
   <section class="bg-gray-100 py-10">
     <div class="container mx-auto px-4">
       <h2 class="text-2xl font-bold mb-6">Impressum</h2>
 
       <div class="bg-white shadow-md rounded-lg p-6">
-        <p class="text-gray-700"><strong>Pflegedienst Integra GmbH</strong></p>
+        <p class="text-gray-700"><strong>Pflegedienst Integra Gerling GmbH</strong></p>
         <p class="text-gray-700 mt-2">
           Flughafenstraße 404<br />44328 Dortmund<br />Deutschland
         </p>
 
         <p class="text-gray-700 mt-4"><strong>Kontakt:</strong></p>
         <p class="text-gray-700">
-          Telefon: +49 174 621 5814<br />E-Mail: info@pflegedienst-integra.de
+          Telefon: 0231 9125000<br />E-Mail: info@pflegedienst-integra.de
         </p>
 
         <p class="text-gray-700 mt-4"><strong>Vertreten durch:</strong></p>
-        <p class="text-gray-700">Max Mustermann, Geschäftsführer</p>
+        <p class="text-gray-700">Gerling, Geschäftsführer</p>
 
         <p class="text-gray-700 mt-4"><strong>Registereintrag:</strong></p>
         <p class="text-gray-700">
           Eintragung im Handelsregister.<br />Registergericht: Amtsgericht
-          Dortmund<br />Registernummer: HRB 123456
+          Dortmund<br />Registernummer: HRB --
         </p>
 
         <p class="text-gray-700 mt-4"><strong>Umsatzsteuer-ID:</strong></p>
         <p class="text-gray-700">
           Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz:
-          DE123456789
+          DE--
         </p>
 
         <p class="text-gray-700 mt-4">
           <strong>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:</strong>
         </p>
         <p class="text-gray-700">
-          Max Mustermann<br />Flughafenstraße 404<br />44328 Dortmund<br
+          Gerling<br />Flughafenstraße 404<br />44328 Dortmund<br
           />Deutschland
         </p>
 

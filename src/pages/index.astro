@@ -13,9 +13,10 @@ import FormSection from "@/components/home/FormSection.astro";
 import ParallaxVideo from "@/components/common/ParallaxVideo.astro";
 
 const title = "Home";
+const page = "home";
 ---
 
-<Layout title={title}>
+<Layout title={title} page={page}>
   
   <ParallaxVideo {...texts.home.heroVideo} preload="metadata"/>
   <AboutSection {...texts.home.about} />

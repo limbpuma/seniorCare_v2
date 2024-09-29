@@ -1,14 +1,15 @@
 /* empty css                                 */
 import { c as createComponent, r as renderTemplate, a as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
-import { b as $$Layout } from '../chunks/Layout_JG5L-0Pb.mjs';
+import { b as $$Layout } from '../chunks/Layout_Wn457XD9.mjs';
 import { $ as $$BannerSection } from '../chunks/BannerSection_DPr9JwHY.mjs';
-import { l as legal_texts } from '../chunks/legal_texts_C6jdME9K.mjs';
+import { l as legal_texts } from '../chunks/legal_texts_ClPMJUVC.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Termsconditions = createComponent(($$result, $$props, $$slots) => {
   const title = "Terms & Conditions";
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": title }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "BannerSection", $$BannerSection, { ...legal_texts.termsconditions.banner })} ${maybeRenderHead()}<div class="container mx-auto px-4"> <h2 class="text-2xl font-bold mb-6">Impressum</h2> <div class="bg-white shadow-md rounded-lg p-6"> <h3 class="text-xl font-semibold mb-4">1. Geltungsbereich</h3> <p class="text-gray-700 mb-4">
+  const page = "Agb";
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": title, "page": page }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "BannerSection", $$BannerSection, { ...legal_texts.termsconditions.banner })} ${maybeRenderHead()}<div class="container mx-auto px-4"> <h2 class="text-2xl font-bold mb-6">Impressum</h2> <div class="bg-white shadow-md rounded-lg p-6"> <h3 class="text-xl font-semibold mb-4">1. Geltungsbereich</h3> <p class="text-gray-700 mb-4">
 Diese Allgemeinen Geschäftsbedingungen (AGB) gelten für alle
         Dienstleistungen, die von der Pflegedienst Integra GmbH in ihrer
         Geschäftsstelle angeboten werden. Die Nutzung der Website dient

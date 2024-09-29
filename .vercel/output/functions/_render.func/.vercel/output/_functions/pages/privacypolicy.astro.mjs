@@ -1,14 +1,15 @@
 /* empty css                                 */
 import { c as createComponent, r as renderTemplate, a as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
-import { b as $$Layout } from '../chunks/Layout_JG5L-0Pb.mjs';
+import { b as $$Layout } from '../chunks/Layout_Wn457XD9.mjs';
 import { $ as $$BannerSection } from '../chunks/BannerSection_DPr9JwHY.mjs';
-import { l as legal_texts } from '../chunks/legal_texts_C6jdME9K.mjs';
+import { l as legal_texts } from '../chunks/legal_texts_ClPMJUVC.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Privacypolicy = createComponent(($$result, $$props, $$slots) => {
   const title = "Privacy Policy";
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": title }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "BannerSection", $$BannerSection, { ...legal_texts.privacypolicy.banner })} ${maybeRenderHead()}<section class="bg-gray-100 py-10"> <div class="container mx-auto px-4"> <h2 class="text-2xl font-bold mb-6">Datenschutzerklärung</h2> <div class="bg-white shadow-md rounded-lg p-6"> <h3 class="text-xl font-semibold mb-4">1. Allgemeine Hinweise</h3> <p class="text-gray-700 mb-4">
+  const page = "datenschutz";
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": title, "page": page }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "BannerSection", $$BannerSection, { ...legal_texts.privacypolicy.banner })} ${maybeRenderHead()}<section class="bg-gray-100 py-10"> <div class="container mx-auto px-4"> <h2 class="text-2xl font-bold mb-6">Datenschutzerklärung</h2> <div class="bg-white shadow-md rounded-lg p-6"> <h3 class="text-xl font-semibold mb-4">1. Allgemeine Hinweise</h3> <p class="text-gray-700 mb-4">
 Der Schutz Ihrer persönlichen Daten ist uns wichtig. Diese
           Datenschutzerklärung erläutert, welche Informationen wir erfassen, wie
           wir diese nutzen und welche Rechte Sie in Bezug auf Ihre Daten haben.

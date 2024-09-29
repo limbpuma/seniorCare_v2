@@ -1,10 +1,10 @@
 /* empty css                                 */
 import { c as createComponent, r as renderTemplate, a as renderComponent, b as createAstro, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
-import { t as texts, b as $$Layout } from '../chunks/Layout_JG5L-0Pb.mjs';
+import { t as texts, b as $$Layout } from '../chunks/Layout_Wn457XD9.mjs';
 import { $ as $$BannerSection } from '../chunks/BannerSection_DPr9JwHY.mjs';
-import { $ as $$ContactForm } from '../chunks/ContactForm_DH6vgP1C.mjs';
-import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_CTa1Hlmr.mjs';
+import { $ as $$ContactForm } from '../chunks/ContactForm_BHDR7f0A.mjs';
+import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_BoL9Q4cv.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro = createAstro();
@@ -17,7 +17,8 @@ const $$FaqContent = createComponent(($$result, $$props, $$slots) => {
 
 const $$Faq = createComponent(($$result, $$props, $$slots) => {
   const title = "FAQ";
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": title }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "BannerSection", $$BannerSection, { ...texts.faq.banner })} ${renderComponent($$result2, "FaqContent", $$FaqContent, { ...texts.faq.faqContent })} ` })}`;
+  const page = "faq";
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": title, "page": page }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "BannerSection", $$BannerSection, { ...texts.faq.banner })} ${renderComponent($$result2, "FaqContent", $$FaqContent, { ...texts.faq.faqContent })} ` })}`;
 }, "D:/Lim/Developer/Projects/Integra/seniorCare/src/pages/faq.astro", void 0);
 
 const $$file = "D:/Lim/Developer/Projects/Integra/seniorCare/src/pages/faq.astro";

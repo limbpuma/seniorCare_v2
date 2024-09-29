@@ -5,6 +5,7 @@ import TextBlock from "../components/common/TextBlock.astro";
 import ParallaxMedia from "../components/common/ParallaxMedia.astro";
 import seniorCoupleImage from "/public/assets/img/doctor_senior_care_help_6.webp";
 
+const page = "404";
 interface Props {
   alignment?: 'left' | 'center' | 'right';
 
@@ -14,7 +15,7 @@ const { alignment = 'left' } = Astro.props;
 
 ---
 
-<Layout title="404 - Page Not Found">
+<Layout title="404 - Page Not Found" page={page}>
   <Section 
     padding="large"
     width="full"

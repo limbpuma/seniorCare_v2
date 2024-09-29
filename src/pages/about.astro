@@ -11,9 +11,10 @@ import ParallaxVideo from "@/components/common/ParallaxVideo.astro";
 import ImageCarrousel_2 from "@/components/common/ImageCarrousel_2.astro";
 
 const title = "About Us";
+const page = "about";
 ---
 
-<Layout title={title}>
+<Layout title={title} page={page}>
   
   <BannerSection {...texts.about.banner} />
   <AboutSection {...texts.home.about} />

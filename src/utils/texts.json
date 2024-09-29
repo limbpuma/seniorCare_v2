@@ -1,13 +1,51 @@
 {
+  "seo": {
+    "home": {
+      "description": "Integra bietet hochwertige, selbstbestimmte Pflegekonzepte in Dortmund. Unsere empathische Pflegephilosophie sorgt für erstklassige medizinische Versorgung und familiäre Atmosphäre.",
+      "keywords": "Pflege, Betreuung, Dortmund, selbstbestimmt, medizinische Versorgung"
+    },
+    "about": {
+      "description": "Erfahren Sie mehr über Integra, unseren Pflegedienst in Dortmund, und wie wir durch individuelle Pflegekonzepte die Lebensqualität unserer Klienten verbessern.",
+      "keywords": "Pflegedienst, Über Uns, Pflege in Dortmund, Betreuungskonzepte"
+    },
+    "services": {
+      "description": "Integra bietet professionelle häusliche Pflege in Dortmund, darunter Beatmungspflege, Intensivpflege, ärztliche Behandlungspflege und mehr.",
+      "keywords": "Pflege, Leistungen, Beatmungspflege, Intensivpflege, ärztliche Pflege, Dortmund"
+    },
+    "contact": {
+      "description": "Kontaktieren Sie Integra für individuelle Pflegeangebote in Dortmund. Wir sind 24/7 für Sie erreichbar.",
+      "keywords": "Kontakt, Pflege, Dortmund, Telefonnummer, Email"
+    },
+    "faq": {
+      "description": "Häufig gestellte Fragen zur Pflege bei Integra in Dortmund. Erfahren Sie mehr über unsere Dienstleistungen und Prozesse.",
+      "keywords": "FAQ, Pflege, Fragen und Antworten, Integra, Dortmund"
+    },
+    "datenschutz": {
+      "description": "Erfahren Sie, wie Integra mit Ihren persönlichen Daten umgeht und welche Datenschutzrichtlinien gelten.",
+      "keywords": "Datenschutz, persönliche Daten, Datenschutzrichtlinien, Integra"
+    },
+    "impressum": {
+      "description": "Impressum der Integra Pflegedienstleistungen in Dortmund. Rechtliche Informationen und Kontaktdaten.",
+      "keywords": "Impressum, rechtliche Informationen, Integra, Dortmund"
+    },
+    "Agb": {
+      "description": "Allgemeine Geschäftsbedingungen von Integra in Dortmund. Erfahren Sie mehr über die rechtlichen Grundlagen unserer Pflegeleistungen.",
+      "keywords": "AGB, Geschäftsbedingungen, Pflegeleistungen, Integra, Dortmund"
+    },
+    "404": {
+      "description": "Seite nicht gefunden. Bitte überprüfen Sie die URL oder kehren Sie zur Startseite zurück.",
+      "keywords": "404, Seite nicht gefunden, Fehler"
+    }
+  },
   "header": {
     "address": "Flughafenstraße 404, 44328 Dortmund",
-    "phone": "+49 123 456 7890",
-    "schedule": "Mo bis Sa 09:00 - 21:00",
+    "phone": "0231 9125000",
+    "schedule": "Mo bis Fr 09:00 - 15:00",
     "buttonText": "Jetzt Buchen",
     "socialLinks": {
-      "facebook": "https://www.facebook.com/yourpage",
-      "twitter": "https://www.twitter.com/yourhandle",
-      "instagram": "https://www.instagram.com/yourprofile"
+      "facebook": "https://www.facebook.com/pflegedienst.integra.dortmund",
+      "twitter": "https://www.facebook.com/pflegedienst.integra.dortmund",
+      "instagram": "https://www.instagram.com/pflegedienst.integra/"
     },
     "nav": {
       "home": "Startseite",
@@ -22,17 +60,17 @@
     "followus": "Folgen Sie uns",
     "linksTitle": "Schnellzugriff",
     "scheduleTitle": "Öffnungszeiten",
-    "schedule": "Mo bis Sa 09:00 - 21:00",
-    "phone": "+49 123 456 7890",
+    "schedule": "Mo bis Fr 09:00 - 15:00",
+    "phone": "0231 9125000",
     "locationTitle": "Standort",
     "address": "Flughafenstraße 404, 44328 Dortmund",
     "viewMap": "Auf Google Maps ansehen",
     "mapLink": "https://maps.app.goo.gl/UbA5eCbGWvF2pyPu9",
-    "copyright": "© 2024 Integra. Alle Rechte vorbehalten.",
+    "copyright": "© 2024 Pflegedienst Integra Gerling GmbH. Alle Rechte vorbehalten.",
     "socialLinks": {
-      "facebook": "https://www.facebook.com/yourpage",
-      "twitter": "https://www.twitter.com/yourhandle",
-      "instagram": "https://www.instagram.com/yourprofile"
+      "facebook": "https://www.facebook.com/pflegedienst.integra.dortmund",
+      "twitter": "https://www.facebook.com/pflegedienst.integra.dortmund",
+      "instagram": "https://www.instagram.com/pflegedienst.integra/"
     }
   },
 
@@ -62,7 +100,7 @@
       ],
       "buttonText": "Jetzt Termin buchen",
       "description": "Integra bietet maßgeschneiderte Pflege, die auf die individuellen Bedürfnisse unserer Klientinnen und Klienten abgestimmt ist. Unser Ziel ist es, die Unabhängigkeit und Lebensqualität der Menschen zu fördern.",
-      "phoneNumber": "0174 - 621 5814"
+      "phoneNumber": "0231 9125000"
     },
     "bannerSlides": [
       { "text": "Selbstbestimmung", "icon": "fa-solid fa-user-nurse" },
@@ -405,7 +443,7 @@
         {
           "icon": "mobilePhone",
           "title": "Rufen Sie uns an",
-          "description": "+49 174 621 5814"
+          "description": "0231 9125000"
         },
         {
           "icon": "envelope",
@@ -442,11 +480,11 @@
     "dortmundSection": {
       "title": "Büro Dortmund",
       "address": "Flughafenstraße 404, 44328 Dortmund, Deutschland",
-      "phoneNumber": "+49 174 621 5814",
+      "phoneNumber": "0231 9125000",
       "email": "info@pflegedienst-integra.de",
       "openingHours": [
-        { "day": "Montag - Freitag", "hours": "09:00 - 18:00" },
-        { "day": "Samstag", "hours": "10:00 - 16:00" },
+        { "day": "Montag - Freitag", "hours": "09:00 - 15:00" },
+        { "day": "Samstag", "hours": "Geschlossen" },
         { "day": "Sonntag", "hours": "Geschlossen" }
       ],
       "image": "/assets/img/dortmund-office.jpg"

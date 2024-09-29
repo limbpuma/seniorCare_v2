@@ -7,10 +7,12 @@ import Testimonial from "@/components/common/Testimonial.astro";
 import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
 import texts from "@/utils/texts.json";
 import ParallaxVideo from "@/components/common/ParallaxVideo.astro";
+
 const title = "Services";
+const page = "services";
 ---
 
-<Layout title={title}>
+<Layout title={title} page={page}>
   <BannerSection {...texts.services.banner} />
   
   <DiscoverIcons {...texts.about.discoverIcons} />

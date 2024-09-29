@@ -2,7 +2,7 @@
   "legal": {
     "banner": {
       "title": "Impressum",
-      "backgroundImage": "/assets/img/Bild1.jpg",
+      "backgroundImage": "/assets/img/doctor_senior_care_help_6.webp",
       "breadcrumbs": [
         { "label": "Home", "url": "/" },
         { "label": "Impressum", "url": "/legal" }
@@ -12,7 +12,7 @@
   "privacypolicy": {
     "banner": {
       "title": "Datenschutz",
-      "backgroundImage": "/assets/img/Bild1.jpg",
+      "backgroundImage": "/assets/img/doctor_senior_care_help_6.webp",
       "breadcrumbs": [
         { "label": "Home", "url": "/" },
         { "label": "Datenschutz", "url": "/privacypolicy" }
@@ -22,7 +22,7 @@
   "termsconditions": {
     "banner": {
       "title": "Geschäftsbedingungen",
-      "backgroundImage": "/assets/img/Bild1.jpg",
+      "backgroundImage": "/assets/img/doctor_senior_care_help_6.webp",
       "breadcrumbs": [
         { "label": "Home", "url": "/" },
         { "label": "Geschäftsbedingungen", "url": "/termsconditions" }
