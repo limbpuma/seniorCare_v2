@@ -2,11 +2,11 @@
 import { c as createComponent, r as renderTemplate, a as renderComponent, b as createAstro, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
 import { $ as $$BannerSection } from '../chunks/BannerSection_DPr9JwHY.mjs';
-import { $ as $$AboutSection, a as $$ImageCarrousel2, b as $$BannerSlider } from '../chunks/ImageCarrousel_2_DWBKL-C8.mjs';
-import { $ as $$Icon, a as $$Button, t as texts, b as $$Layout } from '../chunks/Layout_Wn457XD9.mjs';
-import { $ as $$DiscoverIcons } from '../chunks/DiscoverIcons_BUlCxOMm.mjs';
-import { $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_MizwZx6m.mjs';
-import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_BoL9Q4cv.mjs';
+import { $ as $$AboutSection, a as $$ImageCarrousel2, b as $$BannerSlider } from '../chunks/ImageCarrousel_2_DUG4X-Av.mjs';
+import { $ as $$Icon, a as $$Button, t as texts, b as $$Layout } from '../chunks/Layout_xiEg-xPt.mjs';
+import { $ as $$DiscoverIcons } from '../chunks/DiscoverIcons_CdSicD9A.mjs';
+import { $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_CN4R9OKm.mjs';
+import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_DffnNgfO.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro = createAstro();

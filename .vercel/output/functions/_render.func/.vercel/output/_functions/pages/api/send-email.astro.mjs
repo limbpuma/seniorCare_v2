@@ -29,7 +29,7 @@ const POST = async ({ request }) => {
   try {
     const { data: data2, error } = await resend.emails.send({
       from: "Your Name <onboarding@resend.dev>",
-      to: ["limbpuma_de@hotmail.com"],
+      to: ["info@pflegedienst-integra.de"],
       subject: `New contact form submission: ${subject}`,
       text: plainText,
       html: `

@@ -1,10 +1,10 @@
 /* empty css                                 */
 import { c as createComponent, r as renderTemplate, a as renderComponent, b as createAstro, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
-import { t as texts, b as $$Layout } from '../chunks/Layout_Wn457XD9.mjs';
+import { t as texts, b as $$Layout } from '../chunks/Layout_xiEg-xPt.mjs';
 import { $ as $$BannerSection } from '../chunks/BannerSection_DPr9JwHY.mjs';
-import { $ as $$ContactForm } from '../chunks/ContactForm_BHDR7f0A.mjs';
-import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_BoL9Q4cv.mjs';
+import { $ as $$ContactForm } from '../chunks/ContactForm_CTRhQQDQ.mjs';
+import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_DffnNgfO.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro = createAstro();
