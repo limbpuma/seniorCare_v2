@@ -76,7 +76,7 @@
 
   "home": {
     "heroVideo": {
-      "videoSrc":"/assets/video/nurse_talking_senior_wheelchair_4.webm",
+      "videoSrc": "/assets/video/nurse_talking_senior_wheelchair_4.webm",
       "subtitle": "Professionelle Pflege und Unterstützung",
       "title": "Selbstbestimmt zu Hause leben",
       "description": "Bei Integra steht das selbstbestimmte Leben unserer Klientinnen und Klienten im Mittelpunkt. Unsere qualifizierten Pflegekräfte bieten individuelle Betreuung, um eine hohe Lebensqualität in einer vertrauten Umgebung zu gewährleisten.",
@@ -86,7 +86,6 @@
       "buttonHref": "/contact",
       "buttonSize": "medium",
       "buttonColor": "primary"
-      
     },
     "about": {
       "services": [
@@ -224,35 +223,35 @@
       ]
     },
     "testimonials": {
-    "titlesection": "Was unsere Kunden sagen",
-    "subtitlesection": "Erfahrungen und Eindrücke von Menschen, die Integra vertrauen",
-    "items": [
-      {
-        "name": "Helga Schmidt",
-        "title": "Zufriedene Kundenin",
-        "image": "/assets/img/senior_citizen_face_women.webp",
-        "desc": "Die Pflege und Unterstützung durch Integra hat mein Leben enorm verbessert. Ich fühle mich sicher und gut umsorgt in meinem eigenen Zuhause."
-      },
-      {
-        "name": "Thomas Bauer",
-        "title": "Zufriedene Kunde",
-        "image": "/assets/img/senior_citizen_face.webp",
-        "desc": "Das Team von Integra kümmert sich hervorragend um meine Mutter. Ihre Professionalität und ihr Mitgefühl sind wirklich beeindruckend."
-      },
-      {
-        "name": "Gisela Meyer",
-        "title": "Langjährige Kundenin",
-        "image": "/assets/img/senior_citizen_face_women_seat.webp",
-        "desc": "Dank Integra kann ich trotz meiner Einschränkungen selbstständig in meiner vertrauten Umgebung leben. Das bedeutet mir sehr viel."
-      },
-      {
-        "name": "Dr. Frank Weber",
-        "title": "Zufriedene Kunde",
-        "image": "/assets/img/senior_couple_walking_autumn_2.webp",
-        "desc": "Die Zusammenarbeit mit Integra ist ausgezeichnet. Ihre Pflegekräfte sind kompetent und zuverlässig in der Betreuung meiner Patienten."
-      }
-    ]
-  },
+      "titlesection": "Was unsere Kunden sagen",
+      "subtitlesection": "Erfahrungen und Eindrücke von Menschen, die Integra vertrauen",
+      "items": [
+        {
+          "name": "Helga Schmidt",
+          "title": "Zufriedene Kundenin",
+          "image": "/assets/img/senior_citizen_face_women.webp",
+          "desc": "Die Pflege und Unterstützung durch Integra hat mein Leben enorm verbessert. Ich fühle mich sicher und gut umsorgt in meinem eigenen Zuhause."
+        },
+        {
+          "name": "Thomas Bauer",
+          "title": "Zufriedene Kunde",
+          "image": "/assets/img/senior_citizen_face.webp",
+          "desc": "Das Team von Integra kümmert sich hervorragend um meine Mutter. Ihre Professionalität und ihr Mitgefühl sind wirklich beeindruckend."
+        },
+        {
+          "name": "Gisela Meyer",
+          "title": "Langjährige Kundenin",
+          "image": "/assets/img/senior_citizen_face_women_seat.webp",
+          "desc": "Dank Integra kann ich trotz meiner Einschränkungen selbstständig in meiner vertrauten Umgebung leben. Das bedeutet mir sehr viel."
+        },
+        {
+          "name": "Dr. Frank Weber",
+          "title": "Zufriedene Kunde",
+          "image": "/assets/img/senior_couple_walking_autumn_2.webp",
+          "desc": "Die Zusammenarbeit mit Integra ist ausgezeichnet. Ihre Pflegekräfte sind kompetent und zuverlässig in der Betreuung meiner Patienten."
+        }
+      ]
+    },
     "galleryMosaic": {
       "subtitle": "Einblicke in unseren Alltag",
       "title": "Momente der Fürsorge",
@@ -277,10 +276,10 @@
       ]
     },
     "aboutVideo": {
-      "videoSrc":"/assets/video/social_worker_helps_wheelchair.webm",
-      "subtitle": "Professionelle Pflege und Unterstützung",
-      "title": "Selbstbestimmt zu Hause leben",
-      "description": "Bei Integra steht das selbstbestimmte Leben unserer Klientinnen und Klienten im Mittelpunkt. Unsere qualifizierten Pflegekräfte bieten individuelle Betreuung, um eine hohe Lebensqualität in einer vertrauten Umgebung zu gewährleisten.",
+      "videoSrc": "/assets/video/social_worker_helps_wheelchair.webm",
+      "subtitle": "Individuelle Pflege",
+      "title": "Häusliche Pflege",
+      "description": "Unsere qualifizierten Pflegekräfte bieten individuelle Betreuung und unterstützen Sie in Ihrer gewohnten Umgebung.",
       "alignment": "center",
       "textColor": "text-deep-blue"
     },
@@ -296,9 +295,9 @@
       ]
     },
     "expertSection": {
-      "subtitle": "Wer wir sind",
-      "title": "Experten in der Pflege von Senioren",
-      "description": "Mit über 10 Jahren Erfahrung im Pflegebereich bieten wir bei Integra qualitativ hochwertige Betreuung, die auf die individuellen Bedürfnisse unserer Klienten zugeschnitten ist. Wir bieten eine sichere und unterstützende Umgebung, in der sich unsere Klienten wohlfühlen können.",
+      "subtitle": "Unser Team",
+      "title": "Seniorenpflege-Experten",
+      "description": "Seit über 10 Jahren bieten wir erstklassige Seniorenpflege in Dortmund und Umgebung, angepasst an die individuellen Bedürfnisse unserer Klientinnen und Klienten.",
       "listItems": [
         "Sicherheit und Geborgenheit",
         "24/7 Pflegepersonal",
@@ -311,43 +310,43 @@
       "overlayImage": "/assets/img/senior_woman_nurse.webp"
     },
     "discoverIcons": {
-      "subtitle": "Seniorenpflege",
-      "title": "Entdecken Sie unsere einzigartigen Angebote",
+      "subtitle": "Unsere Pflegeangebote",
+      "title": "Individuelle Leistungen",
       "features": [
         {
           "icon": "bed",
           "title": "Komfortable Wohnräume",
-          "description": "Wir bieten gemütliche und barrierefreie Wohnräume für ein angenehmes Wohngefühl.",
+          "description": "Barrierefreie und gemütliche Zimmer für unsere Klientinnen und Klienten.",
           "number": "01"
         },
         {
           "icon": "utensils",
-          "title": "Nahrhafte Speiseoptionen",
-          "description": "Unsere Küche bereitet ausgewogene und schmackhafte Mahlzeiten zu, die auf individuelle Bedürfnisse abgestimmt sind.",
+          "title": "Gesunde Ernährung",
+          "description": "Wir bieten ausgewogene, nährstoffreiche Mahlzeiten für eine gesunde Lebensweise.",
           "number": "02"
         },
         {
           "icon": "shield-alt",
-          "title": "Sicherheits- und Schutzmaßnahmen",
-          "description": "Wir sorgen für ein sicheres Umfeld mit modernsten Sicherheitssystemen und geschultem Personal.",
+          "title": "Sicherheitsmaßnahmen",
+          "description": "Unsere Einrichtung verfügt über modernste Sicherheitsvorkehrungen für den Schutz unserer Klientinnen und Klienten.",
           "number": "03"
         },
         {
           "icon": "seedling",
-          "title": "Gedächtnispflege-Dienste",
-          "description": "Spezielle Programme zur Unterstützung von Senioren mit Gedächtnisproblemen oder Demenz.",
+          "title": "Gedächtnispflege",
+          "description": "Spezielle Programme für Senioren mit Gedächtnisproblemen und Demenz.",
           "number": "04"
         },
         {
           "icon": "ambulance",
-          "title": "Transportunterstützung",
-          "description": "Wir bieten Transportdienste für Arztbesuche, Einkäufe und andere Aktivitäten außerhalb der Einrichtung.",
+          "title": "Transportdienste",
+          "description": "Unterstützung bei Arztbesuchen und anderen wichtigen Terminen außerhalb der Einrichtung.",
           "number": "05"
         },
         {
           "icon": "heart",
-          "title": "Emotionale und spirituelle Unterstützung",
-          "description": "Unser einfühlsames Personal bietet emotionale Unterstützung und respektiert individuelle spirituelle Bedürfnisse.",
+          "title": "Emotionale Unterstützung",
+          "description": "Unser Team bietet emotionale und spirituelle Unterstützung, um die psychische Gesundheit zu fördern.",
           "number": "06"
         }
       ]
@@ -364,21 +363,21 @@
     },
     "discoverIcons": {
       "title": "Unsere Leistungen Entdecken",
-      "subtitle": "Wir bieten die beste Pflege",
+      "subtitle": "Qualitative Pflege",
       "icons": [
         { "icon": "fa-solid fa-heart", "text": "Mitfühlende Pflege" },
         { "icon": "fa-solid fa-home", "text": "Heimähnliche Umgebung" },
         { "icon": "fa-solid fa-utensils", "text": "Nahrhafte Mahlzeiten" },
-        { "icon": "fa-solid fa-dumbbell", "text": "Körperliche Aktivitäten" },
+        { "icon": "fa-solid fa-dumbbell", "text": "Aktive Betreuung" },
         { "icon": "fa-solid fa-chess", "text": "Mentale Anregung" },
         { "icon": "fa-solid fa-users", "text": "Soziale Interaktion" }
       ]
     },
     "servicesVideo": {
-      "videoSrc":"/assets/video/nurse_talking_senior_wheelchair_2.webm",
-      "subtitle": "Professionelle Pflege und Unterstützung",
-      "title": "Selbstbestimmt zu Hause leben",
-      "description": "Bei Integra steht das selbstbestimmte Leben unserer Klientinnen und Klienten im Mittelpunkt. Unsere qualifizierten Pflegekräfte bieten individuelle Betreuung, um eine hohe Lebensqualität in einer vertrauten Umgebung zu gewährleisten.",
+      "videoSrc": "/assets/video/nurse_talking_senior_wheelchair_2.webm",
+      "subtitle": "Professionelle Unterstützung",
+      "title": "Selbstständig bleiben",
+      "description": "Unsere Pflegekräfte unterstützen Sie individuell, damit Sie selbstbestimmt zu Hause leben können.",
       "alignment": "center",
       "textColor": "text-deep-blue"
     },
@@ -413,9 +412,13 @@
         }
       ]
     }
-    
   },
   "contact": {
+    "seo": {
+      "subtitle": "Kontakt",
+      "title": "Kontakt",
+      "description": "Kontaktieren Sie uns bei Integra für eine individuelle Pflegeberatung. Standort: Dortmund Scharnhorst."
+    },
     "banner": {
       "title": "Kontakt",
       "backgroundImage": "/assets/img/shot_nurse_caring_senior_woman.webp",
@@ -427,13 +430,13 @@
     "mapSection": {
       "title": "Wilkommen bei Integra",
       "subtitle": "Unser Standort",
-      "description": "Wir finden uns in Dortmund Scharnhorst, um eine flächendeckende Versorgung in der Region zu gewährleisten. Besuchen Sie uns oder kontaktieren Sie uns über die unten stehenden Informationen.",
+      "description": "Wir befinden uns in Dortmund Scharnhorst. Besuchen Sie uns oder nehmen Sie Kontakt auf, um mehr über unsere Pflegedienste zu erfahren.",
       "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.1646759155656!2d7.534846376966431!3d51.54687930781805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b9112207af117d%3A0x91c056aa0191090f!2sPflegedienst%20Integra%20Gerling%20GmbH!5e0!3m2!1ses!2sde!4v1725482670831!5m2!1ses!2sde"
     },
     "contactText": {
       "subtitle": "Kontakt aufnehmen",
       "title": "Wir sind für Sie da!",
-      "description": "Haben Sie Fragen oder benötigen Sie Unterstützung? Unser Team steht bereit, Ihnen die notwendige Hilfe zu bieten. Kontaktieren Sie uns über die unten stehenden Informationen oder füllen Sie das Formular aus, und wir melden uns so schnell wie möglich bei Ihnen.",
+      "description": "Haben Sie Fragen zu unseren Pflegediensten? Kontaktieren Sie uns direkt oder über unser Kontaktformular. Wir melden uns zeitnah bei Ihnen.",
       "contactOptions": [
         {
           "icon": "location",
@@ -501,27 +504,27 @@
     },
     "faqContent": {
       "title": "Häufige Fragen",
-      "subtitle": "Finden Sie Antworten auf häufig gestellte Fragen zu unseren Pflegedienstleistungen",
+      "subtitle": "Antworten auf Ihre Fragen zu unseren Dienstleistungen",
       "faqItems": [
         {
-          "question": "Welche Pflegedienstleistungen bieten Sie an?",
-          "answer": "Wir bieten eine Vielzahl von Pflegedienstleistungen an, darunter häusliche Alten- und Krankenpflege, Intensivpflege mit Nachtwache, ärztliche Behandlungspflege und Verhinderungspflege. Unsere Dienstleistungen sind individuell auf die Bedürfnisse jedes Einzelnen abgestimmt."
+          "question": "Welche Pflegeleistungen bieten Sie an?",
+          "answer": "Wir bieten eine umfassende Betreuung an, darunter häusliche Pflege, medizinische Versorgung und Intensivpflege. Unsere Dienstleistungen sind individuell an die Bedürfnisse unserer Klienten angepasst."
         },
         {
           "question": "Wie erkenne ich, ob mein Angehöriger Pflege benötigt?",
-          "answer": "Anzeichen, dass Ihr Angehöriger Pflege benötigt, können Schwierigkeiten bei alltäglichen Aufgaben, Vergesslichkeit, Verhaltensänderungen oder zunehmende Isolation sein. Wir bieten kostenlose Beratungsgespräche an, um den Pflegebedarf zu ermitteln und geeignete Dienstleistungen zu empfehlen."
+          "answer": "Anzeichen sind unter anderem Schwierigkeiten bei alltäglichen Aufgaben, Vergesslichkeit oder Verhaltensänderungen. Wir bieten eine kostenlose Beratung an, um den Pflegebedarf zu ermitteln."
         },
         {
           "question": "Welche Qualifikationen haben Ihre Pflegekräfte?",
-          "answer": "Unsere Pflegekräfte sind hochqualifizierte Fachkräfte mit Zertifizierungen in der Alten- und Krankenpflege. Sie durchlaufen strenge Hintergrundüberprüfungen und erhalten kontinuierliche Schulungen, um die bestmögliche Pflege zu gewährleisten."
+          "answer": "Unsere Pflegekräfte sind ausgebildete Fachkräfte mit langjähriger Erfahrung. Sie durchlaufen regelmäßige Schulungen, um stets die beste Betreuung zu gewährleisten."
         },
         {
-          "question": "Wie viel kosten Ihre Dienstleistungen?",
-          "answer": "Die Kosten unserer Dienstleistungen variieren je nach Pflegebedarf und den spezifischen erforderlichen Leistungen. Wir bieten maßgeschneiderte Pflegepläne an und erstellen nach einer Bedarfsanalyse gerne ein detailliertes Angebot."
+          "question": "Kann ich die Kosten für Pflege durch eine Versicherung decken?",
+          "answer": "Ja, wir arbeiten eng mit Pflegeversicherungen zusammen und unterstützen Sie bei der Abwicklung der Formalitäten."
         },
         {
-          "question": "Akzeptieren Sie Versicherungen oder Medicare?",
-          "answer": "Wir akzeptieren Pflegeversicherungen und unterstützen Sie gerne bei der Abwicklung der Ansprüche. Unter bestimmten Bedingungen kann die gesetzliche Krankenversicherung einige häusliche Pflegeleistungen abdecken. Unser Team hilft Ihnen, Ihre Deckungsoptionen zu verstehen."
+          "question": "Bieten Sie Ausbildungsmöglichkeiten an?",
+          "answer": "Ja, bei Pflegedienst Integra bieten wir Ausbildungsplätze für angehende Pflegefachkräfte an. Wenn Sie Interesse an einer Ausbildung haben, können Sie sich über unser Kontaktformular bewerben. Wir unterstützen Sie bei Ihrer Karriere in der Pflege."
         }
       ],
       "contactForm": {
@@ -534,13 +537,35 @@
         "selectOptions": [
           "Thema auswählen",
           "Pflegedienstleistungen",
-          "Preise",
-          "Versicherung",
+          "Kosten und Versicherung",
           "Qualifikation der Pflegekräfte",
+          "Ausbildungsmöglichkeiten",
           "Sonstiges"
         ],
-        "textareaPlaceholder": "Geben Sie Ihre Frage hier ein...",
-        "buttonText": "Frage absenden"
+        "textareaPlaceholder": "Stellen Sie Ihre Frage hier...",
+        "buttonText": "Frage senden"
+      }
+    },
+    "ausbildung": {
+      "title": "Ausbildung bei Integra",
+      "subtitle": "Pflegefachkraft werden",
+      "description": "Möchten Sie eine Karriere in der Pflege beginnen? Bei Integra bieten wir Ausbildungsplätze für angehende Pflegefachkräfte an. Für mehr Informationen nutzen Sie unser Kontaktformular.",
+      "contactForm": {
+        "title": "Interessiert an einer Ausbildung?",
+        "inputFields": [
+          { "type": "text", "placeholder": "Ihr Name" },
+          { "type": "email", "placeholder": "Ihre E-Mail" },
+          { "type": "tel", "placeholder": "Ihre Telefonnummer" }
+        ],
+        "selectOptions": [
+          "Thema auswählen",
+          "Ausbildung zur Pflegefachkraft",
+          "Praktikum",
+          "Weiterbildung",
+          "Sonstiges"
+        ],
+        "textareaPlaceholder": "Weitere Informationen oder Fragen...",
+        "buttonText": "Jetzt bewerben"
       }
     }
   },

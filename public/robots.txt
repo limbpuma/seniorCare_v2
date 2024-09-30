@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /admin/
 Disallow: /wp-login.php
-Sitemap: https://your-site.com/sitemap.xml
+Sitemap: https://www.pflegedienst-integra.de/sitemap.xml
