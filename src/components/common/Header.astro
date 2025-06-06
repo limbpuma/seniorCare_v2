@@ -76,27 +76,26 @@ const NAVIGATION = navAnchors
       </ul>
     </div>
   </div>
-
   <!-- Main Navigation -->
-  <nav class="bg-white">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6">
-      <div class="flex justify-between items-center h-20">
+  <nav class="bg-white border-b">
+    <div class="max-w-7xl mx-auto px-2 sm:px-4 md:px-6">
+      <div class="flex items-center justify-between min-h-[4rem] md:min-h-[5rem] lg:min-h-[6rem]">
         <!-- Logo section -->
-        <div class="flex-shrink-0">
+        <div class="flex-shrink-0 flex items-center py-2">
           <a href="/" class="block">
-            <Logo class="h-14 md:h-16 w-auto" color="dark" />
+            <Logo class="h-10 md:h-12 lg:h-14 w-auto" color="dark" />
           </a>
         </div>
 
         <!-- Navigation Links - Desktop -->
-        <div class="hidden md:flex items-center justify-center flex-1 px-8">
+        <div class="hidden md:flex items-center justify-center px-4">
           <Nav links={NAVIGATION} />
         </div>
 
         <!-- Button and Mobile menu -->
-        <div class="flex items-center">
+        <div class="flex items-center gap-2 md:gap-3 shrink-0">
           <Button 
-            class="hidden md:flex whitespace-nowrap" 
+            class="hidden md:inline-flex items-center text-sm lg:text-base py-2 px-3 lg:px-4 min-w-[120px] lg:min-w-[140px]" 
             variant="primary" 
             size="medium"
             href={`tel:${headerTexts.phone}`}
@@ -108,7 +107,7 @@ const NAVIGATION = navAnchors
           <button
             data-collapse-toggle="navbar-cta"
             type="button"
-            class="inline-flex items-center p-2 ml-3 text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+            class="inline-flex items-center justify-center p-2 text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
             aria-controls="navbar-cta"
             aria-expanded="false"
           >
@@ -138,7 +137,7 @@ const NAVIGATION = navAnchors
           <Nav links={NAVIGATION} />
           <div class="mt-4">
             <Button 
-              class="w-full text-center justify-center"
+              class="w-full text-center justify-center py-2"
               variant="primary" 
               size="medium"
               href={`tel:${headerTexts.phone}`}

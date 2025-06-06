@@ -1,31 +1,35 @@
 ---
-interface Link {
-  name: string;
-  href: string;
-  isAnchor?: boolean;
-}
-
 interface Props {
-  links: Link[];
+  links: Array<{
+    name: string;
+    href: string;
+    isAnchor?: boolean;
+  }>;
+
+  // Add any other props your component needs here
 }
 
 const { links } = Astro.props;
 ---
 
-<nav>
-  <ul class="md:flex md:space-x-8">
-    {
-      links.map(({ name, href, isAnchor }) => (
-        <li>
-          <a
-            href={href}
-            class="block py-2 px-3 md:p-0 text-gray-900 hover:text-primary-600 transition-colors duration-200"
-            {...(isAnchor && { "data-nav-link": true })}
-          >
-            {name}
-          </a>
-        </li>
-      ))
-    }
-  </ul>
-</nav>
+<ul class="flex flex-col md:flex-row items-center gap-4 md:gap-8 lg:gap-12">
+  {
+    links.map(({ name, href, isAnchor }) => (
+      <li>
+        <a
+          href={href}
+          class="block py-2 md:py-0 text-gray-900 hover:text-primary-600 transition-colors duration-200 text-base lg:text-lg"
+          {...(isAnchor && { "data-nav-link": true })}
+        >
+          {name}
+        </a>
+      </li>
+    ))
+  }
+</ul>
+
+<style>
+  .active {
+    color: var(--color-primary-600);
+  }
+</style>
