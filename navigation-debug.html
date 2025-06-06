@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Debug Test</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            padding: 20px; 
+            line-height: 1.6;
+        }
+        .debug-section {
+            margin: 20px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .test-link {
+            display: inline-block;
+            margin: 5px 10px 5px 0;
+            padding: 10px 15px;
+            background: #007acc;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        .test-link:hover {
+            background: #005a9d;
+        }
+        .status {
+            font-weight: bold;
+            margin-left: 10px;
+        }
+        .success { color: green; }
+        .error { color: red; }
+        .warning { color: orange; }
+    </style>
+</head>
+<body>
+    <h1>🔍 Navigation Debug Test - Integra SeniorCare</h1>
+    
+    <div class="debug-section">
+        <h2>📋 Navigation Links Test</h2>
+        <p>Testing direct navigation to all pages:</p>
+        
+        <a href="/index.html" class="test-link" target="_blank">Home (index)</a>
+        <span class="status" id="home-status">Testing...</span><br>
+        
+        <a href="/about" class="test-link" target="_blank">About</a>
+        <span class="status" id="about-status">Testing...</span><br>
+        
+        <a href="/services" class="test-link" target="_blank">Services</a>
+        <span class="status" id="services-status">Testing...</span><br>
+        
+        <a href="/contact" class="test-link" target="_blank">Contact</a>
+        <span class="status" id="contact-status">Testing...</span><br>
+        
+        <a href="/faq" class="test-link" target="_blank">FAQ</a>
+        <span class="status" id="faq-status">Testing...</span><br>
+        
+        <a href="/accessibility" class="test-link" target="_blank">Accessibility</a>
+        <span class="status" id="accessibility-status">Testing...</span><br>
+        
+        <a href="/legal" class="test-link" target="_blank">Legal/Impressum</a>
+        <span class="status" id="legal-status">Testing...</span><br>
+        
+        <a href="/privacypolicy" class="test-link" target="_blank">Privacy Policy</a>
+        <span class="status" id="privacy-status">Testing...</span><br>
+    </div>
+    
+    <div class="debug-section">
+        <h2>🚀 Dev Server Test</h2>
+        <p>Current dev server: <strong>http://localhost:4323/</strong></p>
+        <a href="http://localhost:4323/" class="test-link" target="_blank">Test Main Site</a>
+    </div>
+    
+    <div class="debug-section">
+        <h2>📊 Diagnostic Results</h2>
+        <div id="diagnostic-results">
+            <p><strong>Browser:</strong> <span id="browser-info"></span></p>
+            <p><strong>Screen Size:</strong> <span id="screen-info"></span></p>
+            <p><strong>JavaScript Enabled:</strong> <span class="success">✅ Yes</span></p>
+            <p><strong>Local Storage:</strong> <span id="storage-info"></span></p>
+        </div>
+    </div>
+    
+    <div class="debug-section">
+        <h2>🔧 Troubleshooting Steps</h2>
+        <ol>
+            <li>✅ Check if dev server is running on port 4323</li>
+            <li>🔍 Test each navigation link individually</li>
+            <li>📱 Test mobile menu functionality</li>
+            <li>🖥️ Check desktop navigation visibility</li>
+            <li>🎯 Verify ARIA attributes are working</li>
+            <li>🔄 Test browser refresh between pages</li>
+        </ol>
+    </div>
+
+    <script>
+        // Diagnostic information
+        document.addEventListener('DOMContentLoaded', function() {
+            // Browser info
+            document.getElementById('browser-info').textContent = navigator.userAgent.split(' ').slice(-2).join(' ');
+            
+            // Screen info
+            document.getElementById('screen-info').textContent = `${window.innerWidth}x${window.innerHeight}`;
+            
+            // Storage info
+            try {
+                localStorage.setItem('test', 'test');
+                localStorage.removeItem('test');
+                document.getElementById('storage-info').innerHTML = '<span class="success">✅ Available</span>';
+            } catch(e) {
+                document.getElementById('storage-info').innerHTML = '<span class="error">❌ Blocked</span>';
+            }
+            
+            // Test link functionality
+            const links = document.querySelectorAll('.test-link');
+            links.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    const url = this.href;
+                    const linkText = this.textContent;
+                    console.log(`Testing link: ${linkText} -> ${url}`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>

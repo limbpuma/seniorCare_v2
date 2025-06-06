@@ -1,0 +1,89 @@
+---
+interface Props {
+  class?: string;
+  padding?: "none" | "sm" | "md" | "lg" | "xl";
+  variant?: "default" | "elevated" | "outlined" | "soft";
+  radius?: "none" | "sm" | "md" | "lg" | "xl";
+  hover?: boolean;
+  interactive?: boolean;
+  href?: string;
+  target?: string;
+  rel?: string;
+  role?: string;
+  ariaLabel?: string;
+}
+
+const {
+  class: className = "",
+  padding = "md",
+  variant = "default",
+  radius = "lg",
+  hover = false,
+  interactive = false,
+  href,
+  target,
+  rel,
+  role,
+  ariaLabel,
+  ...props
+} = Astro.props;
+
+// Padding classes
+const paddingClasses = {
+  none: "",
+  sm: "p-4",
+  md: "p-6",
+  lg: "p-8",
+  xl: "p-10"
+};
+
+// Variant classes
+const variantClasses = {
+  default: "bg-white border border-neutral-200",
+  elevated: "bg-white shadow-lg border border-neutral-100",
+  outlined: "bg-white border-2 border-neutral-300",
+  soft: "bg-neutral-50 border border-neutral-200"
+};
+
+// Radius classes
+const radiusClasses = {
+  none: "rounded-none",
+  sm: "rounded-sm",
+  md: "rounded-md",
+  lg: "rounded-lg",
+  xl: "rounded-xl"
+};
+
+// Interactive states
+const interactiveClasses = interactive || href ? [
+  "transition-all duration-200",
+  hover ? "hover:shadow-xl hover:scale-[1.02]" : "hover:shadow-md",
+  "focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2",
+  "cursor-pointer"
+].join(" ") : "";
+
+const hoverClasses = hover && !interactive && !href ? "hover:shadow-lg transition-all duration-200" : "";
+
+const classes = [
+  variantClasses[variant],
+  paddingClasses[padding],
+  radiusClasses[radius],
+  interactiveClasses,
+  hoverClasses,
+  className
+].filter(Boolean).join(" ");
+
+const Element = href ? "a" : "div";
+---
+
+<Element
+  class={classes}
+  href={href}
+  target={target}
+  rel={rel}
+  role={role}
+  aria-label={ariaLabel}
+  {...props}
+>
+  <slot />
+</Element>

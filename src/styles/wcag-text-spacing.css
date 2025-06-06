@@ -1,0 +1,98 @@
+/* WCAG 2.2 Text Spacing Test Styles */
+/* This file can be included to test 1.4.12 compliance */
+
+/* Apply WCAG 2.2 required text spacing for testing */
+.wcag-test-spacing {
+  /* Line height to at least 1.5 times the font size */
+  line-height: 1.5 !important;
+  
+  /* Letter spacing to at least 0.12 times the font size */
+  letter-spacing: 0.12em !important;
+  
+  /* Word spacing to at least 0.16 times the font size */
+  word-spacing: 0.16em !important;
+}
+
+/* Paragraph spacing to at least 2 times the font size */
+.wcag-test-spacing p,
+.wcag-test-spacing div,
+.wcag-test-spacing section,
+.wcag-test-spacing article {
+  margin-bottom: 2em !important;
+}
+
+/* Test all text elements */
+.wcag-test-spacing * {
+  line-height: 1.5 !important;
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+}
+
+/* Ensure no content is lost or cut off */
+.wcag-test-spacing {
+  overflow: visible !important;
+  white-space: normal !important;
+  text-overflow: visible !important;
+  max-width: none !important;
+}
+
+/* Fix containers that might break */
+.wcag-test-spacing .container,
+.wcag-test-spacing .grid,
+.wcag-test-spacing .flex {
+  overflow: visible !important;
+  height: auto !important;
+  min-height: auto !important;
+}
+
+/* Navigation spacing adjustments */
+.wcag-test-spacing nav,
+.wcag-test-spacing .navigation {
+  padding: 1rem !important;
+}
+
+.wcag-test-spacing nav a,
+.wcag-test-spacing .nav-link {
+  padding: 0.75rem 1rem !important;
+  margin: 0.25rem !important;
+}
+
+/* Button and interactive element spacing */
+.wcag-test-spacing button,
+.wcag-test-spacing .btn,
+.wcag-test-spacing input,
+.wcag-test-spacing select,
+.wcag-test-spacing textarea {
+  padding: 0.75rem 1rem !important;
+  margin: 0.5rem 0.25rem !important;
+  min-height: 44px !important;
+}
+
+/* Card and content block adjustments */
+.wcag-test-spacing .card,
+.wcag-test-spacing .content-block {
+  padding: 2rem !important;
+  margin: 1rem 0 !important;
+}
+
+/* Header and title spacing */
+.wcag-test-spacing h1,
+.wcag-test-spacing h2,
+.wcag-test-spacing h3,
+.wcag-test-spacing h4,
+.wcag-test-spacing h5,
+.wcag-test-spacing h6 {
+  margin-bottom: 1.5em !important;
+  margin-top: 1em !important;
+}
+
+/* List spacing */
+.wcag-test-spacing ul,
+.wcag-test-spacing ol {
+  margin-bottom: 2em !important;
+  padding-left: 2em !important;
+}
+
+.wcag-test-spacing li {
+  margin-bottom: 0.5em !important;
+}
