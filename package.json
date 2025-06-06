@@ -9,10 +9,10 @@
     "dev": "astro dev",
     "start": "astro dev",
     "lint": "eslint .",
-    "prettier": "prettier -w .",
-    "build": "astro check && astro build",
+    "prettier": "prettier -w .",    "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "test:nav": "astro dev & sleep 5 && tsx src/utils/test-navigation.ts; exit_code=$?; pkill -f 'astro dev'; exit $exit_code"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
@@ -42,6 +42,7 @@
     "typescript": "^5.5.4"
   },
   "devDependencies": {
-    "terser": "^5.41.0"
+    "terser": "^5.41.0",
+    "tsx": "^4.19.4"
   }
 }
