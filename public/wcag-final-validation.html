@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎯 WCAG 2.2 Final Validation - Integra Senior Care</title>
+    <title>🎯 WCAG 2.2 Finale Validierung - Integra Senior Care</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -196,127 +196,118 @@
         <div id="quickStats" style="margin-top: 10px; font-size: 12px;">
             Ready for testing...
         </div>
-    </div>
-
-    <div class="header">
-        <h1>🎯 WCAG 2.2 Final Validation</h1>
-        <h2>Integra Senior Care - Accessibility Implementation</h2>
-        <p><strong>Status:</strong> All 4 WCAG 2.2 criteria implemented and ready for validation</p>
+    </div>    <div class="header">
+        <h1>🎯 WCAG 2.2 Finale Validierung</h1>
+        <h2>Integra Senior Care - Barrierefreiheits-Implementierung</h2>
+        <p><strong>Status:</strong> Alle 4 WCAG 2.2 Kriterien implementiert und bereit für Validierung</p>
     </div>
 
     <!-- Control Panel -->
     <div class="test-container">
-        <h2>🎮 Control Panel</h2>
+        <h2>🎮 Kontrollzentrale</h2>
         <div style="text-align: center;">
             <button class="btn" id="toggleTextSpacing" onclick="toggleTextSpacing()">
-                <span class="emoji">🔤</span> Toggle Text Spacing Test
+                <span class="emoji">🔤</span> Textabstand-Test umschalten
             </button>
             <button class="btn" onclick="runDiagnostic()">
-                <span class="emoji">🔍</span> Run Diagnostic
+                <span class="emoji">🔍</span> Diagnose ausführen
             </button>
             <button class="btn btn-success" onclick="runAllValidationTests()">
-                <span class="emoji">🧪</span> Run All Validation Tests
+                <span class="emoji">🧪</span> Alle Validierungstests ausführen
             </button>
             <button class="btn btn-warning" onclick="clearStatus()">
-                <span class="emoji">🧹</span> Clear Status
+                <span class="emoji">🧹</span> Status löschen
             </button>
         </div>
     </div>
 
     <!-- Text Spacing Test Content -->
     <div class="test-container" id="textContent">
-        <h2>📝 1.4.12 Text Spacing Test Content</h2>
-        <p>Este es un párrafo de prueba para validar el espaciado de texto según WCAG 2.2. El texto debe mantener su legibilidad con el espaciado aumentado de líneas, letras, palabras y párrafos sin pérdida de contenido o funcionalidad.</p>
+        <h2>📝 1.4.12 Textabstand-Test Inhalt</h2>
+        <p>Dies ist ein Testabsatz zur Validierung des Textabstands gemäß WCAG 2.2. Der Text muss seine Lesbarkeit mit erhöhtem Zeilen-, Buchstaben-, Wort- und Absatzabstand ohne Inhaltsverlust oder Funktionalitätsverlust beibehalten.</p>
         
-        <p>Múltiples párrafos ayudan a probar los requisitos de espaciado entre párrafos. Cada párrafo debe tener un espaciado adecuado entre ellos para cumplir con el criterio 1.4.12.</p>
+        <p>Mehrere Absätze helfen bei der Prüfung der Anforderungen für Absatzabstände. Jeder Absatz sollte angemessene Abstände zwischen ihnen haben, um Kriterium 1.4.12 zu erfüllen.</p>
         
-        <h3>Lista de Verificación:</h3>
+        <h3>Prüfliste:</h3>
         <ul>
-            <li>✅ Line height: mínimo 1.5× el tamaño de fuente</li>
-            <li>✅ Letter spacing: mínimo 0.12× el tamaño de fuente</li>
-            <li>✅ Word spacing: mínimo 0.16× el tamaño de fuente</li>
-            <li>✅ Paragraph spacing: mínimo 2× el tamaño de fuente</li>
+            <li>✅ Zeilenhöhe: mindestens 1,5× der Schriftgröße</li>
+            <li>✅ Buchstabenabstand: mindestens 0,12× der Schriftgröße</li>
+            <li>✅ Wortabstand: mindestens 0,16× der Schriftgröße</li>
+            <li>✅ Absatzabstand: mindestens 2× der Schriftgröße</li>
         </ul>
         
         <blockquote style="border-left: 4px solid #007cba; padding-left: 20px; margin: 20px 0; font-style: italic;">
-            "El criterio 1.4.12 asegura que los usuarios puedan personalizar el espaciado del texto sin perder contenido o funcionalidad."
+            "Kriterium 1.4.12 stellt sicher, dass Benutzer den Textabstand anpassen können, ohne Inhalt oder Funktionalität zu verlieren."
         </blockquote>
     </div>
 
     <!-- Focus Test -->
     <div class="test-container">
-        <h2>🎯 2.4.11 Focus Not Obscured & 2.4.7 Focus Visible Test</h2>
-        <p>Use la tecla <kbd>Tab</kbd> para navegar entre estos elementos y observar los indicadores de focus mejorados:</p>
-        
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
-            <button class="btn" tabindex="1">🎯 Botón de Enfoque 1</button>
-            <button class="btn btn-success" tabindex="2">🎯 Botón de Enfoque 2</button>
-            <input type="text" placeholder="Campo de entrada de prueba" tabindex="3" style="padding: 12px; border-radius: 6px; border: 2px solid #ddd;">
+        <h2>🎯 2.4.11 Fokus nicht verdeckt & 2.4.7 Fokus sichtbar Test</h2>
+        <p>Verwenden Sie die <kbd>Tab</kbd>-Taste, um zwischen diesen Elementen zu navigieren und die verbesserten Fokusindikatoren zu beobachten:</p>
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 20px 0;">
+            <button class="btn" tabindex="1">🎯 Fokus-Button 1</button>
+            <button class="btn btn-success" tabindex="2">🎯 Fokus-Button 2</button>
+            <input type="text" placeholder="Test-Eingabefeld" tabindex="3" style="padding: 12px; border-radius: 6px; border: 2px solid #ddd;">
             <select tabindex="4" style="padding: 12px; border-radius: 6px; border: 2px solid #ddd;">
-                <option>📋 Opción 1</option>
-                <option>📋 Opción 2</option>
-                <option>📋 Opción 3</option>
+                <option>📋 Option 1</option>
+                <option>📋 Option 2</option>
+                <option>📋 Option 3</option>
             </select>
-            <a href="#" tabindex="5" style="padding: 12px; background: #e3f2fd; border-radius: 6px; text-decoration: none; display: block; text-align: center;">🔗 Enlace de prueba</a>
+            <a href="#" tabindex="5" style="padding: 12px; background: #e3f2fd; border-radius: 6px; text-decoration: none; display: block; text-align: center;">🔗 Test-Link</a>
         </div>
-    </div>
-
-    <!-- Hover/Focus Content Test -->
+    </div>    <!-- Hover/Focus Content Test -->
     <div class="test-container">
-        <h2>🖱️ 1.4.13 Content on Hover/Focus Test</h2>
-        <p>Haga hover o focus sobre estos elementos para probar el contenido adicional. Presione <kbd>Escape</kbd> para ocultar:</p>
+        <h2>🖱️ 1.4.13 Inhalt bei Hover/Focus Test</h2>
+        <p>Bewegen Sie den Mauszeiger über diese Elemente oder fokussieren Sie sie, um zusätzlichen Inhalt zu testen. Drücken Sie <kbd>Escape</kbd> zum Ausblenden:</p>
         
         <div style="text-align: center; margin: 30px 0;">
             <div class="hover-test" tabindex="6">
-                <span class="emoji">🖱️</span> Hover/Focus sobre mí
+                <span class="emoji">🖱️</span> Hover/Focus über mich
                 <div class="hover-content">
-                    ✅ Este contenido aparece en hover/focus y cumple con WCAG 1.4.13
+                    ✅ Dieser Inhalt erscheint bei Hover/Focus und erfüllt WCAG 1.4.13
                 </div>
             </div>
             
             <div class="hover-test" tabindex="7">
-                <span class="emoji">💬</span> Tooltip de ejemplo
+                <span class="emoji">💬</span> Tooltip-Beispiel
                 <div class="hover-content">
-                    📋 Contenido del tooltip - Dismissible, Hoverable, Persistent
+                    📋 Tooltip-Inhalt - Ausblendbar, Schwebbar, Persistent
                 </div>
             </div>
             
             <div class="hover-test" tabindex="8">
-                <span class="emoji">ℹ️</span> Información adicional
+                <span class="emoji">ℹ️</span> Zusätzliche Informationen
                 <div class="hover-content">
-                    🎯 Cumple con los 3 requisitos: Dismissible, Hoverable, Persistent
+                    🎯 Erfüllt die 3 Anforderungen: Ausblendbar, Schwebbar, Persistent
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Results Container -->
+    </div>    <!-- Results Container -->
     <div class="test-container">
-        <h2>📊 Resultados del Diagnóstico</h2>
+        <h2>📊 Diagnoseergebnisse</h2>
         <div id="diagnosticResults" class="results-container">
-            <p>🚀 Haga clic en <strong>"Run Diagnostic"</strong> o <strong>"Run All Validation Tests"</strong> para ver los resultados del análisis WCAG 2.2.</p>
+            <p>🚀 Klicken Sie auf <strong>"Diagnose ausführen"</strong> oder <strong>"Alle Validierungstests ausführen"</strong>, um die Ergebnisse der WCAG 2.2-Analyse zu sehen.</p>
         </div>
-    </div>
-
-    <!-- WCAG Compliance Summary -->
+    </div>    <!-- WCAG Compliance Summary -->
     <div class="test-container">
-        <h2>🏆 WCAG 2.2 Compliance Summary</h2>
+        <h2>🏆 WCAG 2.2 Konformitätszusammenfassung</h2>
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
             <div style="background: #e8f5e9; padding: 20px; border-radius: 8px; border-left: 4px solid #4caf50;">
-                <h3>✅ 1.4.12 Text Spacing</h3>
-                <p>Implementado con soporte completo para espaciado personalizable sin pérdida de contenido.</p>
+                <h3>✅ 1.4.12 Textabstand</h3>
+                <p>Implementiert mit vollständiger Unterstützung für anpassbaren Abstand ohne Inhaltsverlust.</p>
             </div>
             <div style="background: #e3f2fd; padding: 20px; border-radius: 8px; border-left: 4px solid #2196f3;">
-                <h3>✅ 2.4.11 Focus Not Obscured</h3>
-                <p>Indicadores de focus nunca completamente ocultos con z-index optimizado.</p>
+                <h3>✅ 2.4.11 Fokus nicht verdeckt</h3>
+                <p>Fokusindikatoren werden niemals vollständig verdeckt mit optimiertem z-index.</p>
             </div>
             <div style="background: #fff3e0; padding: 20px; border-radius: 8px; border-left: 4px solid #ff9800;">
-                <h3>✅ 1.4.13 Content on Hover/Focus</h3>
-                <p>Contenido adicional dismissible, hoverable y persistent según especificación.</p>
+                <h3>✅ 1.4.13 Inhalt bei Hover/Focus</h3>
+                <p>Zusätzlicher Inhalt ausblendbar, schwebbar und persistent nach Spezifikation.</p>
             </div>
             <div style="background: #fce4ec; padding: 20px; border-radius: 8px; border-left: 4px solid #e91e63;">
-                <h3>✅ 2.4.7 Focus Visible Enhancement</h3>
-                <p>Indicadores de focus mejorados con alto contraste y visibilidad superior.</p>
+                <h3>✅ 2.4.7 Fokus sichtbar Verbesserung</h3>
+                <p>Verbesserte Fokusindikatoren mit hohem Kontrast und überlegener Sichtbarkeit.</p>
             </div>
         </div>
     </div>
