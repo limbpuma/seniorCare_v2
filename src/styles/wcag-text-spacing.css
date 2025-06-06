@@ -4,28 +4,43 @@
 /* Apply WCAG 2.2 required text spacing for testing */
 .wcag-test-spacing {
   /* Line height to at least 1.5 times the font size */
-  line-height: 1.5 !important;
+  line-height: 1.8 !important;
   
   /* Letter spacing to at least 0.12 times the font size */
-  letter-spacing: 0.12em !important;
+  letter-spacing: 0.15em !important;
   
   /* Word spacing to at least 0.16 times the font size */
-  word-spacing: 0.16em !important;
+  word-spacing: 0.2em !important;
+  
+  /* Additional visual feedback */
+  transition: all 0.3s ease !important;
+  padding: 1rem !important;
 }
 
 /* Paragraph spacing to at least 2 times the font size */
 .wcag-test-spacing p,
 .wcag-test-spacing div,
 .wcag-test-spacing section,
-.wcag-test-spacing article {
-  margin-bottom: 2em !important;
+.wcag-test-spacing article,
+.wcag-test-spacing li {
+  margin-bottom: 2.5em !important;
 }
 
 /* Test all text elements */
 .wcag-test-spacing * {
-  line-height: 1.5 !important;
-  letter-spacing: 0.12em !important;
-  word-spacing: 0.16em !important;
+  line-height: 1.8 !important;
+  letter-spacing: 0.15em !important;
+  word-spacing: 0.2em !important;
+}
+
+/* Enhanced visual feedback for testing */
+.wcag-test-spacing h1,
+.wcag-test-spacing h2,
+.wcag-test-spacing h3 {
+  letter-spacing: 0.1em !important;
+  word-spacing: 0.15em !important;
+  line-height: 1.6 !important;
+  margin-bottom: 1.5em !important;
 }
 
 /* Ensure no content is lost or cut off */
