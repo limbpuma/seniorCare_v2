@@ -17,59 +17,66 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
 
 <!doctype html>
 <html lang="de">
-  <Head title={title} />
-  <!-- Meta Description -->
-  <meta name="description" content={description} />
+  <head>
+    <Head title={title} />
+    <!-- Meta Description -->
+    <meta name="description" content={description} />
     <!-- Keywords for SEO -->
-  <meta name="keywords" content={keywords} />
-  <link rel="stylesheet" href="/src/styles/main.css" />
-  <!-- WCAG 2.2 Text Spacing Support -->
-  <link rel="stylesheet" href="/src/styles/wcag-text-spacing.css" id="wcag-text-spacing" />  <!-- WCAG 2.2 Focus Not Obscured Support -->
-  <link rel="stylesheet" href="/src/styles/wcag-focus-not-obscured.css" id="wcag-focus-not-obscured" />  <!-- WCAG 2.2 Content on Hover or Focus Support -->
-  <link rel="stylesheet" href="/src/styles/wcag-content-hover-focus.css" id="wcag-content-hover-focus" />
-  <!-- WCAG 2.2 Focus Visible Enhancement Support -->
-  <link rel="stylesheet" href="/src/styles/wcag-focus-visible-enhancement.css" id="wcag-focus-visible-enhancement" />  <!-- Essential FontAwesome icons only -->  <link
-    rel="preload"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    as="style"
-    onload={`this.onload=null;this.rel='stylesheet'`}
-  />
-  <noscript>
+    <meta name="keywords" content={keywords} />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <!-- WCAG 2.2 Text Spacing Support -->
+    <link rel="stylesheet" href="/src/styles/wcag-text-spacing.css" id="wcag-text-spacing" />
+    <!-- WCAG 2.2 Focus Not Obscured Support -->
+    <link rel="stylesheet" href="/src/styles/wcag-focus-not-obscured.css" id="wcag-focus-not-obscured" />
+    <!-- WCAG 2.2 Content on Hover or Focus Support -->
+    <link rel="stylesheet" href="/src/styles/wcag-content-hover-focus.css" id="wcag-content-hover-focus" />
+    <!-- WCAG 2.2 Focus Visible Enhancement Support -->
+    <link rel="stylesheet" href="/src/styles/wcag-focus-visible-enhancement.css" id="wcag-focus-visible-enhancement" />
+    <!-- Essential FontAwesome icons only -->
     <link
-      rel="stylesheet"
+      rel="preload"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      as="style"
+      onload={`this.onload=null;this.rel='stylesheet'`}
     />
-  </noscript>  <!-- Performance Optimized Lazy Loading System -->
-  <script src="/src/utils/lazy-loader.js" type="module" is:inline></script>
-  
-  <!-- Intelligent Preloading System -->
-  <script src="/src/utils/intelligent-preloader.js" type="module" is:inline></script>
-    <!-- Accessibility Manager System -->
-  <script src="/src/utils/accessibility-manager.js" type="module" is:inline></script>
-  
-  <!-- Landing Page Navigation System -->
-  <script src="/src/utils/landing-page-navigator.ts" type="module" is:inline></script>
-  <!-- WCAG Test Suite Loader - Only load when needed -->
-  <script type="module" is:inline>
-    // Expose WCAG test loader for development/testing
-    window.loadWCAGTests = () => {
-      if (window.lazyLoader) {
-        window.lazyLoader.loadWCAGTestSuite();
-      }
-    };
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      />
+    </noscript>
+    <!-- Performance Optimized Lazy Loading System -->
+    <script src="/src/utils/lazy-loader.js" type="module" is:inline></script>
     
-    // Auto-load WCAG test suite only in development or when URL contains test parameter
-    if (window.location.search.includes('wcag-test') || window.location.hostname === 'localhost') {
-      setTimeout(() => {
+    <!-- Intelligent Preloading System -->
+    <script src="/src/utils/intelligent-preloader.js" type="module" is:inline></script>
+    <!-- Accessibility Manager System -->
+    <script src="/src/utils/accessibility-manager.js" type="module" is:inline></script>
+    
+    <!-- Landing Page Navigation System -->
+    <script src="/src/utils/landing-page-navigator.ts" type="module" is:inline></script>
+    
+    <!-- WCAG Test Suite Loader - Only load when needed -->
+    <script type="module" is:inline>
+      // Expose WCAG test loader for development/testing
+      window.loadWCAGTests = () => {
         if (window.lazyLoader) {
           window.lazyLoader.loadWCAGTestSuite();
         }
-      }, 3000); // Load after 3 seconds in development
-    }
-  </script>
+      };
+      
+      // Auto-load WCAG test suite only in development or when URL contains test parameter
+      if (window.location.search.includes('wcag-test') || window.location.hostname === 'localhost') {
+        setTimeout(() => {
+          if (window.lazyLoader) {
+            window.lazyLoader.loadWCAGTestSuite();
+          }
+        }, 3000); // Load after 3 seconds in development
+      }
+    </script>
+  </head>
 
-<body class="bg-white">
-    <Header navAnchors={navAnchors} />
+  <body class="bg-white">    <Header navAnchors={navAnchors} />
     <main class="relative">
       <slot />
       <CookieConsent client:idle />
@@ -237,8 +244,7 @@ body {
     elements.forEach((el) => {
       observer.observe(el);
       observers.set(el, observer);
-    });
-  };
+    });  };
 
   // Use efficient DOM ready detection
   if (document.readyState === 'loading') {
@@ -247,3 +253,4 @@ body {
     initAnimations();
   }
 </script>
+</style>
