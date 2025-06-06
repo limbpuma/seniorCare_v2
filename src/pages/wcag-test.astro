@@ -1,0 +1,184 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="WCAG 2.2 Testing Page">
+  <main class="container mx-auto px-4 py-8">
+    <h1 class="text-3xl font-bold mb-8">WCAG 2.2 Criteria Testing</h1>
+    
+    <!-- Test Results Display -->
+    <div id="test-results" class="mb-8 p-4 border rounded-lg bg-gray-50">
+      <h2 class="text-xl font-semibold mb-4">Test Results</h2>
+      <div id="results-container">
+        <p>Click "Run All Tests" to validate WCAG 2.2 implementations</p>
+      </div>
+    </div>
+
+    <!-- Test Controls -->
+    <div class="mb-8">
+      <button id="run-all-tests" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 mr-4">
+        Run All Tests
+      </button>
+      <button id="toggle-text-spacing" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 mr-4">
+        Toggle Text Spacing Test
+      </button>
+      <button id="clear-results" class="bg-gray-600 text-white px-6 py-3 rounded-lg hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500">
+        Clear Results
+      </button>
+    </div>
+
+    <!-- Test Content Sections -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">1.4.12 Text Spacing Test</h2>
+      <div id="text-spacing-test" class="p-4 border rounded-lg">
+        <p>This is a test paragraph to validate text spacing criteria. The text should maintain readability with increased line height, letter spacing, word spacing, and paragraph spacing.</p>
+        <p>Multiple paragraphs help test paragraph spacing requirements. Each paragraph should have adequate spacing between them.</p>
+        <ul>
+          <li>List item with proper spacing</li>
+          <li>Another list item to test spacing</li>
+          <li>Final list item for validation</li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">2.4.11 Focus Not Obscured Test</h2>
+      <div class="p-4 border rounded-lg">
+        <p>Tab through these elements to test focus visibility:</p>
+        <div class="space-y-2 mt-4">
+          <button class="block bg-blue-500 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-blue-300">Button 1</button>
+          <button class="block bg-green-500 text-white px-4 py-2 rounded focus:outline-none focus:ring-2 focus:ring-green-300">Button 2</button>
+          <input type="text" placeholder="Test input field" class="block w-full px-3 py-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-300">
+          <a href="#" class="block text-blue-600 underline focus:outline-none focus:ring-2 focus:ring-blue-300 focus:rounded">Test Link</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">1.4.13 Content on Hover or Focus Test</h2>
+      <div class="p-4 border rounded-lg">
+        <p>Hover over or focus on these elements to test hover/focus content:</p>
+        <div class="space-y-4 mt-4">
+          <div class="relative inline-block">
+            <button class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 focus:outline-none focus:ring-2 focus:ring-purple-300">
+              Hover/Focus Me
+              <div class="wcag-hover-content absolute top-full left-0 mt-2 p-3 bg-gray-800 text-white rounded shadow-lg opacity-0 pointer-events-none transition-opacity">
+                This is additional content that appears on hover or focus
+              </div>
+            </button>
+          </div>
+          <div class="relative inline-block">
+            <span class="text-blue-600 underline cursor-pointer" tabindex="0">
+              Tooltip Example
+              <div class="wcag-hover-content absolute top-full left-0 mt-2 p-2 bg-yellow-200 text-black rounded shadow opacity-0 pointer-events-none transition-opacity">
+                Tooltip content here
+              </div>
+            </span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">2.4.7 Focus Visible Enhancement Test</h2>
+      <div class="p-4 border rounded-lg">
+        <p>Tab through these elements to test enhanced focus indicators:</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
+          <button class="bg-red-500 text-white px-4 py-2 rounded focus-enhanced">Enhanced Focus Button</button>
+          <input type="email" placeholder="Email input" class="px-3 py-2 border rounded focus-enhanced">
+          <select class="px-3 py-2 border rounded focus-enhanced">
+            <option>Select Option 1</option>
+            <option>Select Option 2</option>
+          </select>
+        </div>
+      </div>
+    </section>
+
+    <!-- Manual Test Instructions -->
+    <section class="mb-8">
+      <h2 class="text-2xl font-semibold mb-4">Manual Testing Instructions</h2>
+      <div class="p-4 border rounded-lg bg-blue-50">
+        <ol class="list-decimal list-inside space-y-2">
+          <li><strong>Text Spacing (1.4.12):</strong> Click "Toggle Text Spacing Test" to apply maximum spacing and verify no content is lost or cut off.</li>
+          <li><strong>Focus Not Obscured (2.4.11):</strong> Use Tab key to navigate through focusable elements and verify focus indicators are clearly visible and not obscured.</li>
+          <li><strong>Content on Hover/Focus (1.4.13):</strong> Hover over or focus on tooltip elements and verify content can be dismissed and doesn't interfere with other content.</li>
+          <li><strong>Focus Visible Enhancement (2.4.7):</strong> Use Tab key to navigate and verify enhanced focus indicators provide clear visual feedback.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    // Import and run the comprehensive WCAG test suite
+    import('../utils/wcag22-comprehensive-test.js').then(module => {
+      console.log('WCAG 2.2 test suite loaded');
+      
+      // Initialize test controls
+      document.getElementById('run-all-tests').addEventListener('click', () => {
+        if (window.WCAG22Tests) {
+          const results = window.WCAG22Tests.runAllTests();
+          displayResults(results);
+        }
+      });
+
+      document.getElementById('toggle-text-spacing').addEventListener('click', () => {
+        const testElement = document.getElementById('text-spacing-test');
+        testElement.classList.toggle('wcag-test-spacing');
+        
+        const button = document.getElementById('toggle-text-spacing');
+        if (testElement.classList.contains('wcag-test-spacing')) {
+          button.textContent = 'Remove Text Spacing Test';
+          button.classList.remove('bg-green-600', 'hover:bg-green-700', 'focus:ring-green-500');
+          button.classList.add('bg-red-600', 'hover:bg-red-700', 'focus:ring-red-500');
+        } else {
+          button.textContent = 'Toggle Text Spacing Test';
+          button.classList.remove('bg-red-600', 'hover:bg-red-700', 'focus:ring-red-500');
+          button.classList.add('bg-green-600', 'hover:bg-green-700', 'focus:ring-green-500');
+        }
+      });
+
+      document.getElementById('clear-results').addEventListener('click', () => {
+        document.getElementById('results-container').innerHTML = '<p>Test results cleared. Click "Run All Tests" to validate WCAG 2.2 implementations</p>';
+      });
+    }).catch(error => {
+      console.error('Error loading WCAG test suite:', error);
+    });
+
+    function displayResults(results) {
+      const container = document.getElementById('results-container');
+      let html = '<div class="space-y-4">';
+      
+      results.forEach(result => {
+        const statusClass = result.passed ? 'bg-green-100 border-green-500 text-green-800' : 'bg-red-100 border-red-500 text-red-800';
+        const statusIcon = result.passed ? '✅' : '❌';
+        
+        html += `
+          <div class="p-4 border-l-4 ${statusClass}">
+            <div class="flex items-center">
+              <span class="text-2xl mr-3">${statusIcon}</span>
+              <div>
+                <h3 class="font-semibold">${result.criterion}</h3>
+                <p class="text-sm">${result.description}</p>
+                ${result.details ? `<p class="text-xs mt-1 opacity-75">${result.details}</p>` : ''}
+              </div>
+            </div>
+          </div>
+        `;
+      });
+      
+      html += '</div>';
+      container.innerHTML = html;
+    }
+
+    // Add keyboard navigation improvements
+    document.addEventListener('keydown', (e) => {
+      // Escape key to dismiss hover content
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.wcag-hover-content').forEach(el => {
+          el.style.opacity = '0';
+          el.style.pointerEvents = 'none';
+        });
+      }
+    });
+  </script>
+</Layout>
