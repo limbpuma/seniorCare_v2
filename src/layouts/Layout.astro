@@ -49,8 +49,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
   
   <!-- Landing Page Navigation System -->
   <script src="/src/utils/landing-page-navigator.ts" type="module" is:inline></script>
-  
-  <!-- WCAG Test Suite Loader - Only load when needed -->
+    <!-- WCAG Test Suite Loader - Only load when needed -->
   <script type="module" is:inline>
     // Expose WCAG test loader for development/testing
     window.loadWCAGTests = () => {
@@ -65,7 +64,9 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
         if (window.lazyLoader) {
           window.lazyLoader.loadWCAGTestSuite();
         }
-      }, 3000); // Load after 3 seconds in development    }  </script><body class="bg-white">
+      }, 3000); // Load after 3 seconds in development
+    }
+  </script><body class="bg-white">
     <Header navAnchors={navAnchors} />
     <main class="relative">
       <slot />
