@@ -118,11 +118,10 @@ class IntelligentPreloader {
 
   /**
    * Preload common images that appear on multiple pages
-   */
-  preloadCommonImages() {
+   */  preloadCommonImages() {
     const commonImages = [
-      '/public/assets/img/logo.webp',
-      '/public/assets/img/hero-bg.webp'
+      '/assets/img/senior_citizen_face.webp',
+      '/assets/img/nurse_doctor_senior_care.webp'
     ];
 
     commonImages.forEach(src => {

@@ -1,0 +1,389 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+const title = "Performance Dashboard | Integra Senior Care";
+const page = "home";
+---
+
+<Layout title={title} page={page}>
+  <div class="min-h-screen bg-gray-50 py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl font-bold text-gray-900 mb-4">
+          Performance Dashboard
+        </h1>
+        <p class="text-xl text-gray-600">
+          Monitor real-time performance metrics and WCAG 2.2 compliance
+        </p>
+      </div>
+
+      <!-- Core Web Vitals -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+          <div class="p-5">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center">
+                  <span class="text-white font-bold">LCP</span>
+                </div>
+              </div>
+              <div class="ml-5 w-0 flex-1">
+                <dl>
+                  <dt class="text-sm font-medium text-gray-500 truncate">
+                    Largest Contentful Paint
+                  </dt>
+                  <dd id="lcp-value" class="text-lg font-medium text-gray-900">
+                    Measuring...
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+          <div class="p-5">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center">
+                  <span class="text-white font-bold">FID</span>
+                </div>
+              </div>
+              <div class="ml-5 w-0 flex-1">
+                <dl>
+                  <dt class="text-sm font-medium text-gray-500 truncate">
+                    First Input Delay
+                  </dt>
+                  <dd id="fid-value" class="text-lg font-medium text-gray-900">
+                    Measuring...
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white overflow-hidden shadow rounded-lg">
+          <div class="p-5">
+            <div class="flex items-center">
+              <div class="flex-shrink-0">
+                <div class="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center">
+                  <span class="text-white font-bold">CLS</span>
+                </div>
+              </div>
+              <div class="ml-5 w-0 flex-1">
+                <dl>
+                  <dt class="text-sm font-medium text-gray-500 truncate">
+                    Cumulative Layout Shift
+                  </dt>
+                  <dd id="cls-value" class="text-lg font-medium text-gray-900">
+                    Measuring...
+                  </dd>
+                </dl>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WCAG Feature Usage -->
+      <div class="bg-white shadow rounded-lg mb-8">
+        <div class="px-4 py-5 sm:p-6">
+          <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">
+            WCAG 2.2 Feature Usage
+          </h3>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+              <span class="text-sm font-medium text-gray-600">Text Spacing</span>
+              <span id="text-spacing-status" class="px-2 py-1 text-xs font-medium rounded-full bg-gray-200 text-gray-700">
+                Inactive
+              </span>
+            </div>
+            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+              <span class="text-sm font-medium text-gray-600">High Contrast</span>
+              <span id="high-contrast-status" class="px-2 py-1 text-xs font-medium rounded-full bg-gray-200 text-gray-700">
+                Inactive
+              </span>
+            </div>
+            <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
+              <span class="text-sm font-medium text-gray-600">Focus Indicators</span>
+              <span id="focus-indicators-status" class="px-2 py-1 text-xs font-medium rounded-full bg-gray-200 text-gray-700">
+                Inactive
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Performance Score -->
+      <div class="bg-white shadow rounded-lg mb-8">
+        <div class="px-4 py-5 sm:p-6">
+          <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">
+            Overall Performance Score
+          </h3>
+          <div class="flex items-center justify-center">
+            <div class="text-center">
+              <div id="performance-score" class="text-6xl font-bold text-blue-600 mb-2">
+                --
+              </div>
+              <div id="performance-grade" class="text-xl font-medium text-gray-600">
+                Calculating...
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent Activity Log -->
+      <div class="bg-white shadow rounded-lg">
+        <div class="px-4 py-5 sm:p-6">
+          <h3 class="text-lg leading-6 font-medium text-gray-900 mb-4">
+            Activity Log
+          </h3>
+          <div id="activity-log" class="space-y-2 max-h-64 overflow-y-auto">
+            <p class="text-gray-500">Monitoring started...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="mt-8 flex justify-center space-x-4">
+        <button
+          id="generate-report"
+          class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+        >
+          Generate Report
+        </button>
+        <button
+          id="clear-log"
+          class="bg-gray-600 hover:bg-gray-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+        >
+          Clear Log
+        </button>
+        <a
+          href="/wcag-test"
+          class="bg-green-600 hover:bg-green-700 text-white px-6 py-2 rounded-lg font-medium transition-colors"
+        >
+          WCAG Test Page
+        </a>
+      </div>
+    </div>
+  </div>
+</Layout>
+
+<script>  // Performance Dashboard Controller
+  class PerformanceDashboard {
+    activityLog: string[];
+    
+    constructor() {
+      this.activityLog = [];
+      this.init();
+    }
+    
+    init() {
+      this.setupEventListeners();
+      this.startMonitoring();
+    }
+      setupEventListeners() {
+      // Listen for performance metrics
+      document.addEventListener('performance-metric', (event: Event) => {
+        // @ts-ignore - Custom events have detail property
+        this.updateMetric(event.detail);
+      });
+      
+      // Listen for accessibility feature usage
+      document.addEventListener('accessibility-usage', (event: Event) => {
+        // @ts-ignore - Custom events have detail property
+        this.updateAccessibilityStatus(event.detail);
+      });
+      
+      // Listen for errors
+      document.addEventListener('performance-error', (event: Event) => {
+        // @ts-ignore - Custom events have detail property
+        this.logError(event.detail);
+      });
+      
+      // Button event listeners
+      document.getElementById('generate-report')?.addEventListener('click', () => {
+        this.generateReport();
+      });
+      
+      document.getElementById('clear-log')?.addEventListener('click', () => {
+        this.clearLog();
+      });
+    }
+      updateMetric(detail: any) {
+      const { name, value } = detail;
+      
+      switch (name) {
+        case 'LCP':
+          this.updateElement('lcp-value', `${value}ms`);
+          this.updateScoreColor('lcp-value', this.scoreLCP(value));
+          break;
+        case 'FID':
+          this.updateElement('fid-value', `${value}ms`);
+          this.updateScoreColor('fid-value', this.scoreFID(value));
+          break;
+        case 'CLS':
+          this.updateElement('cls-value', value.toFixed(3));
+          this.updateScoreColor('cls-value', this.scoreCLS(value));
+          break;
+      }
+      
+      this.logActivity(`📊 ${name}: ${value}${this.getUnitForMetric(name)}`);
+      this.updateOverallScore();
+    }
+      updateAccessibilityStatus(detail: any) {
+      const { feature, enabled } = detail;
+      const statusMap: Record<string, string> = {
+        'textSpacing': 'text-spacing-status',
+        'highContrast': 'high-contrast-status',
+        'focusIndicators': 'focus-indicators-status'
+      };
+      
+      const elementId = statusMap[feature];
+      if (elementId) {
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.textContent = enabled ? 'Active' : 'Inactive';
+          element.className = enabled 
+            ? 'px-2 py-1 text-xs font-medium rounded-full bg-green-200 text-green-800'
+            : 'px-2 py-1 text-xs font-medium rounded-full bg-gray-200 text-gray-700';
+        }
+      }
+      
+      this.logActivity(`♿ ${feature}: ${enabled ? 'ENABLED' : 'DISABLED'}`);
+    }
+      updateElement(id: string, text: string) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.textContent = text;
+      }
+    }
+    
+    updateScoreColor(id: string, score: number) {
+      const element = document.getElementById(id);
+      if (element) {
+        element.className = element.className.replace(/text-\w+-\d+/, this.getScoreColor(score));
+      }
+    }
+      getScoreColor(score: number): string {
+      if (score >= 90) return 'text-green-600';
+      if (score >= 70) return 'text-yellow-600';
+      return 'text-red-600';
+    }
+    
+    scoreLCP(lcp: number): number {
+      if (!lcp) return 0;
+      if (lcp <= 2500) return 100;
+      if (lcp <= 4000) return 75;
+      return 50;
+    }
+    
+    scoreFID(fid: number): number {
+      if (!fid) return 0;
+      if (fid <= 100) return 100;
+      if (fid <= 300) return 75;
+      return 50;
+    }
+    
+    scoreCLS(cls: number): number {
+      if (!cls) return 100;
+      if (cls <= 0.1) return 100;
+      if (cls <= 0.25) return 75;
+      return 50;
+    }
+    
+    getUnitForMetric(name: string): string {
+      const units: Record<string, string> = {
+        'LCP': 'ms',
+        'FID': 'ms',
+        'CLS': '',
+        'Focus Events': ' events',
+        'Scroll Events': ' events'
+      };
+      return units[name] || '';
+    }
+      updateOverallScore() {
+      if (typeof window !== 'undefined' && 'performanceMonitor' in window) {
+        // @ts-ignore - Window object extensions
+        const report = window.performanceMonitor.generateReport();
+        
+        const scoreElem = document.getElementById('performance-score');
+        const gradeElem = document.getElementById('performance-grade');
+        
+        if (scoreElem) {
+          scoreElem.textContent = report.overallScore.toString();
+          scoreElem.className = `text-6xl font-bold mb-2 ${this.getScoreColor(report.overallScore)}`;
+        }
+        
+        if (gradeElem) {
+          gradeElem.textContent = `Grade: ${report.grade}`;
+        }
+      }
+    }
+      logActivity(message: string) {
+      const timestamp = new Date().toLocaleTimeString();
+      this.activityLog.unshift(`[${timestamp}] ${message}`);
+      
+      // Keep only last 50 entries
+      if (this.activityLog.length > 50) {
+        this.activityLog = this.activityLog.slice(0, 50);
+      }
+      
+      this.updateActivityLog();
+    }
+    
+    logError(detail: any) {
+      this.logActivity(`🚨 ERROR: ${detail.type} - ${detail.message}`);
+    }
+      updateActivityLog() {
+      const logElement = document.getElementById('activity-log');
+      if (logElement) {
+        logElement.innerHTML = this.activityLog
+          .map((entry: string) => `<p class="text-sm text-gray-600">${entry}</p>`)
+          .join('');
+      }
+    }
+    
+    generateReport() {
+      if (window.performanceMonitor) {
+        const report = window.performanceMonitor.generateReport();
+        const reportData = JSON.stringify(report, null, 2);
+        
+        const blob = new Blob([reportData], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `performance-report-${new Date().toISOString().split('T')[0]}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+        
+        this.logActivity('📋 Performance report generated and downloaded');
+      }
+    }
+    
+    clearLog() {
+      this.activityLog = [];
+      this.updateActivityLog();
+      this.logActivity('🧹 Activity log cleared');
+    }
+    
+    startMonitoring() {
+      this.logActivity('🚀 Performance monitoring started');
+      
+      // Update overall score every 5 seconds
+      setInterval(() => {
+        this.updateOverallScore();
+      }, 5000);
+    }
+  }
+  
+  // Initialize dashboard
+  document.addEventListener('DOMContentLoaded', () => {
+    new PerformanceDashboard();
+  });
+</script>

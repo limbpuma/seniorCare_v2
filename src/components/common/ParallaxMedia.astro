@@ -39,9 +39,8 @@ const {
         preload="metadata"
         poster={posterSrc}
         aria-label="Hintergrundvideo: Seniorenpflege bei Integra"
-      >
-        <source src={src as string} type="video/webm" />
-        <source src={src.replace('.webm', '.mp4')} type="video/mp4" />
+      >        <source src={typeof src === 'string' ? src : src.src} type="video/webm" />
+        <source src={typeof src === 'string' ? src.replace('.webm', '.mp4') : src.src.replace('.webm', '.mp4')} type="video/mp4" />
         <p>Ihr Browser unterstützt keine Videos. Sie können unsere Inhalte trotzdem problemlos ansehen.</p>
       </video>
     )}
