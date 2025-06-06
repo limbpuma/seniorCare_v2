@@ -171,8 +171,12 @@ import Layout from '../layouts/Layout.astro';
       font-size: 12px;
       font-weight: bold;
     }
-  </style>
-  <script>
+  </style>  <script>
+    // Load functionality test script
+    const diagnosticScript = document.createElement('script');
+    diagnosticScript.src = '/test-wcag-functionality.js';
+    document.head.appendChild(diagnosticScript);
+
     // Wait for DOM to be ready
     document.addEventListener('DOMContentLoaded', function() {
       console.log('WCAG 2.2 test page loaded');
