@@ -73,20 +73,3 @@ const page = "home";
     z-index: 1000;
   }
 </style>
-    }
-    
-    // Redirect to landing page after 3 seconds
-    setTimeout(() => {
-      const urlParams = new URLSearchParams(window.location.search);
-      if (!urlParams.get('no-redirect')) {
-        window.location.href = '/landing';
-      }
-    }, 3000);
-  });
-</script>
-
-<style>
-  .fixed-accessibility {
-    z-index: 1000;
-  }
-</style>
