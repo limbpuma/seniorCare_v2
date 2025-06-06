@@ -168,7 +168,7 @@ class WCAGContentHoverFocus {
     tooltipContent.className = 'wcag-tooltip-content';
     tooltipContent.textContent = tooltipText;
     tooltipContent.setAttribute('role', 'tooltip');
-    tooltipContent.setAttribute('id', `tooltip-${Date.now()}-${Math.random().toString(36).substr(2, 9)}`);
+    tooltipContent.setAttribute('id', `tooltip-${Date.now()}-${Math.random().toString(36).substring(2, 11)}`);
     
     // Add dismissible indicator
     const dismissIndicator = document.createElement('span');

@@ -30,17 +30,19 @@ const {
       class="object-cover w-full h-full parallax-image"
       loading="eager"
       />
-      ) : (
-      <video
-      class="object-cover w-full h-full parallax-image"
-      autoplay
-      loop
-      muted
-      playsinline
-      poster={posterSrc}
+      ) : (      <video
+        class="object-cover w-full h-full parallax-video"
+        autoplay
+        loop
+        muted
+        playsinline
+        preload="metadata"
+        poster={posterSrc}
+        aria-label="Hintergrundvideo: Seniorenpflege bei Integra"
       >
-      <source src={src as string} type="video/mp4" />
-      Your browser does not support the video tag.
+        <source src={src as string} type="video/webm" />
+        <source src={src.replace('.webm', '.mp4')} type="video/mp4" />
+        <p>Ihr Browser unterstützt keine Videos. Sie können unsere Inhalte trotzdem problemlos ansehen.</p>
       </video>
     )}
 </div>

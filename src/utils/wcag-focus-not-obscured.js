@@ -167,7 +167,7 @@ class WCAGFocusManager {
   /**
    * Handle escape key functionality
    */
-  handleEscapeKey(event) {
+  handleEscapeKey(_event) {
     const focusedElement = document.activeElement;
     
     // Close modals/dropdowns first
@@ -402,18 +402,17 @@ class WCAGFocusManager {
       panel.remove();
     }
   }
-
   /**
    * Add debug info to focused element
    */
-  addFocusDebugInfo(element) {
+  addFocusDebugInfo(_element) {
     this.updateFocusInfo();
   }
 
   /**
    * Remove debug info from element
    */
-  removeFocusDebugInfo(element) {
+  removeFocusDebugInfo(_element) {
     // Cleanup any temporary debug markers
   }
 

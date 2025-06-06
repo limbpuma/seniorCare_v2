@@ -7,12 +7,10 @@ import texts from "@/utils/texts.json";
 
 interface Props {
   title: string;
+  page: "home" | "about" | "services" | "contact" | "faq" | "datenschutz"  | "impressum" | "Agb" | "404" | "landing"; 
+  navAnchors?: { id: string; label: string }[];
 }
-interface Props {
-  title: string;
-  page: "home" | "about" | "services" | "contact" | "faq" | "datenschutz"  | "impressum" | "Agb" | "404"; 
-}
-const { title, page } = Astro.props;
+const { title, page, navAnchors } = Astro.props;
 
 const { description, keywords } = texts.seo[page] || { description: "", keywords: "" };
 ---
@@ -30,26 +28,50 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
   <link rel="stylesheet" href="/src/styles/wcag-focus-not-obscured.css" id="wcag-focus-not-obscured" />  <!-- WCAG 2.2 Content on Hover or Focus Support -->
   <link rel="stylesheet" href="/src/styles/wcag-content-hover-focus.css" id="wcag-content-hover-focus" />
   <!-- WCAG 2.2 Focus Visible Enhancement Support -->
-  <link rel="stylesheet" href="/src/styles/wcag-focus-visible-enhancement.css" id="wcag-focus-visible-enhancement" />
-  <link
-    rel="stylesheet"
+  <link rel="stylesheet" href="/src/styles/wcag-focus-visible-enhancement.css" id="wcag-focus-visible-enhancement" />  <!-- Essential FontAwesome icons only -->  <link
+    rel="preload"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-  /><script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"
-  ></script>
-  <!-- WCAG 2.2 Text Spacing Testing (development/testing only) -->
-  <script src="/src/utils/wcag-text-spacing-test.js" type="module"></script>  <!-- WCAG 2.2 Focus Not Obscured Testing (development/testing only) -->
-  <script src="/src/utils/wcag-focus-not-obscured.js" type="module"></script>  <!-- WCAG 2.2 Content on Hover or Focus Testing (development/testing only) -->
-  <script src="/src/utils/wcag-content-hover-focus.js" type="module"></script>  <!-- WCAG 2.2 Focus Visible Enhancement Testing (development/testing only) -->
-  <script src="/src/utils/wcag-focus-visible-enhancement.js" type="module"></script>
-  <!-- WCAG 2.2 Comprehensive Test Suite (development/testing only) -->
-  <script src="/src/utils/wcag22-comprehensive-test.js" type="module"></script>
-  <body class="bg-white">
-    <Header />
+    as="style"
+    onload={`this.onload=null;this.rel='stylesheet'`}
+  />
+  <noscript>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </noscript>  <!-- Performance Optimized Lazy Loading System -->
+  <script src="/src/utils/lazy-loader.js" type="module" is:inline></script>
+  
+  <!-- Intelligent Preloading System -->
+  <script src="/src/utils/intelligent-preloader.js" type="module" is:inline></script>
+    <!-- Accessibility Manager System -->
+  <script src="/src/utils/accessibility-manager.js" type="module" is:inline></script>
+  
+  <!-- Landing Page Navigation System -->
+  <script src="/src/utils/landing-page-navigator.ts" type="module" is:inline></script>
+  
+  <!-- WCAG Test Suite Loader - Only load when needed -->
+  <script type="module" is:inline>
+    // Expose WCAG test loader for development/testing
+    window.loadWCAGTests = () => {
+      if (window.lazyLoader) {
+        window.lazyLoader.loadWCAGTestSuite();
+      }
+    };
+    
+    // Auto-load WCAG test suite only in development or when URL contains test parameter
+    if (window.location.search.includes('wcag-test') || window.location.hostname === 'localhost') {
+      setTimeout(() => {
+        if (window.lazyLoader) {
+          window.lazyLoader.loadWCAGTestSuite();
+        }
+      }, 3000); // Load after 3 seconds in development    }  </script><body class="bg-white">
+    <Header navAnchors={navAnchors} />
     <main class="relative">
       <slot />
-      <CookieConsent client:load />
+      <CookieConsent client:idle />
     </main>
-    <Footer />
+    <Footer isLandingPage={page === "landing"} />
   </body>
 </html>
 <style is:global>
@@ -165,14 +187,60 @@ body {
   }
 </style>
 <script>
- const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target); // Dejar de observar una vez que se ha mostrado
+  // Store all observers for cleanup
+  const observers = new Map();
+  
+  // Performance optimized intersection observer with throttling
+  const createOptimizedObserver = () => {
+    // Throttle observer callbacks to reduce main thread work
+    const throttle = (func: Function, limit: number) => {
+      let inThrottle: boolean;
+      return function(this: any) {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+          func.apply(context, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
       }
-    });
-  }, { threshold: 0.1 });
+    };
 
-  document.querySelectorAll('.animate-on-scroll').forEach((el) => observer.observe(el));  
-  </script>
+    const optimizedCallback = throttle((entries: IntersectionObserverEntry[]) => {
+      // Use requestAnimationFrame for smooth animations
+      requestAnimationFrame(() => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            // Unobserve to prevent memory leaks and reduce work
+            observers.get(entry.target)?.unobserve(entry.target);
+            observers.delete(entry.target);
+          }
+        });
+      });
+    }, 50); // Throttle to 20fps max
+
+    return new IntersectionObserver(optimizedCallback, { 
+      threshold: 0.1,
+      rootMargin: '50px' // Load animations 50px before they're visible
+    });
+  };
+
+  // Initialize observer when DOM is ready
+  const initAnimations = () => {
+    const observer = createOptimizedObserver();
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    
+    elements.forEach((el) => {
+      observer.observe(el);
+      observers.set(el, observer);
+    });
+  };
+
+  // Use efficient DOM ready detection
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimations, { once: true });
+  } else {
+    initAnimations();
+  }
+</script>

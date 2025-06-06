@@ -1,43 +1,92 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import AboutSection from "@/components/common/AboutSection.astro";
-import BannerSlider from "@/components/common/BannerSlider.astro";
-import Experience from "@/components/home/Experience.astro";
-import ImageCarrousel from "@/components/common/ImageCarrousel.astro";
-import ImageCarrousel_2 from "@/components/common/ImageCarrousel_2.astro";
-import Location from "@/components/home/Location.astro";
-import Testimonial from "@/components/common/Testimonial.astro";
-import texts from "@/utils/texts.json";
-import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
-import FormSection from "@/components/home/FormSection.astro";
-import ParallaxVideo from "@/components/common/ParallaxVideo.astro";
+import AccessibilityControls from "@/components/common/AccessibilityControls.astro";
 
-const title = "Home";
+const title = "Integra Senior Care | Umfassende Seniorenbetreuung";
 const page = "home";
+
+// Meta refresh will redirect to landing page after 5 seconds
 ---
 
 <Layout title={title} page={page}>
+  <!-- Meta refresh fallback for JavaScript disabled browsers -->
+  <meta http-equiv="refresh" content="5;url=/landing" />
   
-  <ParallaxVideo {...texts.home.heroVideo} preload="metadata"/>
-  <AboutSection {...texts.home.about} />
-  <BannerSlider slides={texts.home.bannerSlides} />
-  <Experience {...texts.home.experience} />
-  <ImageCarrousel {...texts.home.imageCarousel} />
-  <FormSection {...texts.home.formSection} />
-  <Location {...texts.home.location} />
-  <ImageCarrousel_2 {...texts.home.imageCarousel_2} />
-  <Testimonial {...texts.home.testimonials} />
-  <GalleryMosaic {...texts.home.galleryMosaic} />
+  <div class="flex flex-col items-center justify-center min-h-screen p-6 text-center bg-white">
+    <div class="max-w-3xl mx-auto bg-soft-blue bg-opacity-10 p-8 rounded-lg shadow-lg border border-blue-100">
+      <h1 class="text-3xl md:text-4xl font-bold text-deep-blue mb-6">Willkommen bei Integra Senior Care</h1>
+      
+      <p class="text-lg mb-8 text-gray-700">
+        Wir haben unsere Webseite neu gestaltet, um Ihnen ein besseres Nutzererlebnis zu bieten.
+        Sie werden in wenigen Sekunden automatisch zu unserer neuen Landing Page weitergeleitet.
+      </p>
+      
+      <div class="flex flex-col md:flex-row gap-4 justify-center mb-8">
+        <a href="/landing" class="bg-primary text-white px-6 py-3 rounded-full flex items-center justify-center gap-2 font-medium hover:bg-soft-blue transition-colors shadow-md">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14"></path>
+            <path d="M12 5l7 7-7 7"></path>
+          </svg>
+          Zur neuen Landing Page
+        </a>
+      </div>
+      
+      <div class="w-full bg-gray-200 rounded-full h-2.5 mb-4 dark:bg-gray-700 overflow-hidden">
+        <div id="progress-bar" class="bg-primary h-2.5 rounded-full w-0 transition-all duration-300"></div>
+      </div>
+      
+      <p class="text-sm text-gray-500">
+        Sie werden in <span id="countdown">5</span> Sekunden weitergeleitet...
+      </p>
+    </div>
+  </div>
   
+  <AccessibilityControls class="fixed-accessibility" />
 </Layout>
+
 <script>
   document.addEventListener('astro:page-load', () => {
-    const video = document.querySelector('.parallax-video') as HTMLVideoElement;
-    if (video) {
-      video.play().catch(error => {
-        console.error("Auto-play was prevented:", error);
-        // Puedes agregar aquí una lógica alternativa si el auto-play falla
-      });
+    let count = 5;
+    const countdownElement = document.getElementById('countdown');
+    const progressBar = document.getElementById('progress-bar');
+    
+    if (countdownElement && progressBar) {
+      const interval = setInterval(() => {
+        count--;
+        countdownElement.textContent = count.toString();
+        
+        // Update progress bar (100% - count * 20%)
+        const progress = 100 - (count * 20);
+        progressBar.style.width = `${progress}%`;
+        
+        if (count <= 0) {
+          clearInterval(interval);
+          window.location.href = '/landing';
+        }
+      }, 1000);
     }
   });
 </script>
+
+<style>
+  .fixed-accessibility {
+    z-index: 1000;
+  }
+</style>
+    }
+    
+    // Redirect to landing page after 3 seconds
+    setTimeout(() => {
+      const urlParams = new URLSearchParams(window.location.search);
+      if (!urlParams.get('no-redirect')) {
+        window.location.href = '/landing';
+      }
+    }, 3000);
+  });
+</script>
+
+<style>
+  .fixed-accessibility {
+    z-index: 1000;
+  }
+</style>

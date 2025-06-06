@@ -1,0 +1,90 @@
+---
+interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+interface Props {
+  title: string;
+  subtitle: string;
+  items: FAQItem[];
+}
+
+const { title, subtitle, items } = Astro.props;
+---
+
+<section id="faq-section" class="py-16 bg-gray-50">
+  <div class="container mx-auto px-4 max-w-6xl">
+    <div class="text-center mb-12">
+      <p class="text-primary uppercase tracking-wider mb-2">{subtitle}</p>
+      <h2 class="text-3xl md:text-4xl font-bold text-deep-blue">{title}</h2>
+    </div>
+    
+    <div class="space-y-6 max-w-4xl mx-auto">
+      {items.map((item, index) => (
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+          <details class="group" id={`faq-${index}`}>
+            <summary 
+              class="flex justify-between items-center p-6 cursor-pointer text-deep-blue font-medium hover:bg-gray-50 transition-colors"
+              aria-controls={`faq-content-${index}`}
+              aria-expanded="false"
+            >
+              <span>{item.question}</span>
+              <span class="transform group-open:rotate-180 transition-transform duration-200">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </span>
+            </summary>
+            <div 
+              id={`faq-content-${index}`} 
+              class="p-6 pt-0 text-gray-600"
+              role="region" 
+              aria-labelledby={`faq-${index}`}
+            >
+              <p set:html={item.answer}></p>
+            </div>
+          </details>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  details summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  details[open] summary {
+    border-bottom: 1px solid #edf2f7;
+  }
+</style>
+
+<script>
+  // Enhanced accessibility for the FAQ section
+  document.addEventListener('astro:page-load', () => {
+    const detailsElements = document.querySelectorAll('#faq-section details');
+    
+    detailsElements.forEach((details) => {
+      const detailsElement = details as HTMLDetailsElement;
+      const summary = detailsElement.querySelector('summary');
+      
+      // Add keyboard support
+      summary?.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          detailsElement.open = !detailsElement.open;
+          summary.setAttribute('aria-expanded', detailsElement.open.toString());
+        }
+      });
+      
+      // Update ARIA expanded state
+      summary?.addEventListener('click', () => {
+        setTimeout(() => {
+          summary.setAttribute('aria-expanded', detailsElement.open.toString());
+        }, 0);
+      });
+    });
+  });
+</script>

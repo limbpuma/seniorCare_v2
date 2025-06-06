@@ -1,0 +1,79 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import AboutSection from "@/components/common/AboutSection.astro";
+import BannerSlider from "@/components/common/BannerSlider.astro";
+import Experience from "@/components/home/Experience.astro";
+import ImageCarrousel from "@/components/common/ImageCarrousel.astro";
+import ImageCarrousel_2 from "@/components/common/ImageCarrousel_2.astro";
+import Location from "@/components/home/Location.astro";
+import Testimonial from "@/components/common/Testimonial.astro";
+import texts from "@/utils/texts.json";
+import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
+import ParallaxVideo from "@/components/common/ParallaxVideo.astro";
+import AccessibilityControls from "@/components/common/AccessibilityControls.astro";
+import ContactText from "@/components/contact/ContactText.astro";
+import DiscoverIcons from "@/components/common/DiscoverIcons.astro";
+import MapSection from "@/components/contact/MapSection.astro";
+import FAQSection from "@/components/common/FAQSection.astro";
+import FaqContent from "@/components/faq/FaqContent.astro";
+
+const title = "Integra Senior Care | Umfassende Seniorenbetreuung";
+const page = "landing";
+
+// Create navigation anchors for one-page design
+const navAnchors = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "Über uns" },
+  { id: "services", label: "Leistungen" },
+  { id: "experience", label: "Erfahrung" },
+  { id: "contact", label: "Kontakt" },
+  { id: "faq", label: "FAQ" },
+  { id: "location", label: "Standort" }
+];
+---
+
+<Layout title={title} page={page} navAnchors={navAnchors}>
+  <div id="home" class="scroll-section">
+    <ParallaxVideo {...texts.home.heroVideo} preload="metadata"/>
+  </div>
+  
+  <div id="about" class="scroll-section">
+    <AboutSection {...texts.home.about} />
+    <BannerSlider slides={texts.home.bannerSlides} />
+  </div>
+  <div id="services" class="scroll-section">
+   
+    <Experience {...texts.home.experience} />
+    <DiscoverIcons {...texts.about.discoverIcons} />
+    <ImageCarrousel {...texts.home.imageCarousel} />
+  </div>
+  
+  <div id="experience" class="scroll-section">
+    <ImageCarrousel_2 {...texts.home.imageCarousel_2} />
+    <Testimonial {...texts.home.testimonials} />
+    <GalleryMosaic {...texts.home.galleryMosaic} />
+  </div>
+  
+  <div id="contact" class="scroll-section">
+    <ContactText {...texts.contact.contactText} />
+  </div>
+    <div id="faq" class="scroll-section">
+    <FaqContent {...texts.faq.faqContent} />
+  </div>
+  
+  <div id="location" class="scroll-section">
+    <Location {...texts.home.location} />
+    <MapSection {...texts.contact.mapSection} />
+  </div>
+    <AccessibilityControls class="fixed-accessibility" />
+</Layout>
+
+<style>
+  .scroll-section {
+    scroll-margin-top: 80px; /* Adjust based on header height */
+  }
+  
+  .fixed-accessibility {
+    z-index: 1000;
+  }
+</style>

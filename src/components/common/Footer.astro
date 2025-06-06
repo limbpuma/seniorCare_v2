@@ -3,19 +3,21 @@ import Icon from "../common/Icon.astro";
 import Logo from "./Logo.astro";
 import texts from "@/utils/texts.json";
 
+// Check if we're on the landing page to use anchor links
 const Navlinks = [
-  { name: "About", href: "about" },
-  { name: "Services", href: "services" },
-  { name: "Contact", href: "contact" },
-  { name: "FAQ", href: "faq" },
+  { name: "About", href: "about", anchor: "#about" },
+  { name: "Services", href: "services", anchor: "#services" },
+  { name: "Contact", href: "contact", anchor: "#contact" },
+  { name: "FAQ", href: "faq", anchor: "#faq" },
 ];
 const Legallinks = [
-  { name: "Impressum", href: "legal" },
-  { name: "Datenschutz", href: "privacypolicy" },
-  { name: "Agbs", href: "termsconditions" },
+  { name: "Impressum", href: "legal", anchor: null },
+  { name: "Datenschutz", href: "privacypolicy", anchor: null },
+  { name: "Agbs", href: "termsconditions", anchor: null },
 ];
 
 const footerTexts = texts.footer;
+const { isLandingPage } = Astro.props;
 ---
 
 <footer class="bg-deep-blue mx-auto px-4">
@@ -51,12 +53,16 @@ const footerTexts = texts.footer;
       <div class="text-center md:text-left">
         <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5">
           {footerTexts.linksTitle}
-        </h5>
-        <ul class="text-white font-ag-body-text text-ag-body-text">
+        </h5>        <ul class="text-white font-ag-body-text text-ag-body-text">
           {
             Navlinks.map((link) => (
               <li class="mb-4">
-                <a href={link.href} class="hover:underline">
+                <a 
+                  href={isLandingPage ? link.anchor : link.href} 
+                  class="hover:underline nav-link"
+                  data-anchor={isLandingPage ? "true" : undefined}
+                  aria-current="false"
+                >
                   {link.name}
                 </a>
               </li>
@@ -105,23 +111,33 @@ const footerTexts = texts.footer;
     <div
       class="sm:flex sm:items-center sm:justify-between text-center md:text-left text-white font-ag-body-text text-ag-body-text"
     >
-      <span>{footerTexts.copyright}</span>
-      <div class="flex mt-4 sm:mt-0 justify-center md:justify-start space-x-4">
+      <span>{footerTexts.copyright}</span>      <div class="flex mt-4 sm:mt-0 justify-center md:justify-start space-x-4">
         {
-          ["Impressum", "Datenschutz", "Agbs"].map((linkName) => {
-            const link = Legallinks.find(
-              (l) => l.name.toLowerCase() === linkName.toLowerCase(),
-            );
-            return (
-              link && (
-                <a href={link.href} class="hover:underline">
-                  {link.name}
-                </a>
-              )
-            );
-          })
+          Legallinks.map((link) => (
+            <a href={link.href} class="hover:underline">
+              {link.name}
+            </a>
+          ))
         }
-      </div>
-    </div>
+      </div>    </div>
   </div>
 </footer>
+
+<style>
+  .nav-link.active {
+    color: #f0f0f0;
+    font-weight: bold;
+    position: relative;
+  }
+  
+  .nav-link.active::after {
+    content: "";
+    position: absolute;
+    bottom: -3px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ffa500;
+    display: block;
+  }
+</style>

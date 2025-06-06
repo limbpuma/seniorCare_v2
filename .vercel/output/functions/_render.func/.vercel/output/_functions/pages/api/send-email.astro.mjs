@@ -1,7 +1,7 @@
 import { Resend } from 'resend';
 export { renderers } from '../../renderers.mjs';
 
-const resend = new Resend("re_UfZeDnky_DEB3q7oFVRcjsZFtVabrGB2o");
+const resend = new Resend(undefined                              );
 const POST = async ({ request }) => {
   const data = await request.formData();
   const name = data.get("name");

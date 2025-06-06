@@ -1,12 +1,12 @@
 /* empty css                                 */
 import { c as createComponent, r as renderTemplate, a as renderComponent, b as createAstro, m as maybeRenderHead, d as addAttribute } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
-import { $ as $$Icon, t as texts, b as $$Layout } from '../chunks/Layout_xiEg-xPt.mjs';
-import { $ as $$AboutSection, b as $$BannerSlider, a as $$ImageCarrousel2 } from '../chunks/ImageCarrousel_2_DUG4X-Av.mjs';
-import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_DffnNgfO.mjs';
-import { R as ReactSwiperSlider, $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_CN4R9OKm.mjs';
-import { $ as $$GalleryMosaic } from '../chunks/GalleryMosaic_8gMbO7ab.mjs';
-import { $ as $$ContactForm } from '../chunks/ContactForm_CTRhQQDQ.mjs';
+import { $ as $$Icon, t as texts, b as $$Layout } from '../chunks/Layout_CMFYuxJT.mjs';
+import { $ as $$AboutSection, b as $$BannerSlider, a as $$ImageCarrousel2 } from '../chunks/ImageCarrousel_2_DIfEkbSg.mjs';
+import { $ as $$TextBlock, a as $$Section } from '../chunks/TextBlock_pUV8bRiu.mjs';
+import { R as ReactSwiperSlider, $ as $$ParallaxVideo, a as $$Testimonial } from '../chunks/ParallaxVideo_CnTGqRjE.mjs';
+import { $ as $$GalleryMosaic } from '../chunks/GalleryMosaic_Cq6tEA3C.mjs';
+import { $ as $$ContactForm } from '../chunks/ContactForm_CcLavPXB.mjs';
 export { renderers } from '../renderers.mjs';
 
 const $$Astro$3 = createAstro();
@@ -32,7 +32,7 @@ const $$Astro$1 = createAstro();
 const $$Location = createComponent(($$result, $$props, $$slots) => {
   const Astro2 = $$result.createAstro($$Astro$1, $$props, $$slots);
   Astro2.self = $$Location;
-  const { subtitle, title, description, city, buttonText, stats } = Astro2.props;
+  const { subtitle, title, description, buttonText, stats } = Astro2.props;
   return renderTemplate`${renderComponent($$result, "Section", $$Section, { "background": "white", "padding": "large", "width": "full", "height": "auto", "id": "experience-section", "animation": "slide-in" }, { "default": ($$result2) => renderTemplate` ${maybeRenderHead()}<div class="container mx-auto text-white"> <div class="flex flex-col md:flex-row items-center"> <div class="w-full md:w-3/5 lg:w-2/3 mb-0"> <img src="/assets/img/doctor_senior_care_tablet.webp" alt="World map with location markers" class="w-full h-[250px] md:h-[600px] object-cover" loading="lazy"> </div> <div class="w-full md:w-2/5 lg:w-1/3 md:pl-8 p-4"> ${renderComponent($$result2, "TextBlock", $$TextBlock, { "subtitle": subtitle, "title": title, "description": description, "alignment": "left", "textColor": "text-deep-blue", "buttonText": buttonText, "buttonVariant": "primary", "buttonSize": "medium", "buttonHref": "/contact" })} </div> </div> <div class="bg-soft-orange p-6 md:p-12"> <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center"> ${stats.map((stat) => renderTemplate`<div class="flex flex-col items-center"> <p class="text-ag-h3 font-ag-h3 text-blue-900">${stat.value}</p> <p class="text-ag-body-text font-ag-body-text text-black"> ${stat.label} </p> </div>`)} </div> </div> </div> ` })}`;
 }, "D:/Lim/Developer/Projects/Integra/seniorCare/src/components/home/Location.astro", void 0);
 

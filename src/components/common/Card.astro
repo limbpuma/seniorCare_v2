@@ -6,10 +6,9 @@ interface Props {
   radius?: "none" | "sm" | "md" | "lg" | "xl";
   hover?: boolean;
   interactive?: boolean;
-  href?: string;
-  target?: string;
+  href?: string;  target?: string;
   rel?: string;
-  role?: string;
+  role?: "button" | "region" | "navigation" | "banner" | "contentinfo" | "main" | "complementary" | "form" | "search" | "presentation" | "group" | null;
   ariaLabel?: string;
 }
 

@@ -35,6 +35,10 @@
     "404": {
       "description": "Seite nicht gefunden. Bitte überprüfen Sie die URL oder kehren Sie zur Startseite zurück.",
       "keywords": "404, Seite nicht gefunden, Fehler"
+    },
+    "landing": {
+      "description": "Integra Senior Care - Alle Pflegedienstleistungen auf einen Blick. Erfahren Sie mehr über unsere umfassenden Pflegekonzepte, Leistungen und Unterstützungsangebote in Dortmund.",
+      "keywords": "Integra, Seniorenpflege, Pflegedienst, Dortmund, Betreuung, häusliche Pflege, WCAG 2.2"
     }
   },
   "header": {

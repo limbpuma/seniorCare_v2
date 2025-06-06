@@ -1,0 +1,81 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class={`accessibility-controls ${className || ''}`}>
+  <button 
+    id="toggleTextSpacing" 
+    class="accessibility-btn" 
+    aria-label="Text Spacing anpassen"
+    aria-pressed="false"
+    title="Textabstand anpassen für bessere Lesbarkeit">
+    <span>🔤</span>
+  </button>
+  <button 
+    id="highContrastMode" 
+    class="accessibility-btn" 
+    aria-label="Hoher Kontrast"
+    aria-pressed="false"
+    title="Hohen Kontrast für bessere Sichtbarkeit aktivieren">
+    <span>🎨</span>
+  </button>
+  <button 
+    id="focusIndicators" 
+    class="accessibility-btn" 
+    aria-label="Fokusindikatoren"
+    aria-pressed="false"
+    title="Verbesserte Fokusindikatoren anzeigen">
+    <span>🎯</span>
+  </button>
+</div>
+
+<style>
+  .accessibility-controls {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 1000;
+  }
+
+  .accessibility-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: white;
+    border: 2px solid #0057b8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+
+  .accessibility-btn:hover,
+  .accessibility-btn:focus {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    outline: none;
+  }
+  
+  .accessibility-btn.active {
+    background: #0057b8;
+    color: white;
+  }
+  
+  .accessibility-btn span {
+    font-size: 20px;
+  }
+</style>
+
+<script>
+  // El script de inicialización está en accessibility-manager.js
+  // que se carga en Layout.astro
+</script>

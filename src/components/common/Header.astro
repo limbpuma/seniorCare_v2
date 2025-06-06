@@ -5,15 +5,23 @@ import Logo from "./Logo.astro";
 import Nav from "./Nav.astro";
 import texts from "@/utils/texts.json";
 
-const headerTexts = texts.header;
+interface NavAnchor {
+  id: string;
+  label: string;
+}
 
-const NAVIGATION = [
-  { name: headerTexts.nav.home, href: "/" },
-  { name: headerTexts.nav.about, href: "about" },
-  { name: headerTexts.nav.services, href: "services" },
-  { name: headerTexts.nav.contact, href: "contact" },
-  { name: headerTexts.nav.faq, href: "faq" },
-];
+const headerTexts = texts.header;
+const { navAnchors } = Astro.props;
+
+const NAVIGATION = navAnchors 
+  ? navAnchors.map((anchor: NavAnchor) => ({ name: anchor.label, href: `#${anchor.id}`, isAnchor: true }))
+  : [
+    { name: headerTexts.nav.home, href: "/" },
+    { name: headerTexts.nav.about, href: "about" },
+    { name: headerTexts.nav.services, href: "services" },
+    { name: headerTexts.nav.contact, href: "contact" },
+    { name: headerTexts.nav.faq, href: "faq" },
+  ];
 ---
 
 <header>

@@ -619,10 +619,10 @@ class WCAGFocusVisibleEnhancement {
 // Initialize when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', () => {
-    window.wcagFocusVisibleEnhancement = new WCAGFocusVisibleEnhancement();
+    window.testFocusVisibleEnhancement = new WCAGFocusVisibleEnhancement();
   });
 } else {
-  window.wcagFocusVisibleEnhancement = new WCAGFocusVisibleEnhancement();
+  window.testFocusVisibleEnhancement = new WCAGFocusVisibleEnhancement();
 }
 
 // Export for module systems

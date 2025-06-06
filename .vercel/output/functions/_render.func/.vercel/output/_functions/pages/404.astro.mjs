@@ -1,8 +1,8 @@
 /* empty css                                 */
 import { c as createComponent, r as renderTemplate, a as renderComponent, b as createAstro, m as maybeRenderHead } from '../chunks/astro/server_B9cSnyzq.mjs';
 import 'kleur/colors';
-import { b as $$Layout } from '../chunks/Layout_xiEg-xPt.mjs';
-import { a as $$Section, $ as $$TextBlock } from '../chunks/TextBlock_DffnNgfO.mjs';
+import { b as $$Layout } from '../chunks/Layout_CMFYuxJT.mjs';
+import { a as $$Section, $ as $$TextBlock } from '../chunks/TextBlock_pUV8bRiu.mjs';
 import { $ as $$ParallaxMedia } from '../chunks/ParallaxMedia_CU6CzBKf.mjs';
 export { renderers } from '../renderers.mjs';
 

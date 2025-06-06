@@ -97,3 +97,36 @@ body {
   font-family: "Montserrat", sans-serif; /* Fuente predeterminada */
 }
 
+/* Video Play Button Styles */
+.video-play-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+}
+
+.video-play-button .play-button {
+  background: rgba(0, 87, 184, 0.9); /* Primary blue with transparency */
+  border: none;
+  border-radius: 50%;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  transition: all 0.3s ease;
+}
+
+.video-play-button .play-button:hover {
+  background: rgba(0, 87, 184, 1); /* Solid primary blue on hover */
+  transform: scale(1.1);
+}
+
+.video-play-button .play-button:focus {
+  outline: 3px solid #ffa500; /* Soft orange for focus ring */
+  outline-offset: 2px;
+}
+

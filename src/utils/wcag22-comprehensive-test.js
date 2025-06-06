@@ -132,16 +132,7 @@ class WCAG22ComprehensiveTest {
                 console.log(`✅ CSS file loaded: ${cssId}`);
             }
         }
-    }
-
-    async checkJSFiles() {
-        const requiredJS = [
-            'wcag-text-spacing-test.js',
-            'wcag-focus-not-obscured.js',
-            'wcag-content-hover-focus.js',
-            'wcag-focus-visible-enhancement.js'
-        ];
-
+    }    async checkJSFiles() {
         // Check if JS functionality is available
         if (typeof window.wcagTextSpacingTest === 'undefined') {
             this.addIssue('1.4.12', 'Text spacing JavaScript not loaded');

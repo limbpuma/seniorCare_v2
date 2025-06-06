@@ -2,7 +2,7 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="WCAG 2.2 Testing Page">
+<Layout title="WCAG 2.2 Testing Page" page="404">
   <main class="container mx-auto px-4 py-8">
     <h1 class="text-3xl font-bold mb-8">WCAG 2.2 Criteria Testing</h1>
     
@@ -263,9 +263,7 @@ import Layout from '../layouts/Layout.astro';
       if (container) {
         container.innerHTML = '<p>Test results cleared. Click "Run All Tests" to validate WCAG 2.2 implementations</p>';
       }
-    }
-
-    function showNotification(message, type) {
+    }    function showNotification(message: string, type: 'success' | 'info') {
       // Create notification element
       const notification = document.createElement('div');
       notification.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 transition-all duration-300 ${
@@ -283,10 +281,10 @@ import Layout from '../layouts/Layout.astro';
           document.body.removeChild(notification);
         }, 300);
       }, 3000);
-    }
-
-    function displayResults(results) {
+    }    function displayResults(results: any[]) {
       const container = document.getElementById('results-container');
+      if (!container) return;
+      
       let html = '<div class="space-y-4">';
       
       results.forEach(result => {
@@ -309,17 +307,15 @@ import Layout from '../layouts/Layout.astro';
       
       html += '</div>';
       container.innerHTML = html;
-    }
-
-    // Add keyboard navigation improvements
-    document.addEventListener('keydown', (e) => {
-      // Escape key to dismiss hover content
-      if (e.key === 'Escape') {
-        document.querySelectorAll('.wcag-hover-content').forEach(el => {
-          el.style.opacity = '0';
-          el.style.pointerEvents = 'none';
-        });
-      }
-    });
+    }// Add keyboard navigation improvements
+      document.addEventListener('keydown', (e) => {
+        // Escape key to dismiss hover content
+        if (e.key === 'Escape') {
+          document.querySelectorAll('.wcag-hover-content').forEach(el => {
+            (el as HTMLElement).style.opacity = '0';
+            (el as HTMLElement).style.pointerEvents = 'none';
+          });
+        }
+      });
   </script>
 </Layout>

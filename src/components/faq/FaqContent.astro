@@ -43,16 +43,16 @@ animation="fade-in"
     />
       
     </div>
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+    <div class="gap-8">
       <div class="space-y-6">
         {
           faqItems.map((item, index) => (
             <div class="bg-white rounded-lg shadow-md p-6">
               <button
-                class="flex justify-between items-center w-full text-left"
+                class="flex justify-between items-center w-full "
                 onclick={`document.getElementById('faq-answer-${index}').classList.toggle('hidden')`}
               >
-                <h3 class="text-xl font-semibold text-gray-900">
+                <h3 class="text-xl font-semibold text-gray-900 text-center">
                   {item.question}
                 </h3>
                 <i class="fas fa-chevron-down text-blue-500" />
@@ -64,13 +64,7 @@ animation="fade-in"
           ))
         }
       </div>
-      <div>
-        <ContactForm
-          image="/assets/img/shot_nurse_caring_senior_woman.webp"
-          size="small"
-          {...contactForm}
-        />
-      </div>
+      
     </div>
   </div>
 </Section>
