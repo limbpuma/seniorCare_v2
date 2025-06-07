@@ -1,41 +1,37 @@
-# Pflegedienst Integra Gerling - Proyecto Web
+# Pflegedienst Integra Gerling - Landing Page Version (V2)
 
-## Estructura del Repositorio
+## Acerca de este Repositorio
 
-Este repositorio contiene dos versiones principales del sitio web de Pflegedienst Integra Gerling:
+Este repositorio contiene la versión landing page del sitio web de Pflegedienst Integra Gerling, que utiliza un enfoque de navegación por anclas para una experiencia de usuario más fluida. Esta es la versión V2 del proyecto, optimizada y estabilizada.
 
-### Ramas Principales
-
-- **`main`**: Versión con enfoque de páginas múltiples separadas
-- **`landing-page-stable`**: Versión con enfoque de landing page (navegación por anclas)
-
-## Enfoques del Proyecto
-
-### 1. Enfoque Multi-página (rama `main`)
-
-- Estructura tradicional con páginas separadas (about, services, contact, faq, etc.)
-- Cada sección tiene su propia URL
-- Navegación a través de enlaces a páginas completas
-
-### 2. Enfoque Landing Page (rama `landing-page-stable`)
+### Características de la Versión Landing Page
 
 - Todas las secciones principales integradas en una única página (index)
 - Navegación a través de enlaces de ancla (#about, #services, etc.)
 - Las páginas legales (legal, privacypolicy, termsconditions) se mantienen como páginas separadas
+- Experiencia de usuario mejorada sin recargas de página
+- Diseño cohesivo y fluido
 
 ## Cómo Contribuir
 
-### Para trabajar con la versión multi-página:
+Para contribuir a este proyecto:
 
 ```bash
-git checkout main
+# Clonar el repositorio
+git clone https://github.com/limbpuma/seniorCare_v2.git
+
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo
+npm run dev
 ```
 
-### Para trabajar con la versión landing page:
+## Estructura de Ramas
 
-```bash
-git checkout landing-page-stable
-```
+- **`main`**: Rama principal con la versión estable de la landing page
+- **`dev`**: Rama de desarrollo para nuevas características
+- **`feature/*`**: Ramas para características específicas
 
 ## 🚀 Estructura del Proyecto
 
@@ -89,7 +85,7 @@ Todos los comandos se ejecutan desde la raíz del proyecto, en una terminal:
 
 ## Notas Importantes
 
-1. Ambas versiones del sitio mantienen las mismas características y funcionalidades, solo difieren en la estructura de navegación.
+1. Esta versión presenta un enfoque de landing page con navegación por anclas.
 2. Se recomienda hacer pruebas exhaustivas después de cambios significativos.
 3. Asegurar que cualquier nuevo desarrollo mantiene la conformidad con WCAG 2.2 y BITV 2.0.
 
