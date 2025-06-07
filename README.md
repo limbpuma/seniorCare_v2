@@ -90,7 +90,3 @@ Todos los comandos se ejecutan desde la raíz del proyecto, en una terminal:
 3. Asegurar que cualquier nuevo desarrollo mantiene la conformidad con WCAG 2.2 y BITV 2.0.
 
 Última actualización: 7 de junio de 2025
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
