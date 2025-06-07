@@ -29,15 +29,15 @@ const variantClasses = {
 };
 
 const sizeClasses = {
-  small: "text-sm px-4 py-2",
-  medium: "text-ag-button-text px-8 py-4",
-  large: "text-lg px-12 py-6",
+  small: "text-sm px-6 py-3 min-h-[44px]", // Cumple touch target
+  medium: "text-ag-button-text px-8 py-4 min-h-[48px]",
+  large: "text-lg px-12 py-6 min-h-[52px]",
 };
 
 const fullWidthClass = fullWidth ? "w-full" : "max-w-fit";
 
 const baseClasses =
-  "rounded-full transition-colors duration-300 focus:outline-none";
+  "rounded-full transition-all duration-300 focus:outline-none hover:shadow-lg active:scale-95 inline-flex items-center justify-center font-medium";
 
 const classes = [
   variantClasses[variant],

@@ -210,9 +210,8 @@ class LandingPageNavigator {  private sections: HTMLElement[] = [];
     
     return maxVisibleSection;
   }
-  
-  private smoothScrollTo(targetElement: HTMLElement): void {
-    const headerOffset = 80; // Adjust based on header height
+    private smoothScrollTo(targetElement: HTMLElement): void {
+    const headerOffset = 96; // Updated to match optimized header height (~6rem)
     const elementPosition = targetElement.getBoundingClientRect().top;
     const offsetPosition = elementPosition + window.scrollY - headerOffset;
     

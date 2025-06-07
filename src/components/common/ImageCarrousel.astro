@@ -5,10 +5,10 @@ import Section from "./Section.astro";
 
 const { images, title, subtitle } = Astro.props;
 
-const imagenclases = "w-auto h-[192px] object-cover";
+const imagenclases = "w-auto h-[240px] sm:h-[280px] md:h-[320px] lg:h-[360px] object-cover rounded-lg shadow-medium";
 const textclasses =
-  "mt-2 text-white text-ag-body-text font-ag-body-text text-left";
-const wrapperClasses = "relative overflow-hidden";
+  "mt-3 sm:mt-4 text-white text-ag-body-text font-ag-body-text text-left leading-relaxed";
+const wrapperClasses = "relative overflow-hidden rounded-lg";
 ---
 
 <Section width="full" height="auto"

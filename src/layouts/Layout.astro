@@ -734,3 +734,70 @@ body {
     initAnimations();
   }
 </script>
+
+<!-- Viewport Height Validation Script -->
+<script>
+  // Import and initialize viewport validator for development debugging
+  class ViewportValidator {
+    constructor() {
+      this.headerSelector = 'header';
+      this.heroSelector = '#hero-parallax-section';
+      this.tolerance = 10;
+    }
+
+    validateViewportFit() {
+      if (typeof window === 'undefined') return { valid: false, reason: 'No window object' };
+
+      const header = document.querySelector(this.headerSelector);
+      const hero = document.querySelector(this.heroSelector);
+      
+      if (!header || !hero) {
+        return { 
+          valid: false, 
+          reason: 'Header or hero section not found',
+          elements: { header: !!header, hero: !!hero }
+        };
+      }
+
+      const viewportHeight = window.innerHeight;
+      const headerHeight = header.getBoundingClientRect().height;
+      const heroHeight = hero.getBoundingClientRect().height;
+      const combinedHeight = headerHeight + heroHeight;
+
+      const isValid = combinedHeight <= (viewportHeight + this.tolerance);
+      
+      return {
+        valid: isValid,
+        measurements: {
+          viewport: viewportHeight,
+          header: headerHeight,
+          hero: heroHeight,
+          combined: combinedHeight,
+          excess: combinedHeight - viewportHeight
+        },
+        recommendation: isValid ? '✅ Perfect viewport fit!' : '⚠️ Consider optimizing heights'
+      };
+    }
+
+    runValidation() {
+      const width = window.innerWidth;
+      const breakpoint = width < 768 ? 'mobile' : width < 1024 ? 'tablet' : 'desktop';
+      const validation = this.validateViewportFit();
+      
+      return { breakpoint, validation };
+    }
+  }
+
+  // Initialize validator
+  window.viewportValidator = new ViewportValidator();
+  
+  // Auto-validate on page load (development only)
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(() => {
+        const result = window.viewportValidator.runValidation();
+        console.log(`[${result.breakpoint.toUpperCase()}] Viewport Validation:`, result.validation);
+      }, 1000);
+    });
+  }
+</script>

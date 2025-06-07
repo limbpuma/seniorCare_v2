@@ -3,27 +3,41 @@ import Section from "./Section.astro";
 import TextBlock from "./TextBlock.astro";
 import ParallaxMedia from "./ParallaxMedia.astro";
 
-
-
-const { subtitle, title, description, videoSrc, posterSrc, alignment, textColor ,buttonHref, buttonSize, buttonVariant, buttonText} = Astro.props;
+const { subtitle, title, description, videoSrc, posterSrc, alignment, textColor, buttonHref, buttonSize, buttonVariant, buttonText } = Astro.props;
 ---
 
+<!-- 
+  VIEWPORT OPTIMIZATION: 
+  Hero section height is calculated to fit within 100vh minus header height
+  Mobile: ~5rem header = calc(100vh - 5rem)
+  Tablet: ~5.5rem header = calc(100vh - 5.5rem) 
+  Desktop: ~6rem header = calc(100vh - 6rem)
+  This ensures no scroll is needed to see main content on landing
+-->
 <Section
   padding="large"
   width="full"
-  height="h-screen"
+  height="min-h-[calc(100vh-5rem)] md:min-h-[calc(100vh-5.5rem)] lg:min-h-[calc(100vh-6rem)]"
   id="hero-parallax-section"
-  class="relative overflow-hidden"
+  class="relative overflow-hidden motion-safe:parallax-enabled"
 >
-  <div class="absolute inset-0 w-full h-full parallax-container ">
+  <!-- Accessibility-aware background with reduced motion support -->
+  <div class="absolute inset-0 w-full h-full parallax-container motion-reduce:opacity-50">
     <ParallaxMedia 
       type="video" 
       src={videoSrc}
       posterSrc={posterSrc}
     />
+    <!-- Enhanced overlay for better text contrast -->
+    <div 
+      class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent z-[1]"
+      aria-hidden="true"
+    ></div>
   </div>
-  <div class="relative z-10 container mx-auto h-full flex items-center justify-center lg:justify-start">
-    <div class="w-full max-w-3xl lg:max-w-none sm:text-center sm:align-center lg:w-2/5 px-4 text-center lg:text-left">
+  
+  <!-- Content container with improved positioning -->
+  <div class="relative z-10 container mx-auto h-full flex items-center justify-center lg:justify-start px-4 sm:px-6 lg:px-8">
+    <div class="w-full max-w-3xl lg:max-w-none sm:text-center lg:w-2/5 text-center lg:text-left">
       <TextBlock
         subtitle={subtitle}
         title={title}
@@ -35,7 +49,62 @@ const { subtitle, title, description, videoSrc, posterSrc, alignment, textColor 
         buttonSize={buttonSize}
         buttonHref={buttonHref}
       />
-      
     </div>
   </div>
+  
+  <!-- Screen reader announcement for video content -->
+  <div class="sr-only" role="status" aria-live="polite">
+    Video background showing professional senior care services
+  </div>
 </Section>
+
+<style>
+/* Viewport height optimization with CSS fallbacks */
+#hero-parallax-section {
+  /* Fallback for browsers that don't support CSS calc() */
+  min-height: 85vh;
+  
+  /* Modern browsers with CSS calc() support */
+  min-height: calc(100vh - 5rem);
+}
+
+@media (min-width: 768px) {
+  #hero-parallax-section {
+    min-height: calc(100vh - 5.5rem);
+  }
+}
+
+@media (min-width: 1024px) {
+  #hero-parallax-section {
+    min-height: calc(100vh - 6rem);
+  }
+}
+
+/* iOS Safari specific viewport handling */
+@supports (-webkit-touch-callout: none) {
+  #hero-parallax-section {
+    min-height: calc(100vh - 5rem);
+    min-height: calc(100svh - 5rem); /* Small viewport height for iOS */
+  }
+  
+  @media (min-width: 768px) {
+    #hero-parallax-section {
+      min-height: calc(100svh - 5.5rem);
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    #hero-parallax-section {
+      min-height: calc(100svh - 6rem);
+    }
+  }
+}
+
+/* Reduced motion accessibility */
+@media (prefers-reduced-motion: reduce) {
+  #hero-parallax-section {
+    /* Ensure content is still properly visible when animations are disabled */
+    min-height: 80vh;
+  }
+}
+</style>
