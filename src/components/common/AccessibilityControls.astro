@@ -6,30 +6,97 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<div class={`accessibility-controls ${className || ''}`}>
+<div class={`accessibility-controls ${className || ''}`} role="group" aria-label="Barrierefreiheitsoptionen">
+  <!-- Panel de controles principal -->
+  <div class="accessibility-panel" id="accessibilityPanel">
+    <!-- Encabezado del panel -->
+    <div class="accessibility-header">
+      <h3>Barrierefreiheit</h3>
+      <button 
+        id="closeAccessibilityPanel" 
+        class="close-btn" 
+        aria-label="Panel schließen"
+        title="Barrierefreiheitspanel schließen">
+        ✕
+      </button>
+    </div>
+    
+    <!-- Controles principales -->
+    <div class="accessibility-options">
+      <div class="accessibility-option">
+        <button 
+          id="toggleTextSpacing" 
+          class="accessibility-btn feature-btn" 
+          aria-label="Text Spacing anpassen"
+          aria-pressed="false"
+          aria-keyshortcuts="Alt+T"
+          data-feature="textSpacing">
+          <span class="icon">🔤</span>
+          <span class="label">Text Spacing</span>
+          <div class="accessibility-tooltip">Textabstand anpassen (Alt+T)</div>
+        </button>
+      </div>
+      
+      <div class="accessibility-option">
+        <button 
+          id="highContrastMode" 
+          class="accessibility-btn feature-btn" 
+          aria-label="Hoher Kontrast"
+          aria-pressed="false"
+          aria-keyshortcuts="Alt+C"
+          data-feature="highContrast">
+          <span class="icon">🎨</span>
+          <span class="label">Hoher Kontrast</span>
+          <div class="accessibility-tooltip">Kontrast erhöhen (Alt+C)</div>
+        </button>
+      </div>
+      
+      <div class="accessibility-option">
+        <button 
+          id="focusIndicators" 
+          class="accessibility-btn feature-btn" 
+          aria-label="Fokusindikatoren"
+          aria-pressed="false"
+          aria-keyshortcuts="Alt+F"
+          data-feature="focusIndicators">
+          <span class="icon">🎯</span>
+          <span class="label">Fokus verbessern</span>
+          <div class="accessibility-tooltip">Fokusindikatoren (Alt+F)</div>
+        </button>
+      </div>
+    </div>
+    
+    <!-- Botones de acción -->
+    <div class="accessibility-actions">
+      <button 
+        id="resetAccessibility" 
+        class="reset-btn" 
+        aria-label="Alle Einstellungen zurücksetzen"
+        title="Alle Barrierefreiheitseinstellungen zurücksetzen">
+        🔄 Zurücksetzen
+      </button>
+      
+      <a 
+        href="/accessibility" 
+        class="info-btn" 
+        aria-label="Barrierefreiheitsseite"
+        aria-keyshortcuts="Alt+A"
+        title="Vollständige Informationen zur Barrierefreiheit (Alt+A)">
+        ℹ️ Mehr Infos
+      </a>
+    </div>
+  </div>
+  
+  <!-- Botón flotante para abrir/cerrar el panel -->
   <button 
-    id="toggleTextSpacing" 
-    class="accessibility-btn" 
-    aria-label="Text Spacing anpassen"
-    aria-pressed="false"
-    title="Textabstand anpassen für bessere Lesbarkeit">
-    <span>🔤</span>
-  </button>
-  <button 
-    id="highContrastMode" 
-    class="accessibility-btn" 
-    aria-label="Hoher Kontrast"
-    aria-pressed="false"
-    title="Hohen Kontrast für bessere Sichtbarkeit aktivieren">
-    <span>🎨</span>
-  </button>
-  <button 
-    id="focusIndicators" 
-    class="accessibility-btn" 
-    aria-label="Fokusindikatoren"
-    aria-pressed="false"
-    title="Verbesserte Fokusindikatoren anzeigen">
-    <span>🎯</span>
+    id="toggleAccessibilityPanel" 
+    class="accessibility-toggle" 
+    aria-label="Barrierefreiheitsoptionen öffnen"
+    aria-expanded="false"
+    aria-controls="accessibilityPanel"
+    title="Barrierefreiheitsoptionen öffnen/schließen">
+    <span class="toggle-icon">♿</span>
+    <div class="accessibility-tooltip">Barrierefreiheit</div>
   </button>
 </div>
 
@@ -38,44 +105,512 @@ const { class: className } = Astro.props;
     position: fixed;
     bottom: 20px;
     right: 20px;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
     z-index: 1000;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
   }
 
-  .accessibility-btn {
-    width: 44px;
-    height: 44px;
+  /* Botón toggle principal */
+  .accessibility-toggle {
+    width: 60px;
+    height: 60px;
     border-radius: 50%;
-    background: white;
-    border: 2px solid #0057b8;
+    background: linear-gradient(135deg, #0057b8, #0066cc);
+    border: none;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 12px rgba(0, 87, 184, 0.3);
+    position: relative;
   }
 
-  .accessibility-btn:hover,
-  .accessibility-btn:focus {
+  .accessibility-toggle:hover,
+  .accessibility-toggle:focus {
     transform: scale(1.1);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 6px 20px rgba(0, 87, 184, 0.4);
+    outline: 3px solid #FF9900;
+    outline-offset: 2px;
+  }
+
+  .toggle-icon {
+    font-size: 28px;
+    color: white;
+    filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.3));
+  }
+
+  /* Panel de controles */
+  .accessibility-panel {
+    position: absolute;
+    bottom: 80px;
+    right: 0;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    border: 1px solid #e0e0e0;
+    min-width: 280px;
+    max-width: 320px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px) scale(0.95);
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+  }
+
+  .accessibility-panel.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+  }
+
+  .accessibility-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid #e0e0e0;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+    border-radius: 12px 12px 0 0;
+  }
+
+  .accessibility-header h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+    color: #666;
+    padding: 4px;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .close-btn:hover,
+  .close-btn:focus {
+    background: #f0f0f0;
+    color: #333;
+    outline: 2px solid #0057b8;
+  }
+
+  .accessibility-options {
+    padding: 16px;
+  }
+
+  .accessibility-option {
+    margin-bottom: 12px;
+  }
+
+  .accessibility-option:last-child {
+    margin-bottom: 0;
+  }
+
+  .feature-btn {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    background: white;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    text-align: left;
+  }
+
+  .feature-btn:hover,
+  .feature-btn:focus {
+    border-color: #0057b8;
+    box-shadow: 0 2px 8px rgba(0, 87, 184, 0.1);
     outline: none;
   }
-  
-  .accessibility-btn.active {
-    background: #0057b8;
+
+  .feature-btn.active {
+    background: linear-gradient(135deg, #0057b8, #0066cc);
+    border-color: #0057b8;
     color: white;
   }
-  
-  .accessibility-btn span {
-    font-size: 20px;
+
+  .feature-btn .icon {
+    font-size: 24px;
+    margin-right: 12px;
+    min-width: 32px;
+    text-align: center;
+  }
+
+  .feature-btn .label {
+    font-size: 14px;
+    font-weight: 500;
+    flex: 1;
+  }
+
+  .accessibility-actions {
+    padding: 16px;
+    border-top: 1px solid #e0e0e0;
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+  }
+
+  .reset-btn,
+  .info-btn {
+    padding: 10px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .reset-btn {
+    background: #f8f9fa;
+    border: 1px solid #dee2e6;
+    color: #495057;
+  }
+
+  .reset-btn:hover,
+  .reset-btn:focus {
+    background: #e9ecef;
+    border-color: #adb5bd;
+    outline: 2px solid #0057b8;
+  }
+
+  .info-btn {
+    background: linear-gradient(135deg, #28a745, #20c997);
+    border: none;
+    color: white;
+  }
+
+  .info-btn:hover,
+  .info-btn:focus {
+    background: linear-gradient(135deg, #218838, #1ea971);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(40, 167, 69, 0.3);
+    outline: 2px solid #FF9900;
+  }
+
+  /* Tooltips */
+  .accessibility-tooltip {
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #333;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 12px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    pointer-events: none;
+    z-index: 1001;
+    margin-bottom: 8px;
+  }
+
+  .accessibility-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 4px solid transparent;
+    border-top-color: #333;
+  }
+
+  .accessibility-toggle:hover .accessibility-tooltip,
+  .accessibility-toggle:focus .accessibility-tooltip {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .accessibility-controls {
+      bottom: 15px;
+      right: 15px;
+    }
+
+    .accessibility-toggle {
+      width: 56px;
+      height: 56px;
+    }
+
+    .toggle-icon {
+      font-size: 24px;
+    }
+
+    .accessibility-panel {
+      bottom: 70px;
+      right: -20px;
+      min-width: 260px;
+      max-width: calc(100vw - 40px);
+    }
+
+    .accessibility-actions {
+      flex-direction: row;
+    }
+
+    .reset-btn,
+    .info-btn {
+      flex: 1;
+      font-size: 13px;
+      padding: 8px 12px;
+    }
+  }
+
+  /* Estados de accesibilidad */
+  .accessibility-controls.high-contrast .accessibility-panel {
+    background: #000;
+    border-color: #fff;
+    color: #fff;
+  }
+
+  .accessibility-controls.high-contrast .accessibility-header {
+    background: #1a1a1a;
+    border-bottom-color: #fff;
+  }
+
+  .accessibility-controls.high-contrast .feature-btn {
+    background: #000;
+    border-color: #fff;
+    color: #fff;
+  }
+
+  .accessibility-controls.high-contrast .feature-btn:hover {
+    background: #333;
+  }
+
+  .accessibility-controls.high-contrast .feature-btn.active {
+    background: #0066cc;
+  }
+
+  /* Animaciones suaves */
+  @media (prefers-reduced-motion: reduce) {
+    .accessibility-toggle,
+    .accessibility-panel,
+    .feature-btn {
+      transition: none;
+    }
+  }
+
+  /* Mejores indicadores de foco */
+  .enhanced-focus .accessibility-toggle:focus,
+  .enhanced-focus .feature-btn:focus,
+  .enhanced-focus .reset-btn:focus,
+  .enhanced-focus .info-btn:focus,
+  .enhanced-focus .close-btn:focus {
+    outline: 3px solid #FF9900 !important;
+    outline-offset: 3px !important;
+    box-shadow: 0 0 0 6px rgba(255, 153, 0, 0.4) !important;
   }
 </style>
 
 <script>
-  // El script de inicialización está en accessibility-manager.js
-  // que se carga en Layout.astro
+  // Inicialización del panel de accesibilidad
+  document.addEventListener('DOMContentLoaded', function() {
+    initAccessibilityPanel();
+  });
+  
+  // También para navegación SPA de Astro
+  document.addEventListener('astro:page-load', function() {
+    initAccessibilityPanel();
+  });
+
+  function initAccessibilityPanel() {
+    const toggleBtn = document.getElementById('toggleAccessibilityPanel');
+    const panel = document.getElementById('accessibilityPanel');
+    const closeBtn = document.getElementById('closeAccessibilityPanel');
+    const resetBtn = document.getElementById('resetAccessibility');
+    
+    if (!toggleBtn || !panel) return;
+
+    // Función para mostrar/ocultar panel
+    function togglePanel() {
+      const isVisible = panel?.classList.contains('show') || false;
+      
+      if (isVisible) {
+        hidePanel();
+      } else {
+        showPanel();
+      }
+    }
+
+    function showPanel() {
+      panel?.classList.add('show');
+      toggleBtn?.setAttribute('aria-expanded', 'true');
+      toggleBtn?.setAttribute('aria-label', 'Barrierefreiheitsoptionen schließen');
+      
+      // Foco en el primer elemento
+      const firstButton = panel?.querySelector('.feature-btn') as HTMLElement;
+      if (firstButton) {
+        setTimeout(() => firstButton.focus(), 100);
+      }
+    }
+
+    function hidePanel() {
+      panel?.classList.remove('show');
+      toggleBtn?.setAttribute('aria-expanded', 'false');
+      toggleBtn?.setAttribute('aria-label', 'Barrierefreiheitsoptionen öffnen');
+      
+      // Devolver foco al botón toggle
+      toggleBtn?.focus();
+    }
+
+    // Event listeners
+    toggleBtn.addEventListener('click', togglePanel);
+    
+    if (closeBtn) {
+      closeBtn.addEventListener('click', hidePanel);
+    }
+
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function() {
+        const manager = (window as any).accessibilityManager;
+        if (manager && typeof manager.resetAllPreferences === 'function') {
+          manager.resetAllPreferences();
+            // Actualizar estados visuales
+          const featureButtons = panel?.querySelectorAll('.feature-btn');
+          featureButtons?.forEach((btn) => {
+            const btnElement = btn as HTMLElement;
+            btnElement.classList.remove('active');
+            btnElement.setAttribute('aria-pressed', 'false');
+          });
+          
+          // Mostrar confirmación
+          showNotification('Alle Barrierefreiheitseinstellungen wurden zurückgesetzt');
+        }
+      });
+    }
+
+    // Cerrar panel al hacer clic fuera
+    document.addEventListener('click', function(event) {
+      const controls = document.querySelector('.accessibility-controls');
+      const target = event.target as Node;
+      if (controls && target && !controls.contains(target)) {
+        hidePanel();
+      }
+    });
+
+    // Cerrar con Escape
+    document.addEventListener('keydown', function(event) {
+      if (event.key === 'Escape' && panel?.classList.contains('show')) {
+        hidePanel();
+      }
+    });    // Gestión de estados de botones
+    const featureButtons = panel?.querySelectorAll('.feature-btn');
+    featureButtons?.forEach((button) => {
+      const btnElement = button as HTMLElement;
+      btnElement.addEventListener('click', function() {
+        const feature = btnElement.getAttribute('data-feature');
+        const manager = (window as any).accessibilityManager;
+        
+        if (manager && feature) {
+          // Llamar a la función correspondiente
+          switch(feature) {
+            case 'textSpacing':
+              if (typeof manager.toggleTextSpacing === 'function') {
+                manager.toggleTextSpacing();
+              }
+              break;
+            case 'highContrast':
+              if (typeof manager.toggleHighContrast === 'function') {
+                manager.toggleHighContrast();
+              }
+              break;
+            case 'focusIndicators':
+              if (typeof manager.toggleFocusIndicators === 'function') {
+                manager.toggleFocusIndicators();
+              }
+              break;
+          }
+          
+          // Actualizar estado visual
+          const isActive = manager.state && manager.state[feature];
+          btnElement.classList.toggle('active', isActive);
+          btnElement.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+          
+          // Mostrar notificación
+          const labelElement = btnElement.querySelector('.label');
+          const featureName = labelElement?.textContent || feature;
+          const statusText = isActive ? 'aktiviert' : 'deaktiviert';
+          showNotification(`${featureName} ${statusText}`);
+        }
+      });
+    });
+
+    // Función para mostrar notificaciones
+    function showNotification(message: string) {
+      // Crear elemento de notificación si no existe
+      let notification = document.getElementById('accessibility-notification');
+      if (!notification) {
+        notification = document.createElement('div');
+        notification.id = 'accessibility-notification';
+        notification.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: #28a745;
+          color: white;
+          padding: 12px 20px;
+          border-radius: 6px;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+          z-index: 1002;
+          font-size: 14px;
+          font-weight: 500;
+          opacity: 0;
+          transform: translateY(-20px);
+          transition: all 0.3s ease;
+          max-width: 300px;
+        `;
+        document.body.appendChild(notification);
+      }
+
+      // Mostrar notificación
+      notification.textContent = message;
+      notification.style.opacity = '1';
+      notification.style.transform = 'translateY(0)';
+
+      // Ocultar después de 3 segundos
+      setTimeout(() => {
+        if (notification) {
+          notification.style.opacity = '0';
+          notification.style.transform = 'translateY(-20px)';
+        }
+      }, 3000);
+
+      // Anunciar para screen readers
+      const manager = (window as any).accessibilityManager;
+      if (manager && typeof manager.announce === 'function') {
+        manager.announce(message);
+      }
+    }
+
+    // Sincronizar estados iniciales
+    const manager = (window as any).accessibilityManager;
+    if (manager && manager.state) {
+      const state = manager.state;
+        featureButtons?.forEach((button) => {
+        const btnElement = button as HTMLElement;
+        const feature = btnElement.getAttribute('data-feature');
+        if (feature && state[feature]) {
+          btnElement.classList.add('active');
+          btnElement.setAttribute('aria-pressed', 'true');
+        }
+      });
+    }
+  }
 </script>
