@@ -16,8 +16,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
 ---
 
 <!doctype html>
-<html lang="de">
-  <head>
+<html lang="de">  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -25,8 +24,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
     <title>{title}</title>
     <!-- Meta Description -->
     <meta name="description" content={description} />
-    <!-- Keywords for SEO -->
-    <meta name="keywords" content={keywords} />
+    <!-- Keywords for SEO -->    <meta name="keywords" content={keywords} />
     <link rel="stylesheet" href="/src/styles/main.css" />
     <link rel="stylesheet" href="/src/styles/accessibility.css" />
     <!-- Essential FontAwesome icons only -->
@@ -41,8 +39,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       />
-    </noscript>
-    <!-- Core functionality modules -->
+    </noscript>    <!-- Core functionality modules -->
     <script src="/src/utils/lazy-loader.js" type="module" is:inline></script>
     <script src="/src/utils/intelligent-preloader.js" type="module" is:inline></script>
     <script src="/src/utils/performance-monitor.js" type="module" is:inline></script>
@@ -50,13 +47,12 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
   </head>
 
   <body class="bg-white">
-    <Header navAnchors={navAnchors} />
-    <main class="relative">
+    <Header navAnchors={navAnchors} />    <main class="relative">
       <slot />
+      <CookieConsent client:idle />
+      <AccessibilityControls class="global-accessibility-controls" />
     </main>
     <Footer isLandingPage={page === "landing"} />
-    <CookieConsent client:idle />
-    <AccessibilityControls class="global-accessibility-controls" />
     
     <!-- Accessibility Manager Script -->
     <script is:inline>
@@ -68,28 +64,28 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
             focusIndicators: false
           };
 
-          // Initialize after DOM is completely loaded
+          // Inicializar después de que el DOM esté completamente cargado
           if (document.readyState === 'loading') {
             document.addEventListener('DOMContentLoaded', () => this.init());
           } else {
             this.init();
           }
           
-          // Reinitialize on Astro page transitions
+          // Reinicializar en transiciones de página de Astro
           document.addEventListener('astro:page-load', () => this.init());
         }
 
         init() {
-          // Load saved preferences
+          // Cargar preferencias guardadas
           this.loadSavedPreferences();
           
-          // Apply preferences
+          // Aplicar preferencias
           this.applyPreferences();
           
-          // Setup event listeners
+          // Configurar controladores de eventos
           this.setupEventListeners();
           
-          // Enhance site accessibility
+          // Mejorar accesibilidad del sitio
           this.addSkipLink();
           this.enhanceMainContent();
           this.enhanceNavigation();
@@ -100,9 +96,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
           
           console.log('♿ Accessibility Manager initialized with enhanced features');
           console.log('AccessibilityManager state:', this.state);
-        }
-
-        setupEventListeners() {
+        }        setupEventListeners() {
           const setupWithRetry = (attempt = 1) => {
             const textSpacingBtn = document.getElementById('toggleTextSpacing');
             const highContrastBtn = document.getElementById('highContrastMode');
@@ -114,7 +108,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
               focusIndicatorsBtn: !!focusIndicatorsBtn
             });
             
-            // If buttons are not found and it's not the last attempt, retry
+            // Si no se encuentran los botones y es el primer intento, reintentar
             if ((!textSpacingBtn || !highContrastBtn || !focusIndicatorsBtn) && attempt < 5) {
               console.log('Buttons not found, retrying in 200ms...');
               setTimeout(() => setupWithRetry(attempt + 1), 200);
@@ -159,24 +153,24 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
           
           setupWithRetry();
           
-          // Add keyboard shortcuts for accessibility functions
+          // Agregar teclas de acceso rápido para las funciones de accesibilidad
           document.addEventListener('keydown', (event) => {
-            // Only activate shortcuts if Alt is pressed
+            // Solo activa las teclas de acceso rápido si Alt está presionado
             if (event.altKey) {
               switch(event.key) {
-                case 't': // Alt+T for text spacing
+                case 't': // Alt+T para espaciado de texto
                   event.preventDefault();
                   this.toggleTextSpacing();
                   break;
-                case 'c': // Alt+C for high contrast
+                case 'c': // Alt+C para alto contraste
                   event.preventDefault();
                   this.toggleHighContrast();
                   break;
-                case 'f': // Alt+F for focus indicators
+                case 'f': // Alt+F para indicadores de foco
                   event.preventDefault();
                   this.toggleFocusIndicators();
                   break;
-                case 'a': // Alt+A to open accessibility page
+                case 'a': // Alt+A para abrir la página de accesibilidad
                   event.preventDefault();
                   window.location.href = '/accessibility';
                   break;
@@ -184,8 +178,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
             }
           });
         }
-
-        toggleTextSpacing() {
+                  toggleTextSpacing() {
           console.log('toggleTextSpacing called');
           this.state.textSpacing = !this.state.textSpacing;
           this.applyTextSpacing();
@@ -234,7 +227,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
           if (this.state.textSpacing) {
             document.documentElement.classList.add('improved-text-spacing');
             
-            // Apply styles directly to ensure implementation
+            // Aplicar estilos directamente para garantizar la implementación
             document.documentElement.style.setProperty('word-spacing', '0.16em');
             document.documentElement.style.setProperty('line-height', '1.5');
             document.documentElement.style.setProperty('letter-spacing', '0.12em');
@@ -242,7 +235,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
           } else {
             document.documentElement.classList.remove('improved-text-spacing');
             
-            // Restore default styles
+            // Restaurar estilos predeterminados
             document.documentElement.style.removeProperty('word-spacing');
             document.documentElement.style.removeProperty('line-height');
             document.documentElement.style.removeProperty('letter-spacing');
@@ -254,7 +247,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
           if (this.state.highContrast) {
             document.documentElement.classList.add('high-contrast');
             
-            // Apply high contrast styles
+            // Aplicar estilos de alto contraste
             document.documentElement.style.setProperty('--primary', '#0066CC');
             document.documentElement.style.setProperty('--background', '#000000');
             document.documentElement.style.setProperty('--text', '#FFFFFF');
@@ -263,7 +256,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
           } else {
             document.documentElement.classList.remove('high-contrast');
             
-            // Restore default colors
+            // Restaurar colores predeterminados
             document.documentElement.style.removeProperty('--primary');
             document.documentElement.style.removeProperty('--background');
             document.documentElement.style.removeProperty('--text');
@@ -276,7 +269,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
           if (this.state.focusIndicators) {
             document.documentElement.classList.add('enhanced-focus');
             
-            // Apply enhanced focus styles
+            // Aplicar estilos de foco mejorados
             const style = document.createElement('style');
             style.id = 'enhanced-focus-style';
             style.textContent = `
@@ -300,7 +293,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
           } else {
             document.documentElement.classList.remove('enhanced-focus');
             
-            // Remove enhanced focus styles
+            // Eliminar estilos de foco mejorados
             const style = document.getElementById('enhanced-focus-style');
             if (style) {
               style.remove();
@@ -358,8 +351,8 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
           skipLink.id = 'skip-link';
           skipLink.className = 'skip-link';
           skipLink.href = '#main-content';
-          skipLink.textContent = 'Zum Hauptinhalt springen';
-          skipLink.setAttribute('aria-label', 'Navigation überspringen und zum Hauptinhalt gehen');
+          skipLink.textContent = 'Saltar al contenido principal';
+          skipLink.setAttribute('aria-label', 'Saltar navegación y ir al contenido principal');
           
           document.body.insertBefore(skipLink, document.body.firstChild);
         }
@@ -369,7 +362,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
           if (main && !main.id) {
             main.id = 'main-content';
             main.setAttribute('role', 'main');
-            main.setAttribute('aria-label', 'Hauptinhalt');
+            main.setAttribute('aria-label', 'Contenido principal');
           }
         }
 
@@ -377,7 +370,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
           const nav = document.querySelector('nav');
           if (nav && !nav.getAttribute('role')) {
             nav.setAttribute('role', 'navigation');
-            nav.setAttribute('aria-label', 'Hauptnavigation');
+            nav.setAttribute('aria-label', 'Navegación principal');
           }
 
           const header = document.querySelector('header');
@@ -407,14 +400,12 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
           `;
           
           document.body.appendChild(announcements);
-        }
-
-        announce(message) {
+        }        announce(message) {
           const announcements = document.getElementById('accessibility-announcements');
           if (announcements) {
             announcements.textContent = message;
             
-            // Clear after 1 second
+            // Limpiar después de 1 segundo
             setTimeout(() => {
               announcements.textContent = '';
             }, 1000);
@@ -422,7 +413,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
         }
 
         showNotification(message) {
-          // Create notification element if it doesn't exist
+          // Crear elemento de notificación si no existe
           let notification = document.getElementById('accessibility-notification');
           if (!notification) {
             notification = document.createElement('div');
@@ -447,12 +438,12 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
             document.body.appendChild(notification);
           }
 
-          // Show notification
+          // Mostrar notificación
           notification.textContent = message;
           notification.style.opacity = '1';
           notification.style.transform = 'translateY(0)';
 
-          // Hide after 3 seconds
+          // Ocultar después de 3 segundos
           setTimeout(() => {
             if (notification) {
               notification.style.opacity = '0';
@@ -460,7 +451,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
             }
           }, 3000);
 
-          // Also announce for screen readers
+          // También anunciar para screen readers
           this.announce(message);
         }
 
@@ -512,7 +503,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
             if (!button.textContent.trim() && !button.getAttribute('aria-label')) {
               const icon = button.querySelector('i, svg, span.icon');
               if (icon) {
-                button.setAttribute('aria-label', 'Button');
+                button.setAttribute('aria-label', 'Botón');
               }
             }
           });
@@ -522,7 +513,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
             if (!link.textContent.trim() && !link.getAttribute('aria-label')) {
               const icon = link.querySelector('i, svg, span.icon');
               if (icon) {
-                link.setAttribute('aria-label', 'Link');
+                link.setAttribute('aria-label', 'Enlace');
               }
             }
           });
@@ -530,7 +521,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
 
         setupCustomKeyboardEvents() {
           document.addEventListener('keydown', (event) => {
-            // Escape to open/close accessibility panel
+            // Escape para abrir/cerrar panel de accesibilidad
             if (event.key === 'Escape' && event.ctrlKey) {
               const panel = document.querySelector('.accessibility-controls');
               if (panel) {
@@ -538,7 +529,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
               }
             }
 
-            // F1 for accessibility help
+            // F1 para ayuda de accesibilidad
             if (event.key === 'F1' && event.altKey) {
               event.preventDefault();
               window.open('/accessibility', '_blank');
@@ -547,18 +538,15 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
         }
       }
 
-      // Create global instance
+      // Crear instancia global
       window.accessibilityManager = new AccessibilityManager();
     </script>
   </body>
 </html>
-
 <style is:global>
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif; /* Fuente predeterminada */
 }
-
-/* Animation keyframes */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(30px); }
   to { opacity: 1; transform: translateY(0); }
@@ -579,7 +567,6 @@ body {
   to { opacity: 1; transform: scale(1); }
 }
 
-/* Animation classes */
 .animate-on-scroll {
   opacity: 0;
   transition: opacity 0.8s ease-out, transform 0.8s ease-out;
@@ -605,7 +592,6 @@ body {
   animation: gridIn 0.8s ease-out forwards;
 }
 
-/* Parallax effects */
 .parallax {
   overflow: hidden;
   position: relative;
@@ -615,6 +601,22 @@ body {
   animation: fadeIn 0.8s ease-out forwards;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .fade-in.show,
+  .slide-in.show,
+  .zoom-in.show,
+  .grid-in.show,
+  .parallax.show .parallax-bg {
+    transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+.parallax.show::before {
+  animation: parallaxEffect 0.6s forwards;
+}
 .parallax-container {
   clip: rect(0, auto, auto, 0);
 }
@@ -631,56 +633,33 @@ body {
   opacity: 0.7;
 }
 
-/* Accessibility preferences */
 @media (prefers-reduced-motion: reduce) {
-  .animate-on-scroll,
-  .fade-in.show,
-  .slide-in.show,
-  .zoom-in.show,
-  .grid-in.show,
-  .parallax.show .parallax-bg,
   .parallax-image,
   .parallax-video {
-    transition: none;
-    animation: none;
-    opacity: 1;
-    transform: none;
     position: absolute;
   }
 }
-
-/* iOS Safari fixes */
 @supports (-webkit-touch-callout: none) {
-  .parallax-image,
-  .parallax-video {
-    position: absolute;
-    height: 100vh;
-    height: -webkit-fill-available;
+    .parallax-image,
+    .parallax-video {
+      position: absolute;
+      height: 100vh;
+      height: -webkit-fill-available;
+    }
   }
-}
 
-/* Skip link styles */
-.skip-link {
-  position: absolute;
-  top: -40px;
-  left: 6px;
-  background: #000;
-  color: #fff;
-  padding: 8px;
-  text-decoration: none;
-  z-index: 1000;
-  border-radius: 0 0 4px 4px;
-}
-
-.skip-link:focus {
-  top: 0;
-}
+  @media (prefers-reduced-motion: reduce) {
+    .parallax-image,
+    .parallax-video {
+      position: absolute;
+    }
+  }
 </style>
-
 <script>
   // Store all observers for cleanup
   const observers = new Map();
-    // Performance optimized intersection observer with throttling
+  
+  // Performance optimized intersection observer with throttling
   const createOptimizedObserver = () => {
     // Throttle observer callbacks to reduce main thread work
     const throttle = (func: Function, limit: number) => {
@@ -699,7 +678,7 @@ body {
     const optimizedCallback = throttle((entries: IntersectionObserverEntry[]) => {
       // Use requestAnimationFrame for smooth animations
       requestAnimationFrame(() => {
-        entries.forEach((entry: IntersectionObserverEntry) => {
+        entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('show');
             // Unobserve to prevent memory leaks and reduce work
@@ -724,8 +703,7 @@ body {
     elements.forEach((el) => {
       observer.observe(el);
       observers.set(el, observer);
-    });
-  };
+    });  };
 
   // Use efficient DOM ready detection
   if (document.readyState === 'loading') {
@@ -734,3 +712,4 @@ body {
     initAnimations();
   }
 </script>
+</style>

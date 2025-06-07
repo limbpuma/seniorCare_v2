@@ -9,35 +9,64 @@ import Location from "@/components/home/Location.astro";
 import Testimonial from "@/components/common/Testimonial.astro";
 import texts from "@/utils/texts.json";
 import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
-import FormSection from "@/components/home/FormSection.astro";
 import ParallaxVideo from "@/components/common/ParallaxVideo.astro";
+import ContactText from "@/components/contact/ContactText.astro";
+import DiscoverIcons from "@/components/common/DiscoverIcons.astro";
+import MapSection from "@/components/contact/MapSection.astro";
+import FaqContent from "@/components/faq/FaqContent.astro";
 
-const title = "Home";
+const title = "Integra Senior Care | Umfassende Seniorenbetreuung";
 const page = "home";
+
+// Create navigation anchors for one-page design
+const navAnchors = [
+  { id: "home", label: "Home" },
+  { id: "about", label: "Über uns" },
+  { id: "services", label: "Leistungen" },
+  { id: "experience", label: "Erfahrung" },
+  { id: "contact", label: "Kontakt" },
+  { id: "faq", label: "FAQ" },
+  { id: "location", label: "Standort" }
+];
 ---
 
-<Layout title={title} page={page}>
+<Layout title={title} page={page} navAnchors={navAnchors}>
+  <div id="home" class="scroll-section">
+    <ParallaxVideo {...texts.home.heroVideo} preload="metadata"/>
+  </div>
   
-  <ParallaxVideo {...texts.home.heroVideo} preload="metadata"/>
-  <AboutSection {...texts.home.about} />
-  <BannerSlider slides={texts.home.bannerSlides} />
-  <Experience {...texts.home.experience} />
-  <ImageCarrousel {...texts.home.imageCarousel} />
-  <FormSection {...texts.home.formSection} />
-  <Location {...texts.home.location} />
-  <ImageCarrousel_2 {...texts.home.imageCarousel_2} />
-  <Testimonial {...texts.home.testimonials} />
-  <GalleryMosaic {...texts.home.galleryMosaic} />
+  <div id="about" class="scroll-section">
+    <AboutSection {...texts.home.about} />
+    <BannerSlider slides={texts.home.bannerSlides} />
+  </div>
   
+  <div id="services" class="scroll-section">
+    <Experience {...texts.home.experience} />
+    <DiscoverIcons {...texts.about.discoverIcons} />
+    <ImageCarrousel {...texts.home.imageCarousel} />
+  </div>
+  
+  <div id="experience" class="scroll-section">
+    <ImageCarrousel_2 {...texts.home.imageCarousel_2} />
+    <Testimonial {...texts.home.testimonials} />
+    <GalleryMosaic {...texts.home.galleryMosaic} />
+  </div>
+  
+  <div id="contact" class="scroll-section">
+    <ContactText {...texts.contact.contactText} />
+  </div>
+  
+  <div id="faq" class="scroll-section">
+    <FaqContent {...texts.faq.faqContent} />
+  </div>
+    <div id="location" class="scroll-section">
+    <Location {...texts.home.location} />
+    <MapSection {...texts.contact.mapSection} />
+  </div>
 </Layout>
-<script>
-  document.addEventListener('astro:page-load', () => {
-    const video = document.querySelector('.parallax-video') as HTMLVideoElement;
-    if (video) {
-      video.play().catch(error => {
-        console.error("Auto-play was prevented:", error);
-        // Puedes agregar aquí una lógica alternativa si el auto-play falla
-      });
-    }
-  });
-</script>
+
+<style>
+  .scroll-section {
+    scroll-margin-top: 80px; /* Adjust based on header height */
+  }
+</style>

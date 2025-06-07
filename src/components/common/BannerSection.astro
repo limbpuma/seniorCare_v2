@@ -1,24 +1,30 @@
 ---
 interface Props {
   title: string;
-  breadcrumbs: { label: string; url: string }[];
-  backgroundImage: string;
+  subtitle?: string;
+  breadcrumbs?: { label: string; url: string }[];
+  backgroundImage?: string;
+  image?: string;
 }
 
-const { title, breadcrumbs, backgroundImage } = Astro.props;
+const { title, subtitle, breadcrumbs = [], backgroundImage, image } = Astro.props;
+// Use either backgroundImage or image property
+const bgImage = backgroundImage || image || '/assets/img/senior_couple_walking_autumn_2.webp';
 ---
 
 <div
   class="relative py-16 bg-cover bg-center bg-no-repeat"
-  style={`background-image: url(${backgroundImage});`}
+  style={`background-image: url(${bgImage});`}
 >
   <div class="absolute inset-0 bg-black opacity-50"></div>
   <div class="container mx-auto px-4 relative z-10">
     <h1 class="text-ag-h2 font-ag-h2 text-white mb-4">{title}</h1>
-    <nav class="text-sm" aria-label="Breadcrumb">
-      <ol class="list-none p-0 inline-flex">
-        {
-          breadcrumbs.map((item, index) => (
+    {subtitle && <p class="text-xl text-white mb-6">{subtitle}</p>}
+    {breadcrumbs.length > 0 && (
+      <nav class="text-sm" aria-label="Breadcrumb">
+        <ol class="list-none p-0 inline-flex">
+          {
+            breadcrumbs.map((item, index) => (
             <li class="flex items-center">
               {index > 0 && <span class="mx-2 text-gray-300 ">/</span>}
               <a
@@ -31,10 +37,10 @@ const { title, breadcrumbs, backgroundImage } = Astro.props;
               >
                 {item.label}
               </a>
-            </li>
-          ))
+            </li>          ))
         }
-      </ol>
-    </nav>
+        </ol>
+      </nav>
+    )}
   </div>
 </div>

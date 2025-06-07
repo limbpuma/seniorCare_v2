@@ -17,10 +17,10 @@ const NAVIGATION = navAnchors
   ? navAnchors.map((anchor: NavAnchor) => ({ name: anchor.label, href: `#${anchor.id}`, isAnchor: true }))
   : [
     { name: headerTexts.nav.home, href: "/" },
-    { name: headerTexts.nav.about, href: "about" },
-    { name: headerTexts.nav.services, href: "services" },
-    { name: headerTexts.nav.contact, href: "contact" },
-    { name: headerTexts.nav.faq, href: "faq" },
+    { name: headerTexts.nav.about, href: "/#about" },
+    { name: headerTexts.nav.services, href: "/#services" },
+    { name: headerTexts.nav.contact, href: "/#contact" },
+    { name: headerTexts.nav.faq, href: "/#faq" },
   ];
 ---
 

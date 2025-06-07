@@ -10,7 +10,6 @@ import Testimonial from "@/components/common/Testimonial.astro";
 import texts from "@/utils/texts.json";
 import GalleryMosaic from "@/components/common/GalleryMosaic.astro";
 import ParallaxVideo from "@/components/common/ParallaxVideo.astro";
-import AccessibilityControls from "@/components/common/AccessibilityControls.astro";
 import ContactText from "@/components/contact/ContactText.astro";
 import DiscoverIcons from "@/components/common/DiscoverIcons.astro";
 import MapSection from "@/components/contact/MapSection.astro";
@@ -60,21 +59,14 @@ const navAnchors = [
   <div id="faq" class="scroll-section">
     <FaqContent {...texts.faq.faqContent} />
   </div>
-  
-  <div id="location" class="scroll-section">
+    <div id="location" class="scroll-section">
     <Location {...texts.home.location} />
     <MapSection {...texts.contact.mapSection} />
   </div>
-  
-  <AccessibilityControls class="fixed-accessibility" />
 </Layout>
 
 <style>
   .scroll-section {
     scroll-margin-top: 80px; /* Adjust based on header height */
-  }
-  
-  .fixed-accessibility {
-    z-index: 1000;
   }
 </style>

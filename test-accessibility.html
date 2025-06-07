@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Accessibility Buttons</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .test-section {
+            background: #f5f5f5;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .test-button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .test-button:hover {
+            background: #0056b3;
+        }
+        .results {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-left: 4px solid #28a745;
+            font-family: monospace;
+            font-size: 14px;
+        }
+        .error {
+            border-left-color: #dc3545;
+            color: #721c24;
+        }
+        .success {
+            border-left-color: #28a745;
+            color: #155724;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Accessibility Buttons</h1>
+    
+    <div class="test-section">
+        <h2>Test de botones de accesibilidad</h2>
+        <p>Esta página te permite probar los botones de accesibilidad manualmente.</p>
+        
+        <button class="test-button" onclick="testAccessibilityManager()">
+            🔍 Test AccessibilityManager
+        </button>
+        
+        <button class="test-button" onclick="testButtonsExist()">
+            📋 Verificar elementos
+        </button>
+        
+        <button class="test-button" onclick="testTextSpacing()">
+            🔤 Test Text Spacing
+        </button>
+        
+        <button class="test-button" onclick="testHighContrast()">
+            🎨 Test High Contrast
+        </button>
+        
+        <button class="test-button" onclick="testFocusIndicators()">
+            🎯 Test Focus Indicators
+        </button>
+        
+        <button class="test-button" onclick="openMainSite()">
+            🌐 Abrir sitio principal
+        </button>
+    </div>
+    
+    <div id="results" class="results">
+        Resultados aparecerán aquí...
+    </div>
+
+    <script>
+        function log(message, type = 'info') {
+            const results = document.getElementById('results');
+            const timestamp = new Date().toLocaleTimeString();
+            const className = type === 'error' ? 'error' : type === 'success' ? 'success' : '';
+            results.innerHTML += `<div class="${className}">[${timestamp}] ${message}</div>`;
+            results.scrollTop = results.scrollHeight;
+            console.log(`[${timestamp}] ${message}`);
+        }
+
+        function testAccessibilityManager() {
+            log('🔍 Testing AccessibilityManager...');
+            
+            // Test si existe window.accessibilityManager
+            if (typeof window.accessibilityManager !== 'undefined') {
+                log('✅ AccessibilityManager found', 'success');
+                log(`State: ${JSON.stringify(window.accessibilityManager.state)}`);
+                
+                // Test métodos
+                const methods = ['toggleTextSpacing', 'toggleHighContrast', 'toggleFocusIndicators'];
+                methods.forEach(method => {
+                    if (typeof window.accessibilityManager[method] === 'function') {
+                        log(`✅ Method ${method} exists`, 'success');
+                    } else {
+                        log(`❌ Method ${method} NOT found`, 'error');
+                    }
+                });
+            } else {
+                log('❌ AccessibilityManager NOT found', 'error');
+                log('This test only works on the main site pages.');
+            }
+        }
+
+        function testButtonsExist() {
+            log('📋 Checking if accessibility buttons exist...');
+            
+            const buttons = [
+                'toggleTextSpacing',
+                'highContrastMode', 
+                'focusIndicators'
+            ];
+            
+            buttons.forEach(id => {
+                const element = document.getElementById(id);
+                if (element) {
+                    log(`✅ Button ${id} found`, 'success');
+                } else {
+                    log(`❌ Button ${id} NOT found`, 'error');
+                }
+            });
+            
+            log('This test only works on the main site pages.');
+        }
+
+        function testTextSpacing() {
+            log('🔤 Testing Text Spacing...');
+            if (window.accessibilityManager) {
+                try {
+                    window.accessibilityManager.toggleTextSpacing();
+                    log('✅ Text spacing toggled successfully', 'success');
+                } catch (error) {
+                    log(`❌ Error toggling text spacing: ${error.message}`, 'error');
+                }
+            } else {
+                log('❌ AccessibilityManager not available', 'error');
+            }
+        }
+
+        function testHighContrast() {
+            log('🎨 Testing High Contrast...');
+            if (window.accessibilityManager) {
+                try {
+                    window.accessibilityManager.toggleHighContrast();
+                    log('✅ High contrast toggled successfully', 'success');
+                } catch (error) {
+                    log(`❌ Error toggling high contrast: ${error.message}`, 'error');
+                }
+            } else {
+                log('❌ AccessibilityManager not available', 'error');
+            }
+        }
+
+        function testFocusIndicators() {
+            log('🎯 Testing Focus Indicators...');
+            if (window.accessibilityManager) {
+                try {
+                    window.accessibilityManager.toggleFocusIndicators();
+                    log('✅ Focus indicators toggled successfully', 'success');
+                } catch (error) {
+                    log(`❌ Error toggling focus indicators: ${error.message}`, 'error');
+                }
+            } else {
+                log('❌ AccessibilityManager not available', 'error');
+            }
+        }
+
+        function openMainSite() {
+            window.open('http://localhost:4323/', '_blank');
+        }
+
+        // Auto-run basic test when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            log('🚀 Test page loaded');
+            log('Click "Test AccessibilityManager" to verify the functionality');
+            log('Or click "Abrir sitio principal" to test on the actual site');
+        });
+    </script>
+</body>
+</html>

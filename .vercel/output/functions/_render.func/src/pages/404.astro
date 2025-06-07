@@ -6,23 +6,40 @@ import ParallaxMedia from "../components/common/ParallaxMedia.astro";
 import seniorCoupleImage from "/public/assets/img/doctor_senior_care_help_6.webp";
 
 const page = "404";
-interface Props {
-  alignment?: 'left' | 'center' | 'right';
+const title = "404 - Seite nicht gefunden";
 
-}
+// After 5 seconds, redirect to home page
+const redirectScript = `
+  setTimeout(() => {
+    window.location.href = '/';
+  }, 5000);
 
-const { alignment = 'left' } = Astro.props;
+  function goHome() {
+    window.location.href = '/';
+  }
+`;
 
 ---
 
 <Layout title="404 - Page Not Found" page={page}>
+  <Layout title={title} page={page}>
   <Section 
     padding="large"
-    width="full"
-    height="h-screen"
+    width="full"    height="h-screen"
     id="hero-parallax-section"
-    class="relative overflow-hidden "
+    class="relative overflow-hidden"
   >
+    <div class="flex flex-col items-center justify-center h-full text-center z-10 relative">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">404 - Seite nicht gefunden</h1>
+      <p class="text-xl md:text-2xl mb-8 text-white">Die gesuchte Seite konnte leider nicht gefunden werden.</p>
+      <button
+        onclick="goHome()"
+        class="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded transition duration-300"
+      >
+        Zur Startseite
+      </button>
+      <p class="text-sm mt-4 text-white">Sie werden in 5 Sekunden automatisch weitergeleitet...</p>
+    </div>
     <div class="absolute inset-0 w-full h-full parallax-container">
       <ParallaxMedia 
         type="image"
@@ -30,21 +47,22 @@ const { alignment = 'left' } = Astro.props;
         alt="404 Error - Senior couple"
       />
     </div>
-    <div class="relative z-10 container mx-auto h-full flex items-center justify-center lg:justify-start">
-      <div class="w-full max-w-3xl lg:max-w-none lg:w-1/2 px-4 text-center lg:text-left">
+    <div class="relative z-10 container mx-auto h-full flex items-center justify-center">
+      <div class="w-full max-w-3xl px-4 text-center">
         <TextBlock
           subtitle="Seite nicht gefunden"
           title="404"
           descriptionBold="Es tut uns leid, aber die gesuchte Seite konnte nicht gefunden werden"
-          alignment={alignment}        
+          description="Sie werden in 5 Sekunden zur Startseite weitergeleitet"
           textColor="white"
-          buttonText="Zurück zur Startseite"
+          buttonText="Sofort zur Startseite"
           buttonVariant="primary"
-          buttonSize="medium"
+          buttonSize="large"
           buttonHref="/"
         />
-        
       </div>
     </div>
   </Section>
+  <script set:html={redirectScript} />
+</Layout>
 </Layout>

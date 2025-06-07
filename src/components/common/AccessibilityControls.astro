@@ -470,7 +470,7 @@ const { class: className } = Astro.props;
       toggleBtn?.focus();
     }
 
-    // Event listeners
+    // Event listeners para el panel
     toggleBtn.addEventListener('click', togglePanel);
     
     if (closeBtn) {
@@ -482,16 +482,13 @@ const { class: className } = Astro.props;
         const manager = (window as any).accessibilityManager;
         if (manager && typeof manager.resetAllPreferences === 'function') {
           manager.resetAllPreferences();
-            // Actualizar estados visuales
+          // Actualizar estados visuales
           const featureButtons = panel?.querySelectorAll('.feature-btn');
           featureButtons?.forEach((btn) => {
             const btnElement = btn as HTMLElement;
             btnElement.classList.remove('active');
             btnElement.setAttribute('aria-pressed', 'false');
           });
-          
-          // Mostrar confirmación
-          showNotification('Alle Barrierefreiheitseinstellungen wurden zurückgesetzt');
         }
       });
     }
@@ -510,107 +507,29 @@ const { class: className } = Astro.props;
       if (event.key === 'Escape' && panel?.classList.contains('show')) {
         hidePanel();
       }
-    });    // Gestión de estados de botones
-    const featureButtons = panel?.querySelectorAll('.feature-btn');
-    featureButtons?.forEach((button) => {
-      const btnElement = button as HTMLElement;
-      btnElement.addEventListener('click', function() {
-        const feature = btnElement.getAttribute('data-feature');
-        const manager = (window as any).accessibilityManager;
-        
-        if (manager && feature) {
-          // Llamar a la función correspondiente
-          switch(feature) {
-            case 'textSpacing':
-              if (typeof manager.toggleTextSpacing === 'function') {
-                manager.toggleTextSpacing();
-              }
-              break;
-            case 'highContrast':
-              if (typeof manager.toggleHighContrast === 'function') {
-                manager.toggleHighContrast();
-              }
-              break;
-            case 'focusIndicators':
-              if (typeof manager.toggleFocusIndicators === 'function') {
-                manager.toggleFocusIndicators();
-              }
-              break;
-          }
-          
-          // Actualizar estado visual
-          const isActive = manager.state && manager.state[feature];
-          btnElement.classList.toggle('active', isActive);
-          btnElement.setAttribute('aria-pressed', isActive ? 'true' : 'false');
-          
-          // Mostrar notificación
-          const labelElement = btnElement.querySelector('.label');
-          const featureName = labelElement?.textContent || feature;
-          const statusText = isActive ? 'aktiviert' : 'deaktiviert';
-          showNotification(`${featureName} ${statusText}`);
-        }
-      });
     });
 
-    // Función para mostrar notificaciones
-    function showNotification(message: string) {
-      // Crear elemento de notificación si no existe
-      let notification = document.getElementById('accessibility-notification');
-      if (!notification) {
-        notification = document.createElement('div');
-        notification.id = 'accessibility-notification';
-        notification.style.cssText = `
-          position: fixed;
-          top: 20px;
-          right: 20px;
-          background: #28a745;
-          color: white;
-          padding: 12px 20px;
-          border-radius: 6px;
-          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-          z-index: 1002;
-          font-size: 14px;
-          font-weight: 500;
-          opacity: 0;
-          transform: translateY(-20px);
-          transition: all 0.3s ease;
-          max-width: 300px;
-        `;
-        document.body.appendChild(notification);
-      }
-
-      // Mostrar notificación
-      notification.textContent = message;
-      notification.style.opacity = '1';
-      notification.style.transform = 'translateY(0)';
-
-      // Ocultar después de 3 segundos
-      setTimeout(() => {
-        if (notification) {
-          notification.style.opacity = '0';
-          notification.style.transform = 'translateY(-20px)';
-        }
-      }, 3000);
-
-      // Anunciar para screen readers
+    // Sincronizar estados iniciales cuando el AccessibilityManager esté disponible
+    const waitForManager = () => {
       const manager = (window as any).accessibilityManager;
-      if (manager && typeof manager.announce === 'function') {
-        manager.announce(message);
-      }
-    }
-
-    // Sincronizar estados iniciales
-    const manager = (window as any).accessibilityManager;
-    if (manager && manager.state) {
-      const state = manager.state;
+      if (manager && manager.state) {
+        const state = manager.state;
+        const featureButtons = panel?.querySelectorAll('.feature-btn');
         featureButtons?.forEach((button) => {
-        const btnElement = button as HTMLElement;
-        const feature = btnElement.getAttribute('data-feature');
-        if (feature && state[feature]) {
-          btnElement.classList.add('active');
-          btnElement.setAttribute('aria-pressed', 'true');
-        }
-      });
-    }
+          const btnElement = button as HTMLElement;
+          const feature = btnElement.getAttribute('data-feature');
+          if (feature && state[feature]) {
+            btnElement.classList.add('active');
+            btnElement.setAttribute('aria-pressed', 'true');
+          }
+        });
+      } else {
+        // Reintentar después de un breve delay
+        setTimeout(waitForManager, 100);
+      }
+    };
+    
+    // Comenzar a esperar por el manager
+    waitForManager();
   }
 </script>
