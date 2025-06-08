@@ -1,8 +1,8 @@
 /* empty css                                 */
-import { c as createComponent, r as renderTemplate, d as renderComponent, u as unescapeHTML, m as maybeRenderHead } from '../chunks/astro/server_DpsguGCp.mjs';
+import { c as createComponent, r as renderTemplate, d as renderComponent, u as unescapeHTML, m as maybeRenderHead } from '../chunks/astro/server_BQumHD5r.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_Cqx-wyTp.mjs';
-import { $ as $$Section, a as $$ParallaxMedia, b as $$TextBlock } from '../chunks/ParallaxMedia_CXSdwof_.mjs';
+import { a as $$Layout } from '../chunks/Layout_kHnEDicl.mjs';
+import { $ as $$Section, a as $$ParallaxMedia, b as $$TextBlock } from '../chunks/ParallaxMedia_C1U-ulc2.mjs';
 export { renderers } from '../renderers.mjs';
 
 const seniorCoupleImage = new Proxy({"src":"/_astro/doctor_senior_care_help_6.CUcbXRxA.webp","width":1840,"height":1228,"format":"webp"}, {

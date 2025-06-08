@@ -1,8 +1,8 @@
 /* empty css                                 */
-import { c as createComponent, r as renderTemplate, d as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_DpsguGCp.mjs';
+import { c as createComponent, r as renderTemplate, d as renderComponent, m as maybeRenderHead } from '../chunks/astro/server_BQumHD5r.mjs';
 import 'kleur/colors';
-import { $ as $$Layout } from '../chunks/Layout_Cqx-wyTp.mjs';
-import { $ as $$BannerSection } from '../chunks/BannerSection_A3FVQDZr.mjs';
+import { a as $$Layout } from '../chunks/Layout_kHnEDicl.mjs';
+import { $ as $$BannerSection } from '../chunks/BannerSection_ZEk3c0zV.mjs';
 import { l as legal_texts } from '../chunks/legal_texts_ClPMJUVC.mjs';
 export { renderers } from '../renderers.mjs';
 
@@ -12,8 +12,7 @@ const $$Legal = createComponent(($$result, $$props, $$slots) => {
   return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": title, "page": page }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "BannerSection", $$BannerSection, { ...legal_texts.legal.banner })} ${maybeRenderHead()}<section class="bg-gray-100 py-10"> <div class="container mx-auto px-4"> <h2 class="text-2xl font-bold mb-6">Impressum</h2> <div class="bg-white shadow-md rounded-lg p-6"> <p class="text-gray-700"><strong>Pflegedienst Integra Gerling GmbH</strong></p> <p class="text-gray-700 mt-2">
 Flughafenstraße 404<br>44328 Dortmund<br>Deutschland
 </p> <p class="text-gray-700 mt-4"><strong>Kontakt:</strong></p> <p class="text-gray-700">
-Telefon: 0231 9125000<br>E-Mail: info@pflegedienst-integra.de
-</p> <p class="text-gray-700 mt-4"><strong>Vertreten durch:</strong></p> <p class="text-gray-700">Gerling, Geschäftsführer</p> <p class="text-gray-700 mt-4"><strong>Registereintrag:</strong></p> <p class="text-gray-700">
+Telefon: <a href="tel:0231 9125000" class="text-primary hover:underline font-medium">0231 9125000</a><br>E-Mail: <a href="mailto:info@pflegedienst-integra.de" class="text-primary hover:underline">info@pflegedienst-integra.de</a> </p> <p class="text-gray-700 mt-4"><strong>Vertreten durch:</strong></p> <p class="text-gray-700">Gerling, Geschäftsführer</p> <p class="text-gray-700 mt-4"><strong>Registereintrag:</strong></p> <p class="text-gray-700">
 Eintragung im Handelsregister.<br>Registergericht: Amtsgericht
           Dortmund<br>Registernummer: HRB --
 </p> <p class="text-gray-700 mt-4"><strong>Umsatzsteuer-ID:</strong></p> <p class="text-gray-700">

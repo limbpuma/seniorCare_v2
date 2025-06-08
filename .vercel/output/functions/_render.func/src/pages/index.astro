@@ -31,10 +31,9 @@ const navAnchors = [
 ---
 
 <Layout title={title} page={page} navAnchors={navAnchors}>
-  <div id="home" class="scroll-section">
-    <ParallaxVideo {...texts.home.heroVideo} preload="metadata"/>
-  </div>
-  
+  <!-- Hero section - goes in the viewport-constrained container -->
+  <ParallaxVideo {...texts.home.heroVideo} preload="metadata" id="home" slot="hero"/>
+    <!-- Rest of content sections with normal heights -->
   <div id="about" class="scroll-section">
     <AboutSection {...texts.home.about} />
     <BannerSlider slides={texts.home.bannerSlides} />
@@ -58,8 +57,7 @@ const navAnchors = [
   
   <div id="faq" class="scroll-section">
     <FaqContent {...texts.faq.faqContent} />
-  </div>
-    <div id="location" class="scroll-section">
+  </div>  <div id="location" class="scroll-section">
     <Location {...texts.home.location} />
     <MapSection {...texts.contact.mapSection} />
   </div>
@@ -67,6 +65,50 @@ const navAnchors = [
 
 <style>
   .scroll-section {
-    scroll-margin-top: 80px; /* Adjust based on header height */
+    scroll-margin-top: 96px; /* Updated to match optimized header height (~6rem) */
   }
 </style>
+
+<script>
+  // Viewport optimization validator - for development only
+  function validateViewport() {
+    if (typeof window === 'undefined') return;
+    
+    const header = document.querySelector('header');
+    const hero = document.querySelector('#hero-parallax-section');
+    
+    if (!header || !hero) return;
+    
+    const vh = window.innerHeight;
+    const headerHeight = header.getBoundingClientRect().height;
+    const heroHeight = hero.getBoundingClientRect().height;
+    const combined = headerHeight + heroHeight;
+    const isOptimal = combined <= vh;
+    
+    // Only log in development
+    if (import.meta.env.DEV) {
+      console.log('🔍 Viewport Optimization Check:', {
+        viewport: `${window.innerWidth}x${vh}`,
+        header: `${headerHeight}px`,
+        hero: `${heroHeight}px`,
+        combined: `${combined}px`,
+        percentage: `${((combined / vh) * 100).toFixed(1)}%`,
+        status: isOptimal ? '✅ OPTIMAL' : '❌ EXCEEDS 100vh'
+      });
+    }
+  }
+  
+  // Run validation after page load
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => {
+      setTimeout(validateViewport, 1000);
+    });
+  } else {
+    setTimeout(validateViewport, 1000);
+  }
+  
+  // Monitor resize events
+  window.addEventListener('resize', () => {
+    setTimeout(validateViewport, 100);
+  });
+</script>

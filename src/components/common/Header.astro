@@ -66,12 +66,11 @@ const NAVIGATION = navAnchors
               variant="default"
             />
             <span class="group-hover:underline">{headerTexts.address}</span>
-          </a>            <!-- Phone - Always visible -->          <a
+          </a>          <!-- Phone - Always visible -->          <a
             href={`tel:${phone}`}
-            target="_blank"
-            rel="noopener noreferrer"
             class="flex items-center gap-2 text-xs md:text-sm font-medium hover:text-primary transition-colors group"
             aria-label={`Call us at ${phone}`}
+            role="link"
           >
             <Icon
               icons={[{ name: "phone" }]}

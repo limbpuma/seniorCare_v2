@@ -592,10 +592,17 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
               event.preventDefault();
               window.open('/accessibility', '_blank');
             }
-          });
-        }
+          });        }
       }      // Create global instance
       window.accessibilityManager = new AccessibilityManager();
+
+      // Initialize Enhanced Navigation Manager
+      import('/src/utils/enhanced-navigation-manager.js').then(module => {
+        // Already initialized in the module, just ensure it's available
+        console.log('🚀 Enhanced Navigation Manager loaded');
+      }).catch(error => {
+        console.warn('Enhanced Navigation Manager not loaded:', error);
+      });
     </script>
   </body>
 </html>

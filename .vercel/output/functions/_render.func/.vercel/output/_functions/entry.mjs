@@ -1,13 +1,13 @@
 import { renderers } from './renderers.mjs';
-import { c as createExports } from './chunks/entrypoint_Db34qaEI.mjs';
-import { manifest } from './manifest_mXbcSlDf.mjs';
+import { c as createExports } from './chunks/entrypoint_CfbxHvtG.mjs';
+import { manifest } from './manifest_AxiRf9hv.mjs';
 
 const _page0 = () => import('./pages/_image.astro.mjs');
 const _page1 = () => import('./pages/404.astro.mjs');
 const _page2 = () => import('./pages/about.astro.mjs');
 const _page3 = () => import('./pages/accessibility.astro.mjs');
-const _page4 = () => import('./pages/api/send-email.astro.mjs');
-const _page5 = () => import('./pages/contact.astro.mjs');
+const _page4 = () => import('./pages/contact.astro.mjs');
+const _page5 = () => import('./pages/demo-php.astro.mjs');
 const _page6 = () => import('./pages/faq.astro.mjs');
 const _page7 = () => import('./pages/legal.astro.mjs');
 const _page8 = () => import('./pages/privacypolicy.astro.mjs');
@@ -20,8 +20,8 @@ const pageMap = new Map([
     ["src/pages/404.astro", _page1],
     ["src/pages/about.astro", _page2],
     ["src/pages/accessibility.astro", _page3],
-    ["src/pages/api/send-email.ts", _page4],
-    ["src/pages/contact.astro", _page5],
+    ["src/pages/contact.astro", _page4],
+    ["src/pages/demo-php.astro", _page5],
     ["src/pages/faq.astro", _page6],
     ["src/pages/legal.astro", _page7],
     ["src/pages/privacypolicy.astro", _page8],
@@ -37,7 +37,7 @@ const _manifest = Object.assign(manifest, {
     middleware: () => import('./_noop-middleware.mjs')
 });
 const _args = {
-    "middlewareSecret": "66a856d4-3633-4a00-ab86-983bee7dd0ae",
+    "middlewareSecret": "322c25b8-bcec-4912-bc81-e43823eb3d09",
     "skewProtection": false
 };
 const _exports = createExports(_manifest, _args);
