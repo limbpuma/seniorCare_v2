@@ -27,7 +27,7 @@ if (useDynamicContent) {
 
 // Usar textos dinámicos o fallback a estáticos
 const phone = dynamicTexts?.header?.phone || headerTexts.phone;
-const email = dynamicTexts?.header?.email || headerTexts.email;
+// const email = dynamicTexts?.header?.email || headerTexts.email;
 const ctaButton = dynamicTexts?.header?.cta_button || headerTexts.cta;
 
 const NAVIGATION = navAnchors 
@@ -52,12 +52,13 @@ const NAVIGATION = navAnchors
   <div class="bg-ag-neutral-50 text-ag-body-text">
     <div class="max-w-7xl mx-auto">      <div class="flex items-center justify-between py-2 px-3 md:px-2 lg:px-4">
         <!-- Left: Address & Phone -->
-        <div class="flex items-center gap-2 md:gap-4">
-          <!-- Address - Desktop only (lg+) -->
+        <div class="flex items-center gap-2 md:gap-4">          <!-- Address - Desktop only (lg+) -->
           <a
             href="https://maps.app.goo.gl/UbA5eCbGWvF2pyPu9"
+            target="_blank"
+            rel="noopener noreferrer"
             class="hidden lg:flex items-center gap-2 text-sm hover:text-primary transition-colors group"
-            aria-label="Visit our location on Google Maps"
+            aria-label="Visit our location on Google Maps (opens in new tab)"
           >
             <Icon
               icons={[{ name: "mapMarker" }]}
@@ -65,15 +66,15 @@ const NAVIGATION = navAnchors
               variant="default"
             />
             <span class="group-hover:underline">{headerTexts.address}</span>
-          </a>
-            <!-- Phone - Always visible -->
-          <a
+          </a>            <!-- Phone - Always visible -->          <a
             href={`tel:${phone}`}
+            target="_blank"
+            rel="noopener noreferrer"
             class="flex items-center gap-2 text-xs md:text-sm font-medium hover:text-primary transition-colors group"
             aria-label={`Call us at ${phone}`}
           >
             <Icon
-              icons={[{ name: "phone", href: `tel:${phone}` }]}
+              icons={[{ name: "phone" }]}
               size="small"
               variant="default"
             />

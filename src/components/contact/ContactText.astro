@@ -67,13 +67,25 @@ const iconNameMap: Record<string, string> = {
                     customSize="text-lg sm:text-xl lg:text-2xl"
                     variant="default"
                   />
-                </div>
-                <div class="flex-1 min-w-0">
+                </div>                <div class="flex-1 min-w-0">
                   <h3 class="font-ag-sub-heading font-semibold text-ag-sub-heading sm:text-lg lg:text-xl text-deep-blue mb-1 sm:mb-2">
                     {option.title}
-                  </h3>
-                  <p class="text-ag-body-text font-ag-body-text text-sm sm:text-base text-gray-700 leading-relaxed">
-                    {option.description}
+                  </h3>                  <p class="text-ag-body-text font-ag-body-text text-sm sm:text-base text-gray-700 leading-relaxed">
+                    {option.icon === "location" && option.description.includes("Dortmund") ? (
+                      <a href="https://maps.app.goo.gl/UbA5eCbGWvF2pyPu9" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">
+                        {option.description}
+                      </a>
+                    ) : option.icon === "mobilePhone" && option.description.match(/^\d+\s?\d*\s?\d*/) ? (
+                      <a href={`tel:${option.description.replace(/\s/g, '')}`} class="text-primary hover:underline font-medium">
+                        {option.description}
+                      </a>
+                    ) : option.icon === "envelope" && option.description.includes("@") ? (
+                      <a href={`mailto:${option.description}`} class="text-primary hover:underline">
+                        Kontakt per E-Mail
+                      </a>
+                    ) : (
+                      option.description
+                    )}
                   </p>
                 </div>
               </div>

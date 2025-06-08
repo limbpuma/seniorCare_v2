@@ -17,8 +17,8 @@ let textContent = fallback;
 try {
   const texts = await api.getTexts();
   
-  if (texts && texts[section] && texts[section][key]) {
-    textContent = texts[section][key];
+  if (texts && texts[section] && (texts[section] as any)[key]) {
+    textContent = (texts[section] as any)[key];
   }
 } catch (error) {
   console.error(`Error loading dynamic text for ${section}.${key}:`, error);
