@@ -130,3 +130,39 @@ body {
   outline-offset: 2px;
 }
 
+/* Content width optimization for specific components */
+/* Mobile and tablet: ligero padding/margin */
+/* Desktop and larger: contenido más estrecho */
+.content-narrow {
+  margin-left: 0.5rem; /* mx-2 */
+  margin-right: 0.5rem;
+}
+
+@media (min-width: 768px) {
+  .content-narrow {
+    margin-left: 1rem; /* md:mx-4 */
+    margin-right: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .content-narrow {
+    margin-left: 3rem; /* lg:mx-12 */
+    margin-right: 3rem;
+  }
+}
+
+@media (min-width: 1280px) {
+  .content-narrow {
+    margin-left: 4rem; /* xl:mx-16 */
+    margin-right: 4rem;
+  }
+}
+
+@media (min-width: 1536px) {
+  .content-narrow {
+    margin-left: 6rem; /* 2xl:mx-24 */
+    margin-right: 6rem;
+  }
+}
+

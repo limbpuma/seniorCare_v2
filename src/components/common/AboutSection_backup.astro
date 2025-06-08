@@ -1,0 +1,126 @@
+---
+import Button from "../common/Button.astro";
+import Section from "./Section.astro";
+
+interface Stat {
+  number: string;
+  label: string;
+}
+
+interface Props {
+  services: string[];
+  stats: Stat[];
+  buttonText: string;
+  description: string;
+  phoneNumber: string;
+  headingLevel?: 2 | 3 | 4 | 5 | 6;
+  imageAlt?: string;
+}
+
+const { 
+  services, 
+  stats, 
+  buttonText, 
+  description, 
+  phoneNumber, 
+  headingLevel = 2,
+  imageAlt 
+} = Astro.props;
+
+// Generate dynamic heading tag
+const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
+---
+
+<Section 
+  background="primary"
+  padding="large"
+  width="wide"
+  height="auto"
+  id="about-section"
+  animation="fade-in"
+>
+  <div
+    class="container flex flex-col lg:flex-row lg:gap-8 xl:gap-12 items-center mb-spacing-8 sm:mb-spacing-12 space-y-spacing-8 lg:space-y-0 content-narrow"
+  >
+    <div class="text-center lg:text-left lg:flex-1 order-2 lg:order-1 text-white">
+      {
+        services.map((service) => (
+          <HeadingTag class="text-h5 sm:text-h4 md:text-h3 lg:text-[40px] xl:text-[44px] font-semibold mb-spacing-3 sm:mb-spacing-4 md:mb-spacing-6 leading-tight uppercase">
+            {service}
+          </HeadingTag>
+        ))
+      }
+    </div>
+    
+    <div
+      class="flex justify-center items-center w-full sm:w-2/3 md:w-1/2 lg:w-64 xl:w-72 2xl:w-80 lg:flex-shrink-0 order-1 lg:order-2 mb-spacing-8 lg:mb-0"
+      role="img"
+      aria-label="Profilbild unseres Teams"
+    >
+      <div class="relative w-full max-w-48 sm:max-w-56 md:max-w-64 lg:max-w-none lg:w-full aspect-square mx-auto">
+        <img
+          src="/assets/img/nurse_doctor_senior_care_1.webp"
+          alt={imageAlt || "Professionelles Pflegeteam - Krankenschwester und Arzt bei der Seniorenbetreuung"}
+          class="w-full h-full object-cover rounded-full bg-neutral-200 shadow-md"
+          loading="lazy"
+        />
+      </div>
+    </div>
+  </div>
+  <div 
+    class="border-t border-accent-400 mb-spacing-8 sm:mb-spacing-12"
+    role="separator"
+    aria-hidden="true"
+  ></div>
+  <div
+    class="container flex flex-col lg:flex-row justify-between items-center text-center lg:text-left space-y-spacing-8 lg:space-y-0 text-white content-narrow"
+  >
+    <div
+      class="grid grid-cols-2 gap-spacing-4 sm:gap-spacing-8 md:gap-0 mb-spacing-8 lg:mb-0 w-full lg:w-1/2"
+      role="region"
+      aria-label="Unsere Statistiken und Zahlen"
+    >      {
+        stats.map(({ number, label }) => (
+          <div class="text-center">
+            <p 
+              class="text-h3 sm:text-h2 lg:text-h1 font-bold mb-spacing-2"
+              aria-label={`${number} ${label}`}
+            >
+              {number}
+            </p>
+            <p class="mx-4 text-body text-accent-300 font-medium">
+              {label}
+            </p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="flex flex-col lg:items-end w-full lg:w-1/2">
+      <div class="mb-spacing-4 lg:mb-spacing-6 text-center lg:text-left">
+        <p class="text-body font-normal leading-relaxed">
+          {description}
+        </p>
+      </div>
+
+      <div
+        class="flex flex-col sm:flex-row items-center justify-center sm:justify-start lg:justify-end space-y-spacing-4 sm:space-y-0 sm:space-x-spacing-12 mx-auto"
+        role="group"
+        aria-label="Kontaktmöglichkeiten"
+      >        <Button 
+          variant="accent" 
+          size="medium" 
+          href={`tel:+49 123 456 7890`}
+          aria-label={`Anrufen: ${phoneNumber}`}
+          flex={true}
+        >
+          <i class="fa fa-phone text-primary-700" aria-hidden="true"></i>
+          {phoneNumber}
+        </Button>
+        <div class="flex items-center text-h5 font-medium mt-spacing-4 sm:mt-0">
+          {buttonText}
+        </div>
+      </div>
+    </div>
+  </div>
+</Section>

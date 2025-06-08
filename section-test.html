@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Section Component Test - V2 Optimized</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-in { opacity: 0; transform: translateY(20px); }
+        .fade-in.animate-on-scroll { animation: fadeIn 0.6s ease-out forwards; }
+        
+        @keyframes fadeIn {
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .bg-deep-blue { background-color: #1e40af; }
+        .bg-primary-light { background-color: #dbeafe; }
+        .bg-accent { background-color: #f59e0b; }
+    </style>
+</head>
+<body>
+    <h1 class="text-3xl font-bold text-center py-8">Section Component V2 - Test</h1>
+    
+    <!-- Test 1: Width Full con Padding Medium -->
+    <section class="bg-white w-full fade-in animate-on-scroll">
+        <div class="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 2xl:py-28 px-4 sm:px-8 md:px-12 lg:px-16 xl:px-20 2xl:px-24 w-full transition-all duration-300 ease-in-out w-full h-full flex flex-col justify-center">
+            <h2 class="text-2xl font-bold mb-4">Width: Full | Padding: Medium</h2>
+            <p>Este es un test del componente Section optimizado con width=full y padding=medium. El padding horizontal se aplica correctamente.</p>
+        </div>
+    </section>
+    
+    <!-- Test 2: Width Wide (sin padding horizontal duplicado) -->
+    <section class="bg-primary-light w-full">
+        <div class="py-8 sm:py-12 md:py-16 lg:py-20 xl:py-24 2xl:py-28 w-full max-w-7xl mx-auto transition-all duration-300 ease-in-out w-full h-full flex flex-col justify-center">
+            <h2 class="text-2xl font-bold mb-4">Width: Wide | Padding: Medium</h2>
+            <p>Este test verifica que con width=wide no hay padding horizontal duplicado. El contenedor tiene max-width y está centrado.</p>
+        </div>
+    </section>
+    
+    <!-- Test 3: Width Medium -->
+    <section class="bg-accent w-full">
+        <div class="py-4 sm:py-6 md:py-7 lg:py-8 xl:py-9 2xl:py-10 w-full max-w-5xl mx-auto transition-all duration-300 ease-in-out w-full h-full flex flex-col justify-center">
+            <h2 class="text-2xl font-bold mb-4 text-white">Width: Medium | Padding: Small</h2>
+            <p class="text-white">Test con width=medium y padding=small. Contenedor con max-width menor y centrado.</p>
+        </div>
+    </section>
+    
+    <!-- Test 4: Width Narrow -->
+    <section class="bg-deep-blue w-full">
+        <div class="py-16 sm:py-28 md:py-40 lg:py-52 xl:py-64 2xl:py-72 w-full max-w-3xl mx-auto transition-all duration-300 ease-in-out w-full h-full flex flex-col justify-center">
+            <h2 class="text-2xl font-bold mb-4 text-white">Width: Narrow | Padding: XL</h2>
+            <p class="text-white">Test con width=narrow y padding=xl. Contenedor más estrecho para contenido focalizado.</p>
+        </div>
+    </section>
+
+    <div class="py-8 text-center">
+        <h3 class="text-xl font-semibold mb-4">✅ Mejoras Implementadas en Section V2:</h3>
+        <ul class="text-left max-w-2xl mx-auto space-y-2">
+            <li>• <strong>Eliminación de padding duplicado:</strong> width classes ya no incluyen padding horizontal</li>
+            <li>• <strong>Estructura simplificada:</strong> De 3 divs anidados a 2 divs</li>
+            <li>• <strong>Separación clara:</strong> Padding vertical y horizontal separados</li>
+            <li>• <strong>Mejor rendimiento:</strong> Eliminado 'will-change-auto' inválido</li>
+            <li>• <strong>Lógica optimizada:</strong> Padding horizontal solo cuando width='full'</li>
+        </ul>
+    </div>
+</body>
+</html>

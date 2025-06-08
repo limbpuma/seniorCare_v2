@@ -28,7 +28,7 @@ const { class: className, subtitle, title, features } = Astro.props;
   animation="slide-in"
   class={className}
 >
-    <div class="text-center mb-12">
+    <div class="text-center mb-12 content-narrow">
       <TextBlock
       subtitle={subtitle}
       title={title}
@@ -37,7 +37,7 @@ const { class: className, subtitle, title, features } = Astro.props;
     />
       
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 content-narrow">
       {
         features.map((feature, index) => (
           <div

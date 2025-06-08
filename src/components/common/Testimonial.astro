@@ -26,7 +26,7 @@ const { titlesection, subtitlesection, items } = Astro.props;
   id="experience-section"
   animation="fade-in"
 >
-  <div class="text-center mb-12">
+  <div class="text-center mb-12 content-narrow">
     <TextBlock
       subtitle={subtitlesection}
       title={titlesection}
@@ -35,7 +35,7 @@ const { titlesection, subtitlesection, items } = Astro.props;
     />
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 content-narrow">
     {
       items.map((testimonial) => (        <div class="bg-white border-2 border-soft-orange p-6 lg:p-8 rounded-xl shadow-soft hover:shadow-medium transition-shadow duration-300 h-full flex flex-col">
           <div class="relative mb-4">
