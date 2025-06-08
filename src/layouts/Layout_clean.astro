@@ -1,0 +1,737 @@
+---
+import Header from "@/components/common/Header.astro";
+import Footer from "@/components/common/Footer.astro";
+import CookieConsent from "@/components/common/CookieConsent.tsx";
+import AccessibilityControls from "@/components/common/AccessibilityControls.astro";
+import texts from "@/utils/texts.json";
+
+interface Props {
+  title: string;
+  page: "home" | "about" | "services" | "contact" | "faq" | "datenschutz" | "impressum" | "Agb" | "404" | "landing" | "accessibility"; 
+  navAnchors?: { id: string; label: string }[];
+}
+const { title, page, navAnchors } = Astro.props;
+
+const { description, keywords } = texts.seo[page] || { description: "", keywords: "" };
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <!-- Meta Description -->
+    <meta name="description" content={description} />
+    <!-- Keywords for SEO -->
+    <meta name="keywords" content={keywords} />
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/styles/accessibility.css" />
+    <!-- Essential FontAwesome icons only -->
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      as="style"
+      onload={`this.onload=null;this.rel='stylesheet'`}
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      />
+    </noscript>
+    <!-- Core functionality modules -->
+    <script src="/src/utils/lazy-loader.js" type="module" is:inline></script>
+    <script src="/src/utils/intelligent-preloader.js" type="module" is:inline></script>
+    <script src="/src/utils/performance-monitor.js" type="module" is:inline></script>
+    <script src="/src/utils/landing-page-navigator.js" type="module" is:inline></script>
+  </head>
+
+  <body class="bg-white">
+    <Header navAnchors={navAnchors} />
+    <main class="relative">
+      <slot />
+    </main>
+    <Footer isLandingPage={page === "landing"} />
+    <CookieConsent client:idle />
+    <AccessibilityControls class="global-accessibility-controls" />
+    
+    <!-- Accessibility Manager Script -->
+    <script is:inline>
+      class AccessibilityManager {
+        constructor() {
+          this.state = {
+            textSpacing: false,
+            highContrast: false,
+            focusIndicators: false
+          };
+
+          // Initialize after DOM is completely loaded
+          if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', () => this.init());
+          } else {
+            this.init();
+          }
+          
+          // Reinitialize on Astro page transitions
+          document.addEventListener('astro:page-load', () => this.init());
+        }
+
+        init() {
+          // Load saved preferences
+          this.loadSavedPreferences();
+          
+          // Apply preferences
+          this.applyPreferences();
+          
+          // Setup event listeners
+          this.setupEventListeners();
+          
+          // Enhance site accessibility
+          this.addSkipLink();
+          this.enhanceMainContent();
+          this.enhanceNavigation();
+          this.addScreenReaderAnnouncements();
+          this.enhanceForms();
+          this.enhanceInteractiveElements();
+          this.setupCustomKeyboardEvents();
+          
+          console.log('♿ Accessibility Manager initialized with enhanced features');
+          console.log('AccessibilityManager state:', this.state);
+        }
+
+        setupEventListeners() {
+          const setupWithRetry = (attempt = 1) => {
+            const textSpacingBtn = document.getElementById('toggleTextSpacing');
+            const highContrastBtn = document.getElementById('highContrastMode');
+            const focusIndicatorsBtn = document.getElementById('focusIndicators');
+            
+            console.log(`Setting up event listeners (attempt ${attempt}):`, {
+              textSpacingBtn: !!textSpacingBtn,
+              highContrastBtn: !!highContrastBtn,
+              focusIndicatorsBtn: !!focusIndicatorsBtn
+            });
+            
+            // If buttons are not found and it's not the last attempt, retry
+            if ((!textSpacingBtn || !highContrastBtn || !focusIndicatorsBtn) && attempt < 5) {
+              console.log('Buttons not found, retrying in 200ms...');
+              setTimeout(() => setupWithRetry(attempt + 1), 200);
+              return;
+            }
+            
+            if (textSpacingBtn) {
+              textSpacingBtn.addEventListener('click', () => {
+                console.log('Text spacing button clicked');
+                this.toggleTextSpacing();
+              });
+              textSpacingBtn.setAttribute('aria-pressed', this.state.textSpacing.toString());
+              if (this.state.textSpacing) {
+                textSpacingBtn.classList.add('active');
+              }
+            }
+            
+            if (highContrastBtn) {
+              highContrastBtn.addEventListener('click', () => {
+                console.log('High contrast button clicked');
+                this.toggleHighContrast();
+              });
+              highContrastBtn.setAttribute('aria-pressed', this.state.highContrast.toString());
+              if (this.state.highContrast) {
+                highContrastBtn.classList.add('active');
+              }
+            }
+            
+            if (focusIndicatorsBtn) {
+              focusIndicatorsBtn.addEventListener('click', () => {
+                console.log('Focus indicators button clicked');
+                this.toggleFocusIndicators();
+              });
+              focusIndicatorsBtn.setAttribute('aria-pressed', this.state.focusIndicators.toString());
+              if (this.state.focusIndicators) {
+                focusIndicatorsBtn.classList.add('active');
+              }
+            }
+            
+            console.log('Event listeners setup completed');
+          };
+          
+          setupWithRetry();
+          
+          // Add keyboard shortcuts for accessibility functions
+          document.addEventListener('keydown', (event) => {
+            // Only activate shortcuts if Alt is pressed
+            if (event.altKey) {
+              switch(event.key) {
+                case 't': // Alt+T for text spacing
+                  event.preventDefault();
+                  this.toggleTextSpacing();
+                  break;
+                case 'c': // Alt+C for high contrast
+                  event.preventDefault();
+                  this.toggleHighContrast();
+                  break;
+                case 'f': // Alt+F for focus indicators
+                  event.preventDefault();
+                  this.toggleFocusIndicators();
+                  break;
+                case 'a': // Alt+A to open accessibility page
+                  event.preventDefault();
+                  window.location.href = '/accessibility';
+                  break;
+              }
+            }
+          });
+        }
+
+        toggleTextSpacing() {
+          console.log('toggleTextSpacing called');
+          this.state.textSpacing = !this.state.textSpacing;
+          this.applyTextSpacing();
+          this.savePreferences();
+          
+          const button = document.getElementById('toggleTextSpacing');
+          if (button) {
+            button.setAttribute('aria-pressed', this.state.textSpacing.toString());
+            button.classList.toggle('active', this.state.textSpacing);
+          }
+          
+          this.showNotification(this.state.textSpacing ? 'Text spacing aktiviert' : 'Text spacing deaktiviert');
+        }
+
+        toggleHighContrast() {
+          console.log('toggleHighContrast called');
+          this.state.highContrast = !this.state.highContrast;
+          this.applyHighContrast();
+          this.savePreferences();
+          
+          const button = document.getElementById('highContrastMode');
+          if (button) {
+            button.setAttribute('aria-pressed', this.state.highContrast.toString());
+            button.classList.toggle('active', this.state.highContrast);
+          }
+          
+          this.showNotification(this.state.highContrast ? 'Hoher Kontrast aktiviert' : 'Hoher Kontrast deaktiviert');
+        }
+
+        toggleFocusIndicators() {
+          console.log('toggleFocusIndicators called');
+          this.state.focusIndicators = !this.state.focusIndicators;
+          this.applyFocusIndicators();
+          this.savePreferences();
+          
+          const button = document.getElementById('focusIndicators');
+          if (button) {
+            button.setAttribute('aria-pressed', this.state.focusIndicators.toString());
+            button.classList.toggle('active', this.state.focusIndicators);
+          }
+          
+          this.showNotification(this.state.focusIndicators ? 'Fokusindikatoren aktiviert' : 'Fokusindikatoren deaktiviert');
+        }
+
+        applyTextSpacing() {
+          if (this.state.textSpacing) {
+            document.documentElement.classList.add('improved-text-spacing');
+            
+            // Apply styles directly to ensure implementation
+            document.documentElement.style.setProperty('word-spacing', '0.16em');
+            document.documentElement.style.setProperty('line-height', '1.5');
+            document.documentElement.style.setProperty('letter-spacing', '0.12em');
+            document.documentElement.style.setProperty('--paragraph-spacing', '2em');
+          } else {
+            document.documentElement.classList.remove('improved-text-spacing');
+            
+            // Restore default styles
+            document.documentElement.style.removeProperty('word-spacing');
+            document.documentElement.style.removeProperty('line-height');
+            document.documentElement.style.removeProperty('letter-spacing');
+            document.documentElement.style.removeProperty('--paragraph-spacing');
+          }
+        }
+
+        applyHighContrast() {
+          if (this.state.highContrast) {
+            document.documentElement.classList.add('high-contrast');
+            
+            // Apply high contrast styles
+            document.documentElement.style.setProperty('--primary', '#0066CC');
+            document.documentElement.style.setProperty('--background', '#000000');
+            document.documentElement.style.setProperty('--text', '#FFFFFF');
+            document.documentElement.style.setProperty('--link', '#FFFF00');
+            document.documentElement.style.setProperty('--accent', '#FF9900');
+          } else {
+            document.documentElement.classList.remove('high-contrast');
+            
+            // Restore default colors
+            document.documentElement.style.removeProperty('--primary');
+            document.documentElement.style.removeProperty('--background');
+            document.documentElement.style.removeProperty('--text');
+            document.documentElement.style.removeProperty('--link');
+            document.documentElement.style.removeProperty('--accent');
+          }
+        }
+
+        applyFocusIndicators() {
+          if (this.state.focusIndicators) {
+            document.documentElement.classList.add('enhanced-focus');
+            
+            // Apply enhanced focus styles
+            const style = document.createElement('style');
+            style.id = 'enhanced-focus-style';
+            style.textContent = `
+              :focus {
+                outline: 3px solid #FF9900 !important;
+                outline-offset: 3px !important;
+                box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.4) !important;
+                transition: outline-offset 0.1s ease !important;
+              }
+              
+              button:focus, a:focus, input:focus, select:focus, textarea:focus {
+                outline: 3px solid #FF9900 !important;
+                outline-offset: 3px !important;
+                box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.4) !important;
+              }
+            `;
+            
+            if (!document.getElementById('enhanced-focus-style')) {
+              document.head.appendChild(style);
+            }
+          } else {
+            document.documentElement.classList.remove('enhanced-focus');
+            
+            // Remove enhanced focus styles
+            const style = document.getElementById('enhanced-focus-style');
+            if (style) {
+              style.remove();
+            }
+          }
+        }
+
+        loadSavedPreferences() {
+          try {
+            const savedPreferences = localStorage.getItem('accessibilityPreferences');
+            if (savedPreferences) {
+              const preferences = JSON.parse(savedPreferences);
+              this.state = { ...this.state, ...preferences };
+            }
+          } catch (error) {
+            console.error('Error loading accessibility preferences:', error);
+          }
+        }
+
+        savePreferences() {
+          try {
+            localStorage.setItem('accessibilityPreferences', JSON.stringify(this.state));
+          } catch (error) {
+            console.error('Error saving accessibility preferences:', error);
+          }
+        }
+
+        applyPreferences() {
+          this.applyTextSpacing();
+          this.applyHighContrast();
+          this.applyFocusIndicators();
+          this.updateButtonStates();
+        }
+
+        updateButtonStates() {
+          const buttons = {
+            'toggleTextSpacing': this.state.textSpacing,
+            'highContrastMode': this.state.highContrast,
+            'focusIndicators': this.state.focusIndicators
+          };
+
+          Object.entries(buttons).forEach(([id, isActive]) => {
+            const button = document.getElementById(id);
+            if (button) {
+              button.setAttribute('aria-pressed', isActive.toString());
+              button.classList.toggle('active', isActive);
+            }
+          });
+        }
+
+        addSkipLink() {
+          if (document.getElementById('skip-link')) return;
+
+          const skipLink = document.createElement('a');
+          skipLink.id = 'skip-link';
+          skipLink.className = 'skip-link';
+          skipLink.href = '#main-content';
+          skipLink.textContent = 'Zum Hauptinhalt springen';
+          skipLink.setAttribute('aria-label', 'Navigation überspringen und zum Hauptinhalt gehen');
+          
+          document.body.insertBefore(skipLink, document.body.firstChild);
+        }
+
+        enhanceMainContent() {
+          const main = document.querySelector('main');
+          if (main && !main.id) {
+            main.id = 'main-content';
+            main.setAttribute('role', 'main');
+            main.setAttribute('aria-label', 'Hauptinhalt');
+          }
+        }
+
+        enhanceNavigation() {
+          const nav = document.querySelector('nav');
+          if (nav && !nav.getAttribute('role')) {
+            nav.setAttribute('role', 'navigation');
+            nav.setAttribute('aria-label', 'Hauptnavigation');
+          }
+
+          const header = document.querySelector('header');
+          if (header && !header.getAttribute('role')) {
+            header.setAttribute('role', 'banner');
+          }
+
+          const footer = document.querySelector('footer');
+          if (footer && !footer.getAttribute('role')) {
+            footer.setAttribute('role', 'contentinfo');
+          }
+        }
+
+        addScreenReaderAnnouncements() {
+          if (document.getElementById('accessibility-announcements')) return;
+
+          const announcements = document.createElement('div');
+          announcements.id = 'accessibility-announcements';
+          announcements.setAttribute('aria-live', 'polite');
+          announcements.setAttribute('aria-atomic', 'true');
+          announcements.style.cssText = `
+            position: absolute;
+            left: -9999px;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+          `;
+          
+          document.body.appendChild(announcements);
+        }
+
+        announce(message) {
+          const announcements = document.getElementById('accessibility-announcements');
+          if (announcements) {
+            announcements.textContent = message;
+            
+            // Clear after 1 second
+            setTimeout(() => {
+              announcements.textContent = '';
+            }, 1000);
+          }
+        }
+
+        showNotification(message) {
+          // Create notification element if it doesn't exist
+          let notification = document.getElementById('accessibility-notification');
+          if (!notification) {
+            notification = document.createElement('div');
+            notification.id = 'accessibility-notification';
+            notification.style.cssText = `
+              position: fixed;
+              top: 20px;
+              right: 20px;
+              background: #28a745;
+              color: white;
+              padding: 12px 20px;
+              border-radius: 6px;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+              z-index: 1002;
+              font-size: 14px;
+              font-weight: 500;
+              opacity: 0;
+              transform: translateY(-20px);
+              transition: all 0.3s ease;
+              max-width: 300px;
+            `;
+            document.body.appendChild(notification);
+          }
+
+          // Show notification
+          notification.textContent = message;
+          notification.style.opacity = '1';
+          notification.style.transform = 'translateY(0)';
+
+          // Hide after 3 seconds
+          setTimeout(() => {
+            if (notification) {
+              notification.style.opacity = '0';
+              notification.style.transform = 'translateY(-20px)';
+            }
+          }, 3000);
+
+          // Also announce for screen readers
+          this.announce(message);
+        }
+
+        resetAllPreferences() {
+          this.state = {
+            textSpacing: false,
+            highContrast: false,
+            focusIndicators: false
+          };
+          
+          this.applyPreferences();
+          this.savePreferences();
+          this.showNotification('Alle Barrierefreiheitseinstellungen wurden zurückgesetzt');
+        }
+
+        getAccessibilityState() {
+          return { ...this.state };
+        }
+
+        hasActiveFeatures() {
+          return Object.values(this.state).some(value => value);
+        }
+
+        enhanceForms() {
+          const forms = document.querySelectorAll('form');
+          forms.forEach(form => {
+            if (!form.getAttribute('role')) {
+              form.setAttribute('role', 'form');
+            }
+
+            const fieldsets = form.querySelectorAll('fieldset');
+            fieldsets.forEach(fieldset => {
+              if (!fieldset.querySelector('legend')) {
+                const firstLabel = fieldset.querySelector('label');
+                if (firstLabel) {
+                  const legend = document.createElement('legend');
+                  legend.textContent = firstLabel.textContent;
+                  legend.className = 'sr-only';
+                  fieldset.insertBefore(legend, fieldset.firstChild);
+                }
+              }
+            });
+          });
+        }
+
+        enhanceInteractiveElements() {
+          const buttons = document.querySelectorAll('button:not([aria-label]):not([aria-labelledby])');
+          buttons.forEach(button => {
+            if (!button.textContent.trim() && !button.getAttribute('aria-label')) {
+              const icon = button.querySelector('i, svg, span.icon');
+              if (icon) {
+                button.setAttribute('aria-label', 'Button');
+              }
+            }
+          });
+
+          const links = document.querySelectorAll('a:not([aria-label]):not([aria-labelledby])');
+          links.forEach(link => {
+            if (!link.textContent.trim() && !link.getAttribute('aria-label')) {
+              const icon = link.querySelector('i, svg, span.icon');
+              if (icon) {
+                link.setAttribute('aria-label', 'Link');
+              }
+            }
+          });
+        }
+
+        setupCustomKeyboardEvents() {
+          document.addEventListener('keydown', (event) => {
+            // Escape to open/close accessibility panel
+            if (event.key === 'Escape' && event.ctrlKey) {
+              const panel = document.querySelector('.accessibility-controls');
+              if (panel) {
+                panel.style.display = panel.style.display === 'none' ? 'block' : 'none';
+              }
+            }
+
+            // F1 for accessibility help
+            if (event.key === 'F1' && event.altKey) {
+              event.preventDefault();
+              window.open('/accessibility', '_blank');
+            }
+          });
+        }
+      }
+
+      // Create global instance
+      window.accessibilityManager = new AccessibilityManager();
+    </script>
+  </body>
+</html>
+
+<style is:global>
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* Animation keyframes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes zoomIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes gridIn {
+  from { opacity: 0; transform: scale(0.7); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Animation classes */
+.animate-on-scroll {
+  opacity: 0;
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-on-scroll.show {
+  opacity: 1;
+}
+
+.fade-in.show { 
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.slide-in.show {
+  animation: slideIn 0.8s ease-out forwards;
+}
+
+.zoom-in.show {
+  animation: zoomIn 0.8s ease-out forwards;
+}
+
+.grid-in.show {
+  animation: gridIn 0.8s ease-out forwards;
+}
+
+/* Parallax effects */
+.parallax {
+  overflow: hidden;
+  position: relative;
+}
+
+.parallax.show .parallax-bg {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.parallax-container {
+  clip: rect(0, auto, auto, 0);
+}
+
+.parallax-image,
+.parallax-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  will-change: transform;
+  object-fit: cover;
+  opacity: 0.7;
+}
+
+/* Accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  .animate-on-scroll,
+  .fade-in.show,
+  .slide-in.show,
+  .zoom-in.show,
+  .grid-in.show,
+  .parallax.show .parallax-bg,
+  .parallax-image,
+  .parallax-video {
+    transition: none;
+    animation: none;
+    opacity: 1;
+    transform: none;
+    position: absolute;
+  }
+}
+
+/* iOS Safari fixes */
+@supports (-webkit-touch-callout: none) {
+  .parallax-image,
+  .parallax-video {
+    position: absolute;
+    height: 100vh;
+    height: -webkit-fill-available;
+  }
+}
+
+/* Skip link styles */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 6px;
+  background: #000;
+  color: #fff;
+  padding: 8px;
+  text-decoration: none;
+  z-index: 1000;
+  border-radius: 0 0 4px 4px;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+</style>
+
+<script>
+  // Store all observers for cleanup
+  const observers = new Map();
+  
+  // Performance optimized intersection observer with throttling
+  const createOptimizedObserver = () => {
+    // Throttle observer callbacks to reduce main thread work
+    const throttle = (func, limit) => {
+      let inThrottle;
+      return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+          func.apply(context, args);
+          inThrottle = true;
+          setTimeout(() => inThrottle = false, limit);
+        }
+      }
+    };
+
+    const optimizedCallback = throttle((entries) => {
+      // Use requestAnimationFrame for smooth animations
+      requestAnimationFrame(() => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            // Unobserve to prevent memory leaks and reduce work
+            observers.get(entry.target)?.unobserve(entry.target);
+            observers.delete(entry.target);
+          }
+        });
+      });
+    }, 50); // Throttle to 20fps max
+
+    return new IntersectionObserver(optimizedCallback, { 
+      threshold: 0.1,
+      rootMargin: '50px' // Load animations 50px before they're visible
+    });
+  };
+
+  // Initialize observer when DOM is ready
+  const initAnimations = () => {
+    const observer = createOptimizedObserver();
+    const elements = document.querySelectorAll('.animate-on-scroll');
+    
+    elements.forEach((el) => {
+      observer.observe(el);
+      observers.set(el, observer);
+    });
+  };
+
+  // Use efficient DOM ready detection
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initAnimations, { once: true });
+  } else {
+    initAnimations();
+  }
+</script>

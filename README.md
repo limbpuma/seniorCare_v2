@@ -11,6 +11,11 @@ Este repositorio contiene la versión landing page del sitio web de Pflegedienst
 - Las páginas legales (legal, privacypolicy, termsconditions) se mantienen como páginas separadas
 - Experiencia de usuario mejorada sin recargas de página
 - Diseño cohesivo y fluido
+- Controles de accesibilidad mejorados:
+  - Espaciado de texto (Alt+T)
+  - Alto contraste (Alt+C)
+  - Indicadores de foco (Alt+F)
+  - Acceso rápido a la página de accesibilidad (Alt+A)
 
 ## Cómo Contribuir
 
@@ -45,14 +50,22 @@ npm run dev
 ├── src/
 │   ├── components/
 │   │   ├── common/ (componentes compartidos)
+│   │   │   └── AccessibilityControls.astro (controles de accesibilidad)
 │   │   ├── home/ (componentes de la página principal)
 │   │   └── ... (componentes por sección)
 │   ├── layouts/
 │   │   └── Layout.astro
 │   ├── pages/
 │   │   ├── index.astro (landing page principal)
+│   │   ├── accessibility.astro (página de accesibilidad)
 │   │   └── ... (páginas legales y error 404)
-│   └── utils/ (utilidades y herramientas)
+│   ├── styles/
+│   │   ├── main.css (estilos principales)
+│   │   └── accessibility.css (estilos de accesibilidad)
+│   ├── utils/
+│   │   ├── accessibility-manager.js (gestor de funciones de accesibilidad)
+│   │   └── ... (otras utilidades)
+│   └── navigation.js (configuración de navegación)
 └── package.json
 ```
 
@@ -80,6 +93,7 @@ Todos los comandos se ejecutan desde la raíz del proyecto, en una terminal:
 - Optimización SEO
 - Integración Schema.org
 - Validación WCAG 2.2 y BITV 2.0
+- Controles de accesibilidad con teclas de acceso rápido (Alt+T, Alt+C, Alt+F, Alt+A)
 - Formulario de contacto funcional
 - Navegación intuitiva
 

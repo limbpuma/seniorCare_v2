@@ -12,13 +12,12 @@ const wrapperClasses = "absolute bottom-0 left-0 bg-blue-900 p-2";
 ---
 
 <Section background="primary"
-padding="large"
-width="full"
+padding="medium"
+width="medium"
 height="auto"
 id="experience-section"
 animation="zoom-in"
 >
-  <div class="container mx-auto">
     <div class="flex justify-between items-center mb-8">
       <div class="flex flex-col">
         <TextBlock
@@ -73,13 +72,11 @@ animation="zoom-in"
       <ReactSwiperSlider
         slides={images}
         imgClass={imageClasses}
-        titleClass={titleClasses}
-        textClass={textClasses}
+        titleClass={titleClasses}        textClass={textClasses}
         wrapperClass={wrapperClasses}
         isImageSlider={false}
         divType="flex-col"
         client:load
       />
     </div>
-  </div>
 </Section>

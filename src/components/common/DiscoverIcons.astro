@@ -20,8 +20,14 @@ interface Props {
 const { class: className, subtitle, title, features } = Astro.props;
 ---
 
-<Section animation="slide-in" class={`features py-12 sm:py-16 bg-soft-orange ${className}`}>
-  <div class="container mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
+<Section 
+  background="accent"
+  padding="medium"
+  width="medium"
+  height="auto"
+  animation="slide-in"
+  class={className}
+>
     <div class="text-center mb-12">
       <TextBlock
       subtitle={subtitle}
@@ -53,9 +59,7 @@ const { class: className, subtitle, title, features } = Astro.props;
             <div class="absolute top-4 right-4 text-soft-blue text-ag-h1 opacity-20">
               {feature.number}
             </div>
-          </div>
-        ))
+          </div>        ))
       }
     </div>
-  </div>
 </Section>

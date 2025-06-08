@@ -32,6 +32,12 @@ El proyecto ha evolucionado desde un enfoque multi-página tradicional a una lan
 - Alternativas textuales para todo el contenido no textual
 - Subtítulos para contenido multimedia
 - Formulario de contacto totalmente accesible
+- Controles de accesibilidad personalizados:
+  - Espaciado de texto mejorado (Alt+T)
+  - Modo de alto contraste (Alt+C)
+  - Indicadores de foco mejorados (Alt+F)
+  - Acceso rápido a la página de accesibilidad (Alt+A)
+- Página dedicada de accesibilidad con información completa
 
 ### Optimización SEO
 
@@ -74,6 +80,10 @@ El proyecto ha evolucionado desde un enfoque multi-página tradicional a una lan
 - ✅ Textos alternativos para imágenes
 - ✅ Subtítulos para videos
 - ✅ Formularios con etiquetas explícitas
+- ✅ Controles de accesibilidad interactivos
+- ✅ Preferencias de accesibilidad guardadas en localStorage
+- ✅ Página dedicada a explicar características de accesibilidad
+- ✅ Teclas de acceso rápido para funciones de accesibilidad
 
 ### Checklist de Funcionalidad
 
@@ -102,14 +112,20 @@ El proyecto ha evolucionado desde un enfoque multi-página tradicional a una lan
 ├── src/
 │   ├── components/          # Componentes reutilizables
 │   │   ├── common/          # Componentes compartidos
+│   │   │   └── AccessibilityControls.astro  # Controles de accesibilidad
 │   │   └── home/            # Componentes específicos de secciones
 │   ├── layouts/
 │   │   └── Layout.astro     # Plantilla principal
 │   ├── pages/
 │   │   ├── index.astro      # Página principal (landing)
+│   │   ├── accessibility.astro  # Página de accesibilidad
 │   │   └── legal.astro      # Páginas legales
+│   ├── styles/
+│   │   ├── main.css         # Estilos principales
+│   │   └── accessibility.css  # Estilos de accesibilidad
 │   ├── utils/
 │   │   ├── landing-page-navigator.ts  # Gestión de navegación
+│   │   ├── accessibility-manager.js   # Gestor de accesibilidad
 │   │   └── texts.json       # Textos del sitio
 │   └── navigation.js        # Configuración de navegación
 └── package.json             # Dependencias y scripts
@@ -136,6 +152,12 @@ Para actualizar textos del sitio:
 - No eliminar estructuras semánticas
 - Preservar manejo de foco en elementos interactivos
 - Asegurar que todo contenido nuevo cumple WCAG 2.2 nivel AA
+- Verificar que los controles de accesibilidad funcionan correctamente:
+  - Espaciado de texto (toggleTextSpacing) - Alt+T
+  - Modo de alto contraste (toggleHighContrast) - Alt+C
+  - Indicadores de foco mejorados (toggleFocusIndicators) - Alt+F
+  - Página de accesibilidad (Alt+A)
+- Mantener las preferencias guardadas en localStorage
 
 ## Conclusión
 

@@ -27,11 +27,12 @@ const {
       alt={alt}
       width={width}
       height={height}
-      class="object-cover w-full h-full parallax-image"
+      class="object-cover w-full h-full parallax-image motion-reduce:opacity-60"
       loading="eager"
       />
-      ) : (      <video
-        class="object-cover w-full h-full parallax-video"
+      ) : (      
+      <video
+        class="object-cover w-full h-full parallax-video motion-reduce:opacity-60"
         autoplay
         loop
         muted
@@ -39,9 +40,53 @@ const {
         preload="metadata"
         poster={posterSrc}
         aria-label="Hintergrundvideo: Seniorenpflege bei Integra"
-      >        <source src={typeof src === 'string' ? src : src.src} type="video/webm" />
+        data-mobile-optimized="true"
+      >        
+        <source src={typeof src === 'string' ? src : src.src} type="video/webm" />
         <source src={typeof src === 'string' ? src.replace('.webm', '.mp4') : src.src.replace('.webm', '.mp4')} type="video/mp4" />
         <p>Ihr Browser unterstützt keine Videos. Sie können unsere Inhalte trotzdem problemlos ansehen.</p>
       </video>
     )}
 </div>
+
+<style>
+/* Enhanced mobile video performance */
+@media (max-width: 768px) {
+  .parallax-video {
+    /* Reduce performance load on mobile */
+    transform: translateZ(0); /* Hardware acceleration */
+    will-change: auto; /* Optimize for mobile */
+    object-position: center center;
+  }
+  
+  .parallax-container {
+    /* Improve mobile scrolling performance */
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+}
+
+/* Motion accessibility preferences */
+@media (prefers-reduced-motion: reduce) {
+  .parallax-video {
+    animation-play-state: paused !important;
+    transform: none !important;
+  }
+  
+  .parallax-image {
+    transform: none !important;
+  }
+  
+  .parallax-container {
+    transform: none !important;
+  }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .parallax-video,
+  .parallax-image {
+    opacity: 0.4 !important;
+  }
+}
+</style>

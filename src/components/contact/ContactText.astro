@@ -40,14 +40,13 @@ const iconNameMap: Record<string, string> = {
 ---
 
 <Section background="white"
-  padding="large"
-  width="full"
+  padding="medium"
+  width="medium"
   height="auto"
   id="experience-section"
   animation="fade-in"
   >
-  <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
       <div class="space-y-8">
         <div>
           <TextBlock
@@ -58,32 +57,31 @@ const iconNameMap: Record<string, string> = {
           textColor="text-deep-blue"
     />
           
-        </div>
-        <div class="space-y-6">
+        </div>        <div class="space-y-6">
           {
             contactOptions.map((option: ContactOption) => (
-              <div class="flex items-center space-x-4 lg:ml-8">
-                <div class="bg-soft-orange p-4 rounded-full text-deep-blue">
+              <div class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
+                <div class="bg-soft-orange p-3 lg:p-4 rounded-full text-deep-blue flex-shrink-0">
                   <Icon
                     icons={[{ name: iconNameMap[option.icon] || option.icon }]}
                     size="large"
                     variant="default"
-                    customSize="text-xl"
-                    
                   />
                 </div>
-                <div class="text-ag-body-text font-ag-body-text mb-2 sm:mb-2 md:mb-2 max-w-3xl mx-auto">
-                  <h3 class="font-semibold">{option.title}</h3>
-                  <p class="text-gray-600">{option.description}</p>
+                <div class="flex-1 min-w-0">
+                  <h3 class="font-ag-sub-heading font-semibold text-ag-sub-heading text-deep-blue mb-2">
+                    {option.title}
+                  </h3>
+                  <p class="text-ag-body-text font-ag-body-text text-gray-700 leading-relaxed">
+                    {option.description}
+                  </p>
                 </div>
               </div>
             ))
           }
         </div>
-      </div>
-      <div>
+      </div>      <div>
         <ContactForm size="medium" {...contactForm} />
       </div>
     </div>
-  </div>
 </Section>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viewport Height Test - Integra Senior Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* CSS Variables para cálculos precisos de altura */
+        :root {
+            --header-contact-height: 2.5rem;
+            --header-nav-height: 3.5rem;
+            --header-total-height: calc(var(--header-contact-height) + var(--header-nav-height));
+        }
+
+        @media (min-width: 768px) {
+            :root {
+                --header-contact-height: 2rem;
+                --header-nav-height: 4rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            :root {
+                --header-nav-height: 4.5rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            :root {
+                --header-nav-height: 4.5rem;
+            }
+        }
+
+        @media (min-width: 1536px) {
+            :root {
+                --header-nav-height: 5rem;
+            }
+        }
+
+        .hero-optimized {
+            min-height: calc(100vh - var(--header-total-height));
+            height: calc(100vh - var(--header-total-height));
+            background: linear-gradient(135deg, #084487, #4A90E2);
+        }
+
+        .viewport-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 1000;
+        }
+
+        .test-header {
+            background: #f8f9fa;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .contact-bar {
+            background: #f8f9fa;
+            min-height: 2.5rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .nav-bar {
+            background: white;
+            min-height: 3.5rem;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        @media (min-width: 768px) {
+            .contact-bar {
+                min-height: 2rem;
+            }
+            .nav-bar {
+                min-height: 4rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .nav-bar {
+                min-height: 4.5rem;
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .nav-bar {
+                min-height: 4.5rem;
+            }
+        }
+
+        @media (min-width: 1536px) {
+            .nav-bar {
+                min-height: 5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="viewport-info" id="viewportInfo">
+        Loading viewport info...
+    </div>
+
+    <!-- Header simulado -->
+    <header class="test-header">
+        <!-- Contact Bar -->
+        <div class="contact-bar flex items-center justify-between">
+            <div class="text-sm">
+                📍 Contact Info | 📞 Phone
+            </div>
+            <div class="text-sm">
+                🔗 Social Links
+            </div>
+        </div>
+        
+        <!-- Navigation Bar -->
+        <div class="nav-bar flex items-center justify-between px-4">
+            <div class="flex items-center">
+                <div class="h-8 md:h-10 lg:h-12 xl:h-12 2xl:h-14 w-16 bg-blue-600 rounded">
+                    LOGO
+                </div>
+            </div>
+            <nav class="hidden md:flex space-x-6">
+                <a href="#" class="text-blue-600 hover:text-blue-800">Home</a>
+                <a href="#" class="text-blue-600 hover:text-blue-800">About</a>
+                <a href="#" class="text-blue-600 hover:text-blue-800">Services</a>
+                <a href="#" class="text-blue-600 hover:text-blue-800">Contact</a>
+            </nav>
+            <button class="bg-blue-600 text-white px-4 py-2 rounded">
+                Kontakt
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section optimizada -->
+    <section class="hero-optimized flex items-center justify-center text-white">
+        <div class="text-center max-w-4xl px-4">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                Professionelle Seniorenpflege
+            </h1>
+            <p class="text-xl md:text-2xl mb-8 opacity-90">
+                Würdevolle Betreuung und Unterstützung für Ihre Liebsten
+            </p>
+            <button class="bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-100 transition">
+                Kontakt aufnehmen
+            </button>
+        </div>
+    </section>
+
+    <!-- Contenido adicional para probar scroll -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">
+                Über uns
+            </h2>
+            <p class="text-lg text-gray-600 text-center max-w-3xl mx-auto">
+                Esta sección debe estar visible inmediatamente después del hero sin necesidad de scroll adicional en pantallas grandes.
+            </p>
+            
+            <div class="mt-16 grid md:grid-cols-3 gap-8">
+                <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Pantalla Pequeña</h3>
+                    <p class="text-gray-600">Móviles hasta 768px</p>
+                    <p class="text-sm text-blue-600 mt-2">Header: ~6rem | Hero: calc(100vh - 6rem)</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Pantalla Media</h3>
+                    <p class="text-gray-600">Tablets 768px - 1024px</p>
+                    <p class="text-sm text-blue-600 mt-2">Header: ~6rem | Hero: calc(100vh - 6rem)</p>
+                </div>
+                <div class="text-center p-6 bg-gray-50 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4">Pantalla Grande</h3>
+                    <p class="text-gray-600">Desktop 1024px+</p>
+                    <p class="text-sm text-blue-600 mt-2">Header: ~6.5-7rem | Hero: calc(100vh - 7rem)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function updateViewportInfo() {
+            const vw = Math.max(document.documentElement.clientWidth || 0, window.innerWidth || 0);
+            const vh = Math.max(document.documentElement.clientHeight || 0, window.innerHeight || 0);
+            
+            const header = document.querySelector('.test-header');
+            const hero = document.querySelector('.hero-optimized');
+            
+            const headerHeight = header ? header.offsetHeight : 0;
+            const heroHeight = hero ? hero.offsetHeight : 0;
+            
+            const totalHeight = headerHeight + heroHeight;
+            const percentage = ((totalHeight / vh) * 100).toFixed(1);
+            
+            let breakpoint = 'XS';
+            if (vw >= 1536) breakpoint = '2XL';
+            else if (vw >= 1280) breakpoint = 'XL';
+            else if (vw >= 1024) breakpoint = 'LG';
+            else if (vw >= 768) breakpoint = 'MD';
+            else if (vw >= 640) breakpoint = 'SM';
+            
+            document.getElementById('viewportInfo').innerHTML = `
+                <strong>Viewport Test</strong><br>
+                Resolución: ${vw}x${vh}<br>
+                Breakpoint: ${breakpoint}<br>
+                Header: ${headerHeight}px<br>
+                Hero: ${heroHeight}px<br>
+                Total: ${totalHeight}px<br>
+                Porcentaje del viewport: ${percentage}%<br>
+                <span style="color: ${percentage <= 100 ? '#4ade80' : '#ef4444'}">
+                    ${percentage <= 100 ? '✅ OPTIMAL' : '❌ EXCEDE 100vh'}
+                </span>
+            `;
+        }
+
+        // Actualizar info en carga y resize
+        window.addEventListener('load', updateViewportInfo);
+        window.addEventListener('resize', updateViewportInfo);
+        
+        // Actualizar inmediatamente
+        updateViewportInfo();
+        
+        // Verificar en diferentes momentos por si hay cambios dinámicos
+        setInterval(updateViewportInfo, 1000);
+    </script>
+</body>
+</html>

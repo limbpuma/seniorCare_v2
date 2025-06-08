@@ -52,21 +52,19 @@ const widthClasses: Record<WidthType, string> = {
 const animationClass = animation !== "none" ? `${animation} animate-on-scroll` : "";
 
 const innerClasses = [
-  paddingClasses[padding],
+  height === "100%" ? paddingClasses[padding].replace(/py-\d+/g, 'py-4') : paddingClasses[padding],
   widthClasses[width],
   "transition-all duration-300 ease-in-out will-change-auto",
   animationClass,
-  className,
 ].filter(Boolean);
 ---
 
 <section 
   id={id} 
-  class:list={[backgroundClasses[background], "w-full, animationClass"]}
-  style={`min-height: ${height};`} 
+  class:list={[backgroundClasses[background], "w-full", animationClass, className]}
+  style={height === "100%" ? "height: 100%; min-height: 100%;" : `min-height: ${height};`} 
   {...props}
->
-  <div class:list={innerClasses}>
+>  <div class:list={innerClasses}>
     <div class="w-full h-full flex flex-col justify-center">
       <slot />
     </div>

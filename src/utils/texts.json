@@ -1,44 +1,58 @@
-{
-  "seo": {
+{  "seo": {
     "home": {
       "description": "Integra bietet hochwertige, selbstbestimmte Pflegekonzepte in Dortmund. Unsere empathische Pflegephilosophie sorgt für erstklassige medizinische Versorgung und familiäre Atmosphäre.",
       "keywords": "Pflege, Betreuung, Dortmund, selbstbestimmt, medizinische Versorgung"
     },
-    "about": {
-      "description": "Erfahren Sie mehr über Integra, unseren Pflegedienst in Dortmund, und wie wir durch individuelle Pflegekonzepte die Lebensqualität unserer Klienten verbessern.",
-      "keywords": "Pflegedienst, Über Uns, Pflege in Dortmund, Betreuungskonzepte"
-    },
     "services": {
-      "description": "Integra bietet professionelle häusliche Pflege in Dortmund, darunter Beatmungspflege, Intensivpflege, ärztliche Behandlungspflege und mehr.",
-      "keywords": "Pflege, Leistungen, Beatmungspflege, Intensivpflege, ärztliche Pflege, Dortmund"
+      "description": "Entdecken Sie unsere umfassenden Pflegeleistungen: häusliche Pflege, medizinische Versorgung, Betreuung und individuelle Pflegekonzepte in Dortmund.",
+      "keywords": "Pflegeleistungen, häusliche Pflege, medizinische Versorgung, Betreuung, Dortmund"
+    },
+    "about": {
+      "description": "Erfahren Sie mehr über Integra - unser Team, unsere Philosophie und unser Engagement für hochwertige Pflege in Dortmund.",
+      "keywords": "Über uns, Team, Pflegephilosophie, Integra, Dortmund"
     },
     "contact": {
-      "description": "Kontaktieren Sie Integra für individuelle Pflegeangebote in Dortmund. Wir sind 24/7 für Sie erreichbar.",
-      "keywords": "Kontakt, Pflege, Dortmund, Telefonnummer, Email"
+      "description": "Kontaktieren Sie Integra für Pflegeberatung und individuelle Lösungen. Wir sind in Dortmund für Sie da.",
+      "keywords": "Kontakt, Pflegeberatung, Terminvereinbarung, Dortmund"
     },
     "faq": {
-      "description": "Häufig gestellte Fragen zur Pflege bei Integra in Dortmund. Erfahren Sie mehr über unsere Dienstleistungen und Prozesse.",
-      "keywords": "FAQ, Pflege, Fragen und Antworten, Integra, Dortmund"
+      "description": "Häufig gestellte Fragen zu unseren Pflegeleistungen, Kosten und Abläufen bei Integra in Dortmund.",
+      "keywords": "FAQ, häufige Fragen, Pflegeleistungen, Kosten, Integra"
+    },    "legal": {
+      "description": "Rechtliche Informationen und Impressum der Integra Pflegedienstleistungen in Dortmund.",
+      "keywords": "Impressum, rechtliche Informationen, Integra, Dortmund"
     },
     "datenschutz": {
       "description": "Erfahren Sie, wie Integra mit Ihren persönlichen Daten umgeht und welche Datenschutzrichtlinien gelten.",
       "keywords": "Datenschutz, persönliche Daten, Datenschutzrichtlinien, Integra"
     },
     "impressum": {
-      "description": "Impressum der Integra Pflegedienstleistungen in Dortmund. Rechtliche Informationen und Kontaktdaten.",
+      "description": "Rechtliche Informationen und Impressum der Integra Pflegedienstleistungen in Dortmund.",
       "keywords": "Impressum, rechtliche Informationen, Integra, Dortmund"
     },
     "Agb": {
       "description": "Allgemeine Geschäftsbedingungen von Integra in Dortmund. Erfahren Sie mehr über die rechtlichen Grundlagen unserer Pflegeleistungen.",
       "keywords": "AGB, Geschäftsbedingungen, Pflegeleistungen, Integra, Dortmund"
     },
+    "landing": {
+      "description": "Integra bietet hochwertige, selbstbestimmte Pflegekonzepte in Dortmund. Unsere empathische Pflegephilosophie sorgt für erstklassige medizinische Versorgung und familiäre Atmosphäre.",
+      "keywords": "Pflege, Betreuung, Dortmund, selbstbestimmt, medizinische Versorgung"
+    },
+    "privacypolicy": {
+      "description": "Erfahren Sie, wie Integra mit Ihren persönlichen Daten umgeht und welche Datenschutzrichtlinien gelten.",
+      "keywords": "Datenschutz, persönliche Daten, Datenschutzrichtlinien, Integra"
+    },
+    "termsconditions": {
+      "description": "Allgemeine Geschäftsbedingungen von Integra in Dortmund. Erfahren Sie mehr über die rechtlichen Grundlagen unserer Pflegeleistungen.",
+      "keywords": "AGB, Geschäftsbedingungen, Pflegeleistungen, Integra, Dortmund"
+    },
+    "accessibility": {
+      "description": "Informationen zur Barrierefreiheit und Zugänglichkeit des Integra Pflegedienstes in Dortmund.",
+      "keywords": "Barrierefreiheit, Zugänglichkeit, WCAG, BITV, Integra, Dortmund"
+    },
     "404": {
       "description": "Seite nicht gefunden. Bitte überprüfen Sie die URL oder kehren Sie zur Startseite zurück.",
       "keywords": "404, Seite nicht gefunden, Fehler"
-    },
-    "landing": {
-      "description": "Integra Senior Care - Alle Pflegedienstleistungen auf einen Blick. Erfahren Sie mehr über unsere umfassenden Pflegekonzepte, Leistungen und Unterstützungsangebote in Dortmund.",
-      "keywords": "Integra, Seniorenpflege, Pflegedienst, Dortmund, Betreuung, häusliche Pflege, WCAG 2.2"
     }
   },
   "header": {

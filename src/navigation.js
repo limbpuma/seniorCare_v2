@@ -31,14 +31,21 @@ const NAVIGATION = [
   {
     name: "Legal",
     href: "/legal",
+    isLegal: true
   },
   {
     name: "Privacy Policy",
     href: "/privacypolicy",
+    isLegal: true
   },
   {
     name: "Terms & Conditions",
     href: "/termsconditions",
+    isLegal: true
+  },  {
+    name: "Accessibility",
+    href: "/accessibility",
+    isLegal: true
   },
 ];
 

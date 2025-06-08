@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hero Overlap Debug Tool</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .debug-info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-family: monospace;
+            font-size: 12px;
+            z-index: 9999;
+            max-width: 350px;
+            line-height: 1.4;
+        }
+        
+        .measurement {
+            margin: 5px 0;
+            padding: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        
+        .warning {
+            color: #ff6b6b;
+        }
+        
+        .success {
+            color: #51cf66;
+        }
+        
+        .info {
+            color: #74c0fc;
+        }
+        
+        .test-section {
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #ccc;
+            margin: 20px 0;
+            background: rgba(0, 0, 0, 0.05);
+        }
+        
+        .viewport-container {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            border: 3px solid #007bff;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+        }
+        
+        .mock-header {
+            background: #333;
+            color: white;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 2px solid #555;
+        }
+        
+        .mock-hero {
+            flex: 1;
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #333;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .mock-main {
+            background: white;
+            padding: 40px 20px;
+            border-top: 3px solid #28a745;
+        }
+        
+        @media (min-width: 768px) {
+            .mock-header {
+                min-height: 88px;
+            }
+        }
+        
+        @media (min-width: 1024px) {
+            .mock-header {
+                min-height: 96px;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="debug-info" id="debugInfo">
+        Loading measurements...
+    </div>
+    
+    <!-- Mock layout structure -->
+    <div class="viewport-container" id="viewportContainer">
+        <header class="mock-header" id="mockHeader">
+            📱 Mock Header (Responsive Height)
+        </header>
+        <div class="mock-hero" id="mockHero">
+            🎯 Mock Hero Section (flex: 1)
+        </div>
+    </div>
+    
+    <main class="mock-main" id="mockMain">
+        <div class="max-w-4xl mx-auto">
+            <h2 class="text-3xl font-bold text-center mb-6 text-gray-800">
+                🔍 Hero Overlap Debug Tool
+            </h2>
+            <p class="text-lg text-gray-600 text-center mb-8">
+                This tool helps identify why the hero section might be overlapping with the about section.
+            </p>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold mb-4 text-blue-600">Layout Analysis</h3>
+                    <div id="layoutAnalysis">
+                        Loading...
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow">
+                    <h3 class="text-xl font-semibold mb-4 text-green-600">Recommendations</h3>
+                    <div id="recommendations">
+                        Loading...
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 bg-yellow-50 border-l-4 border-yellow-400 p-6">
+                <h4 class="text-lg font-semibold text-yellow-800 mb-2">Potential Causes of Overlap:</h4>
+                <ul class="text-yellow-700 space-y-2">
+                    <li>• <strong>Viewport Height Conflicts:</strong> Multiple height declarations causing inconsistent behavior</li>
+                    <li>• <strong>Flexbox Issues:</strong> Hero section not properly contained within flex container</li>
+                    <li>• <strong>Z-index Problems:</strong> Hero section stacking above main content</li>
+                    <li>• <strong>Overflow Issues:</strong> Content extending beyond intended boundaries</li>
+                    <li>• <strong>Responsive Breakpoint Gaps:</strong> Different behavior at different screen sizes</li>
+                </ul>
+            </div>
+            
+            <div class="test-section">
+                This is where the About section content would start
+            </div>
+            
+            <div class="test-section">
+                Additional main content sections...
+            </div>
+        </div>
+    </main>
+    
+    <script>
+        function updateDebugInfo() {
+            const viewport = {
+                width: window.innerWidth,
+                height: window.innerHeight
+            };
+            
+            const container = document.getElementById('viewportContainer');
+            const header = document.getElementById('mockHeader');
+            const hero = document.getElementById('mockHero');
+            const main = document.getElementById('mockMain');
+            
+            const containerRect = container.getBoundingClientRect();
+            const headerRect = header.getBoundingClientRect();
+            const heroRect = hero.getBoundingClientRect();
+            const mainRect = main.getBoundingClientRect();
+            
+            const measurements = {
+                viewport,
+                container: {
+                    height: containerRect.height,
+                    top: containerRect.top,
+                    bottom: containerRect.bottom
+                },
+                header: {
+                    height: headerRect.height,
+                    top: headerRect.top,
+                    bottom: headerRect.bottom
+                },
+                hero: {
+                    height: heroRect.height,
+                    top: heroRect.top,
+                    bottom: heroRect.bottom
+                },
+                main: {
+                    height: mainRect.height,
+                    top: mainRect.top,
+                    bottom: mainRect.bottom
+                }
+            };
+            
+            // Calculate potential issues
+            const containerFitsViewport = containerRect.height <= viewport.height;
+            const heroExtendsBeyondViewport = heroRect.bottom > viewport.height;
+            const mainOverlapsHero = mainRect.top < heroRect.bottom;
+            const gapBetweenContainerAndMain = mainRect.top - containerRect.bottom;
+            
+            // Determine breakpoint
+            let breakpoint = 'xs';
+            if (viewport.width >= 1536) breakpoint = '2xl';
+            else if (viewport.width >= 1280) breakpoint = 'xl';
+            else if (viewport.width >= 1024) breakpoint = 'lg';
+            else if (viewport.width >= 768) breakpoint = 'md';
+            else if (viewport.width >= 640) breakpoint = 'sm';
+            
+            // Update debug display
+            const debugInfo = document.getElementById('debugInfo');
+            debugInfo.innerHTML = `
+                <div class="measurement info">
+                    📏 <strong>Viewport:</strong> ${viewport.width}×${viewport.height}px (${breakpoint})
+                </div>
+                <div class="measurement ${containerFitsViewport ? 'success' : 'warning'}">
+                    📦 <strong>Container:</strong> ${containerRect.height.toFixed(1)}px 
+                    ${containerFitsViewport ? '✅' : '❌ EXCEEDS VIEWPORT'}
+                </div>
+                <div class="measurement">
+                    📏 <strong>Header:</strong> ${headerRect.height.toFixed(1)}px
+                </div>
+                <div class="measurement ${heroExtendsBeyondViewport ? 'warning' : 'success'}">
+                    🎯 <strong>Hero:</strong> ${heroRect.height.toFixed(1)}px
+                    ${heroExtendsBeyondViewport ? '❌ EXTENDS BEYOND' : '✅'}
+                </div>
+                <div class="measurement ${gapBetweenContainerAndMain >= 0 ? 'success' : 'warning'}">
+                    📄 <strong>Gap to Main:</strong> ${gapBetweenContainerAndMain.toFixed(1)}px
+                    ${gapBetweenContainerAndMain >= 0 ? '✅' : '❌ OVERLAP'}
+                </div>
+                <div class="measurement ${mainOverlapsHero ? 'warning' : 'success'}">
+                    🔍 <strong>Main Position:</strong> ${mainRect.top.toFixed(1)}px from top
+                    ${mainOverlapsHero ? '❌ OVERLAPS HERO' : '✅'}
+                </div>
+            `;
+            
+            // Update layout analysis
+            const layoutAnalysis = document.getElementById('layoutAnalysis');
+            layoutAnalysis.innerHTML = `
+                <p class="${containerFitsViewport ? 'text-green-600' : 'text-red-600'}">
+                    <strong>Container Fit:</strong> ${containerFitsViewport ? 'Perfect' : 'Too Tall'}
+                </p>
+                <p class="${gapBetweenContainerAndMain >= 0 ? 'text-green-600' : 'text-red-600'}">
+                    <strong>Layout Flow:</strong> ${gapBetweenContainerAndMain >= 0 ? 'Correct' : 'Overlapping'}
+                </p>
+                <p class="text-gray-600">
+                    <strong>Combined Height:</strong> ${(headerRect.height + heroRect.height).toFixed(1)}px
+                </p>
+                <p class="text-gray-600">
+                    <strong>Efficiency:</strong> ${((containerRect.height / viewport.height) * 100).toFixed(1)}% of viewport
+                </p>
+            `;
+            
+            // Update recommendations
+            const recommendations = document.getElementById('recommendations');
+            let recs = [];
+            
+            if (!containerFitsViewport) {
+                recs.push('• Reduce header height or hero min-height');
+            }
+            if (gapBetweenContainerAndMain < 0) {
+                recs.push('• Add margin-top to main content');
+                recs.push('• Check for absolute positioning conflicts');
+            }
+            if (heroExtendsBeyondViewport) {
+                recs.push('• Ensure hero uses flex-1 correctly');
+                recs.push('• Add overflow: hidden to container');
+            }
+            if (recs.length === 0) {
+                recs.push('• Layout appears correct!');
+            }
+            
+            recommendations.innerHTML = recs.map(rec => `<p class="text-gray-700">${rec}</p>`).join('');
+        }
+        
+        // Update measurements on load and resize
+        updateDebugInfo();
+        window.addEventListener('resize', updateDebugInfo);
+        
+        // Update every second to catch dynamic changes
+        setInterval(updateDebugInfo, 1000);
+    </script>
+</body>
+</html>

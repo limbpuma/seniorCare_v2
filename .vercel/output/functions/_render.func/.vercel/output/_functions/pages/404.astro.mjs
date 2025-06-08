@@ -1,9 +1,8 @@
 /* empty css                                 */
-import { c as createComponent, r as renderTemplate, a as renderComponent, b as createAstro, m as maybeRenderHead } from '../chunks/astro/server_B9cSnyzq.mjs';
+import { c as createComponent, r as renderTemplate, d as renderComponent, u as unescapeHTML, m as maybeRenderHead } from '../chunks/astro/server_DpsguGCp.mjs';
 import 'kleur/colors';
-import { b as $$Layout } from '../chunks/Layout_CMFYuxJT.mjs';
-import { a as $$Section, $ as $$TextBlock } from '../chunks/TextBlock_pUV8bRiu.mjs';
-import { $ as $$ParallaxMedia } from '../chunks/ParallaxMedia_CU6CzBKf.mjs';
+import { $ as $$Layout } from '../chunks/Layout_Cqx-wyTp.mjs';
+import { $ as $$Section, a as $$ParallaxMedia, b as $$TextBlock } from '../chunks/ParallaxMedia_CXSdwof_.mjs';
 export { renderers } from '../renderers.mjs';
 
 const seniorCoupleImage = new Proxy({"src":"/_astro/doctor_senior_care_help_6.CUcbXRxA.webp","width":1840,"height":1228,"format":"webp"}, {
@@ -19,13 +18,25 @@ const seniorCoupleImage = new Proxy({"src":"/_astro/doctor_senior_care_help_6.CU
 						}
 					});
 
-const $$Astro = createAstro();
+var __freeze = Object.freeze;
+var __defProp = Object.defineProperty;
+var __template = (cooked, raw) => __freeze(__defProp(cooked, "raw", { value: __freeze(cooked.slice()) }));
+var _a;
 const $$404 = createComponent(($$result, $$props, $$slots) => {
-  const Astro2 = $$result.createAstro($$Astro, $$props, $$slots);
-  Astro2.self = $$404;
   const page = "404";
-  const { alignment = "left" } = Astro2.props;
-  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "404 - Page Not Found", "page": page }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Section", $$Section, { "padding": "large", "width": "full", "height": "h-screen", "id": "hero-parallax-section", "class": "relative overflow-hidden " }, { "default": ($$result3) => renderTemplate` ${maybeRenderHead()}<div class="absolute inset-0 w-full h-full parallax-container"> ${renderComponent($$result3, "ParallaxMedia", $$ParallaxMedia, { "type": "image", "src": seniorCoupleImage, "alt": "404 Error - Senior couple" })} </div> <div class="relative z-10 container mx-auto h-full flex items-center justify-center lg:justify-start"> <div class="w-full max-w-3xl lg:max-w-none lg:w-1/2 px-4 text-center lg:text-left"> ${renderComponent($$result3, "TextBlock", $$TextBlock, { "subtitle": "Seite nicht gefunden", "title": "404", "descriptionBold": "Es tut uns leid, aber die gesuchte Seite konnte nicht gefunden werden", "alignment": alignment, "textColor": "white", "buttonText": "Zur\xFCck zur Startseite", "buttonVariant": "primary", "buttonSize": "medium", "buttonHref": "/" })} </div> </div> ` })} ` })}`;
+  const title = "404 - Seite nicht gefunden";
+  const redirectScript = `
+  setTimeout(() => {
+    window.location.href = '/';
+  }, 5000);
+
+  function goHome() {
+    window.location.href = '/';
+  }
+`;
+  return renderTemplate`${renderComponent($$result, "Layout", $$Layout, { "title": "404 - Page Not Found", "page": page }, { "default": ($$result2) => renderTemplate` ${renderComponent($$result2, "Layout", $$Layout, { "title": title, "page": page }, { "default": ($$result3) => renderTemplate(_a || (_a = __template([" ", " <script>", "<\/script> "])), renderComponent($$result3, "Section", $$Section, { "padding": "large", "width": "full", "height": "h-screen", "id": "hero-parallax-section", "class": "relative overflow-hidden" }, { "default": ($$result4) => renderTemplate` ${maybeRenderHead()}<div class="flex flex-col items-center justify-center h-full text-center z-10 relative"> <h1 class="text-4xl md:text-6xl font-bold mb-4 text-white">404 - Seite nicht gefunden</h1> <p class="text-xl md:text-2xl mb-8 text-white">Die gesuchte Seite konnte leider nicht gefunden werden.</p> <button onclick="goHome()" class="bg-primary hover:bg-primary-dark text-white font-bold py-2 px-4 rounded transition duration-300">
+Zur Startseite
+</button> <p class="text-sm mt-4 text-white">Sie werden in 5 Sekunden automatisch weitergeleitet...</p> </div> <div class="absolute inset-0 w-full h-full parallax-container"> ${renderComponent($$result4, "ParallaxMedia", $$ParallaxMedia, { "type": "image", "src": seniorCoupleImage, "alt": "404 Error - Senior couple" })} </div> <div class="relative z-10 container mx-auto h-full flex items-center justify-center"> <div class="w-full max-w-3xl px-4 text-center"> ${renderComponent($$result4, "TextBlock", $$TextBlock, { "subtitle": "Seite nicht gefunden", "title": "404", "descriptionBold": "Es tut uns leid, aber die gesuchte Seite konnte nicht gefunden werden", "description": "Sie werden in 5 Sekunden zur Startseite weitergeleitet", "textColor": "white", "buttonText": "Sofort zur Startseite", "buttonVariant": "primary", "buttonSize": "large", "buttonHref": "/" })} </div> </div> ` }), unescapeHTML(redirectScript)) })} ` })}`;
 }, "D:/Lim/Developer/Projects/Integra/seniorCare/src/pages/404.astro", void 0);
 
 const $$file = "D:/Lim/Developer/Projects/Integra/seniorCare/src/pages/404.astro";

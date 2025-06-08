@@ -27,13 +27,12 @@ const { title, subtitle, faqItems, contactForm } = Astro.props;
 ---
 
 <Section background="white"
-padding="large"
-width="full"
+padding="medium"
+width="medium"
 height="auto"
 id="faq-section"
 animation="fade-in"
 >
-  <div class="container mx-auto px-4">
     <div class="text-center mb-12">
       <TextBlock
       subtitle={subtitle}
@@ -61,10 +60,8 @@ animation="fade-in"
                 {item.answer}
               </p>
             </div>
-          ))
-        }
+          ))        }
       </div>
       
     </div>
-  </div>
 </Section>

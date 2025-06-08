@@ -8,27 +8,26 @@ const { heading, title, description, buttonText, icontext } = Astro.props;
 
 <Section 
 background="white"
-  padding="large"
-  width="full"
+  padding="medium"
+  width="medium"
   height="auto"
   id="experience-section"
   animation="slide-in"
   >
   <div class="py-6 flex flex-col lg:flex-row items-center lg:justify-between">
-    <div class="relative w-full lg:w-1/2 bg-gray-200">
-      <img
+    <div class="relative w-full lg:w-1/2 bg-gray-200">      <img
         src="/assets/img/nurse_doctor_senior_care.webp"
-        alt="Image Description"
+        alt="Krankenschwester und Arzt bei der Betreuung von Senioren - professionelle Pflege"
         class="w-full h-full object-cover"
         loading="lazy"
       />
       <div
-        class="absolute w-2/5 bottom-0 left-0 bg-deep-blue p-12 flex flex-col items-center text-soft-orange"
+        class="absolute w-full sm:w-3/5 md:w-2/5 bottom-0 left-0 bg-deep-blue p-4 sm:p-6 md:p-8 lg:p-12 flex flex-col items-center text-center"
       >
-        <div class="transform scale-150 mb-4">
+        <div class="transform scale-125 sm:scale-150 mb-2 sm:mb-4">
           <Icon icons={[{ name: "handhelp" }]} size="xl" variant="light"/>
         </div>
-        <p class="text-white ag-h5 font-ag-h5 font-bold">{icontext}</p>
+        <p class="text-white text-ag-h5 font-ag-h5 font-bold leading-tight">{icontext}</p>
       </div>
     </div>
     <div class="w-full lg:w-1/2 mt-8 lg:mt-0 lg:pl-12">

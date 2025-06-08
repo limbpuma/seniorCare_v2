@@ -7,19 +7,18 @@ const { subtitle, title, description, buttonText, stats } = Astro.props;
 
 <Section 
 background="white"
-padding="large"
-width="full"
+padding="medium"
+width="medium"
 height="auto"
 id="experience-section"
 animation="slide-in"
 >
-  <div class="container mx-auto text-white">
-    <div class="flex flex-col md:flex-row items-center">
-      <div class="w-full md:w-3/5 lg:w-2/3 mb-0">
+  <div class="flex flex-col md:flex-row items-center">
+      <div class="w-full md:w-3/5 lg:w-2/3 mb-6 md:mb-0">
         <img
           src="/assets/img/doctor_senior_care_tablet.webp"
-          alt="World map with location markers"
-          class="w-full h-[250px] md:h-[600px] object-cover"
+          alt="Arzt mit Tablet bei der Seniorenbetreuung - moderne digitale Pflege"
+          class="w-full h-[300px] sm:h-[400px] md:h-[500px] lg:h-[600px] object-cover rounded-lg shadow-medium"
           loading="lazy"
         />
       </div>
@@ -38,21 +37,17 @@ animation="slide-in"
       
 
       </div>
-    </div>
-
-    <div class="bg-soft-orange p-6 md:p-12">
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
+    </div>    <div class="bg-soft-orange p-6 md:p-8 lg:p-12 rounded-lg shadow-medium mt-8">
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 text-center">
         {
           stats.map((stat: { value: string; label: string }) => (
-            <div class="flex flex-col items-center">
-              <p class="text-ag-h3 font-ag-h3 text-blue-900">{stat.value}</p>
-              <p class="text-ag-body-text font-ag-body-text text-black">
+            <div class="flex flex-col items-center space-y-2">
+              <p class="text-ag-h3 font-ag-h3 text-deep-blue">{stat.value}</p>
+              <p class="text-ag-body-text font-ag-body-text text-gray-800">
                 {stat.label}
               </p>
             </div>
-          ))
-        }
+          ))        }
       </div>
     </div>
-  </div>
 </Section>
