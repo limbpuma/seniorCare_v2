@@ -77,11 +77,7 @@
 }
 
 /* Fix potential layout issues with increased spacing */
-.grid,
-.flex {
-  gap: 1rem !important;
-  align-items: flex-start !important;
-}
+
 
 /* Navigation and interactive elements spacing */
 nav a,
@@ -161,8 +157,8 @@ body {
 
 @media (min-width: 1536px) {
   .content-narrow {
-    margin-left: 6rem; /* 2xl:mx-24 */
-    margin-right: 6rem;
+  margin-left: 6rem; /* 2xl:mx-24 */
+  margin-right: 6rem;
   }
 }
 

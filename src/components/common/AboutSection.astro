@@ -38,96 +38,84 @@ const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
   height="auto"
   id="about-section"
   animation="fade-in"
->
-  <div class="container content-narrow">
-    <!-- Primera sección: Títulos e imagen -->
-    <div
-      class="flex flex-col lg:flex-row lg:gap-8 xl:gap-12 2xl:gap-16 items-center mb-spacing-8 sm:mb-spacing-12 space-y-spacing-8 lg:space-y-0"
+>  <div class="content-narrow flex flex-col lg:flex-row lg:gap-spacing-8 xl:gap-spacing-12 justify-between items-center lg:items-center mb-spacing-8 sm:mb-spacing-12 space-y-spacing-8 lg:space-y-0" 
+       role="region" 
+       aria-label="Über uns und unsere Dienstleistungen">    <!-- Text column -->
+    <div class="text-center lg:text-left lg:flex-1 lg:max-w-lg xl:max-w-xl order-2 lg:order-1 text-white flex flex-col justify-center items-center lg:items-start">      
+      {
+        services.map((service) => (
+          <HeadingTag class="text-h5 sm:text-h4 md:text-h3 lg:text-[38px] xl:text-[42px] font-semibold mb-spacing-3 sm:mb-spacing-4 md:mb-spacing-6 leading-tight uppercase w-full">
+            {service}
+          </HeadingTag>
+        ))
+      }
+    </div>
+    
+    <!-- Image column -->    <div
+      class="flex justify-center items-center w-full sm:w-2/3 md:w-1/2 lg:w-72 xl:w-80 2xl:w-[22rem] order-1 lg:order-2 mb-spacing-8 lg:mb-0 lg:flex-shrink-0"
+      role="img"
+      aria-label="Profilbild unseres Teams"
     >
-      <div class="text-center lg:text-left lg:flex-1 lg:max-w-2xl xl:max-w-3xl order-2 lg:order-1 text-white">
-        {
-          services.map((service) => (
-            <HeadingTag class="text-h5 sm:text-h4 md:text-h3 lg:text-[40px] xl:text-[44px] font-semibold mb-spacing-3 sm:mb-spacing-4 md:mb-spacing-6 leading-tight uppercase">
-              {service}
-            </HeadingTag>
-          ))
-        }
-      </div>
-      
-      <div
-        class="flex justify-center items-center w-full sm:w-2/3 md:w-1/2 lg:w-80 xl:w-96 2xl:w-[28rem] lg:flex-shrink-0 order-1 lg:order-2 mb-spacing-8 lg:mb-0"
-        role="img"
-        aria-label="Profilbild unseres Teams"
-      >
-        <div class="relative w-full max-w-48 sm:max-w-56 md:max-w-64 lg:max-w-80 xl:max-w-96 2xl:max-w-[28rem] aspect-square mx-auto">
-          <img
-            src="/assets/img/nurse_doctor_senior_care_1.webp"
-            alt={imageAlt || "Professionelles Pflegeteam - Krankenschwester und Arzt bei der Seniorenbetreuung"}
-            class="w-full h-full object-cover rounded-full bg-neutral-200 shadow-md"
-            loading="lazy"
-          />
-        </div>
+      <div class="relative my-4 w-full pb-[100%] lg:w-72 lg:h-72 xl:w-80 xl:h-80 2xl:w-[22rem] 2xl:h-[22rem] lg:pb-0">
+        <img
+          src="/assets/img/nurse_doctor_senior_care_1.webp"
+          alt={imageAlt || "Professionelles Pflegeteam - Krankenschwester und Arzt bei der Seniorenbetreuung"}
+          class="absolute inset-0 w-full h-full object-cover object-center rounded-full bg-neutral-200 shadow-md"
+          loading="lazy"
+        />
       </div>
     </div>
-
-    <!-- Separador -->
-    <div 
-      class="border-t border-accent-400 mb-spacing-8 sm:mb-spacing-12"
-      role="separator"
-      aria-hidden="true"
-    ></div>
-
-    <!-- Segunda sección: Estadísticas y CTA -->
+  </div>  <div 
+    class="content-narrow border-t border-accent-400 mb-spacing-8 sm:mb-spacing-12"
+    role="separator"
+    aria-hidden="true"
+  ></div>  <div class="content-narrow flex flex-col lg:flex-row lg:gap-spacing-8 xl:gap-spacing-12 justify-between items-center lg:items-center text-center lg:text-left space-y-spacing-8 lg:space-y-0 text-white">
     <div
-      class="flex flex-col lg:flex-row lg:gap-8 xl:gap-12 2xl:gap-16 items-center lg:items-start text-center lg:text-left space-y-spacing-8 lg:space-y-0 text-white"
-    >
-      <div
-        class="grid grid-cols-2 gap-spacing-4 sm:gap-spacing-8 md:gap-6 lg:gap-8 mb-spacing-8 lg:mb-0 w-full lg:flex-1 lg:max-w-md xl:max-w-lg"
-        role="region"
-        aria-label="Unsere Statistiken und Zahlen"
-      >
+      class="mb-spacing-8 lg:mb-0 w-full lg:flex-1 lg:max-w-lg xl:max-w-xl flex justify-center lg:justify-start"
+      role="region"
+      aria-label="Unsere Statistiken und Zahlen"
+    >      <div class="grid grid-cols-2 gap-spacing-4 sm:gap-spacing-8 md:gap-0">
         {
           stats.map(({ number, label }) => (
             <div class="text-center">
               <p 
-                class="text-h3 sm:text-h2 lg:text-h1 font-bold mb-spacing-2"
+                class="text-h3 sm:text-h2 lg:text-[48px] xl:text-[56px] 2xl:text-[64px] font-bold mb-spacing-2"
                 aria-label={`${number} ${label}`}
               >
                 {number}
               </p>
-              <p class="mx-4 text-body text-accent-300 font-medium">
+              <p class="mx-4 text-body lg:text-h6 xl:text-h5 2xl:text-h4 text-accent-300 font-medium">
                 {label}
               </p>
             </div>
           ))
         }
       </div>
+    </div>
 
-      <div class="flex flex-col lg:items-end w-full lg:flex-1 lg:max-w-lg xl:max-w-xl">
-        <div class="mb-spacing-4 lg:mb-spacing-6 text-center lg:text-right">
-          <p class="text-body font-normal leading-relaxed">
-            {description}
-          </p>
-        </div>
+    <div class="lg:flex-1 lg:max-w-lg xl:max-w-xl flex flex-col justify-center lg:items-end w-full ">
+      <div class="mb-spacing-4 lg:mb-spacing-6 text-center lg:text-left my-2 lg:my-4">
+        <p class="text-body font-normal leading-relaxed">
+          {description}
+        </p>
+      </div>
 
-        <div
-          class="flex flex-col sm:flex-row items-center justify-center sm:justify-start lg:justify-end space-y-spacing-4 sm:space-y-0 sm:space-x-spacing-12 mx-auto lg:mx-0"
-          role="group"
-          aria-label="Kontaktmöglichkeiten"
+      <div
+        class="flex flex-col sm:flex-row items-center justify-center sm:justify-start lg:justify-end space-y-spacing-4 sm:space-y-0 sm:space-x-spacing-12 mx-auto gap-2 lg:gap-4 my-2 lg:my-4"
+        role="group"
+        aria-label="Kontaktmöglichkeiten"
+      >        <Button 
+          variant="accent" 
+          size="medium" 
+          href={`tel:+49 123 456 7890`}
+          aria-label={`Anrufen: ${phoneNumber}`}
+          flex={true}
         >
-          <Button 
-            variant="accent" 
-            size="medium" 
-            href={`tel:+49 123 456 7890`}
-            aria-label={`Anrufen: ${phoneNumber}`}
-            flex={true}
-          >
-            <i class="fa fa-phone text-primary-700" aria-hidden="true"></i>
-            {phoneNumber}
-          </Button>
-          <div class="flex items-center text-h5 font-medium mt-spacing-4 sm:mt-0">
-            {buttonText}
-          </div>
+          <i class="fa fa-phone text-primary-700" aria-hidden="true"></i>
+          {phoneNumber}
+        </Button>
+        <div class="flex items-center text-h5 font-medium mt-spacing-4 sm:mt-0">
+          {buttonText}
         </div>
       </div>
     </div>
