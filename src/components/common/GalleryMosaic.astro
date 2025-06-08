@@ -20,51 +20,52 @@ padding="medium"  width="medium"
 height="auto"
 id="experience-section"
 animation="grid-in"
->
-  <div
+>  <div
     class="flex flex-col lg:flex-row items-center lg:items-stretch gap-8 lg:gap-12"
   >
     <div
-      class="lg:w-1/3 flex flex-col justify-center items-center lg:items-start text-center lg:text-left"
+      class="lg:w-1/3 flex flex-col justify-center items-center lg:items-start text-center lg:text-left animate-on-scroll slide-in"
     >
       <TextBlock
       subtitle={subtitle}
       title={title}
+      titleGradient={true}
       description={description}
       alignment="left"
       textColor="text-deep-blue"
       
       />
       
-      <div class="mt-0 flex justify-center ">
-        <Button  href="https://www.instagram.com/pflegedienst.integra/"  flex class="mt-2 lg:ml-8 md:mt-2 mx-auto md:mx-0">
+      <div class="mt-0 flex justify-center animate-on-scroll fade-in" style="animation-delay: 0.3s">
+        <Button  href="https://www.instagram.com/pflegedienst.integra/"  flex class="mt-2 lg:ml-8 md:mt-2 mx-auto md:mx-0 hover-scale">
           <Icon icons={[{ name: "instagram" }]} size="small" variant="light"/>
           {buttonText}
         </Button>
       </div>
     </div>
 
-    <div class="w-full lg:w-2/3 flex flex-col">
+    <div class="w-full lg:w-2/3 flex flex-col animate-on-scroll grid-in">
       <div
         class="md:hidden grid grid-cols-2 grid-rows-3 gap-4 aspect-square mb-2"
       >
         {
           srcs.map((src, index) => (
             <div
-              class={`relative ${
+              class={`relative group overflow-hidden rounded-xl hover-lift modern-card ${
                 index === 0
                   ? "col-span-2 row-span-2"
                   : index === 4
                     ? "col-span-2"
                     : ""
               }`}
-            >
-              <img
+              style={`animation-delay: ${index * 0.1}s`}
+            >              <img
                 src={src}
-                class="absolute inset-0 w-full h-full object-cover rounded-lg"
+                class="absolute inset-0 w-full h-full object-cover rounded-xl transition-transform duration-300 group-hover:scale-110"
                 alt=""
                 loading="lazy"
               />
+              <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
             </div>
           ))
         }
@@ -72,47 +73,50 @@ animation="grid-in"
 
       <div class="hidden md:grid md:grid-cols-3 gap-4 h-[600px]">
         <div class="grid grid-rows-[7fr,3fr] gap-4">
-          <div class="relative">
+          <div class="relative group overflow-hidden rounded-xl hover-lift modern-card animate-on-scroll zoom-in">
             <img
               src={srcs[0]}
-              class="absolute inset-0 w-full h-full object-cover rounded-lg"
+              class="absolute inset-0 w-full h-full object-cover rounded-xl transition-transform duration-300 group-hover:scale-110"
               alt="image 1 section gallery"
               loading="lazy"
             />
-          </div>
-          <div class="relative">
+            <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+          </div>          <div class="relative group overflow-hidden rounded-xl hover-lift modern-card animate-on-scroll zoom-in" style="animation-delay: 0.1s">
             <img
               src={srcs[1]}
-              class="absolute inset-0 w-full h-full object-cover rounded-lg"
+              class="absolute inset-0 w-full h-full object-cover rounded-xl transition-transform duration-300 group-hover:scale-110"
               alt="image 2 section gallery"
               loading="lazy"
             />
+            <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
           </div>
-        </div>
-        <div class="relative">
+        </div>        <div class="relative group overflow-hidden rounded-xl hover-lift modern-card animate-on-scroll zoom-in" style="animation-delay: 0.2s">
           <img
             src={srcs[2]}
-            class="absolute inset-0 w-full h-full object-cover rounded-lg"
+            class="absolute inset-0 w-full h-full object-cover rounded-xl transition-transform duration-300 group-hover:scale-110"
             alt="image 3 section gallery"
             loading="lazy"
           />
+          <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
         </div>
         <div class="grid grid-rows-[3fr,7fr] gap-4">
-          <div class="relative">
+          <div class="relative group overflow-hidden rounded-xl hover-lift modern-card animate-on-scroll zoom-in" style="animation-delay: 0.3s">
             <img
               src={srcs[3]}
-              class="absolute inset-0 w-full h-full object-cover rounded-lg"
+              class="absolute inset-0 w-full h-full object-cover rounded-xl transition-transform duration-300 group-hover:scale-110"
               alt="image 4 section gallery"
               loading="lazy"
             />
+            <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
           </div>
-          <div class="relative">
+          <div class="relative group overflow-hidden rounded-xl hover-lift modern-card animate-on-scroll zoom-in" style="animation-delay: 0.4s">
             <img
               src={srcs[4]}
-              class="absolute inset-0 w-full h-full object-cover rounded-lg"
+              class="absolute inset-0 w-full h-full object-cover rounded-xl transition-transform duration-300 group-hover:scale-110"
               alt="image 5 section gallery"
               loading="lazy"
             />
+            <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
           </div>
         </div>
       </div>

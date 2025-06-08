@@ -21,11 +21,11 @@ const {
 
 const variantClasses = {
   primary:
-    "text-white bg-deep-blue hover:bg-soft-blue focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:outline-none",
+    "text-white bg-gradient-to-r from-deep-blue to-soft-blue hover:from-soft-blue hover:to-deep-blue hover:shadow-xl hover:shadow-deep-blue/25 focus:ring-2 focus:ring-offset-2 focus:ring-primary focus:outline-none transform transition-all duration-300 hover:-translate-y-0.5",
   secondary:
-    "text-deep-blue bg-white hover:bg-gray-blue focus:ring-2 focus:ring-offset-2 focus:ring-deep-blue focus:outline-none",
+    "text-deep-blue bg-white border-2 border-deep-blue hover:bg-deep-blue hover:text-white hover:shadow-lg hover:shadow-deep-blue/20 focus:ring-2 focus:ring-offset-2 focus:ring-deep-blue focus:outline-none transform transition-all duration-300 hover:-translate-y-0.5",
   accent:
-    "text-deep-blue bg-accent hover:bg-soft-orange focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:outline-none",
+    "text-deep-blue bg-gradient-to-r from-accent to-soft-orange hover:from-soft-orange hover:to-accent hover:shadow-xl hover:shadow-accent/25 focus:ring-2 focus:ring-offset-2 focus:ring-accent focus:outline-none transform transition-all duration-300 hover:-translate-y-0.5",
 };
 
 const sizeClasses = {
@@ -37,7 +37,7 @@ const sizeClasses = {
 const fullWidthClass = fullWidth ? "w-full" : "max-w-fit";
 
 const baseClasses =
-  "rounded-full transition-all duration-300 focus:outline-none hover:shadow-lg active:scale-95 inline-flex items-center justify-center font-medium";
+  "rounded-full transition-all duration-300 ease-out focus:outline-none hover:shadow-lg active:scale-95 inline-flex items-center justify-center font-medium backdrop-blur-sm relative overflow-hidden group";
 
 const classes = [
   variantClasses[variant],
@@ -50,16 +50,18 @@ const classes = [
 
 {href ? (
   <a href={href} class:list={classes} {...props}>
+    <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -translate-x-full group-hover:translate-x-full transition-all duration-700 ease-out"></span>
     <span
-      class={`font-ag-button-text text-ag-button-text ${flex && "flex gap-2"}`}
+      class={`font-ag-button-text text-ag-button-text relative z-10 ${flex && "flex gap-2"}`}
     >
       <slot />
     </span>
   </a>
 ) : (
   <button class:list={classes} {...props}>
+    <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transform -translate-x-full group-hover:translate-x-full transition-all duration-700 ease-out"></span>
     <span
-      class={`font-ag-button-text text-ag-button-text ${flex && "flex gap-2"}`}
+      class={`font-ag-button-text text-ag-button-text relative z-10 ${flex && "flex gap-2"}`}
     >
       <slot />
     </span>

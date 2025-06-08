@@ -42,10 +42,10 @@ const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 >  <div class="content-narrow flex flex-col lg:flex-row lg:gap-spacing-8 xl:gap-spacing-12 justify-between items-center lg:items-center mb-spacing-8 sm:mb-spacing-12 space-y-spacing-8 lg:space-y-0" 
        role="region" 
        aria-label="Über uns und unsere Dienstleistungen">    <!-- Text column -->
-    <div class="text-center lg:text-left lg:flex-1 lg:max-w-lg xl:max-w-xl order-2 lg:order-1 text-white flex flex-col justify-center items-center lg:items-start">      
+    <div class="text-center lg:text-left lg:flex-1 lg:max-w-lg xl:max-w-xl order-2 lg:order-1 text-white flex flex-col justify-center items-center lg:items-start animate-on-scroll slide-in">      
       {
         services.map((service) => (
-          <HeadingTag class="text-h5 sm:text-h4 md:text-h3 lg:text-[38px] xl:text-[42px] font-semibold mb-spacing-3 sm:mb-spacing-4 md:mb-spacing-6 leading-tight uppercase w-full">
+          <HeadingTag class="text-h5 sm:text-h4 md:text-h3 lg:text-[38px] xl:text-[42px] font-semibold mb-spacing-3 sm:mb-spacing-4 md:mb-spacing-6 leading-tight uppercase w-full bg-gradient-to-r from-white via-accent-200 to-white bg-clip-text text-transparent animate-gradient-x">
             {service}
           </HeadingTag>
         ))
@@ -77,10 +77,10 @@ const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
       aria-label="Unsere Statistiken und Zahlen"
     >      <div class="grid grid-cols-2 gap-spacing-4 sm:gap-spacing-8 md:gap-0">
         {
-          stats.map(({ number, label }) => (
-            <div class="text-center">
+          stats.map(({ number, label }, index) => (
+            <div class="text-center modern-card glass-morphism-dark rounded-2xl p-4 lg:p-6 hover-lift animate-on-scroll zoom-in" style={`animation-delay: ${index * 0.2}s`}>
               <p 
-                class="text-h3 sm:text-h2 lg:text-[48px] xl:text-[56px] 2xl:text-[64px] font-bold mb-spacing-2"
+                class="text-h3 sm:text-h2 lg:text-[48px] xl:text-[56px] 2xl:text-[64px] font-bold mb-spacing-2 bg-gradient-to-r from-accent to-soft-orange bg-clip-text text-transparent"
                 aria-label={`${number} ${label}`}
               >
                 {number}

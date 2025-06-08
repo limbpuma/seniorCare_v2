@@ -5,10 +5,10 @@ import TextBlock from "./TextBlock.astro";
 
 const { images, subtitle, title } = Astro.props;
 
-const imageClasses = "w-full h-[250px] object-cover";
-const titleClasses = "text-white text-xl font-bold";
-const textClasses = "text-white text-ag-body-text font-ag-body-text text-sm";
-const wrapperClasses = "absolute bottom-0 left-0 bg-blue-900 p-2";
+const imageClasses = "w-full h-[250px] object-cover rounded-xl transition-transform duration-300 group-hover:scale-110";
+const titleClasses = "text-white text-xl font-bold bg-gradient-to-r from-white to-white/90 bg-clip-text";
+const textClasses = "text-white/90 text-ag-body-text font-ag-body-text text-sm";
+const wrapperClasses = "absolute bottom-0 left-0 bg-gradient-to-t from-deep-blue/90 via-deep-blue/70 to-transparent p-4 rounded-xl backdrop-blur-sm";
 ---
 
 <Section background="primary"
@@ -17,23 +17,29 @@ width="medium"
 height="auto"
 id="experience-section"
 animation="zoom-in"
+class="relative overflow-hidden"
 >
-    <div class="flex justify-between items-center mb-8">
-      <div class="flex flex-col">
-        <TextBlock
-          subtitle={subtitle}
-          title={title}
-          
-          alignment="left"
-          textColor="text-white"
-        />
-        
-      </div>
-      <div class="flex space-x-4">
-        <button
-          class="text-white hover:text-blue-200 focus:outline-none"
-          aria-label="Previous slide"
-        >
+    <!-- Gradient overlay for enhanced visual appeal -->
+    <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-deep-blue pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-soft-blue/20 animate-gradient-x pointer-events-none"></div>
+    
+    <div class="relative z-10">
+        <div class="flex justify-between items-center mb-8 animate-on-scroll fade-in">
+          <div class="flex flex-col">
+            <TextBlock
+              subtitle={subtitle}
+              title={title}
+              titleGradient={true}
+              alignment="left"
+              textColor="text-white"
+            />
+            
+          </div>
+          <div class="flex space-x-4">
+            <button
+              class="text-white/90 hover:text-soft-orange focus:outline-none modern-card p-3 rounded-xl backdrop-blur-sm bg-white/10 border border-white/20 hover-lift transition-all duration-300"
+              aria-label="Previous slide"
+            >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -47,11 +53,10 @@ animation="zoom-in"
               stroke-width="2"
               d="M15 19l-7-7 7-7"></path>
           </svg>
-        </button>
-        <button
-          class="text-white hover:text-blue-200 focus:outline-none"
-          aria-label="Next slide"
-        >
+        </button>            <button
+              class="text-white/90 hover:text-soft-orange focus:outline-none modern-card p-3 rounded-xl backdrop-blur-sm bg-white/10 border border-white/20 hover-lift transition-all duration-300"
+              aria-label="Next slide"
+            >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -64,19 +69,18 @@ animation="zoom-in"
               stroke-linejoin="round"
               stroke-width="2"
               d="M9 5l7 7-7 7"></path>
-          </svg>
-        </button>
-      </div>
-    </div>
-    <div class="w-full relative">
-      <ReactSwiperSlider
-        slides={images}
-        imgClass={imageClasses}
-        titleClass={titleClasses}        textClass={textClasses}
-        wrapperClass={wrapperClasses}
-        isImageSlider={false}
-        divType="flex-col"
-        client:load
-      />
+          </svg>          </div>
+        </div>
+        <div class="w-full relative glass-morphism rounded-2xl p-6 backdrop-blur-sm bg-white/5 border border-white/10 animate-on-scroll zoom-in" style="animation-delay: 0.2s">
+          <ReactSwiperSlider
+            slides={images}
+            imgClass={imageClasses}
+            titleClass={titleClasses}        textClass={textClasses}
+            wrapperClass={wrapperClasses}
+            isImageSlider={false}
+            divType="flex-col"
+            client:load
+          />
+        </div>
     </div>
 </Section>

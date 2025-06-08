@@ -50,7 +50,7 @@ const buttonClasses = {
   small: "mt-4 sm:mt-6 md:mt-8",
 };
 
-const inputClasses = "w-full px-4 py-2 bg-inherit border-t-0 border-x-0 border-b border-primary text-primary-dark focus:outline-none text-ag-body-text font-ag-body-text";
+const inputClasses = "w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg text-deep-blue placeholder-deep-blue/70 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent transition-all duration-300 hover:bg-white/20 text-ag-body-text font-ag-body-text";
 
 const getTextareaRows = () => {
   if (size === "small") return "3";
@@ -62,7 +62,7 @@ const getTextareaRows = () => {
 <div class="relative">  <form
     id="contact-form"
     data-form-element="true"
-    class={`bg-soft-orange mx-auto flex flex-col justify-between shadow-lg rounded-lg md:mb-8 ${sizeClasses[size]} ${className}`}
+    class={`modern-card glass-morphism bg-gradient-to-br from-soft-orange/90 to-accent/80 backdrop-blur-lg mx-auto flex flex-col justify-between shadow-2xl rounded-2xl md:mb-8 border border-white/20 hover-lift animate-on-scroll fade-in ${sizeClasses[size]} ${className}`}
   >
     {size === "small" && image && (
       <div class="w-full h-32 sm:h-40 md:h-48 overflow-hidden mb-4 rounded-t-lg">

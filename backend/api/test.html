@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senior Care Backend - API Testing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <h1 class="text-3xl font-bold text-gray-900 mb-8 text-center">
+                Senior Care Backend - API Testing
+            </h1>
+            
+            <div class="grid gap-6 md:grid-cols-2">
+                <!-- Health Check -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4">Health Check</h2>
+                    <button onclick="testAPI('health')" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                        Test Health API
+                    </button>
+                    <div id="health-result" class="mt-4 p-3 bg-gray-50 rounded text-sm"></div>
+                </div>
+
+                <!-- Texts API -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4">Texts API</h2>
+                    <button onclick="testAPI('texts')" class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600">
+                        Test Texts API
+                    </button>
+                    <div id="texts-result" class="mt-4 p-3 bg-gray-50 rounded text-sm"></div>
+                </div>
+
+                <!-- Contact API -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4">Contact API</h2>
+                    <button onclick="testContactAPI()" class="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600">
+                        Test Contact API
+                    </button>
+                    <div id="contact-result" class="mt-4 p-3 bg-gray-50 rounded text-sm"></div>
+                </div>
+
+                <!-- Config API -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4">Config API</h2>
+                    <button onclick="testAPI('config')" class="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600">
+                        Test Config API
+                    </button>
+                    <div id="config-result" class="mt-4 p-3 bg-gray-50 rounded text-sm"></div>
+                </div>
+
+                <!-- SEO API -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4">SEO API</h2>
+                    <div class="mb-4">
+                        <select id="seo-page" class="border border-gray-300 rounded px-3 py-2 mr-2">
+                            <option value="">All Pages</option>
+                            <option value="home">Home</option>
+                            <option value="services">Services</option>
+                            <option value="about">About</option>
+                            <option value="contact">Contact</option>
+                        </select>
+                        <button onclick="testSEOAPI()" class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600">
+                            Test SEO API
+                        </button>
+                    </div>
+                    <div id="seo-result" class="mt-4 p-3 bg-gray-50 rounded text-sm"></div>
+                </div>
+
+                <!-- Backend URL Configuration -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4">Backend Configuration</h2>
+                    <div class="mb-4">
+                        <label class="block text-sm font-medium text-gray-700 mb-2">Backend URL:</label>
+                        <input 
+                            type="text" 
+                            id="backend-url" 
+                            value="./api" 
+                            class="w-full border border-gray-300 rounded px-3 py-2"
+                            placeholder="http://localhost/AdminHub-PHP/src/api"
+                        >
+                    </div>
+                    <button onclick="updateBackendURL()" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600">
+                        Update URL
+                    </button>
+                    <div class="mt-2 text-sm text-gray-600">
+                        Current: <span id="current-url">./api</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Results Summary -->
+            <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4">Testing Summary</h2>
+                <div id="summary" class="space-y-2"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let backendURL = './api';
+        let testResults = {};
+
+        function updateBackendURL() {
+            const newURL = document.getElementById('backend-url').value;
+            backendURL = newURL.endsWith('/') ? newURL.slice(0, -1) : newURL;
+            document.getElementById('current-url').textContent = backendURL;
+            
+            // Clear previous results
+            testResults = {};
+            updateSummary();
+        }
+
+        async function testAPI(endpoint) {
+            const resultDiv = document.getElementById(`${endpoint}-result`);
+            resultDiv.innerHTML = '<div class="text-blue-600">Testing...</div>';
+
+            try {
+                const response = await fetch(`${backendURL}/${endpoint}.php`);
+                const data = await response.json();
+
+                testResults[endpoint] = {
+                    success: response.ok && data.success,
+                    status: response.status,
+                    data: data
+                };
+
+                if (response.ok && data.success) {
+                    resultDiv.innerHTML = `
+                        <div class="text-green-600 font-semibold">✅ Success</div>
+                        <pre class="mt-2 overflow-x-auto">${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="text-red-600 font-semibold">❌ Error</div>
+                        <div class="mt-2">Status: ${response.status}</div>
+                        <pre class="mt-2 overflow-x-auto">${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                testResults[endpoint] = {
+                    success: false,
+                    error: error.message
+                };
+
+                resultDiv.innerHTML = `
+                    <div class="text-red-600 font-semibold">❌ Network Error</div>
+                    <div class="mt-2">${error.message}</div>
+                `;
+            }
+
+            updateSummary();
+        }
+
+        async function testContactAPI() {
+            const resultDiv = document.getElementById('contact-result');
+            resultDiv.innerHTML = '<div class="text-blue-600">Testing...</div>';
+
+            const testData = {
+                name: 'Test User',
+                email: 'test@example.com',
+                phone: '+1234567890',
+                subject: 'API Test',
+                message: 'This is a test message from the API testing interface.'
+            };
+
+            try {
+                const response = await fetch(`${backendURL}/contact.php`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(testData)
+                });
+
+                const data = await response.json();
+
+                testResults.contact = {
+                    success: response.ok && data.success,
+                    status: response.status,
+                    data: data
+                };
+
+                if (response.ok && data.success) {
+                    resultDiv.innerHTML = `
+                        <div class="text-green-600 font-semibold">✅ Success</div>
+                        <div class="mt-2">Message ID: ${data.data?.id || 'N/A'}</div>
+                        <pre class="mt-2 overflow-x-auto">${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="text-red-600 font-semibold">❌ Error</div>
+                        <div class="mt-2">Status: ${response.status}</div>
+                        <pre class="mt-2 overflow-x-auto">${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                testResults.contact = {
+                    success: false,
+                    error: error.message
+                };
+
+                resultDiv.innerHTML = `
+                    <div class="text-red-600 font-semibold">❌ Network Error</div>
+                    <div class="mt-2">${error.message}</div>
+                `;
+            }
+
+            updateSummary();
+        }
+
+        async function testSEOAPI() {
+            const resultDiv = document.getElementById('seo-result');
+            const page = document.getElementById('seo-page').value;
+            
+            resultDiv.innerHTML = '<div class="text-blue-600">Testing...</div>';
+
+            try {
+                const url = `${backendURL}/seo.php${page ? `?page=${page}` : ''}`;
+                const response = await fetch(url);
+                const data = await response.json();
+
+                testResults.seo = {
+                    success: response.ok && data.success,
+                    status: response.status,
+                    data: data
+                };
+
+                if (response.ok && data.success) {
+                    resultDiv.innerHTML = `
+                        <div class="text-green-600 font-semibold">✅ Success</div>
+                        <div class="mt-2">Page: ${page || 'All pages'}</div>
+                        <pre class="mt-2 overflow-x-auto">${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                } else {
+                    resultDiv.innerHTML = `
+                        <div class="text-red-600 font-semibold">❌ Error</div>
+                        <div class="mt-2">Status: ${response.status}</div>
+                        <pre class="mt-2 overflow-x-auto">${JSON.stringify(data, null, 2)}</pre>
+                    `;
+                }
+            } catch (error) {
+                testResults.seo = {
+                    success: false,
+                    error: error.message
+                };
+
+                resultDiv.innerHTML = `
+                    <div class="text-red-600 font-semibold">❌ Network Error</div>
+                    <div class="mt-2">${error.message}</div>
+                `;
+            }
+
+            updateSummary();
+        }
+
+        function updateSummary() {
+            const summaryDiv = document.getElementById('summary');
+            const apis = ['health', 'texts', 'contact', 'config', 'seo'];
+            
+            let summaryHTML = '';
+            let successCount = 0;
+            
+            apis.forEach(api => {
+                const result = testResults[api];
+                if (result) {
+                    const status = result.success ? '✅' : '❌';
+                    const statusText = result.success ? 'Working' : 'Failed';
+                    summaryHTML += `
+                        <div class="flex justify-between items-center py-2 border-b">
+                            <span class="font-medium">${api.toUpperCase()} API:</span>
+                            <span class="${result.success ? 'text-green-600' : 'text-red-600'}">${status} ${statusText}</span>
+                        </div>
+                    `;
+                    if (result.success) successCount++;
+                }
+            });
+
+            if (Object.keys(testResults).length > 0) {
+                summaryHTML = `
+                    <div class="mb-4 p-3 ${successCount === Object.keys(testResults).length ? 'bg-green-100 text-green-800' : 'bg-yellow-100 text-yellow-800'} rounded">
+                        <strong>Overall Status: ${successCount}/${Object.keys(testResults).length} APIs working</strong>
+                    </div>
+                ` + summaryHTML;
+            }
+
+            summaryDiv.innerHTML = summaryHTML || '<div class="text-gray-500">No tests run yet</div>';
+        }
+
+        // Auto-run health check on page load
+        window.addEventListener('load', () => {
+            setTimeout(() => testAPI('health'), 500);
+        });
+    </script>
+</body>
+</html>

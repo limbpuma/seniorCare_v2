@@ -27,11 +27,11 @@ const { class: className, subtitle, title, features } = Astro.props;
   height="auto"
   animation="slide-in"
   class={className}
->
-    <div class="text-center mb-12 content-narrow">
+>    <div class="text-center mb-12 content-narrow animate-on-scroll fade-in">
       <TextBlock
       subtitle={subtitle}
       title={title}
+      titleGradient={true}
       alignment="center"
       textColor="text-deep-blue"
     />
@@ -41,24 +41,26 @@ const { class: className, subtitle, title, features } = Astro.props;
       {
         features.map((feature, index) => (
           <div
-            class={`relative p-6 rounded-lg ${index === 1 ? "bg-soft-beige " : "bg-soft-orange hover:bg-soft-beige transition duration-300"} shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden`}
+            class={`relative p-6 rounded-2xl modern-card hover-lift animate-on-scroll zoom-in ${index === 1 ? "bg-gradient-to-br from-soft-beige to-accent/20" : "bg-gradient-to-br from-soft-orange to-accent hover:from-soft-beige hover:to-accent/30"} shadow-lg transition-all duration-300 overflow-hidden group`}
+            style={`animation-delay: ${index * 0.2}s`}
           >
             <div class="flex flex-col mb-4 relative z-10">
-              <div class="text-black mb-4 flex justify-center items-center h-16 w-16 ">
+              <div class="text-black mb-4 flex justify-center items-center h-16 w-16 mx-auto bg-white/30 rounded-full backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
                 <div class="transform scale-150">
                   <Icon icons={[{ name: feature.icon }]} size="xl" />
                 </div>
               </div>
-              <h3 class="text-ag-body-text sm:text-ag-h6 md:text-ag-h5 font-ag-h5 mb-2 sm:mb-3 md:mb-4 leading-tight text-deep-blue">
+              <h3 class="text-ag-body-text sm:text-ag-h6 md:text-ag-h5 font-ag-h5 mb-2 sm:mb-3 md:mb-4 leading-tight text-deep-blue group-hover:text-primary transition-colors duration-300">
                 {feature.title}
               </h3>
-              <p class="text-ag-body-text font-ag-body-text mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto">
+              <p class="text-ag-body-text font-ag-body-text mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto opacity-90">
                 {feature.description}
               </p>
             </div>
-            <div class="absolute top-4 right-4 text-soft-blue text-ag-h1 opacity-20">
+            <div class="absolute top-4 right-4 text-deep-blue/20 text-ag-h1 font-bold group-hover:text-primary/30 transition-colors duration-300">
               {feature.number}
             </div>
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transform -translate-x-full group-hover:translate-x-full transition-all duration-700"></div>
           </div>        ))
       }
     </div>

@@ -5,27 +5,30 @@ import Section from "./Section.astro";
 
 const { images, title, subtitle } = Astro.props;
 
-const imagenclases = "w-auto h-[240px] sm:h-[280px] md:h-[320px] lg:h-[360px] object-cover rounded-lg shadow-medium";
+const imagenclases = "w-auto h-[240px] sm:h-[280px] md:h-[320px] lg:h-[360px] object-cover rounded-xl shadow-medium modern-card hover-lift transition-all duration-300";
 const textclasses =
-  "mt-3 sm:mt-4 text-white text-ag-body-text font-ag-body-text text-left leading-relaxed";
-const wrapperClasses = "relative overflow-hidden rounded-lg";
+  "mt-3 sm:mt-4 text-white/90 text-ag-body-text font-ag-body-text text-left leading-relaxed";
+const wrapperClasses = "relative overflow-hidden rounded-xl group";
 ---
 
 <Section width="medium" height="auto" padding="medium"
-id="ImageCarrousel-section" class="relative" animation="zoom-in">
+id="ImageCarrousel-section" class="relative overflow-hidden" animation="zoom-in">
     <div class="absolute inset-0 w-full h-full">
-      <div class="w-full h-1/2 bg-white"></div>
-      <div class="w-full h-1/2 bg-deep-blue"></div>
+      <div class="w-full h-1/2 bg-gradient-to-br from-white via-white to-ag-neutral-50"></div>
+      <div class="w-full h-1/2 bg-gradient-to-tr from-deep-blue via-deep-blue/95 to-primary"></div>
+      <!-- Subtle animated overlay -->
+      <div class="absolute inset-0 bg-gradient-to-r from-primary/5 via-transparent to-soft-blue/5 animate-gradient-x"></div>
     </div>
     <div class="relative mx-auto w-full z-10">
       <TextBlock
           subtitle={subtitle}
           title={title}
+          titleGradient={true}
           alignment="center"
           textColor="text-deep-blue"
         />
       
-      <div class="w-full relative">
+      <div class="w-full relative glass-morphism rounded-2xl p-6 backdrop-blur-sm bg-white/10 border border-white/20 animate-on-scroll fade-in" style="animation-delay: 0.2s">
         <ReactSwiperSlider
           slides={images}
           imgClass={imagenclases}

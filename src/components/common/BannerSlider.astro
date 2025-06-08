@@ -11,8 +11,11 @@ const wrapperClasses = "flex items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 xl:ga
 const { slides } = Astro.props;
 ---
 
-<div class="bg-soft-orange py-6 sm:py-8 md:py-10 lg:py-12 w-full">
-  <div class="content-narrow">
+<div class="bg-gradient-to-r from-soft-orange via-soft-orange/95 to-yellow-400 py-6 sm:py-8 md:py-10 lg:py-12 w-full relative overflow-hidden">
+  <!-- Animated gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-r from-yellow-400/20 via-transparent to-soft-orange/20 animate-gradient-x pointer-events-none"></div>
+  
+  <div class="content-narrow relative z-10">
     <ReactSwiperSlider
       slides={slides}
       iconClass={iconClasses}
