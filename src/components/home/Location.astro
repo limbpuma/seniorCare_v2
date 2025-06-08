@@ -7,13 +7,13 @@ const { subtitle, title, description, buttonText, stats } = Astro.props;
 
 <Section 
 background="white"
-padding="large"
-width="full"
+padding="medium"
+width="medium"
 height="auto"
 id="experience-section"
 animation="slide-in"
->  <div class="container mx-auto">
-    <div class="flex flex-col md:flex-row items-center">
+>
+  <div class="flex flex-col md:flex-row items-center">
       <div class="w-full md:w-3/5 lg:w-2/3 mb-6 md:mb-0">
         <img
           src="/assets/img/doctor_senior_care_tablet.webp"
@@ -47,9 +47,7 @@ animation="slide-in"
                 {stat.label}
               </p>
             </div>
-          ))
-        }
+          ))        }
       </div>
     </div>
-  </div>
 </Section>

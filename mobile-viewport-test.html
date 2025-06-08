@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Viewport Móvil - Integra Senior Care</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f0f0;
+        }
+        
+        /* Dynamic viewport height for mobile devices */
+        .viewport-height {
+            /* Use CSS custom property for precise mobile viewport */
+            height: calc(var(--vh, 1vh) * 100);
+            
+            /* Fallback for older browsers */
+            height: 100vh;
+            
+            /* Modern browsers with dynamic viewport units */
+            height: 100dvh;
+            
+            /* Additional fallback for iOS Safari */
+            min-height: -webkit-fill-available;
+            
+            /* Ensure minimum height for content readability */
+            min-height: 600px;
+        }
+
+        /* iOS Safari specific fixes */
+        @supports (-webkit-touch-callout: none) {
+            .viewport-height {
+                height: -webkit-fill-available;
+                min-height: 100vh;
+            }
+        }
+
+        /* Mobile landscape orientation fixes */
+        @media screen and (max-height: 500px) and (orientation: landscape) {
+            .viewport-height {
+                height: 100vh;
+                min-height: 100vh;
+            }
+        }
+        
+        .container {
+            display: flex;
+            flex-direction: column;
+            border: 2px solid #007bff;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .header {
+            background: #333;
+            color: white;
+            padding: 0.5rem 1rem;
+            min-height: 3rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 2px solid #555;
+        }
+        
+        .hero {
+            flex: 1;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+        }
+        
+        .info {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 12px;
+            z-index: 1000;
+        }
+        
+        .debug {
+            background: rgba(255,255,255,0.9);
+            color: #333;
+            padding: 15px;
+            margin: 10px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                min-height: 3rem;
+                padding: 0.25rem 1rem;
+            }
+            
+            .debug {
+                font-size: 12px;
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="viewport-height container">
+        <header class="header">
+            <div>📱 Integra Senior Care</div>
+            <div>Menu</div>
+        </header>
+        
+        <main class="hero">
+            <div>
+                <h1>🎯 Test Viewport Móvil</h1>
+                <p>Hero Section debe llenar toda la altura disponible</p>
+                <div class="debug">
+                    <strong>Información del Viewport:</strong><br>
+                    <span id="viewport-info">Calculando...</span>
+                </div>
+            </div>
+        </main>
+    </div>
+    
+    <div class="info" id="debug-info">
+        Debug Info
+    </div>
+
+    <script>
+        // Set CSS custom property for dynamic viewport height
+        function setDynamicViewportHeight() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+            updateDebugInfo();
+        }
+        
+        function updateDebugInfo() {
+            const container = document.querySelector('.viewport-height');
+            const header = document.querySelector('.header');
+            const hero = document.querySelector('.hero');
+            
+            const containerHeight = container.getBoundingClientRect().height;
+            const headerHeight = header.getBoundingClientRect().height;
+            const heroHeight = hero.getBoundingClientRect().height;
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.clientHeight;
+            
+            const debugInfo = `
+                🔍 Debug Info:<br>
+                Window: ${window.innerWidth}x${windowHeight}<br>
+                Document: ${documentHeight}px<br>
+                Container: ${containerHeight}px<br>
+                Header: ${headerHeight}px<br>
+                Hero: ${heroHeight}px<br>
+                Total: ${headerHeight + heroHeight}px<br>
+                Fit: ${containerHeight <= windowHeight ? '✅' : '❌'}<br>
+                --vh: ${getComputedStyle(document.documentElement).getPropertyValue('--vh')}
+            `;
+            
+            const viewportInfo = `
+                📱 Viewport: ${window.innerWidth}x${windowHeight}px<br>
+                📏 Container: ${containerHeight}px<br>
+                📊 Ratio: ${((containerHeight / windowHeight) * 100).toFixed(1)}%<br>
+                🎯 Status: ${containerHeight <= windowHeight ? 'PERFECTO ✅' : 'DESBORDA ❌'}
+            `;
+            
+            document.getElementById('debug-info').innerHTML = debugInfo;
+            document.getElementById('viewport-info').innerHTML = viewportInfo;
+        }
+        
+        // Set on initial load
+        setTimeout(() => {
+            setDynamicViewportHeight();
+        }, 100);
+        
+        // Update on resize (for orientation changes)
+        window.addEventListener('resize', () => {
+            setTimeout(setDynamicViewportHeight, 100);
+        });
+        
+        // Update on orientation change (for mobile devices)
+        window.addEventListener('orientationchange', () => {
+            setTimeout(setDynamicViewportHeight, 300);
+        });
+        
+        // Update every second for debugging
+        setInterval(updateDebugInfo, 1000);
+        
+        // Initial call
+        updateDebugInfo();
+    </script>
+</body>
+</html>

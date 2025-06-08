@@ -12,9 +12,8 @@ const { title, subtitle, description, mapEmbedUrl } = Astro.props;
 ---
 
 <Section animation="zoom-in" padding="medium"
-width="full"
+width="medium"
 height="auto">
-  <div class="container mx-auto px-4">
     <TextBlock
         subtitle={subtitle}
         title={title}
@@ -28,9 +27,7 @@ height="auto">
         src={mapEmbedUrl}
         class="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
         style="border:0;"
-        allowfullscreen=""
-        loading="lazy"
+        allowfullscreen=""        loading="lazy"
         referrerpolicy="no-referrer-when-downgrade"></iframe>
     </div>
-  </div>
 </Section>

@@ -41,20 +41,55 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       />
-    </noscript>
-    <!-- Core functionality modules -->
+    </noscript>    <!-- Core functionality modules -->
     <script src="/src/utils/lazy-loader.js" type="module" is:inline></script>
     <script src="/src/utils/intelligent-preloader.js" type="module" is:inline></script>
-    <script src="/src/utils/performance-monitor.js" type="module" is:inline></script>
     <script src="/src/utils/landing-page-navigator.js" type="module" is:inline></script>
-  </head>
-
-  <body class="bg-white">
-    <Header navAnchors={navAnchors} />
-    <main class="relative">
-      <slot />
-    </main>
-    <Footer isLandingPage={page === "landing"} />
+    
+    <!-- Mobile viewport height optimization -->
+    <script is:inline>
+      // Set CSS custom property for dynamic viewport height
+      function setDynamicViewportHeight() {
+        const vh = window.innerHeight * 0.01;
+        document.documentElement.style.setProperty('--vh', `${vh}px`);
+      }
+      
+      // Set on initial load
+      setDynamicViewportHeight();
+      
+      // Update on resize (for orientation changes)
+      window.addEventListener('resize', () => {
+        setTimeout(setDynamicViewportHeight, 100);
+      });
+      
+      // Update on orientation change (for mobile devices)
+      window.addEventListener('orientationchange', () => {
+        setTimeout(setDynamicViewportHeight, 300);
+      });
+    </script>
+  </head>  <body class="bg-white">
+    {page === "home" ? (
+      <!-- Home page: Header + Hero in single viewport container -->
+      <>
+        <div class="viewport-height flex flex-col w-full">
+          <Header navAnchors={navAnchors} />          <div class="flex-1 w-full min-h-0">
+            <slot name="hero" />
+          </div>
+        </div>        <main class="relative w-full z-10 bg-white">
+          <slot />
+        </main>
+        <Footer isLandingPage={true} />
+      </>
+    ) : (
+      <!-- Other pages: Normal layout -->
+      <>
+        <Header navAnchors={navAnchors} />
+        <main class="relative">
+          <slot />
+        </main>
+        <Footer isLandingPage={false} />
+      </>
+    )}
     <CookieConsent client:idle />
     <AccessibilityControls class="global-accessibility-controls" />
     
@@ -545,9 +580,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
             }
           });
         }
-      }
-
-      // Create global instance
+      }      // Create global instance
       window.accessibilityManager = new AccessibilityManager();
     </script>
   </body>
@@ -556,6 +589,57 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
 <style is:global>
 body {
   font-family: "Montserrat", sans-serif;
+}
+
+/* Dynamic viewport height for mobile devices */
+.viewport-height {
+  /* Primary height using CSS custom property for mobile optimization */
+  height: calc(var(--vh, 1vh) * 100);
+  
+  /* Ensure minimum height for content readability */
+  min-height: 600px;
+  
+  /* Fallback for browsers that don't support CSS custom properties */
+  _height: 100vh;
+  
+  /* Ensure container doesn't overflow */
+  overflow: hidden;
+  position: relative;
+}
+
+/* iOS Safari and modern browser support */
+@supports (-webkit-touch-callout: none) {
+  .viewport-height {
+    height: -webkit-fill-available;
+    min-height: 100vh;
+  }
+}
+
+/* Support for modern dynamic viewport units where available */
+@supports (height: 100dvh) {
+  .viewport-height {
+    height: 100dvh;
+  }
+}
+
+/* Mobile landscape orientation fixes */
+@media screen and (max-height: 500px) and (orientation: landscape) {
+  .viewport-height {
+    height: 100vh;
+    min-height: 100vh;
+  }
+}
+
+/* Ensure main content doesn't overlap with hero */
+main {
+  position: relative;
+  z-index: 10;
+}
+
+/* Ensure hero sections are properly contained */
+#hero-parallax-section {
+  max-height: 100%;
+  overflow: hidden;
 }
 
 /* Animation keyframes */
@@ -726,78 +810,10 @@ body {
       observers.set(el, observer);
     });
   };
-
   // Use efficient DOM ready detection
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initAnimations, { once: true });
   } else {
     initAnimations();
-  }
-</script>
-
-<!-- Viewport Height Validation Script -->
-<script>
-  // Import and initialize viewport validator for development debugging
-  class ViewportValidator {
-    constructor() {
-      this.headerSelector = 'header';
-      this.heroSelector = '#hero-parallax-section';
-      this.tolerance = 10;
-    }
-
-    validateViewportFit() {
-      if (typeof window === 'undefined') return { valid: false, reason: 'No window object' };
-
-      const header = document.querySelector(this.headerSelector);
-      const hero = document.querySelector(this.heroSelector);
-      
-      if (!header || !hero) {
-        return { 
-          valid: false, 
-          reason: 'Header or hero section not found',
-          elements: { header: !!header, hero: !!hero }
-        };
-      }
-
-      const viewportHeight = window.innerHeight;
-      const headerHeight = header.getBoundingClientRect().height;
-      const heroHeight = hero.getBoundingClientRect().height;
-      const combinedHeight = headerHeight + heroHeight;
-
-      const isValid = combinedHeight <= (viewportHeight + this.tolerance);
-      
-      return {
-        valid: isValid,
-        measurements: {
-          viewport: viewportHeight,
-          header: headerHeight,
-          hero: heroHeight,
-          combined: combinedHeight,
-          excess: combinedHeight - viewportHeight
-        },
-        recommendation: isValid ? '✅ Perfect viewport fit!' : '⚠️ Consider optimizing heights'
-      };
-    }
-
-    runValidation() {
-      const width = window.innerWidth;
-      const breakpoint = width < 768 ? 'mobile' : width < 1024 ? 'tablet' : 'desktop';
-      const validation = this.validateViewportFit();
-      
-      return { breakpoint, validation };
-    }
-  }
-
-  // Initialize validator
-  window.viewportValidator = new ViewportValidator();
-  
-  // Auto-validate on page load (development only)
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-      setTimeout(() => {
-        const result = window.viewportValidator.runValidation();
-        console.log(`[${result.breakpoint.toUpperCase()}] Viewport Validation:`, result.validation);
-      }, 1000);
-    });
   }
 </script>

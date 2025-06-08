@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .test-section { margin: 20px 0; padding: 15px; border: 1px solid #ccc; }
+        .pass { color: green; }
+        .fail { color: red; }
+        .info { color: blue; }
+    </style>
+</head>
+<body>
+    <h1>Hamburger Menu Implementation Test</h1>
+    
+    <div class="test-section">
+        <h2>✅ Implementation Summary</h2>
+        <ul>
+            <li class="pass">✓ Added JavaScript functionality in <code>landing-page-navigator.js</code></li>
+            <li class="pass">✓ Implemented mobile menu toggle with smooth animations</li>
+            <li class="pass">✓ Added responsive CSS for proper hiding on md+ screens</li>
+            <li class="pass">✓ Added animated hamburger icon (transforms to X when open)</li>
+            <li class="pass">✓ Implemented accessibility features (aria-expanded, focus management)</li>
+            <li class="pass">✓ Added click outside to close functionality</li>
+            <li class="pass">✓ Added auto-close on window resize</li>
+            <li class="pass">✓ Added smooth scroll for anchor navigation</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🎯 Key Features Implemented</h2>
+        <ul>
+            <li><strong>Mobile Menu Toggle:</strong> Hamburger button toggles mobile navigation</li>
+            <li><strong>Responsive Design:</strong> Menu hidden on md+ screens (768px+)</li>
+            <li><strong>Smooth Animations:</strong> CSS transitions for menu open/close</li>
+            <li><strong>Hamburger Animation:</strong> Icon transforms to X when menu is open</li>
+            <li><strong>Accessibility:</strong> Proper ARIA attributes and focus management</li>
+            <li><strong>Auto-close:</strong> Menu closes when clicking outside or on nav links</li>
+            <li><strong>Smooth Scrolling:</strong> Anchor links scroll smoothly to sections</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>📱 Testing Instructions</h2>
+        <ol>
+            <li><strong>Desktop View (≥768px):</strong>
+                <ul>
+                    <li>Hamburger button should be hidden</li>
+                    <li>Navigation links should be visible horizontally</li>
+                </ul>
+            </li>
+            <li><strong>Mobile View (<768px):</strong>
+                <ul>
+                    <li>Hamburger button should be visible</li>
+                    <li>Navigation links should be hidden initially</li>
+                    <li>Clicking hamburger should open mobile menu with animation</li>
+                    <li>Hamburger icon should transform to X when open</li>
+                    <li>Clicking outside should close the menu</li>
+                    <li>Clicking nav links should close the menu</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+
+    <div class="test-section">
+        <h2>🔧 Technical Details</h2>
+        <ul>
+            <li><strong>JavaScript:</strong> <code>src/utils/landing-page-navigator.js</code></li>
+            <li><strong>CSS Classes:</strong> <code>mobile-menu-open</code> for animation</li>
+            <li><strong>Animation:</strong> max-height and opacity transitions (300ms)</li>
+            <li><strong>Responsive:</strong> <code>md:hidden</code> class for mobile-only visibility</li>
+            <li><strong>Accessibility:</strong> ARIA attributes updated dynamically</li>
+        </ul>
+    </div>
+
+    <div class="test-section">
+        <h2>🌐 Test the Implementation</h2>
+        <p><a href="http://localhost:4322/" target="_blank" class="info">→ Open Website in New Tab</a></p>
+        <p><em>Use browser DevTools to toggle device emulation and test mobile view</em></p>
+    </div>
+
+    <script>
+        console.log('✅ Mobile Menu Test Page Loaded');
+        console.log('🔍 To test: Open the main website and toggle between desktop/mobile views');
+        console.log('📱 Use browser DevTools device emulation for mobile testing');
+    </script>
+</body>
+</html>
