@@ -1,6 +1,7 @@
 ---
 import Button from "../common/Button.astro";
 import Section from "./Section.astro";
+import texts from "@/utils/texts.json";
 
 interface Stat {
   number: string;
@@ -22,7 +23,7 @@ const {
   stats, 
   buttonText, 
   description, 
-  phoneNumber, 
+  phoneNumber = texts.header.phone, // Use real phone as default
   headingLevel = 2,
   imageAlt 
 } = Astro.props;
@@ -107,7 +108,7 @@ const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
       >        <Button 
           variant="accent" 
           size="medium" 
-          href={`tel:+49 123 456 7890`}
+          href={`tel:${phoneNumber}`}
           aria-label={`Anrufen: ${phoneNumber}`}
           flex={true}
         >

@@ -830,4 +830,14 @@ main {
   } else {
     initAnimations();
   }
+  
+  // Link validation in development
+  if (import.meta.env.DEV) {
+    import('../utils/link-validator.ts').then(({ linkValidator }) => {
+      // Run validation after all content is loaded
+      setTimeout(() => {
+        linkValidator.logValidationResults();
+      }, 2000);
+    });
+  }
 </script>
