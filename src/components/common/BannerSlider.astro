@@ -1,20 +1,25 @@
 ---
 import ReactSwiperSlider from "./Slider.jsx";
 
-const iconClasses = "text-ag-h2 lg:text-ag-h2 text-deep-blue";
-const textClasses = "text-ag-h2 lg:text-ag-h2 font-bold text-deep-blue";
-const wrapperClasses = "flex items-center gap-4 sm:gap-12";
+// Responsive icon classes - smaller on mobile, larger on desktop
+const iconClasses = "text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl text-deep-blue";
+// Responsive text classes - readable on mobile, impactful on desktop
+const textClasses = "text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-bold text-deep-blue";
+// Responsive wrapper classes - tighter spacing on mobile
+const wrapperClasses = "flex items-center gap-2 sm:gap-4 md:gap-6 lg:gap-8 xl:gap-12";
 
 const { slides } = Astro.props;
 ---
 
-<div class="bg-soft-orange py-12 w-full">
-  <ReactSwiperSlider
-    slides={slides}
-    iconClass={iconClasses}
-    textClass={textClasses}
-    wrapperClass={wrapperClasses}
-    divType="flex-center"
-    client:load
-  />
+<div class="bg-soft-orange py-6 sm:py-8 md:py-10 lg:py-12 w-full">
+  <div class="content-narrow">
+    <ReactSwiperSlider
+      slides={slides}
+      iconClass={iconClasses}
+      textClass={textClasses}
+      wrapperClass={wrapperClasses}
+      divType="flex-center"
+      client:load
+    />
+  </div>
 </div>

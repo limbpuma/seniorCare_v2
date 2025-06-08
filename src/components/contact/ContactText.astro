@@ -36,6 +36,7 @@ const iconNameMap: Record<string, string> = {
   "fa-map-marker-alt": "location",
   "fa-phone-alt": "mobilePhone",
   "fa-envelope": "envelope",
+  "fa-clock": "clock",
 };
 ---
 
@@ -45,9 +46,8 @@ const iconNameMap: Record<string, string> = {
   height="auto"
   id="experience-section"
   animation="fade-in"
-  >
-  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center content-narrow">
-      <div class="space-y-8">
+  >  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-center content-narrow">
+      <div class="space-y-6 sm:space-y-8">
         <div>
           <TextBlock
           subtitle={subtitle}
@@ -57,22 +57,22 @@ const iconNameMap: Record<string, string> = {
           textColor="text-deep-blue"
     />
           
-        </div>        <div class="space-y-6">
+        </div><div class="space-y-4 sm:space-y-6">
           {
             contactOptions.map((option: ContactOption) => (
-              <div class="flex items-start space-x-4 p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">
-                <div class="bg-soft-orange p-3 lg:p-4 rounded-full text-deep-blue flex-shrink-0">
+              <div class="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">                <div class="bg-soft-orange w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full text-deep-blue flex-shrink-0 flex items-center justify-center">
                   <Icon
                     icons={[{ name: iconNameMap[option.icon] || option.icon }]}
-                    size="large"
+                    size="medium"
+                    customSize="text-lg sm:text-xl lg:text-2xl"
                     variant="default"
                   />
                 </div>
                 <div class="flex-1 min-w-0">
-                  <h3 class="font-ag-sub-heading font-semibold text-ag-sub-heading text-deep-blue mb-2">
+                  <h3 class="font-ag-sub-heading font-semibold text-ag-sub-heading sm:text-lg lg:text-xl text-deep-blue mb-1 sm:mb-2">
                     {option.title}
                   </h3>
-                  <p class="text-ag-body-text font-ag-body-text text-gray-700 leading-relaxed">
+                  <p class="text-ag-body-text font-ag-body-text text-sm sm:text-base text-gray-700 leading-relaxed">
                     {option.description}
                   </p>
                 </div>
