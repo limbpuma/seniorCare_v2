@@ -74,9 +74,8 @@ const iconNameMap: Record<string, string> = {
                     {option.icon === "location" && option.description.includes("Dortmund") ? (
                       <a href="https://maps.app.goo.gl/UbA5eCbGWvF2pyPu9" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline font-medium">
                         {option.description}
-                      </a>
-                    ) : option.icon === "mobilePhone" && option.description.match(/^\d+\s?\d*\s?\d*/) ? (
-                      <a href={`tel:${option.description.replace(/\s/g, '')}`} class="text-primary hover:underline font-medium">
+                      </a>                    ) : option.icon === "mobilePhone" && option.description.match(/^\d+\s?\d*\s?\d*/) ? (
+                      <a href={`tel:${option.description.replace(/\s/g, '')}`} class="text-primary hover:underline font-medium" role="link">
                         {option.description}
                       </a>
                     ) : option.icon === "envelope" && option.description.includes("@") ? (

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Formulario de Contacto</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-container {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .test-result {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+        .test-success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        .test-error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        .test-warning {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .iframe-container {
+            width: 100%;
+            height: 600px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <h1>🧪 Test del Formulario de Contacto</h1>
+        <p>Esta página permite probar la integración del formulario con el panel de accesibilidad.</p>
+        
+        <div id="test-results"></div>
+        
+        <button onclick="runBasicTests()">Ejecutar Tests Básicos</button>
+        <button onclick="openContactPage()">Abrir Página de Contacto</button>
+        <button onclick="testAccessibilityConflicts()">Test Conflictos Accesibilidad</button>
+    </div>
+
+    <div class="test-container">
+        <h2>📱 Página de Contacto en Vivo</h2>
+        <div class="iframe-container">
+            <iframe id="contact-iframe" src="http://localhost:4328/contact"></iframe>
+        </div>
+    </div>
+
+    <script>
+        function addTestResult(message, type = 'success') {
+            const resultsDiv = document.getElementById('test-results');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = `test-result test-${type}`;
+            resultDiv.textContent = message;
+            resultsDiv.appendChild(resultDiv);
+        }
+
+        function clearResults() {
+            document.getElementById('test-results').innerHTML = '';
+        }
+
+        function runBasicTests() {
+            clearResults();
+            addTestResult('🔍 Iniciando tests básicos...', 'warning');
+            
+            // Test 1: Verificar que el iframe carga
+            const iframe = document.getElementById('contact-iframe');
+            if (iframe.src) {
+                addTestResult('✅ Test 1: Iframe configurado correctamente');
+            } else {
+                addTestResult('❌ Test 1: Iframe no configurado', 'error');
+            }
+
+            // Test 2: Verificar conexión al servidor
+            fetch('http://localhost:4328/contact')
+                .then(response => {
+                    if (response.ok) {
+                        addTestResult('✅ Test 2: Servidor de desarrollo accesible');
+                    } else {
+                        addTestResult('❌ Test 2: Error del servidor', 'error');
+                    }
+                })
+                .catch(error => {
+                    addTestResult('❌ Test 2: No se puede conectar al servidor', 'error');
+                });
+
+            // Test 3: Simular interacciones básicas
+            setTimeout(() => {
+                addTestResult('📝 Test 3: Para probar el formulario, usa la página embebida arriba', 'warning');
+                addTestResult('🎯 Instrucciones de prueba:', 'warning');
+                addTestResult('1. Haz clic en campos del formulario', 'warning');
+                addTestResult('2. Verifica que NO se abra el panel de accesibilidad', 'warning');
+                addTestResult('3. Abre manualmente el panel de accesibilidad (botón ♿)', 'warning');
+                addTestResult('4. Intenta rellenar el formulario con el panel abierto', 'warning');
+                addTestResult('5. Envía el formulario y verifica la notificación', 'warning');
+            }, 1000);
+        }
+
+        function openContactPage() {
+            window.open('http://localhost:4328/contact', '_blank');
+        }
+
+        function testAccessibilityConflicts() {
+            clearResults();
+            addTestResult('🔧 Test de conflictos de accesibilidad...', 'warning');
+            
+            // Comprobar si los archivos necesarios están presentes
+            const testsToRun = [
+                {
+                    name: 'Enhanced Navigation Manager',
+                    check: () => fetch('http://localhost:4328/src/utils/enhanced-navigation-manager.js')
+                },
+                {
+                    name: 'Accessibility CSS',
+                    check: () => fetch('http://localhost:4328/src/styles/accessibility.css')
+                }
+            ];
+
+            testsToRun.forEach((test, index) => {
+                setTimeout(() => {
+                    test.check()
+                        .then(response => {
+                            if (response.ok) {
+                                addTestResult(`✅ ${test.name}: Disponible`);
+                            } else {
+                                addTestResult(`⚠️ ${test.name}: No accesible directamente (normal en producción)`, 'warning');
+                            }
+                        })
+                        .catch(() => {
+                            addTestResult(`⚠️ ${test.name}: No accesible directamente (normal en producción)`, 'warning');
+                        });
+                }, index * 500);
+            });
+
+            setTimeout(() => {
+                addTestResult('🎯 Para probar conflictos, usa la página embebida:', 'warning');
+                addTestResult('1. Abre el panel de accesibilidad (♿)', 'warning');
+                addTestResult('2. Intenta hacer clic en campos del formulario', 'warning');
+                addTestResult('3. El panel debería permanecer abierto', 'warning');
+                addTestResult('4. Intenta enviar el formulario', 'warning');
+                addTestResult('5. Debería aparecer una notificación y cerrarse el panel', 'warning');
+            }, 2000);
+        }
+
+        // Auto-ejecutar tests básicos al cargar
+        window.addEventListener('load', () => {
+            setTimeout(runBasicTests, 1000);
+        });
+
+        // Monitorear cambios en el iframe
+        document.getElementById('contact-iframe').addEventListener('load', () => {
+            addTestResult('🔄 Página de contacto recargada en iframe', 'warning');
+        });
+    </script>
+</body>
+</html>

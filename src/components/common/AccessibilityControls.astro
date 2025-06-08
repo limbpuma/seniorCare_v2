@@ -447,12 +447,15 @@ const { class: className } = Astro.props;
       } else {
         showPanel();
       }
-    }
-
-    function showPanel() {
+    }    function showPanel() {
       panel?.classList.add('show');
       toggleBtn?.setAttribute('aria-expanded', 'true');
       toggleBtn?.setAttribute('aria-label', 'Barrierefreiheitsoptionen schließen');
+      
+      // Notify navigation manager about panel state
+      if ((window as any).enhancedNavigationManager) {
+        (window as any).enhancedNavigationManager.isAccessibilityPanelOpen = true;
+      }
       
       // Foco en el primer elemento
       const firstButton = panel?.querySelector('.feature-btn') as HTMLElement;
@@ -465,6 +468,11 @@ const { class: className } = Astro.props;
       panel?.classList.remove('show');
       toggleBtn?.setAttribute('aria-expanded', 'false');
       toggleBtn?.setAttribute('aria-label', 'Barrierefreiheitsoptionen öffnen');
+      
+      // Notify navigation manager about panel state
+      if ((window as any).enhancedNavigationManager) {
+        (window as any).enhancedNavigationManager.isAccessibilityPanelOpen = false;
+      }
       
       // Devolver foco al botón toggle
       toggleBtn?.focus();
@@ -491,14 +499,26 @@ const { class: className } = Astro.props;
           });
         }
       });
-    }
-
-    // Cerrar panel al hacer clic fuera
+    }    // Cerrar panel al hacer clic fuera (excluyendo elementos de formulario)
     document.addEventListener('click', function(event) {
       const controls = document.querySelector('.accessibility-controls');
-      const target = event.target as Node;
-      if (controls && target && !controls.contains(target)) {
+      const target = event.target as HTMLElement;
+      
+      // Exclude form elements and form containers
+      const isFormElement = target.matches('input, textarea, select, button[type="submit"], label, form, option') ||
+                           target.closest('form') ||
+                           target.closest('#contact-form') ||
+                           target.closest('[data-form-element]') ||
+                           target.classList.contains('form-control') ||
+                           target.classList.contains('wcag-tooltip');
+      
+      if (controls && target && !controls.contains(target) && !isFormElement) {
         hidePanel();
+        
+        // Notify navigation manager about panel state
+        if ((window as any).enhancedNavigationManager) {
+          (window as any).enhancedNavigationManager.isAccessibilityPanelOpen = false;
+        }
       }
     });
 
