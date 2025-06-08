@@ -3,14 +3,16 @@ import Header from "@/components/common/Header.astro";
 import Footer from "@/components/common/Footer.astro";
 import CookieConsent from "@/components/common/CookieConsent.tsx";
 import AccessibilityControls from "@/components/common/AccessibilityControls.astro";
+import DynamicSEO from "@/components/common/DynamicSEO.astro";
 import texts from "@/utils/texts.json";
 
 interface Props {
   title: string;
   page: "home" | "about" | "services" | "contact" | "faq" | "datenschutz" | "impressum" | "Agb" | "404" | "landing" | "accessibility"; 
   navAnchors?: { id: string; label: string }[];
+  useDynamicSEO?: boolean;
 }
-const { title, page, navAnchors } = Astro.props;
+const { title, page, navAnchors, useDynamicSEO = false } = Astro.props;
 
 const { description, keywords } = texts.seo[page] || { description: "", keywords: "" };
 ---
@@ -20,13 +22,25 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
-    <!-- Meta Description -->
-    <meta name="description" content={description} />
-    <!-- Keywords for SEO -->
-    <meta name="keywords" content={keywords} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags - Dynamic or Static -->
+    {useDynamicSEO ? (
+      <DynamicSEO 
+        page={page} 
+        fallbackTitle={title}
+        fallbackDescription={description}
+        fallbackKeywords={keywords}
+      />
+    ) : (
+      <>
+        <title>{title}</title>
+        <!-- Meta Description -->
+        <meta name="description" content={description} />
+        <!-- Keywords for SEO -->
+        <meta name="keywords" content={keywords} />
+      </>
+    )}
     <link rel="stylesheet" href="/src/styles/main.css" />
     <link rel="stylesheet" href="/src/styles/accessibility.css" />
     <!-- Essential FontAwesome icons only -->

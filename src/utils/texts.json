@@ -54,12 +54,13 @@
       "description": "Seite nicht gefunden. Bitte überprüfen Sie die URL oder kehren Sie zur Startseite zurück.",
       "keywords": "404, Seite nicht gefunden, Fehler"
     }
-  },
-  "header": {
+  },  "header": {
     "address": "Flughafenstraße 404, 44328 Dortmund",
     "phone": "0231 9125000",
+    "email": "info@pflegedienst-integra.de",
     "schedule": "Mo bis Fr 09:00 - 15:00",
     "buttonText": "Jetzt Buchen",
+    "cta": "Jetzt Buchen",
     "socialLinks": {
       "facebook": "https://www.facebook.com/pflegedienst.integra.dortmund",
       "twitter": "https://www.facebook.com/pflegedienst.integra.dortmund",

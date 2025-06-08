@@ -1,7 +1,6 @@
 ---
 import Button from "./Button.astro";
 
-
 type FormSize = "large" | "medium" | "small";
 
 interface Props {
@@ -146,10 +145,9 @@ const getTextareaRows = () => {
         >.
       </label>
     </div>
-  </form>
-  <div
+  </form>  <div
     id="message-modal"
-    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    class="fixed inset-0 bg-black bg-opacity-50 items-center justify-center z-50 hidden"
   >
     <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-4">
       <h4 id="modal-title" class="text-ag-h5 sm:text-ag-h4 md:text-ag-h3 font-ag-h3 mb-4"></h4>
@@ -166,6 +164,9 @@ const getTextareaRows = () => {
 
 <style>
   /* Contact form specific styles - focus styles now handled by WCAG 2.4.11 implementation */
+  #message-modal.show {
+    display: flex !important;
+  }
 </style>
 
 <script>
@@ -180,7 +181,6 @@ const getTextareaRows = () => {
     const germanPhoneRegex = /^(\+49|0)[1-9]\d{1,14}$/;
     return germanPhoneRegex.test(phone.replace(/\s/g, ""));
   }
-
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
@@ -195,7 +195,7 @@ const getTextareaRows = () => {
     const formData = new FormData(form);
     const phone = formData.get("phone") as string;
 
-    if (!isValidGermanPhoneNumber(phone)) {
+    if (phone && !isValidGermanPhoneNumber(phone)) {
       showModal(
         "Ungültige Telefonnummer",
         "Bitte geben Sie eine gültige deutsche Telefonnummer ein."
@@ -203,10 +203,24 @@ const getTextareaRows = () => {
       return;
     }
 
+    // Preparar datos para el backend PHP
+    const contactData = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      subject: formData.get("subject"),
+      message: formData.get("message")
+    };
+
     try {
-      const response = await fetch("/api/send-email", {
+      const response = await fetch("http://localhost/AdminHub-PHP/src/api/contact.php", {
         method: "POST",
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify(contactData),
       });
 
       const result = await response.json();
@@ -218,9 +232,12 @@ const getTextareaRows = () => {
         );
         form.reset();
       } else {
+        const errorMessage = result.errors 
+          ? (Array.isArray(result.errors) ? result.errors.join(", ") : result.errors)
+          : result.error || "Unbekannter Fehler";
         showModal(
           "Fehler",
-          "Beim Senden der Nachricht ist ein Fehler aufgetreten: " + result.error
+          "Beim Senden der Nachricht ist ein Fehler aufgetreten: " + errorMessage
         );
       }
     } catch (error) {
@@ -230,19 +247,21 @@ const getTextareaRows = () => {
       );
     }
   });
-
   function showModal(title: string, message: string) {
     modalTitle.textContent = title;
     modalMessage.textContent = message;
+    messageModal.classList.add("show");
     messageModal.classList.remove("hidden");
   }
 
   closeModalButton.addEventListener("click", () => {
+    messageModal.classList.remove("show");
     messageModal.classList.add("hidden");
   });
 
   messageModal.addEventListener("click", (e) => {
     if (e.target === messageModal) {
+      messageModal.classList.remove("show");
       messageModal.classList.add("hidden");
     }
   });

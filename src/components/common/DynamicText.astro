@@ -1,0 +1,31 @@
+---
+// DynamicText.astro - Componente para cargar textos dinámicos desde PHP backend
+import { api } from '../../utils/api';
+
+interface Props {
+  section: 'seo' | 'header' | 'home' | 'contact';
+  key: string;
+  fallback?: string;
+  class?: string;
+  tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'p' | 'span' | 'div';
+}
+
+const { section, key, fallback = '', class: className = '', tag = 'span' } = Astro.props;
+
+let textContent = fallback;
+
+try {
+  const texts = await api.getTexts();
+  
+  if (texts && texts[section] && texts[section][key]) {
+    textContent = texts[section][key];
+  }
+} catch (error) {
+  console.error(`Error loading dynamic text for ${section}.${key}:`, error);
+  // Usar fallback en caso de error
+}
+
+const Element = tag;
+---
+
+<Element class={className} set:html={textContent} />

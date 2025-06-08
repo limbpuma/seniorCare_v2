@@ -3,7 +3,9 @@ import Button from "../common/Button.astro";
 import Icon from "../common/Icon.astro";
 import Logo from "./Logo.astro";
 import Nav from "./Nav.astro";
+import DynamicText from "./DynamicText.astro";
 import texts from "@/utils/texts.json";
+import { api } from "@/utils/api";
 
 interface NavAnchor {
   id: string;
@@ -11,7 +13,22 @@ interface NavAnchor {
 }
 
 const headerTexts = texts.header;
-const { navAnchors } = Astro.props;
+const { navAnchors, useDynamicContent = false } = Astro.props;
+
+// Cargar datos dinámicos del backend si está habilitado
+let dynamicTexts = null;
+if (useDynamicContent) {
+  try {
+    dynamicTexts = await api.getTexts();
+  } catch (error) {
+    console.error('Error loading dynamic header texts:', error);
+  }
+}
+
+// Usar textos dinámicos o fallback a estáticos
+const phone = dynamicTexts?.header?.phone || headerTexts.phone;
+const email = dynamicTexts?.header?.email || headerTexts.email;
+const ctaButton = dynamicTexts?.header?.cta_button || headerTexts.cta;
 
 const NAVIGATION = navAnchors 
   ? navAnchors.map((anchor: NavAnchor) => ({ name: anchor.label, href: `#${anchor.id}`, isAnchor: true }))
@@ -49,19 +66,18 @@ const NAVIGATION = navAnchors
             />
             <span class="group-hover:underline">{headerTexts.address}</span>
           </a>
-          
-          <!-- Phone - Always visible -->
+            <!-- Phone - Always visible -->
           <a
-            href={`tel:${headerTexts.phone}`}
+            href={`tel:${phone}`}
             class="flex items-center gap-2 text-xs md:text-sm font-medium hover:text-primary transition-colors group"
-            aria-label={`Call us at ${headerTexts.phone}`}
+            aria-label={`Call us at ${phone}`}
           >
             <Icon
-              icons={[{ name: "phone", href: `tel:${headerTexts.phone}` }]}
+              icons={[{ name: "phone", href: `tel:${phone}` }]}
               size="small"
               variant="default"
             />
-            <span class="group-hover:underline">{headerTexts.phone}</span>
+            <span class="group-hover:underline">{phone}</span>
           </a>
         </div>
 
@@ -112,14 +128,13 @@ const NAVIGATION = navAnchors
         </div>
 
         <!-- Button and Mobile menu -->
-        <div class="flex items-center gap-2 md:gap-4 shrink-0">
-          <Button 
+        <div class="flex items-center gap-2 md:gap-4 shrink-0">          <Button 
             class="hidden md:inline-flex items-center text-sm lg:text-base py-2 px-3 lg:px-4 min-w-[120px] lg:min-w-[140px]" 
             variant="primary" 
             size="medium"
-            href={`tel:${headerTexts.phone}`}
+            href={`tel:${phone}`}
           >
-            {headerTexts.buttonText}
+            {ctaButton}
           </Button>
 
           <!-- Mobile menu button -->
@@ -168,14 +183,13 @@ const NAVIGATION = navAnchors
       <div class="md:hidden hidden transition-all duration-300 ease-in-out" id="navbar-cta">
         <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
           <Nav links={NAVIGATION} />
-          <div class="mt-4">
-            <Button 
+          <div class="mt-4">            <Button 
               class="w-full text-center justify-center py-2"
               variant="primary" 
               size="medium"
-              href={`tel:${headerTexts.phone}`}
+              href={`tel:${phone}`}
             >
-              {headerTexts.buttonText}
+              {ctaButton}
             </Button>
           </div>
         </div>
