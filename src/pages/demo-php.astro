@@ -1,0 +1,109 @@
+---
+// Página de ejemplo que muestra cómo usar el contenido dinámico del backend PHP
+import Layout from "@/layouts/Layout.astro";
+import DynamicText from "@/components/common/DynamicText.astro";
+import DynamicSEO from "@/components/common/DynamicSEO.astro";
+import ContactForm from "@/components/common/ContactForm.astro";
+
+// Configuración para usar contenido dinámico
+const useDynamicContent = true;
+---
+
+<Layout 
+  title="Ejemplo Dinámico - Senior Care" 
+  page="home" 
+  useDynamicSEO={useDynamicContent}
+>
+  <main class="container mx-auto px-4 py-8">
+    <!-- Hero Section con contenido dinámico -->
+    <section class="text-center py-16">
+      <DynamicText 
+        section="home" 
+        key="hero_title" 
+        tag="h1"
+        class="text-4xl md:text-6xl font-bold mb-4 text-deep-blue"
+        fallback="Cuidado Profesional para Adultos Mayores"
+      />
+      
+      <DynamicText 
+        section="home" 
+        key="hero_subtitle" 
+        tag="p"
+        class="text-xl md:text-2xl mb-8 text-gray-600 max-w-2xl mx-auto"
+        fallback="Brindamos servicios de cuidado personalizado con cariño y profesionalismo"
+      />
+        <a 
+        href="#contact" 
+        class="inline-block bg-blue-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:bg-blue-700"
+      >
+        <DynamicText 
+          section="home" 
+          key="hero_cta" 
+          fallback="Conoce Nuestros Servicios"
+        />
+      </a>
+    </section>
+
+    <!-- Sección de información -->
+    <section class="py-16 bg-gray-50 rounded-lg">
+      <div class="text-center mb-12">
+        <DynamicText 
+          section="contact" 
+          key="title" 
+          tag="h2"
+          class="text-3xl font-bold text-deep-blue mb-4"
+          fallback="Contáctanos"
+        />
+        
+        <DynamicText 
+          section="contact" 
+          key="subtitle" 
+          tag="p"
+          class="text-lg text-gray-600"
+          fallback="Estamos aquí para ayudarte"
+        />
+      </div>
+
+      <!-- Formulario de contacto usando backend PHP -->
+      <div class="max-w-lg mx-auto">
+        <ContactForm
+          title="Solicita más información"
+          inputFields={[
+            { type: "text", placeholder: "Tu nombre completo" },
+            { type: "email", placeholder: "tu-email@ejemplo.com" },
+            { type: "tel", placeholder: "+49 123 456 7890" }
+          ]}
+          textareaPlaceholder="Describe tu consulta o necesidades..."
+          buttonText="Enviar Mensaje"
+          size="medium"
+        />
+      </div>
+    </section>
+
+    <!-- Información de desarrollo -->
+    <section class="py-8 mt-16 border-t border-gray-200">
+      <div class="text-center text-gray-500">
+        <p class="mb-2">
+          <strong>🔧 Página de Demostración - Integración PHP Backend</strong>
+        </p>
+        <p class="text-sm">
+          Esta página demuestra cómo cargar contenido dinámico desde el backend PHP.
+          Los textos se cargan desde <code class="bg-gray-100 px-2 py-1 rounded">/api/texts.php</code>
+          y el formulario envía datos a <code class="bg-gray-100 px-2 py-1 rounded">/api/contact.php</code>
+        </p>
+        
+        <div class="mt-4 flex justify-center gap-4 text-xs">
+          <span class="bg-green-100 text-green-800 px-2 py-1 rounded">✅ Textos Dinámicos</span>
+          <span class="bg-blue-100 text-blue-800 px-2 py-1 rounded">📧 Formulario PHP</span>
+          <span class="bg-purple-100 text-purple-800 px-2 py-1 rounded">🎯 SEO Dinámico</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  code {
+    font-family: 'Courier New', monospace;
+  }
+</style>

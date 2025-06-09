@@ -14,9 +14,9 @@ interface Props {
 
 const { subtitle, title, offerings } = Astro.props;
 
-const imageClasses = "w-full h-[224px] object-cover";
-const textClasses = "text-white text-xl font-bold";
-const wrapperClasses = "absolute bottom-0 left-0 bg-blue-900 p-4";
+const imageClasses = "w-full h-[224px] object-cover rounded-xl group-hover:scale-110";
+const textClasses = "text-white text-xl font-bold bg-gradient-to-r from-white to-white/90 bg-clip-text";
+const wrapperClasses = "absolute bottom-0 left-0 bg-gradient-to-t from-deep-blue/90 via-deep-blue/70 to-transparent p-4 rounded-xl backdrop-blur-sm";
 ---
 
 <Section background="primary"
@@ -24,21 +24,26 @@ padding="medium"
 width="medium"
 height="auto"
 id="experience-section"
-animation="zoom-in">
-    <div class="text-center mb-12">
-      <p class="text-ag-sub-heading font-ag-sub-heading text-white mb-2">
-        {subtitle}
-      </p>
-      <h2 class="text-ag-h3 font-ag-h3 font-bold text-white">{title}</h2>
-    </div>
-    <div class="w-full relative">
-      <ReactSwiperSlider
-        slides={offerings}
-        imgClass={imageClasses}
+class="relative overflow-hidden">
+    <!-- Enhanced gradient background -->
+    <div class="absolute inset-0 bg-gradient-to-br from-primary via-primary/95 to-deep-blue pointer-events-none"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-primary/20 via-transparent to-soft-blue/20 animate-gradient-x pointer-events-none"></div>
+    
+    <div class="relative z-10">
+        <div class="text-center mb-12 animate-on-scroll fade-in">
+          <p class="text-ag-sub-heading font-ag-sub-heading text-white/90 mb-2">
+            {subtitle}
+          </p>
+          <h2 class="text-ag-h3 font-ag-h3 font-bold text-transparent bg-gradient-to-r from-white via-white to-soft-orange bg-clip-text">{title}</h2>
+        </div>
+        <div class="w-full relative rounded-2xl p-6 backdrop-blur-sm bg-white/5 border border-white/10">
+          <ReactSwiperSlider
+            slides={offerings}        imgClass={imageClasses}
         textClass={textClasses}
         wrapperClass={wrapperClasses}
         isImageSlider={true}        divType="flex-col"
         client:load
       />
+    </div>
     </div>
 </Section>

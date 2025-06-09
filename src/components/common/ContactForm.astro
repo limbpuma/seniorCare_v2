@@ -1,7 +1,6 @@
 ---
 import Button from "./Button.astro";
 
-
 type FormSize = "large" | "medium" | "small";
 
 interface Props {
@@ -51,7 +50,7 @@ const buttonClasses = {
   small: "mt-4 sm:mt-6 md:mt-8",
 };
 
-const inputClasses = "w-full px-4 py-2 bg-inherit border-t-0 border-x-0 border-b border-primary text-primary-dark focus:outline-none text-ag-body-text font-ag-body-text";
+const inputClasses = "w-full px-4 py-3 bg-white/10 backdrop-blur-sm border border-white/30 rounded-lg text-deep-blue placeholder-deep-blue/70 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent hover:bg-white/20 text-ag-body-text font-ag-body-text";
 
 const getTextareaRows = () => {
   if (size === "small") return "3";
@@ -60,10 +59,10 @@ const getTextareaRows = () => {
 };
 ---
 
-<div class="relative">
-  <form
+<div class="relative">  <form
     id="contact-form"
-    class={`bg-soft-orange mx-auto flex flex-col justify-between shadow-lg rounded-lg md:mb-8 ${sizeClasses[size]} ${className}`}
+    data-form-element="true"
+    class={`bg-gradient-to-br from-soft-orange/90 to-accent/80 backdrop-blur-lg mx-auto flex flex-col justify-between shadow-2xl rounded-2xl md:mb-8 border border-white/20 ${sizeClasses[size]} ${className}`}
   >
     {size === "small" && image && (
       <div class="w-full h-32 sm:h-40 md:h-48 overflow-hidden mb-4 rounded-t-lg">
@@ -86,11 +85,11 @@ const getTextareaRows = () => {
         if (type === "text" && placeholder.toLowerCase().includes("name"))
           name = "name";
         return (
-          <div class="wcag-tooltip">
-            <input
+          <div class="wcag-tooltip">            <input
               type={type as astroHTML.JSX.HTMLInputTypeAttribute}
               name={name}
               placeholder={placeholder}
+              data-form-element="true"
               class={inputClasses}
               required
               data-tooltip={
@@ -103,8 +102,7 @@ const getTextareaRows = () => {
           </div>
         );
       })}
-      <div class="wcag-tooltip">
-        <select name="subject" class={inputClasses} required
+      <div class="wcag-tooltip">        <select name="subject" data-form-element="true" class={inputClasses} required
           data-tooltip="Wählen Sie das Thema aus, das am besten zu Ihrer Anfrage passt">
           <option value="">Betreff auswählen</option>
           <option value="general">Allgemeine Anfrage</option>
@@ -112,11 +110,11 @@ const getTextareaRows = () => {
           <option value="appointment">Terminvereinbarung</option>
           <option value="emergency">Notfall</option>        </select>
       </div>
-      <div class="wcag-tooltip">
-        <textarea
+      <div class="wcag-tooltip">        <textarea
           name="message"
           placeholder={textareaPlaceholder}
           rows={getTextareaRows()}
+          data-form-element="true"
           class={inputClasses}
           required
           data-tooltip="Beschreiben Sie Ihre Anfrage detailliert. Je mehr Informationen Sie uns geben, desto besser können wir Ihnen helfen."
@@ -131,25 +129,23 @@ const getTextareaRows = () => {
     >
       {buttonText}
     </Button>
-    <div class="flex items-start mt-4">
-      <input
+    <div class="flex items-start mt-4">      <input
         type="checkbox"
         id="consent"
         name="consent"
+        data-form-element="true"
         class="mt-1 mr-2"
         required
-      />
-      <label for="consent" class="text-ag-body-text font-ag-body-text mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto">
+      />      <label for="consent" data-form-element="true" class="text-ag-body-text font-ag-body-text mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto">
         Ich stimme der Verwendung meiner Daten zu. Mehr Infos in der <a
-          href="privacypolicy"
+          href="/privacypolicy"
           class="text-primary underline">Datenschutz</a
         >.
       </label>
     </div>
-  </form>
-  <div
+  </form>  <div
     id="message-modal"
-    class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+    class="fixed inset-0 bg-black bg-opacity-50 items-center justify-center z-[9999] hidden"
   >
     <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full mx-4">
       <h4 id="modal-title" class="text-ag-h5 sm:text-ag-h4 md:text-ag-h3 font-ag-h3 mb-4"></h4>
@@ -166,6 +162,9 @@ const getTextareaRows = () => {
 
 <style>
   /* Contact form specific styles - focus styles now handled by WCAG 2.4.11 implementation */
+  #message-modal.show {
+    display: flex !important;
+  }
 </style>
 
 <script>
@@ -175,14 +174,59 @@ const getTextareaRows = () => {
   const modalMessage = document.getElementById("modal-message") as HTMLParagraphElement;
   const closeModalButton = document.getElementById("close-modal") as HTMLButtonElement;
   const consentCheckbox = document.getElementById("consent") as HTMLInputElement;
-
   function isValidGermanPhoneNumber(phone: string): boolean {
     const germanPhoneRegex = /^(\+49|0)[1-9]\d{1,14}$/;
     return germanPhoneRegex.test(phone.replace(/\s/g, ""));
   }
+  function showAccessibilityConflictNotification() {
+    const notification = document.createElement('div');
+    notification.className = 'accessibility-form-notification';
+    notification.innerHTML = `
+      <div class="notification-content">
+        <span class="notification-icon">📝</span>
+        <span class="notification-message">Cerrando panel de accesibilidad para procesar el formulario...</span>
+      </div>
+    `;
 
-  form.addEventListener("submit", async (e) => {
+    document.body.appendChild(notification);
+
+    // Remove notification after delay
+    setTimeout(() => {
+      notification.style.animation = 'slideInDown 0.3s ease reverse';
+      setTimeout(() => {
+        notification.remove();
+      }, 300);
+    }, 2000);
+  }form.addEventListener("submit", async (e) => {
     e.preventDefault();
+
+    // Check if accessibility panel is open and handle conflict
+    const enhancedNavManager = (window as any).enhancedNavigationManager;
+    if (enhancedNavManager && enhancedNavManager.getNavigationState().isAccessibilityPanelOpen) {
+      // Show notification and delay form submission
+      showAccessibilityConflictNotification();
+      
+      // Close accessibility panel
+      const accessibilityPanel = document.getElementById('accessibilityPanel');
+      const accessibilityToggle = document.getElementById('toggleAccessibilityPanel');
+      
+      if (accessibilityPanel && accessibilityToggle) {
+        accessibilityPanel.classList.remove('show');
+        accessibilityToggle.setAttribute('aria-expanded', 'false');
+        
+        // Wait for panel to close, then submit form
+        setTimeout(() => {
+          processFormSubmission(e);
+        }, 500);
+        return;
+      }
+    }
+
+    // Normal form submission
+    processFormSubmission(e);
+  });
+
+  async function processFormSubmission(e: Event) {
 
     if (!consentCheckbox.checked) {
       showModal(
@@ -195,7 +239,7 @@ const getTextareaRows = () => {
     const formData = new FormData(form);
     const phone = formData.get("phone") as string;
 
-    if (!isValidGermanPhoneNumber(phone)) {
+    if (phone && !isValidGermanPhoneNumber(phone)) {
       showModal(
         "Ungültige Telefonnummer",
         "Bitte geben Sie eine gültige deutsche Telefonnummer ein."
@@ -203,10 +247,24 @@ const getTextareaRows = () => {
       return;
     }
 
+    // Preparar datos para el backend PHP
+    const contactData = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      phone: formData.get("phone"),
+      subject: formData.get("subject"),
+      message: formData.get("message")
+    };
+
     try {
-      const response = await fetch("/api/send-email", {
+      const response = await fetch("http://localhost/AdminHub-PHP/src/api/contact.php", {
         method: "POST",
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify(contactData),
       });
 
       const result = await response.json();
@@ -218,31 +276,36 @@ const getTextareaRows = () => {
         );
         form.reset();
       } else {
+        const errorMessage = result.errors 
+          ? (Array.isArray(result.errors) ? result.errors.join(", ") : result.errors)
+          : result.error || "Unbekannter Fehler";
         showModal(
           "Fehler",
-          "Beim Senden der Nachricht ist ein Fehler aufgetreten: " + result.error
+          "Beim Senden der Nachricht ist ein Fehler aufgetreten: " + errorMessage
         );
-      }
-    } catch (error) {
+      }    } catch (error) {
       showModal(
         "Fehler",
         "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
       );
     }
-  });
+  }
 
   function showModal(title: string, message: string) {
     modalTitle.textContent = title;
     modalMessage.textContent = message;
+    messageModal.classList.add("show");
     messageModal.classList.remove("hidden");
   }
 
   closeModalButton.addEventListener("click", () => {
+    messageModal.classList.remove("show");
     messageModal.classList.add("hidden");
   });
 
   messageModal.addEventListener("click", (e) => {
     if (e.target === messageModal) {
+      messageModal.classList.remove("show");
       messageModal.classList.add("hidden");
     }
   });

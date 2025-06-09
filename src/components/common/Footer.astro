@@ -5,33 +5,36 @@ import texts from "@/utils/texts.json";
 
 // Check if we're on the landing page to use anchor links
 const Navlinks = [
-  { name: "About", href: "about", anchor: "#about" },
-  { name: "Services", href: "services", anchor: "#services" },
-  { name: "Contact", href: "contact", anchor: "#contact" },
-  { name: "FAQ", href: "faq", anchor: "#faq" },
+  { name: "About", href: "about", anchor: "/#about" },
+  { name: "Services", href: "services", anchor: "/#services" },
+  { name: "Contact", href: "contact", anchor: "/#contact" },
+  { name: "FAQ", href: "faq", anchor: "/#faq" },
 ];
 const Legallinks = [
-  { name: "Impressum", href: "legal", anchor: null },
-  { name: "Datenschutz", href: "privacypolicy", anchor: null },
-  { name: "Agbs", href: "termsconditions", anchor: null },
+  { name: "Impressum", href: "/legal", anchor: null },
+  { name: "Datenschutz", href: "/privacypolicy", anchor: null },
+  { name: "Agbs", href: "/termsconditions", anchor: null },
 ];
 
 const footerTexts = texts.footer;
 const { isLandingPage } = Astro.props;
 ---
 
-<footer class="bg-deep-blue mx-auto px-4">
-  <div class="container mx-auto p-4 py-6 lg:py-8">
+<footer class="bg-gradient-to-br from-deep-blue via-deep-blue/95 to-primary mx-auto px-4 relative overflow-hidden">
+  <!-- Decorative gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-r from-primary/10 via-transparent to-soft-blue/10 pointer-events-none"></div>
+  
+  <div class="container mx-auto p-4 py-6 lg:py-8 relative z-10">
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
-      <div class="footer-top mb-6 md:mb-0">
+      <div class="footer-top mb-6 md:mb-0 animate-on-scroll fade-in">
         <a
           href="/"
-          class="flex justify-center md:justify-start items-center mb-4"
+          class="flex justify-center md:justify-start items-center mb-4 group"
         >
-          <Logo class="h-12 max-w-fit" color="white" />
+          <Logo class="h-12 max-w-fit group-hover:scale-105" color="white" />
         </a>
         <p
-          class="text-white font-ag-body-text text-ag-body-text mb-4 text-center md:text-left lg:w-11/12"
+          class="text-white/90 font-ag-body-text text-ag-body-text mb-4 text-center md:text-left lg:w-11/12 leading-relaxed"
         >
           {footerTexts.slogan}
         </p>
@@ -48,74 +51,67 @@ const { isLandingPage } = Astro.props;
             variant="accent"
           />
         </div>
-      </div>
-
-      <div class="text-center md:text-left">
-        <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5">
+      </div>      <div class="text-center md:text-left">
+        <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5 bg-gradient-to-r from-soft-orange to-yellow-400 bg-clip-text text-transparent">
           {footerTexts.linksTitle}
-        </h5>        <ul class="text-white font-ag-body-text text-ag-body-text">
+        </h5>        <ul class="text-white/90 font-ag-body-text text-ag-body-text space-y-3">
           {
-            Navlinks.map((link) => (
-              <li class="mb-4">
-                <a 
+            Navlinks.map((link, index) => (
+              <li class="group">                <a 
                   href={isLandingPage ? link.anchor : link.href} 
-                  class="hover:underline nav-link"
+                  class="hover:text-soft-orange nav-link relative hover:translate-x-1 block"
                   data-anchor={isLandingPage ? "true" : undefined}
                   aria-current="false"
                 >
-                  {link.name}
+                  <span class="relative z-10">{link.name}</span>
+                  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-soft-orange to-yellow-400 group-hover:w-full"></span>
                 </a>
               </li>
             ))
           }
         </ul>
-      </div>
-
-      <div class="text-center md:text-left">
-        <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5">
+      </div>      <div class="text-center md:text-left">
+        <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5 bg-gradient-to-r from-soft-orange to-yellow-400 bg-clip-text text-transparent">
           {footerTexts.scheduleTitle}
         </h5>
-        <p class="text-white font-ag-body-text text-ag-body-text mb-4">
+        <p class="text-white/90 font-ag-body-text text-ag-body-text mb-4 leading-relaxed">
           {footerTexts.schedule}
-        </p>
-        <a
+        </p>        <a
           href={`tel:${footerTexts.phone}`}
-          class="text-white font-ag-body-text text-ag-body-text hover:underline"
+          class="text-white/90 font-ag-body-text text-ag-body-text hover:text-soft-orange group inline-flex items-center gap-2"
         >
           <Icon icons={[{ name: "phone" }]} size="small" variant="accent" />
-          {footerTexts.phone}
+          <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-soft-orange group-hover:to-yellow-400 group-hover:bg-clip-text">{footerTexts.phone}</span>
         </a>
-      </div>
-
-      <div class="text-center md:text-left">
-        <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5">
+      </div>      <div class="text-center md:text-left">
+        <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5 bg-gradient-to-r from-soft-orange to-yellow-400 bg-clip-text text-transparent">
           {footerTexts.locationTitle}
         </h5>
-        <p class="text-white font-ag-body-text text-ag-body-text mb-4">
+        <p class="text-white/90 font-ag-body-text text-ag-body-text mb-4 leading-relaxed">
           {footerTexts.address}
-        </p>
-        <a
+        </p>        <a
           href={footerTexts.mapLink}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-white font-ag-body-text text-ag-body-text hover:underline"
+          class="text-white/90 font-ag-body-text text-ag-body-text hover:text-soft-orange group inline-flex items-center gap-2"
         >
           <Icon icons={[{ name: "mapMarker" }]} size="small" variant="accent" />
-          {footerTexts.viewMap}
+          <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-soft-orange group-hover:to-yellow-400 group-hover:bg-clip-text">{footerTexts.viewMap}</span>
         </a>
       </div>
     </div>
 
-    <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
-
-    <div
-      class="sm:flex sm:items-center sm:justify-between text-center md:text-left text-white font-ag-body-text text-ag-body-text"
+    <hr class="my-6 border-white/20 sm:mx-auto lg:my-8 bg-gradient-to-r from-transparent via-white/30 to-transparent h-px border-0" />    <div
+      class="sm:flex sm:items-center sm:justify-between text-center md:text-left text-white/90 font-ag-body-text text-ag-body-text"
     >
-      <span>{footerTexts.copyright}</span>      <div class="flex mt-4 sm:mt-0 justify-center md:justify-start space-x-4">
+      <span class="hover:text-transparent hover:bg-gradient-to-r hover:from-soft-orange hover:to-yellow-400 hover:bg-clip-text transition-all duration-300">{footerTexts.copyright}</span>      <div class="flex mt-4 sm:mt-0 justify-center md:justify-start space-x-4">
         {
-          Legallinks.map((link) => (
-            <a href={link.href} class="hover:underline">
-              {link.name}
+          Legallinks.map((link, index) => (            <a 
+              href={link.href} 
+              class="hover:text-soft-orange relative group"
+            >
+              <span class="relative z-10">{link.name}</span>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-soft-orange to-yellow-400 group-hover:w-full"></span>
             </a>
           ))
         }

@@ -65,10 +65,6 @@
 }
 
 /* Animaciones para los botones de accesibilidad */
-.accessibility-btn {
-  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
 .accessibility-btn:hover,
 .accessibility-btn:focus {
   transform: scale(1.1);
@@ -95,7 +91,6 @@
   right: 20px;
   z-index: 1000;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
 }
 
 .global-accessibility-controls:hover {
@@ -181,7 +176,6 @@
   white-space: nowrap;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
   z-index: 1001;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
 }
@@ -400,4 +394,134 @@
   .accessibility-loading::after {
     animation: none;
   }
+  
+  .navigation-notification {
+    animation: none !important;
+  }
+}
+
+/* Enhanced navigation notifications */
+.navigation-notification {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+.navigation-notification:hover {
+  transform: scale(1.02);
+}
+
+.high-contrast .navigation-notification {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+}
+
+.high-contrast .navigation-notification .notification-message {
+  color: #FFFFFF !important;
+}
+
+/* Contact form accessibility notifications */
+.accessibility-form-notification {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border: 2px solid #0057b8;
+  border-radius: 8px;
+  padding: 12px 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 10000;
+  font-size: 14px;
+  max-width: 350px;
+  animation: slideInDown 0.3s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+}
+
+.accessibility-form-notification .notification-content {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.accessibility-form-notification .notification-icon {
+  font-size: 18px;
+}
+
+.accessibility-form-notification .notification-message {
+  color: #333333;
+  font-weight: 500;
+}
+
+@keyframes slideInDown {
+  from { 
+    transform: translateX(-50%) translateY(-20px); 
+    opacity: 0; 
+  }
+  to { 
+    transform: translateX(-50%) translateY(0); 
+    opacity: 1; 
+  }
+}
+
+/* High contrast styles for form notifications */
+.high-contrast .accessibility-form-notification {
+  background: #000000 !important;
+  color: #FFFFFF !important;
+  border-color: #FFFFFF !important;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.3) !important;
+}
+
+.high-contrast .accessibility-form-notification .notification-message {
+  color: #FFFFFF !important;
+}
+
+/* Large text mode adjustments for form notifications */
+.large-text .accessibility-form-notification {
+  font-size: 18px;
+  padding: 16px 20px;
+  max-width: 420px;
+}
+
+.large-text .accessibility-form-notification .notification-icon {
+  font-size: 24px;
+}
+
+/* Reduced motion support for form notifications */
+@media (prefers-reduced-motion: reduce) {
+  .accessibility-form-notification {
+    animation: none;
+  }
+  
+  @keyframes slideInDown {
+    from, to { 
+      transform: translateX(-50%) translateY(0); 
+      opacity: 1; 
+    }
+  }
+}
+
+/* Telephone link enhancements */
+a[href^="tel:"] {
+  text-decoration: none;
+  position: relative;
+}
+
+a[href^="tel:"]:hover {
+  transform: translateY(-1px);
+}
+
+a[href^="tel:"]:focus {
+  outline: 3px solid #FF9900;
+  outline-offset: 2px;
+}
+
+.high-contrast a[href^="tel:"] {
+  color: #FFFF00 !important;
+  border-bottom: 2px solid #FFFF00;
+}
+
+.enhanced-focus a[href^="tel:"]:focus {
+  outline: 3px solid #FF9900 !important;
+  outline-offset: 3px !important;
+  box-shadow: 0 0 0 6px rgba(255, 153, 0, 0.4) !important;
 }

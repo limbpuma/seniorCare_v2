@@ -3,7 +3,9 @@ import Button from "../common/Button.astro";
 import Icon from "../common/Icon.astro";
 import Logo from "./Logo.astro";
 import Nav from "./Nav.astro";
+import DynamicText from "./DynamicText.astro";
 import texts from "@/utils/texts.json";
+import { api } from "@/utils/api";
 
 interface NavAnchor {
   id: string;
@@ -11,7 +13,22 @@ interface NavAnchor {
 }
 
 const headerTexts = texts.header;
-const { navAnchors } = Astro.props;
+const { navAnchors, useDynamicContent = false } = Astro.props;
+
+// Cargar datos dinámicos del backend si está habilitado
+let dynamicTexts = null;
+if (useDynamicContent) {
+  try {
+    dynamicTexts = await api.getTexts();
+  } catch (error) {
+    console.error('Error loading dynamic header texts:', error);
+  }
+}
+
+// Usar textos dinámicos o fallback a estáticos
+const phone = dynamicTexts?.header?.phone || headerTexts.phone;
+// const email = dynamicTexts?.header?.email || headerTexts.email;
+const ctaButton = dynamicTexts?.header?.cta_button || headerTexts.cta;
 
 const NAVIGATION = navAnchors 
   ? navAnchors.map((anchor: NavAnchor) => ({ name: anchor.label, href: `#${anchor.id}`, isAnchor: true }))
@@ -31,46 +48,43 @@ const NAVIGATION = navAnchors
   Total Header: ~5-6rem depending on screen size
   This ensures header + hero section fit within 100vh
 -->
-<header class="w-full">  <!-- Top Navbar Contact Bar -->
-  <div class="bg-ag-neutral-50 text-ag-body-text">
+<header class="w-full backdrop-blur-sm bg-white/95 shadow-lg shadow-deep-blue/5 sticky top-0 z-50">  <!-- Top Navbar Contact Bar -->
+  <div class="bg-gradient-to-r from-primary/5 via-soft-blue/5 to-primary/5 text-ag-body-text border-b border-primary/10">
     <div class="max-w-7xl mx-auto">      <div class="flex items-center justify-between py-2 px-3 md:px-2 lg:px-4">
         <!-- Left: Address & Phone -->
-        <div class="flex items-center gap-2 md:gap-4">
-          <!-- Address - Desktop only (lg+) -->
+        <div class="flex items-center gap-2 md:gap-4">          <!-- Address - Desktop only (lg+) -->
           <a
             href="https://maps.app.goo.gl/UbA5eCbGWvF2pyPu9"
-            class="hidden lg:flex items-center gap-2 text-sm hover:text-primary transition-colors group"
-            aria-label="Visit our location on Google Maps"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="hidden lg:flex items-center gap-2 text-sm hover:text-primary group"
+            aria-label="Visit our location on Google Maps (opens in new tab)"
           >
             <Icon
               icons={[{ name: "mapMarker" }]}
               size="small"
               variant="default"
             />
-            <span class="group-hover:underline">{headerTexts.address}</span>
-          </a>
-          
-          <!-- Phone - Always visible -->
-          <a
-            href={`tel:${headerTexts.phone}`}
-            class="flex items-center gap-2 text-xs md:text-sm font-medium hover:text-primary transition-colors group"
-            aria-label={`Call us at ${headerTexts.phone}`}
+            <span class="group-hover:underline group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">{headerTexts.address}</span>
+          </a>          <!-- Phone - Always visible -->          <a
+            href={`tel:${phone}`}
+            class="flex items-center gap-2 text-xs md:text-sm font-medium hover:text-primary group"
+            aria-label={`Call us at ${phone}`}
+            role="link"
           >
             <Icon
-              icons={[{ name: "phone", href: `tel:${headerTexts.phone}` }]}
+              icons={[{ name: "phone" }]}
               size="small"
               variant="default"
             />
-            <span class="group-hover:underline">{headerTexts.phone}</span>
+            <span class="group-hover:underline group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">{phone}</span>
           </a>
-        </div>
-
-        <!-- Right: Schedule & Social -->
+        </div>        <!-- Right: Schedule & Social -->
         <div class="flex items-center gap-2 md:gap-4">
           <!-- Schedule - Always visible -->
-          <div class="flex items-center gap-2 text-xs md:text-sm">
+          <div class="flex items-center gap-2 text-xs md:text-sm group">
             <Icon icons={[{ name: "clock" }]} size="small" variant="default" />
-            <span>{headerTexts.schedule}</span>
+            <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">{headerTexts.schedule}</span>
           </div>
           
           <!-- Social Links - Medium+ screens -->
@@ -92,17 +106,17 @@ const NAVIGATION = navAnchors
       </div>
     </div>
   </div>  <!-- Main Navigation -->
-  <nav class="bg-white border-b">
+  <nav class="bg-white/90 backdrop-blur-md border-b border-primary/10 shadow-sm">
     <div class="max-w-7xl mx-auto">
       <div class="flex items-center justify-between py-2 px-3 md:px-2 lg:px-4 min-h-[3rem] md:min-h-[4rem] lg:min-h-[4.5rem] xl:min-h-[4.5rem] 2xl:min-h-[5rem]">
         <!-- Logo section -->
         <div class="flex-shrink-0 flex items-center">
           <a 
             href="/" 
-            class="block focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-sm min-h-[44px] p-2 -m-2"
+            class="block focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg min-h-[44px] p-2 -m-2 group"
             aria-label="Go to homepage"
           >
-            <Logo class="h-8 md:h-10 lg:h-12 xl:h-12 2xl:h-14 w-auto" color="dark" />
+            <Logo class="h-8 md:h-10 lg:h-12 xl:h-12 2xl:h-14 w-auto group-hover:scale-105" color="dark" />
           </a>
         </div>
 
@@ -112,21 +126,18 @@ const NAVIGATION = navAnchors
         </div>
 
         <!-- Button and Mobile menu -->
-        <div class="flex items-center gap-2 md:gap-4 shrink-0">
-          <Button 
+        <div class="flex items-center gap-2 md:gap-4 shrink-0">          <Button 
             class="hidden md:inline-flex items-center text-sm lg:text-base py-2 px-3 lg:px-4 min-w-[120px] lg:min-w-[140px]" 
             variant="primary" 
             size="medium"
-            href={`tel:${headerTexts.phone}`}
+            href={`tel:${phone}`}
           >
-            {headerTexts.buttonText}
-          </Button>
-
-          <!-- Mobile menu button -->
+            {ctaButton}
+          </Button>          <!-- Mobile menu button -->
           <button
             data-collapse-toggle="navbar-cta"
             type="button"
-            class="inline-flex items-center justify-center p-3 text-deep-blue rounded-lg md:hidden lg:hidden xl:hidden 2xl:hidden hover:bg-ag-neutral-100 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all duration-200 min-h-[44px] min-w-[44px]"
+            class="inline-flex items-center justify-center p-3 text-deep-blue rounded-xl md:hidden lg:hidden xl:hidden 2xl:hidden hover:bg-gradient-to-r hover:from-primary/10 hover:to-soft-blue/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]"
             aria-controls="navbar-cta"
             aria-expanded="false"
             aria-label="Open navigation menu"
@@ -164,18 +175,17 @@ const NAVIGATION = navAnchors
             </svg>
           </button>
         </div>
-      </div><!-- Mobile menu -->
-      <div class="md:hidden hidden transition-all duration-300 ease-in-out" id="navbar-cta">
-        <div class="px-2 pt-2 pb-3 space-y-1 bg-white border-t border-gray-200">
+      </div>      <!-- Mobile menu -->
+      <div class="md:hidden hidden ease-in-out glass-morphism" id="navbar-cta">
+        <div class="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md border-t border-primary/20">
           <Nav links={NAVIGATION} />
-          <div class="mt-4">
-            <Button 
+          <div class="mt-4">            <Button 
               class="w-full text-center justify-center py-2"
               variant="primary" 
               size="medium"
-              href={`tel:${headerTexts.phone}`}
+              href={`tel:${phone}`}
             >
-              {headerTexts.buttonText}
+              {ctaButton}
             </Button>
           </div>
         </div>
@@ -187,10 +197,8 @@ const NAVIGATION = navAnchors
 <style>
   /* Mobile menu animations */
   #navbar-cta {
-    max-height: 0;
-    opacity: 0;
+    max-height: 0;    opacity: 0;
     overflow: hidden;
-    transition: all 0.3s ease-in-out;
   }
   
   #navbar-cta.mobile-menu-open {

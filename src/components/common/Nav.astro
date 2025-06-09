@@ -17,7 +17,7 @@ const { links } = Astro.props;
     links.map(({ name, href, isAnchor }) => (
       <li>        <a
           href={href}
-          class="flex items-center py-3 md:py-2 px-2 md:px-0 text-gray-900 hover:text-primary transition-colors duration-200 text-base lg:text-lg rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 min-h-[44px]"
+          class="flex items-center py-3 md:py-2 px-2 md:px-0 text-gray-900 hover:text-primary text-base lg:text-lg rounded focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 min-h-[44px]"
           {...(isAnchor && { "data-nav-link": true })}
         >
           {name}

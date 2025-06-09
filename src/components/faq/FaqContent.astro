@@ -23,7 +23,7 @@ interface Props {
   };
 }
 
-const { title, subtitle, faqItems, contactForm } = Astro.props;
+const { title, subtitle, faqItems } = Astro.props;
 ---
 
 <Section background="white"
@@ -33,7 +33,7 @@ height="auto"
 id="faq-section"
 animation="fade-in"
 >
-    <div class="text-center mb-12">
+    <div class="text-center mb-12 content-narrow">
       <TextBlock
       subtitle={subtitle}
       title={title}
@@ -42,7 +42,7 @@ animation="fade-in"
     />
       
     </div>
-    <div class="gap-8">
+    <div class="gap-8 mx-2 md:mx-4 lg:mx-12 xl:mx-16 2xl:mx-24">
       <div class="space-y-6">
         {
           faqItems.map((item, index) => (

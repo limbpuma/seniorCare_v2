@@ -1,0 +1,108 @@
+---
+// DynamicSEO.astro - Componente SEO que carga datos desde el backend PHP
+import { api } from '../../utils/api';
+
+interface Props {
+  page: string;
+  fallbackTitle?: string;
+  fallbackDescription?: string;
+  fallbackKeywords?: string;
+}
+
+const { 
+  page, 
+  fallbackTitle = 'Senior Care', 
+  fallbackDescription = 'Cuidado profesional para adultos mayores',
+  fallbackKeywords = 'cuidado geriátrico, adultos mayores'
+} = Astro.props;
+
+let seoData = {
+  title: fallbackTitle,
+  description: fallbackDescription,
+  keywords: fallbackKeywords,
+  og_title: fallbackTitle,
+  og_description: fallbackDescription,
+  og_image: '/images/default-og.jpg'
+};
+
+try {
+  const response = await api.getSEO(page);
+  
+  if (response.success && response.data) {
+    seoData = {
+      title: response.data.title || fallbackTitle,
+      description: response.data.description || fallbackDescription,
+      keywords: response.data.keywords || fallbackKeywords,
+      og_title: response.data.og_title || response.data.title || fallbackTitle,
+      og_description: response.data.og_description || response.data.description || fallbackDescription,
+      og_image: response.data.og_image || '/images/default-og.jpg'
+    };
+  }
+} catch (error) {
+  console.error(`Error loading SEO data for page "${page}":`, error);
+  // Usar datos fallback en caso de error
+}
+
+// Obtener URL actual para Open Graph
+const currentUrl = new URL(Astro.request.url);
+---
+
+<!-- Meta tags básicos -->
+<title>{seoData.title}</title>
+<meta name="description" content={seoData.description} />
+<meta name="keywords" content={seoData.keywords} />
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website" />
+<meta property="og:url" content={currentUrl.href} />
+<meta property="og:title" content={seoData.og_title} />
+<meta property="og:description" content={seoData.og_description} />
+<meta property="og:image" content={new URL(seoData.og_image, currentUrl.origin).href} />
+
+<!-- Twitter -->
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:url" content={currentUrl.href} />
+<meta property="twitter:title" content={seoData.og_title} />
+<meta property="twitter:description" content={seoData.og_description} />
+<meta property="twitter:image" content={new URL(seoData.og_image, currentUrl.origin).href} />
+
+<!-- Canonical URL -->
+<link rel="canonical" href={currentUrl.href} />
+
+<!-- Schema.org structured data para Senior Care -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "HealthAndBeautyBusiness",
+  "name": "Senior Care",
+  "description": seoData.description,
+  "url": currentUrl.origin,
+  "image": new URL(seoData.og_image, currentUrl.origin).href,
+  "serviceType": "Senior Care Services",
+  "areaServed": "Germany",
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Senior Care Services",
+    "itemListElement": [
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Häusliche Pflege",
+          "description": "Professionelle Pflege im eigenen Zuhause"
+        }
+      },
+      {
+        "@type": "Offer", 
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Betreuungsleistungen",
+          "description": "Persönliche Betreuung und Begleitung"
+        }
+      }
+    ]
+  }
+})} />
+
+<!-- Preload critical resources -->
+<link rel="preload" href="/assets/css/fonts/main.woff2" as="font" type="font/woff2" crossorigin />
+<link rel="preload" href={seoData.og_image} as="image" />
