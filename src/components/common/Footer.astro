@@ -29,9 +29,9 @@ const { isLandingPage } = Astro.props;
       <div class="footer-top mb-6 md:mb-0 animate-on-scroll fade-in">
         <a
           href="/"
-          class="flex justify-center md:justify-start items-center mb-4 group hover-lift transition-all duration-300"
+          class="flex justify-center md:justify-start items-center mb-4 group"
         >
-          <Logo class="h-12 max-w-fit group-hover:scale-105 transition-transform duration-300" color="white" />
+          <Logo class="h-12 max-w-fit group-hover:scale-105" color="white" />
         </a>
         <p
           class="text-white/90 font-ag-body-text text-ag-body-text mb-4 text-center md:text-left lg:w-11/12 leading-relaxed"
@@ -51,76 +51,67 @@ const { isLandingPage } = Astro.props;
             variant="accent"
           />
         </div>
-      </div>      <div class="text-center md:text-left animate-on-scroll fade-in" style="animation-delay: 0.1s">
+      </div>      <div class="text-center md:text-left">
         <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5 bg-gradient-to-r from-soft-orange to-yellow-400 bg-clip-text text-transparent">
           {footerTexts.linksTitle}
         </h5>        <ul class="text-white/90 font-ag-body-text text-ag-body-text space-y-3">
           {
             Navlinks.map((link, index) => (
-              <li class="group">
-                <a 
+              <li class="group">                <a 
                   href={isLandingPage ? link.anchor : link.href} 
-                  class="hover:text-soft-orange transition-all duration-300 nav-link relative hover:translate-x-1 block"
+                  class="hover:text-soft-orange nav-link relative hover:translate-x-1 block"
                   data-anchor={isLandingPage ? "true" : undefined}
                   aria-current="false"
-                  style={`animation-delay: ${(index + 1) * 0.05}s`}
                 >
                   <span class="relative z-10">{link.name}</span>
-                  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-soft-orange to-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+                  <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-soft-orange to-yellow-400 group-hover:w-full"></span>
                 </a>
               </li>
             ))
           }
         </ul>
-      </div>      <div class="text-center md:text-left animate-on-scroll fade-in" style="animation-delay: 0.2s">
+      </div>      <div class="text-center md:text-left">
         <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5 bg-gradient-to-r from-soft-orange to-yellow-400 bg-clip-text text-transparent">
           {footerTexts.scheduleTitle}
         </h5>
         <p class="text-white/90 font-ag-body-text text-ag-body-text mb-4 leading-relaxed">
           {footerTexts.schedule}
-        </p>
-        <a
+        </p>        <a
           href={`tel:${footerTexts.phone}`}
-          class="text-white/90 font-ag-body-text text-ag-body-text hover:text-soft-orange transition-all duration-300 group inline-flex items-center gap-2 hover-lift"
+          class="text-white/90 font-ag-body-text text-ag-body-text hover:text-soft-orange group inline-flex items-center gap-2"
         >
           <Icon icons={[{ name: "phone" }]} size="small" variant="accent" />
-          <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-soft-orange group-hover:to-yellow-400 group-hover:bg-clip-text transition-all duration-300">{footerTexts.phone}</span>
+          <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-soft-orange group-hover:to-yellow-400 group-hover:bg-clip-text">{footerTexts.phone}</span>
         </a>
-      </div>      <div class="text-center md:text-left animate-on-scroll fade-in" style="animation-delay: 0.3s">
+      </div>      <div class="text-center md:text-left">
         <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5 bg-gradient-to-r from-soft-orange to-yellow-400 bg-clip-text text-transparent">
           {footerTexts.locationTitle}
         </h5>
         <p class="text-white/90 font-ag-body-text text-ag-body-text mb-4 leading-relaxed">
           {footerTexts.address}
-        </p>
-        <a
+        </p>        <a
           href={footerTexts.mapLink}
           target="_blank"
           rel="noopener noreferrer"
-          class="text-white/90 font-ag-body-text text-ag-body-text hover:text-soft-orange transition-all duration-300 group inline-flex items-center gap-2 hover-lift"
+          class="text-white/90 font-ag-body-text text-ag-body-text hover:text-soft-orange group inline-flex items-center gap-2"
         >
           <Icon icons={[{ name: "mapMarker" }]} size="small" variant="accent" />
-          <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-soft-orange group-hover:to-yellow-400 group-hover:bg-clip-text transition-all duration-300">{footerTexts.viewMap}</span>
+          <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-soft-orange group-hover:to-yellow-400 group-hover:bg-clip-text">{footerTexts.viewMap}</span>
         </a>
       </div>
     </div>
 
-    <hr class="my-6 border-white/20 sm:mx-auto lg:my-8 bg-gradient-to-r from-transparent via-white/30 to-transparent h-px border-0" />
-
-    <div
-      class="sm:flex sm:items-center sm:justify-between text-center md:text-left text-white/90 font-ag-body-text text-ag-body-text animate-on-scroll fade-in"
-      style="animation-delay: 0.4s"
+    <hr class="my-6 border-white/20 sm:mx-auto lg:my-8 bg-gradient-to-r from-transparent via-white/30 to-transparent h-px border-0" />    <div
+      class="sm:flex sm:items-center sm:justify-between text-center md:text-left text-white/90 font-ag-body-text text-ag-body-text"
     >
       <span class="hover:text-transparent hover:bg-gradient-to-r hover:from-soft-orange hover:to-yellow-400 hover:bg-clip-text transition-all duration-300">{footerTexts.copyright}</span>      <div class="flex mt-4 sm:mt-0 justify-center md:justify-start space-x-4">
         {
-          Legallinks.map((link, index) => (
-            <a 
+          Legallinks.map((link, index) => (            <a 
               href={link.href} 
-              class="hover:text-soft-orange transition-all duration-300 relative group hover-lift"
-              style={`animation-delay: ${(index + 5) * 0.05}s`}
+              class="hover:text-soft-orange relative group"
             >
               <span class="relative z-10">{link.name}</span>
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-soft-orange to-yellow-400 transition-all duration-300 group-hover:w-full"></span>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-soft-orange to-yellow-400 group-hover:w-full"></span>
             </a>
           ))
         }

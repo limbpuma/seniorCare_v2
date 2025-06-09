@@ -45,8 +45,7 @@ const iconNameMap: Record<string, string> = {
   width="medium"
   height="auto"
   id="experience-section"
-  animation="fade-in"
-  >  <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-center content-narrow">
+  ><div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-center content-narrow">
       <div class="space-y-6 sm:space-y-8">
         <div>
           <TextBlock
@@ -58,9 +57,8 @@ const iconNameMap: Record<string, string> = {
     />
           
         </div><div class="space-y-4 sm:space-y-6">
-          {
-            contactOptions.map((option: ContactOption) => (
-              <div class="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-lg hover:bg-gray-50 transition-colors duration-200">                <div class="bg-soft-orange w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full text-deep-blue flex-shrink-0 flex items-center justify-center">
+          {            contactOptions.map((option: ContactOption) => (
+              <div class="flex items-start space-x-3 sm:space-x-4 p-3 sm:p-4 rounded-lg hover:bg-gray-50"><div class="bg-soft-orange w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full text-deep-blue flex-shrink-0 flex items-center justify-center">
                   <Icon
                     icons={[{ name: iconNameMap[option.icon] || option.icon }]}
                     size="medium"

@@ -57,7 +57,7 @@ const NAVIGATION = navAnchors
             href="https://maps.app.goo.gl/UbA5eCbGWvF2pyPu9"
             target="_blank"
             rel="noopener noreferrer"
-            class="hidden lg:flex items-center gap-2 text-sm hover:text-primary transition-all duration-300 group hover-lift"
+            class="hidden lg:flex items-center gap-2 text-sm hover:text-primary group"
             aria-label="Visit our location on Google Maps (opens in new tab)"
           >
             <Icon
@@ -65,10 +65,10 @@ const NAVIGATION = navAnchors
               size="small"
               variant="default"
             />
-            <span class="group-hover:underline group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text transition-all duration-300">{headerTexts.address}</span>
+            <span class="group-hover:underline group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">{headerTexts.address}</span>
           </a>          <!-- Phone - Always visible -->          <a
             href={`tel:${phone}`}
-            class="flex items-center gap-2 text-xs md:text-sm font-medium hover:text-primary transition-all duration-300 group hover-lift"
+            class="flex items-center gap-2 text-xs md:text-sm font-medium hover:text-primary group"
             aria-label={`Call us at ${phone}`}
             role="link"
           >
@@ -77,14 +77,14 @@ const NAVIGATION = navAnchors
               size="small"
               variant="default"
             />
-            <span class="group-hover:underline group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text transition-all duration-300">{phone}</span>
+            <span class="group-hover:underline group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">{phone}</span>
           </a>
         </div>        <!-- Right: Schedule & Social -->
         <div class="flex items-center gap-2 md:gap-4">
           <!-- Schedule - Always visible -->
-          <div class="flex items-center gap-2 text-xs md:text-sm group hover-lift transition-all duration-300">
+          <div class="flex items-center gap-2 text-xs md:text-sm group">
             <Icon icons={[{ name: "clock" }]} size="small" variant="default" />
-            <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text transition-all duration-300">{headerTexts.schedule}</span>
+            <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">{headerTexts.schedule}</span>
           </div>
           
           <!-- Social Links - Medium+ screens -->
@@ -113,10 +113,10 @@ const NAVIGATION = navAnchors
         <div class="flex-shrink-0 flex items-center">
           <a 
             href="/" 
-            class="block focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg min-h-[44px] p-2 -m-2 hover-lift transition-all duration-300 group"
+            class="block focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg min-h-[44px] p-2 -m-2 group"
             aria-label="Go to homepage"
           >
-            <Logo class="h-8 md:h-10 lg:h-12 xl:h-12 2xl:h-14 w-auto group-hover:scale-105 transition-transform duration-300" color="dark" />
+            <Logo class="h-8 md:h-10 lg:h-12 xl:h-12 2xl:h-14 w-auto group-hover:scale-105" color="dark" />
           </a>
         </div>
 
@@ -137,7 +137,7 @@ const NAVIGATION = navAnchors
           <button
             data-collapse-toggle="navbar-cta"
             type="button"
-            class="inline-flex items-center justify-center p-3 text-deep-blue rounded-xl md:hidden lg:hidden xl:hidden 2xl:hidden hover:bg-gradient-to-r hover:from-primary/10 hover:to-soft-blue/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-all duration-300 min-h-[44px] min-w-[44px] modern-card hover-lift"
+            class="inline-flex items-center justify-center p-3 text-deep-blue rounded-xl md:hidden lg:hidden xl:hidden 2xl:hidden hover:bg-gradient-to-r hover:from-primary/10 hover:to-soft-blue/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]"
             aria-controls="navbar-cta"
             aria-expanded="false"
             aria-label="Open navigation menu"
@@ -176,7 +176,7 @@ const NAVIGATION = navAnchors
           </button>
         </div>
       </div>      <!-- Mobile menu -->
-      <div class="md:hidden hidden transition-all duration-300 ease-in-out glass-morphism" id="navbar-cta">
+      <div class="md:hidden hidden ease-in-out glass-morphism" id="navbar-cta">
         <div class="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md border-t border-primary/20">
           <Nav links={NAVIGATION} />
           <div class="mt-4">            <Button 
@@ -197,10 +197,8 @@ const NAVIGATION = navAnchors
 <style>
   /* Mobile menu animations */
   #navbar-cta {
-    max-height: 0;
-    opacity: 0;
+    max-height: 0;    opacity: 0;
     overflow: hidden;
-    transition: all 0.3s ease-in-out;
   }
   
   #navbar-cta.mobile-menu-open {

@@ -12,7 +12,6 @@
 type BackgroundType = "white" | "primary" | "primaryLight" | "accent" | "transparent";
 type PaddingType = "none" | "xs" | "small" | "medium" | "large" | "xl";
 type WidthType = "full" | "wide" | "medium" | "narrow";
-type AnimationType = "fade-in" | "slide-in" | "zoom-in" | "grid-in" | "parallax" | "none";
 
 interface Props {
   background?: BackgroundType;
@@ -21,7 +20,6 @@ interface Props {
   height?: string;
   class?: string;
   id?: string;
-  animation?: AnimationType;
 }
 
 const {
@@ -31,7 +29,6 @@ const {
   height = "100",
   class: className,
   id,
-  animation = "none",
   ...props
 } = Astro.props;
 
@@ -70,8 +67,6 @@ const widthClasses: Record<WidthType, string> = {
   narrow: "w-full max-w-3xl mx-auto",
 };
 
-const animationClass = animation !== "none" ? `${animation} animate-on-scroll` : "";
-
 // Construir las clases del contenedor interno optimizado
 const innerClasses = [
   // Padding vertical basado en height
@@ -79,14 +74,12 @@ const innerClasses = [
   // Padding horizontal solo si width es 'full', de lo contrario usar las clases de width
   width === "full" ? paddingHorizontalClasses[padding] : "",
   widthClasses[width],
-  "transition-all duration-300 ease-in-out",
-  animationClass,
 ].filter(Boolean);
 ---
 
 <section 
   id={id} 
-  class:list={[backgroundClasses[background], "w-full", animationClass, className]}
+  class:list={[backgroundClasses[background], "w-full", className]}
   style={height === "100%" ? "height: 100%; min-height: 100%;" : `min-height: ${height};`} 
   {...props}
 >

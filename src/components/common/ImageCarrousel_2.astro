@@ -5,7 +5,7 @@ import TextBlock from "./TextBlock.astro";
 
 const { images, subtitle, title } = Astro.props;
 
-const imageClasses = "w-full h-[250px] object-cover rounded-xl transition-transform duration-300 group-hover:scale-110";
+const imageClasses = "w-full h-[250px] object-cover rounded-xl group-hover:scale-110";
 const titleClasses = "text-white text-xl font-bold bg-gradient-to-r from-white to-white/90 bg-clip-text";
 const textClasses = "text-white/90 text-ag-body-text font-ag-body-text text-sm";
 const wrapperClasses = "absolute bottom-0 left-0 bg-gradient-to-t from-deep-blue/90 via-deep-blue/70 to-transparent p-4 rounded-xl backdrop-blur-sm";
@@ -16,7 +16,6 @@ padding="medium"
 width="medium"
 height="auto"
 id="experience-section"
-animation="zoom-in"
 class="relative overflow-hidden"
 >
     <!-- Gradient overlay for enhanced visual appeal -->
@@ -35,9 +34,8 @@ class="relative overflow-hidden"
             />
             
           </div>
-          <div class="flex space-x-4">
-            <button
-              class="text-white/90 hover:text-soft-orange focus:outline-none modern-card p-3 rounded-xl backdrop-blur-sm bg-white/10 border border-white/20 hover-lift transition-all duration-300"
+          <div class="flex space-x-4">            <button
+              class="text-white/90 hover:text-soft-orange focus:outline-none p-3 rounded-xl backdrop-blur-sm bg-white/10 border border-white/20"
               aria-label="Previous slide"
             >
           <svg
@@ -54,7 +52,7 @@ class="relative overflow-hidden"
               d="M15 19l-7-7 7-7"></path>
           </svg>
         </button>            <button
-              class="text-white/90 hover:text-soft-orange focus:outline-none modern-card p-3 rounded-xl backdrop-blur-sm bg-white/10 border border-white/20 hover-lift transition-all duration-300"
+              class="text-white/90 hover:text-soft-orange focus:outline-none p-3 rounded-xl backdrop-blur-sm bg-white/10 border border-white/20"
               aria-label="Next slide"
             >
           <svg
@@ -71,7 +69,7 @@ class="relative overflow-hidden"
               d="M9 5l7 7-7 7"></path>
           </svg>          </div>
         </div>
-        <div class="w-full relative glass-morphism rounded-2xl p-6 backdrop-blur-sm bg-white/5 border border-white/10 animate-on-scroll zoom-in" style="animation-delay: 0.2s">
+        <div class="w-full relative rounded-2xl p-6 backdrop-blur-sm bg-white/5 border border-white/10">
           <ReactSwiperSlider
             slides={images}
             imgClass={imageClasses}

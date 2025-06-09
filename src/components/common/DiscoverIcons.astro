@@ -25,9 +25,8 @@ const { class: className, subtitle, title, features } = Astro.props;
   padding="medium"
   width="medium"
   height="auto"
-  animation="slide-in"
   class={className}
->    <div class="text-center mb-12 content-narrow animate-on-scroll fade-in">
+><div class="text-center mb-12 content-narrow">
       <TextBlock
       subtitle={subtitle}
       title={title}
@@ -38,29 +37,27 @@ const { class: className, subtitle, title, features } = Astro.props;
       
     </div>
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 content-narrow">
-      {
-        features.map((feature, index) => (
+      {        features.map((feature, index) => (
           <div
-            class={`relative p-6 rounded-2xl modern-card hover-lift animate-on-scroll zoom-in ${index === 1 ? "bg-gradient-to-br from-soft-beige to-accent/20" : "bg-gradient-to-br from-soft-orange to-accent hover:from-soft-beige hover:to-accent/30"} shadow-lg transition-all duration-300 overflow-hidden group`}
-            style={`animation-delay: ${index * 0.2}s`}
+            class={`relative p-6 rounded-2xl ${index === 1 ? "bg-gradient-to-br from-soft-beige to-accent/20" : "bg-gradient-to-br from-soft-orange to-accent hover:from-soft-beige hover:to-accent/30"} shadow-lg overflow-hidden group`}
           >
             <div class="flex flex-col mb-4 relative z-10">
-              <div class="text-black mb-4 flex justify-center items-center h-16 w-16 mx-auto bg-white/30 rounded-full backdrop-blur-sm group-hover:scale-110 transition-transform duration-300">
+              <div class="text-black mb-4 flex justify-center items-center h-16 w-16 mx-auto bg-white/30 rounded-full backdrop-blur-sm group-hover:scale-110">
                 <div class="transform scale-150">
                   <Icon icons={[{ name: feature.icon }]} size="xl" />
                 </div>
               </div>
-              <h3 class="text-ag-body-text sm:text-ag-h6 md:text-ag-h5 font-ag-h5 mb-2 sm:mb-3 md:mb-4 leading-tight text-deep-blue group-hover:text-primary transition-colors duration-300">
+              <h3 class="text-ag-body-text sm:text-ag-h6 md:text-ag-h5 font-ag-h5 mb-2 sm:mb-3 md:mb-4 leading-tight text-deep-blue group-hover:text-primary">
                 {feature.title}
               </h3>
               <p class="text-ag-body-text font-ag-body-text mb-6 sm:mb-8 md:mb-10 max-w-3xl mx-auto opacity-90">
                 {feature.description}
               </p>
             </div>
-            <div class="absolute top-4 right-4 text-deep-blue/20 text-ag-h1 font-bold group-hover:text-primary/30 transition-colors duration-300">
+            <div class="absolute top-4 right-4 text-deep-blue/20 text-ag-h1 font-bold group-hover:text-primary/30">
               {feature.number}
             </div>
-            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transform -translate-x-full group-hover:translate-x-full transition-all duration-700"></div>
+            <div class="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transform -translate-x-full group-hover:translate-x-full"></div>
           </div>        ))
       }
     </div>

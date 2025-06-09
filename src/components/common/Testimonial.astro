@@ -24,8 +24,7 @@ const { titlesection, subtitlesection, items } = Astro.props;
   width="medium"
   height="auto"
   id="experience-section"
-  animation="fade-in"
->  <div class="text-center mb-12 content-narrow animate-on-scroll fade-in">
+><div class="text-center mb-12 content-narrow">
     <TextBlock
       subtitle={subtitlesection}
       title={titlesection}
@@ -37,12 +36,12 @@ const { titlesection, subtitlesection, items } = Astro.props;
 
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 content-narrow">
     {
-      items.map((testimonial, index) => (        <div class="modern-card glass-morphism bg-gradient-to-br from-white via-soft-orange/10 to-accent/5 border border-soft-orange/30 p-6 lg:p-8 rounded-2xl shadow-lg hover-lift transition-all duration-300 h-full flex flex-col group animate-on-scroll zoom-in" style={`animation-delay: ${index * 0.1}s`}>
+      items.map((testimonial, index) => (        <div class="bg-gradient-to-br from-white via-soft-orange/10 to-accent/5 border border-soft-orange/30 p-6 lg:p-8 rounded-2xl shadow-lg h-full flex flex-col group">
           <div class="relative mb-4">
-            <div class="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-r from-soft-orange to-accent rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
+            <div class="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-r from-soft-orange to-accent rounded-full flex items-center justify-center shadow-lg">
               <i class="fa-solid fa-quote-right text-sm text-white" aria-hidden="true" />
             </div>
-            <p class="text-ag-body-text font-ag-body-text italic text-gray-700 leading-relaxed flex-grow pr-6 group-hover:text-deep-blue transition-colors duration-300">
+            <p class="text-ag-body-text font-ag-body-text italic text-gray-700 leading-relaxed flex-grow pr-6">
               "{testimonial.desc}"
             </p>
           </div>
@@ -52,17 +51,17 @@ const { titlesection, subtitlesection, items } = Astro.props;
                 <img
                   src={testimonial.image}
                   alt={`Foto von ${testimonial.name}, ${testimonial.title}`}
-                  class="w-full h-full object-cover rounded-full border-2 border-soft-orange group-hover:border-accent transition-colors duration-300 hover-scale"
+                  class="w-full h-full object-cover rounded-full border-2 border-soft-orange"
                   loading="lazy"
                 />
-                <div class="absolute inset-0 rounded-full bg-gradient-to-br from-transparent to-accent/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div class="absolute inset-0 rounded-full bg-gradient-to-br from-transparent to-accent/20 opacity-0"></div>
               </div>
             </div>
             <div>
-              <h3 class="font-ag-sub-heading font-bold text-ag-sub-heading bg-gradient-to-r from-deep-blue to-primary bg-clip-text text-transparent group-hover:from-primary group-hover:to-soft-blue transition-all duration-300">
+              <h3 class="font-ag-sub-heading font-bold text-ag-sub-heading bg-gradient-to-r from-deep-blue to-primary bg-clip-text text-transparent">
                 {testimonial.name}
               </h3>
-              <p class="text-sm text-gray-600 font-medium group-hover:text-accent transition-colors duration-300">
+              <p class="text-sm text-gray-600 font-medium">
                 {testimonial.title}
               </p>
             </div>

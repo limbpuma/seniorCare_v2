@@ -29,7 +29,7 @@ const { subtitle, title, description, videoSrc, posterSrc, alignment, textColor,
     />
     <!-- Enhanced overlay for better text contrast with modern gradients -->
     <div 
-      class="absolute inset-0 bg-gradient-to-br from-deep-blue/70 via-black/40 to-primary/60 z-[1]"
+      class="absolute inset-0 bg-gradient-to-br "
       aria-hidden="true"
     ></div>
     <!-- Additional subtle gradient overlay for depth -->
@@ -43,20 +43,24 @@ const { subtitle, title, description, videoSrc, posterSrc, alignment, textColor,
       aria-hidden="true"
     ></div>
   </div>    <!-- Content container with improved positioning -->
-  <div class="relative z-10 w-full max-w-7xl mx-auto h-full flex items-center justify-center lg:justify-start px-4 sm:px-6 lg:px-8">
-    <div class="w-full max-w-3xl lg:max-w-none text-center lg:text-left lg:w-2/5 glass-morphism p-8 rounded-2xl backdrop-blur-md bg-white/10 border border-white/20 animate-on-scroll fade-in">
-      <TextBlock
-        subtitle={subtitle}
-        title={title}
-        titleGradient={true}
-        descriptionBold={description}
-        alignment={alignment}
-        textColor={textColor}
-        buttonText={buttonText}
-        buttonVariant={buttonVariant}
-        buttonSize={buttonSize}
-        buttonHref={buttonHref}
-      />
+  <!-- filepath: d:\Lim\Developer\Projects\Integra\seniorCare\src\components\common\ParallaxVideo.astro -->
+  <!-- Content container - ocupar máximo de la sección sin sobresalir -->
+  <div class="relative z-10 w-full h-full flex items-center justify-center lg:justify-start">
+    <div class="w-full max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="w-full lg:w-3/5 xl:w-1/2 text-center lg:text-left p-6 sm:p-8 rounded-2xl backdrop-blur-sm bg-white/50 border border-white/30 shadow-xl">
+        <TextBlock
+          subtitle={subtitle}
+          title={title}
+          titleGradient={false}
+          descriptionBold={description}
+          alignment={alignment}
+          textColor={textColor}
+          buttonText={buttonText}
+          buttonVariant={buttonVariant}
+          buttonSize={buttonSize}
+          buttonHref={buttonHref}
+        />
+      </div>
     </div>
   </div>
   

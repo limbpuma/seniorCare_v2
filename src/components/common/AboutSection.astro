@@ -32,14 +32,12 @@ const {
 const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
 ---
 
-<Section 
-  background="primary"
+<Section   background="primary"
   padding="large"
   width="wide"
   height="auto"
   id="about-section"
-  animation="fade-in"
->  <div class="content-narrow flex flex-col lg:flex-row lg:gap-spacing-8 xl:gap-spacing-12 justify-between items-center lg:items-center mb-spacing-8 sm:mb-spacing-12 space-y-spacing-8 lg:space-y-0" 
+><div class="content-narrow flex flex-col lg:flex-row lg:gap-spacing-8 xl:gap-spacing-12 justify-between items-center lg:items-center mb-spacing-8 sm:mb-spacing-12 space-y-spacing-8 lg:space-y-0" 
        role="region" 
        aria-label="Über uns und unsere Dienstleistungen">    <!-- Text column -->
     <div class="text-center lg:text-left lg:flex-1 lg:max-w-lg xl:max-w-xl order-2 lg:order-1 text-white flex flex-col justify-center items-center lg:items-start animate-on-scroll slide-in">      
@@ -78,7 +76,7 @@ const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
     >      <div class="grid grid-cols-2 gap-spacing-4 sm:gap-spacing-8 md:gap-0">
         {
           stats.map(({ number, label }, index) => (
-            <div class="text-center modern-card glass-morphism-dark rounded-2xl p-4 lg:p-6 hover-lift animate-on-scroll zoom-in" style={`animation-delay: ${index * 0.2}s`}>
+            <div class="text-center rounded-2xl p-4 lg:p-6">
               <p 
                 class="text-h3 sm:text-h2 lg:text-[48px] xl:text-[56px] 2xl:text-[64px] font-bold mb-spacing-2 bg-gradient-to-r from-accent to-soft-orange bg-clip-text text-transparent"
                 aria-label={`${number} ${label}`}

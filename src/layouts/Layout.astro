@@ -327,13 +327,11 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
             
             // Apply enhanced focus styles
             const style = document.createElement('style');
-            style.id = 'enhanced-focus-style';
-            style.textContent = `
+            style.id = 'enhanced-focus-style';            style.textContent = `
               :focus {
                 outline: 3px solid #FF9900 !important;
                 outline-offset: 3px !important;
                 box-shadow: 0 0 0 3px rgba(255, 153, 0, 0.4) !important;
-                transition: outline-offset 0.1s ease !important;
               }
               
               button:focus, a:focus, input:focus, select:focus, textarea:focus {
@@ -484,13 +482,11 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
               color: white;
               padding: 12px 20px;
               border-radius: 6px;
-              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-              z-index: 1002;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);              z-index: 1002;
               font-size: 14px;
               font-weight: 500;
               opacity: 0;
               transform: translateY(-20px);
-              transition: all 0.3s ease;
               max-width: 300px;
             `;
             document.body.appendChild(notification);
@@ -687,7 +683,6 @@ main {
 /* Animation classes */
 .animate-on-scroll {
   opacity: 0;
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
 
 .animate-on-scroll.show {
