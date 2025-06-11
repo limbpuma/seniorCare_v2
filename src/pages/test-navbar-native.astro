@@ -1,0 +1,93 @@
+---
+import LayoutNative from "@/layouts/Layout-native.astro";
+import texts from "@/utils/texts.json";
+---
+
+<LayoutNative title="Test - Navegación Astro Nativa" page="home">
+  <div class="min-h-screen bg-gray-50">
+    <!-- Test Section -->
+    <section class="py-20 px-4">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-bold text-center mb-8 text-gray-900">
+          ✅ Navegación Astro Nativa - Sin JavaScript
+        </h1>
+        
+        <!-- Debug Info -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <h2 class="text-2xl font-semibold mb-4 text-primary">🔍 Debug - Links desde texts.json:</h2>
+          <div class="grid md:grid-cols-2 gap-4">
+            <div>
+              <h3 class="font-medium text-gray-700 mb-2">Enlaces del Navbar:</h3>
+              <ul class="space-y-1 text-sm">
+                <li><strong>Home:</strong> {texts.header.nav.home}</li>
+                <li><strong>About:</strong> {texts.header.nav.about}</li>
+                <li><strong>Services:</strong> {texts.header.nav.services}</li>
+                <li><strong>Contact:</strong> {texts.header.nav.contact}</li>
+                <li><strong>FAQ:</strong> {texts.header.nav.faq}</li>
+              </ul>
+            </div>
+            <div>
+              <h3 class="font-medium text-gray-700 mb-2">Información de Contacto:</h3>
+              <ul class="space-y-1 text-sm">
+                <li><strong>Teléfono:</strong> {texts.header.phone}</li>
+                <li><strong>Horario:</strong> {texts.header.schedule}</li>
+                <li><strong>CTA:</strong> {texts.header.cta}</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Features List -->
+        <div class="bg-green-50 rounded-lg p-6 mb-8">
+          <h2 class="text-2xl font-semibold mb-4 text-green-800">✅ Características Implementadas:</h2>
+          <ul class="space-y-2 text-green-700">
+            <li>✅ <strong>Zero JavaScript</strong> - Navegación funciona completamente sin JS</li>
+            <li>✅ <strong>Textos desde texts.json</strong> - Links importados únicamente desde texts.json</li>
+            <li>✅ <strong>navigation.js eliminado</strong> - Ya no interfiere con la navegación</li>
+            <li>✅ <strong>Layout limpio</strong> - Sin scripts de navegación que interfieran</li>
+            <li>✅ <strong>Menú móvil CSS-only</strong> - Usando :checked pseudo-selector</li>
+            <li>✅ <strong>Smooth scrolling nativo</strong> - Del navegador, no JavaScript</li>
+            <li>✅ <strong>Estados activos</strong> - Manejados por Astro en build time</li>
+            <li>✅ <strong>Accesibilidad completa</strong> - Funciona con JavaScript deshabilitado</li>
+          </ul>
+        </div>
+        
+        <!-- Test Sections for Anchor Links -->
+        <div class="space-y-16">
+          <section id="about" class="bg-white rounded-lg p-8 shadow-md">
+            <h2 class="text-3xl font-bold mb-4 text-primary">Über Uns</h2>
+            <p class="text-gray-600">Esta es la sección About. El link debe funcionar correctamente con scroll suave nativo.</p>
+          </section>
+          
+          <section id="services" class="bg-white rounded-lg p-8 shadow-md">
+            <h2 class="text-3xl font-bold mb-4 text-primary">Leistungen</h2>
+            <p class="text-gray-600">Esta es la sección Services. La navegación debe ser completamente funcional sin JavaScript.</p>
+          </section>
+          
+          <section id="contact" class="bg-white rounded-lg p-8 shadow-md">
+            <h2 class="text-3xl font-bold mb-4 text-primary">Kontakt</h2>
+            <p class="text-gray-600">Esta es la sección Contact. Los links funcionan con HTML semántico y CSS.</p>
+          </section>
+          
+          <section id="faq" class="bg-white rounded-lg p-8 shadow-md">
+            <h2 class="text-3xl font-bold mb-4 text-primary">FAQ</h2>
+            <p class="text-gray-600">Esta es la sección FAQ. Todo funciona con Astro nativo sin dependencias JS.</p>
+          </section>
+        </div>
+        
+        <!-- Test Instructions -->
+        <div class="bg-blue-50 rounded-lg p-6 mt-16">
+          <h2 class="text-2xl font-semibold mb-4 text-blue-800">🧪 Instrucciones de Prueba:</h2>
+          <ol class="space-y-2 text-blue-700 list-decimal list-inside">
+            <li>Verifica que los links del navbar muestren los textos alemanes de texts.json</li>
+            <li>Prueba la navegación haciendo clic en cada link del navbar</li>
+            <li>Verifica el smooth scrolling nativo del navegador</li>
+            <li>Prueba el menú móvil (redimensiona la ventana)</li>
+            <li>Desactiva JavaScript y verifica que todo sigue funcionando</li>
+            <li>Verifica que no aparecen errores en la consola del navegador</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+  </div>
+</LayoutNative>

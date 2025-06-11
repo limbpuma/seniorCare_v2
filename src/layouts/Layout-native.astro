@@ -1,0 +1,120 @@
+---
+import HeaderNative from "@/components/common/Header-native.astro";
+import Footer from "@/components/common/Footer.astro";
+import CookieConsent from "@/components/common/CookieConsent.tsx";
+import AccessibilityControls from "@/components/common/AccessibilityControls.astro";
+import DynamicSEO from "@/components/common/DynamicSEO.astro";
+import texts from "@/utils/texts.json";
+
+interface Props {
+  title: string;
+  page: "home" | "about" | "services" | "contact" | "faq" | "datenschutz" | "impressum" | "Agb" | "404" | "landing" | "accessibility"; 
+  navAnchors?: { id: string; label: string }[];
+  useDynamicSEO?: boolean;
+}
+const { title, page, navAnchors, useDynamicSEO = false } = Astro.props;
+
+const { description, keywords } = texts.seo[page] || { description: "", keywords: "" };
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- SEO Meta Tags - Dynamic or Static -->
+    {useDynamicSEO ? (
+      <DynamicSEO 
+        page={page} 
+        fallbackTitle={title}
+        fallbackDescription={description}
+        fallbackKeywords={keywords}
+      />
+    ) : (
+      <>
+        <title>{title}</title>
+        <!-- Meta Description -->
+        <meta name="description" content={description} />
+        <!-- Keywords for SEO -->
+        <meta name="keywords" content={keywords} />
+      </>
+    )}
+    <link rel="stylesheet" href="/src/styles/main.css" />
+    <link rel="stylesheet" href="/src/styles/accessibility-optimized.css" />
+    
+    <!-- Essential FontAwesome icons only -->
+    <link
+      rel="preload"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      as="style"
+      onload={`this.onload=null;this.rel='stylesheet'`}
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+      />
+    </noscript>
+
+    <!-- Schema.org structured data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "Pflegedienst Integra",
+      "url": "https://pflegedienst-integra.de",
+      "logo": "https://pflegedienst-integra.de/assets/img/logo.png",
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+49-231-9125000",
+        "contactType": "customer service",
+        "areaServed": "DE",
+        "availableLanguage": "German"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Flughafenstraße 404",
+        "addressLocality": "Dortmund",
+        "postalCode": "44328",
+        "addressCountry": "DE"
+      }
+    })} />
+  </head>
+  
+  <body>
+    <!-- Header with Astro Native Navigation -->
+    <HeaderNative navAnchors={navAnchors} />
+    
+    <!-- Main Content -->
+    <main>
+      <slot />
+    </main>
+    
+    <!-- Footer -->
+    <Footer />
+    
+    <!-- Accessibility Controls -->
+    <AccessibilityControls />
+    
+    <!-- Cookie Consent -->
+    <CookieConsent client:idle />
+    
+    <!-- NO JAVASCRIPT DE NAVEGACIÓN -->
+    <!-- Solo CSS y HTML semántico para navegación -->
+  </body>
+</html>
+
+<style is:global>
+  /* Global styles for native navigation */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Enhanced accessibility focus styles */
+  *:focus-visible {
+    outline: 2px solid var(--color-primary-600);
+    outline-offset: 2px;
+  }
+</style>
