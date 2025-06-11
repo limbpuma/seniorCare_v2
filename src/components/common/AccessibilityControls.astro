@@ -1,4 +1,8 @@
 ---
+/**
+ * AccessibilityControls - Componente optimizado para Astro + Tailwind CSS
+ * Prioriza utilidades Tailwind y minimiza JavaScript/CSS custom
+ */
 interface Props {
   class?: string;
 }
@@ -6,29 +10,43 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<div class={`fixed bottom-5 right-5 z-50 font-sans ${className || ''}`} role="region" aria-label="Barrierefreiheitsoptionen">  <!-- Panel de controles principal -->
+<!-- Importar estilos específicos optimizados -->
+<style>
+  @import '../../styles/accessibility-optimized.css';
+</style>
+
+<!-- Widget de Accesibilidad - Optimizado para Astro + Tailwind -->
+<div 
+  class={`accessibility-widget fixed bottom-5 right-5 z-50 font-sans ${className || ''}`} 
+  role="region" 
+  aria-label="Barrierefreiheitsoptionen"
+>
+  <!-- Panel de controles - Diseño completamente con Tailwind -->
   <div 
-    class="absolute bottom-20 right-0 bg-white rounded-2xl shadow-2xl border border-gray-200 min-w-80 max-w-96 opacity-0 invisible transform translate-y-2 scale-95 transition-all duration-200 ease-out" 
+    class="accessibility-panel absolute bottom-20 right-0 bg-white rounded-2xl shadow-2xl border border-gray-200 min-w-80 max-w-96 transform transition-all duration-300 ease-in-out opacity-0 invisible translate-y-4 scale-95" 
     id="accessibilityPanel"
     role="dialog" 
     aria-labelledby="accessibility-title" 
-    aria-modal="false">
-    
-    <!-- Encabezado del panel -->
+    aria-modal="false"
+  >
+    <!-- Encabezado -->
     <div class="flex justify-between items-center p-5 border-b border-gray-200 bg-gradient-to-r from-slate-50 to-gray-50 rounded-t-2xl">
-      <h3 id="accessibility-title" class="text-lg font-semibold text-gray-800 m-0">Barrierefreiheit</h3>
+      <h3 id="accessibility-title" class="text-lg font-semibold text-gray-800 m-0">
+        Barrierefreiheit
+      </h3>
       <button 
         id="closeAccessibilityPanel" 
-        class="bg-transparent border-none text-gray-600 p-2 rounded-lg cursor-pointer focus:outline-none focus:ring-2 focus:ring-blue-500 focus:bg-gray-100 transition-colors duration-200"
+        class="bg-transparent border-none text-gray-600 p-2 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200"
         aria-label="Panel schließen"
-        title="Barrierefreiheitspanel schließen">
+        title="Barrierefreiheitspanel schließen"
+      >
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
         </svg>
       </button>
     </div>
     
-    <!-- Estado y ayuda -->
+    <!-- Estado -->
     <div class="px-5 py-3 bg-blue-50 border-b border-gray-100">
       <div class="flex items-center gap-2 text-sm text-blue-700">
         <span class="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></span>
@@ -36,15 +54,17 @@ const { class: className } = Astro.props;
       </div>
     </div>
     
-    <!-- Controles principales -->
+    <!-- Controles - Optimizados con Tailwind -->
     <div class="p-5 space-y-3">
+      <!-- Text Spacing Control -->
       <button 
         id="toggleTextSpacing" 
-        class="w-full p-4 border-2 border-gray-200 rounded-xl bg-white flex items-center gap-4 cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200" 
+        class="accessibility-feature-btn w-full p-4 border-2 border-gray-200 rounded-xl bg-white flex items-center gap-4 text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
         aria-label="Textabstand anpassen für bessere Lesbarkeit"
         aria-pressed="false"
         aria-keyshortcuts="Alt+T"
-        data-feature="textSpacing">
+        data-feature="textSpacing"
+      >
         <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
           <span class="text-2xl">🔤</span>
         </div>
@@ -53,17 +73,19 @@ const { class: className } = Astro.props;
           <div class="text-sm text-gray-600">Verbessert die Lesbarkeit</div>
         </div>
         <div class="flex-shrink-0">
-          <span class="px-3 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full feature-status">AUS</span>
+          <span class="feature-status px-3 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full">AUS</span>
         </div>
       </button>
       
+      <!-- High Contrast Control -->
       <button 
         id="highContrastMode" 
-        class="w-full p-4 border-2 border-gray-200 rounded-xl bg-white flex items-center gap-4 cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+        class="accessibility-feature-btn w-full p-4 border-2 border-gray-200 rounded-xl bg-white flex items-center gap-4 text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
         aria-label="Hohen Kontrast aktivieren für bessere Sichtbarkeit"
         aria-pressed="false"
         aria-keyshortcuts="Alt+C"
-        data-feature="highContrast">
+        data-feature="highContrast"
+      >
         <div class="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
           <span class="text-2xl">🎨</span>
         </div>
@@ -72,17 +94,19 @@ const { class: className } = Astro.props;
           <div class="text-sm text-gray-600">Verbessert die Sichtbarkeit</div>
         </div>
         <div class="flex-shrink-0">
-          <span class="px-3 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full feature-status">AUS</span>
+          <span class="feature-status px-3 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full">AUS</span>
         </div>
       </button>
       
+      <!-- Focus Indicators Control -->
       <button 
         id="focusIndicators" 
-        class="w-full p-4 border-2 border-gray-200 rounded-xl bg-white flex items-center gap-4 cursor-pointer text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-colors duration-200"
+        class="accessibility-feature-btn w-full p-4 border-2 border-gray-200 rounded-xl bg-white flex items-center gap-4 text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
         aria-label="Fokusindikatoren verstärken für bessere Navigation"
         aria-pressed="false"
         aria-keyshortcuts="Alt+F"
-        data-feature="focusIndicators">
+        data-feature="focusIndicators"
+      >
         <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
           <span class="text-2xl">🎯</span>
         </div>
@@ -91,7 +115,7 @@ const { class: className } = Astro.props;
           <div class="text-sm text-gray-600">Klarere Navigation</div>
         </div>
         <div class="flex-shrink-0">
-          <span class="px-3 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full feature-status">AUS</span>
+          <span class="feature-status px-3 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full">AUS</span>
         </div>
       </button>
     </div>
@@ -101,38 +125,55 @@ const { class: className } = Astro.props;
       <div class="flex gap-3">
         <button 
           id="resetAccessibility" 
-          class="flex-1 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors duration-200"
+          class="flex-1 px-4 py-2 text-sm font-medium text-gray-700 bg-gray-100 rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 transition-colors duration-200"
           aria-label="Alle Einstellungen zurücksetzen"
-          title="Alle Barrierefreiheitseinstellungen zurücksetzen">
+          title="Alle Barrierefreiheitseinstellungen zurücksetzen"
+        >
           🔄 Zurücksetzen
         </button>
         
         <a 
           href="/accessibility" 
-          class="flex-1 px-4 py-2 text-sm font-medium text-blue-700 bg-blue-100 rounded-lg text-center focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200"
+          class="flex-1 px-4 py-2 text-sm font-medium text-blue-700 bg-blue-100 rounded-lg text-center hover:bg-blue-200 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors duration-200"
           aria-label="Zur Barrierefreiheitsseite"
           aria-keyshortcuts="Alt+A"
-          title="Vollständige Informationen zur Barrierefreiheit (Alt+A)">
+          title="Vollständige Informationen zur Barrierefreiheit (Alt+A)"
+        >
           ℹ️ Mehr Infos
         </a>
       </div>
     </div>
   </div>
-  
-  <!-- Botón flotante mejorado -->
+
+  <!-- Botón flotante - Completamente optimizado para Tailwind -->
   <button 
     id="toggleAccessibilityPanel" 
-    class="w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full shadow-xl flex items-center justify-center text-white cursor-pointer focus:outline-none focus:ring-4 focus:ring-blue-300 focus:ring-opacity-50 transition-all duration-200 border-2 border-white"
+    class="accessibility-toggle-btn w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full shadow-xl border-2 border-white text-white flex items-center justify-center hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300/50 transition-all duration-300 ease-out"
     aria-label="Barrierefreiheitsoptionen öffnen"
     aria-expanded="false"
     aria-controls="accessibilityPanel"
-    title="Barrierefreiheitsoptionen öffnen/schließen">
-    <span class="text-3xl filter drop-shadow-sm">♿</span>
+    title="Barrierefreiheitsoptionen öffnen/schließen"
+  >
+    <span class="text-3xl drop-shadow-sm">♿</span>
   </button>
 </div>
 
 <script>
+  /**
+   * AccessibilityManager - Reestructurado para Astro + Tailwind
+   * JavaScript mínimo, máximo aprovechamiento de utilidades CSS
+   */
   class AccessibilityManager {
+    public features: {
+      textSpacing: boolean;
+      highContrast: boolean;
+      focusIndicators: boolean;
+    };
+    public panel: HTMLElement | null;
+    public toggleButton: HTMLElement | null;
+    public statusElement: HTMLElement | null;
+    public isVisible: boolean;
+
     constructor() {
       this.features = {
         textSpacing: false,
@@ -142,11 +183,11 @@ const { class: className } = Astro.props;
       this.panel = null;
       this.toggleButton = null;
       this.statusElement = null;
+      this.isVisible = false;
       this.init();
     }
 
-    init() {
-      // Wait for DOM to be ready
+    init(): void {
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', () => this.setupElements());
       } else {
@@ -154,7 +195,7 @@ const { class: className } = Astro.props;
       }
     }
 
-    setupElements() {
+    setupElements(): void {
       this.panel = document.getElementById('accessibilityPanel');
       this.toggleButton = document.getElementById('toggleAccessibilityPanel');
       this.statusElement = document.getElementById('accessibility-status');
@@ -166,17 +207,14 @@ const { class: className } = Astro.props;
       this.updateStatus();
     }
 
-    bindEvents() {
+    bindEvents(): void {
       // Toggle panel
-      this.toggleButton.addEventListener('click', () => this.togglePanel());
+      this.toggleButton?.addEventListener('click', () => this.togglePanel());
       
       // Close panel
-      const closeBtn = document.getElementById('closeAccessibilityPanel');
-      if (closeBtn) {
-        closeBtn.addEventListener('click', () => this.hidePanel());
-      }
+      document.getElementById('closeAccessibilityPanel')?.addEventListener('click', () => this.hidePanel());
       
-      // Feature buttons
+      // Feature toggles
       document.getElementById('toggleTextSpacing')?.addEventListener('click', () => 
         this.toggleFeature('textSpacing'));
       document.getElementById('highContrastMode')?.addEventListener('click', () => 
@@ -188,51 +226,49 @@ const { class: className } = Astro.props;
       document.getElementById('resetAccessibility')?.addEventListener('click', () => 
         this.resetAllPreferences());
       
-      // Keyboard shortcuts
-      document.addEventListener('keydown', (e) => this.handleKeyboardShortcuts(e));
-      
-      // Close on outside click
-      document.addEventListener('click', (e) => this.handleOutsideClick(e));
-      
-      // Close on escape
-      document.addEventListener('keydown', (e) => {
+      // Event handlers
+      document.addEventListener('keydown', (e: KeyboardEvent) => this.handleKeyboardShortcuts(e));
+      document.addEventListener('click', (e: MouseEvent) => this.handleOutsideClick(e));
+      document.addEventListener('keydown', (e: KeyboardEvent) => {
         if (e.key === 'Escape' && this.isPanelVisible()) {
           this.hidePanel();
         }
       });
     }
 
-    togglePanel() {
-      if (this.isPanelVisible()) {
-        this.hidePanel();
-      } else {
-        this.showPanel();
-      }
-    }    showPanel() {
+    togglePanel(): void {
+      this.isPanelVisible() ? this.hidePanel() : this.showPanel();
+    }
+
+    showPanel(): void {
       if (!this.panel) return;
       
-      this.panel.classList.remove('opacity-0', 'invisible', 'translate-y-2', 'scale-95');
+      // Usar solo clases Tailwind para transiciones
+      this.panel.classList.remove('opacity-0', 'invisible', 'translate-y-4', 'scale-95');
       this.panel.classList.add('opacity-100', 'visible', 'translate-y-0', 'scale-100');
       
       this.toggleButton?.setAttribute('aria-expanded', 'true');
       this.toggleButton?.setAttribute('aria-label', 'Barrierefreiheitsoptionen schließen');
+      this.isVisible = true;
     }
 
-    hidePanel() {
+    hidePanel(): void {
       if (!this.panel) return;
       
-      this.panel.classList.add('opacity-0', 'invisible', 'translate-y-2', 'scale-95');
+      // Usar solo clases Tailwind para transiciones
+      this.panel.classList.add('opacity-0', 'invisible', 'translate-y-4', 'scale-95');
       this.panel.classList.remove('opacity-100', 'visible', 'translate-y-0', 'scale-100');
       
       this.toggleButton?.setAttribute('aria-expanded', 'false');
       this.toggleButton?.setAttribute('aria-label', 'Barrierefreiheitsoptionen öffnen');
+      this.isVisible = false;
     }
 
-    isPanelVisible() {
+    isPanelVisible(): boolean {
       return this.panel?.classList.contains('opacity-100') || false;
     }
 
-    toggleFeature(feature) {
+    toggleFeature(feature: keyof AccessibilityManager['features']): void {
       this.features[feature] = !this.features[feature];
       this.applyFeature(feature);
       this.updateFeatureButton(feature);
@@ -240,7 +276,7 @@ const { class: className } = Astro.props;
       this.updateStatus();
     }
 
-    applyFeature(feature) {
+    applyFeature(feature: keyof AccessibilityManager['features']): void {
       const isEnabled = this.features[feature];
       
       switch (feature) {
@@ -256,7 +292,8 @@ const { class: className } = Astro.props;
       }
     }
 
-    applyTextSpacing(enabled) {
+    // Métodos de aplicación de características - Mínimo JavaScript
+    applyTextSpacing(enabled: boolean): void {
       if (enabled) {
         document.documentElement.style.setProperty('--text-spacing-multiplier', '1.5');
         document.body.style.lineHeight = '1.8';
@@ -270,7 +307,7 @@ const { class: className } = Astro.props;
       }
     }
 
-    applyHighContrast(enabled) {
+    applyHighContrast(enabled: boolean): void {
       if (enabled) {
         document.documentElement.classList.add('high-contrast-mode');
         document.documentElement.style.filter = 'contrast(150%) brightness(1.1)';
@@ -280,45 +317,39 @@ const { class: className } = Astro.props;
       }
     }
 
-    applyFocusIndicators(enabled) {
+    applyFocusIndicators(enabled: boolean): void {
       const styleId = 'enhanced-focus-styles';
-      let style = document.getElementById(styleId);
       
       if (enabled) {
-        if (!style) {
-          style = document.createElement('style');
+        if (!document.getElementById(styleId)) {
+          const style = document.createElement('style');
           style.id = styleId;
+          style.textContent = `
+            *:focus {
+              outline: 3px solid #ff6600 !important;
+              outline-offset: 2px !important;
+              box-shadow: 0 0 0 5px rgba(255, 102, 0, 0.3) !important;
+            }
+          `;
           document.head.appendChild(style);
         }
-        style.textContent = `
-          *:focus {
-            outline: 3px solid #ff6600 !important;
-            outline-offset: 2px !important;
-            box-shadow: 0 0 0 5px rgba(255, 102, 0, 0.3) !important;
-          }
-          
-          button:focus, a:focus, input:focus, textarea:focus, select:focus {
-            outline: 3px solid #ff6600 !important;
-            outline-offset: 2px !important;
-            box-shadow: 0 0 0 5px rgba(255, 102, 0, 0.3) !important;
-          }
-        `;
         document.documentElement.classList.add('enhanced-focus-mode');
       } else {
-        style?.remove();
+        document.getElementById(styleId)?.remove();
         document.documentElement.classList.remove('enhanced-focus-mode');
       }
     }
 
-    updateFeatureButton(feature) {
-      const button = document.querySelector(`[data-feature="${feature}"]`);
-      const status = button?.querySelector('.feature-status');
+    updateFeatureButton(feature: keyof AccessibilityManager['features']): void {
+      const button = document.querySelector(`[data-feature="${feature}"]`) as HTMLElement;
+      const status = button?.querySelector('.feature-status') as HTMLElement;
       const isEnabled = this.features[feature];
       
       if (button && status) {
         button.setAttribute('aria-pressed', isEnabled.toString());
         status.textContent = isEnabled ? 'EIN' : 'AUS';
         
+        // Usar solo clases Tailwind para estados
         if (isEnabled) {
           button.classList.add('bg-blue-50', 'border-blue-500');
           button.classList.remove('border-gray-200');
@@ -333,24 +364,24 @@ const { class: className } = Astro.props;
       }
     }
 
-    updateStatus() {
+    updateStatus(): void {
       const activeCount = Object.values(this.features).filter(Boolean).length;
       if (this.statusElement) {
         this.statusElement.textContent = `${activeCount} ${activeCount === 1 ? 'Funktion aktiv' : 'Funktionen aktiv'}`;
       }
     }
 
-    resetAllPreferences() {
+    resetAllPreferences(): void {
       Object.keys(this.features).forEach(feature => {
-        this.features[feature] = false;
-        this.applyFeature(feature);
-        this.updateFeatureButton(feature);
+        this.features[feature as keyof AccessibilityManager['features']] = false;
+        this.applyFeature(feature as keyof AccessibilityManager['features']);
+        this.updateFeatureButton(feature as keyof AccessibilityManager['features']);
       });
       this.savePreferences();
       this.updateStatus();
     }
 
-    savePreferences() {
+    savePreferences(): void {
       try {
         localStorage.setItem('accessibility-preferences', JSON.stringify(this.features));
       } catch (e) {
@@ -358,16 +389,17 @@ const { class: className } = Astro.props;
       }
     }
 
-    loadSavedPreferences() {
+    loadSavedPreferences(): void {
       try {
         const saved = localStorage.getItem('accessibility-preferences');
         if (saved) {
           const preferences = JSON.parse(saved);
           Object.keys(this.features).forEach(feature => {
-            if (preferences[feature]) {
-              this.features[feature] = true;
-              this.applyFeature(feature);
-              this.updateFeatureButton(feature);
+            const featureKey = feature as keyof AccessibilityManager['features'];
+            if (preferences[featureKey]) {
+              this.features[featureKey] = true;
+              this.applyFeature(featureKey);
+              this.updateFeatureButton(featureKey);
             }
           });
         }
@@ -376,7 +408,7 @@ const { class: className } = Astro.props;
       }
     }
 
-    handleKeyboardShortcuts(e) {
+    handleKeyboardShortcuts(e: KeyboardEvent): void {
       if (e.altKey) {
         switch (e.key.toLowerCase()) {
           case 't':
@@ -399,9 +431,9 @@ const { class: className } = Astro.props;
       }
     }
 
-    handleOutsideClick(e) {
-      const target = e.target;
-      const controls = target.closest('[role="region"][aria-label="Barrierefreiheitsoptionen"]');
+    handleOutsideClick(e: MouseEvent): void {
+      const target = e.target as HTMLElement;
+      const controls = target?.closest('[role="region"][aria-label="Barrierefreiheitsoptionen"]');
       
       if (!controls && this.isPanelVisible()) {
         this.hidePanel();
@@ -409,23 +441,25 @@ const { class: className } = Astro.props;
     }
   }
 
-  // Initialize accessibility manager
-  let accessibilityManager = null;
+  // Inicialización optimizada para Astro
+  let accessibilityManager: AccessibilityManager | null = null;
   
-  function initAccessibility() {
+  function initAccessibility(): void {
     if (!accessibilityManager) {
       accessibilityManager = new AccessibilityManager();
-      window.accessibilityManager = accessibilityManager;
+      if (typeof window !== 'undefined') {
+        window.accessibilityManager = accessibilityManager;
+      }
     }
   }
 
-  // Initialize on DOM ready
+  // Inicializar en DOM ready
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initAccessibility);
   } else {
     initAccessibility();
   }
   
-  // Re-initialize on Astro page navigation
+  // Re-inicializar en navegación Astro
   document.addEventListener('astro:page-load', initAccessibility);
 </script>
