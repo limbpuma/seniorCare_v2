@@ -34,9 +34,8 @@ const { titlesection, subtitlesection, items } = Astro.props;
     />
   </div>
 
-  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 content-narrow">
-    {
-      items.map((testimonial, index) => (        <div class="bg-gradient-to-br from-white via-soft-orange/10 to-accent/5 border border-soft-orange/30 p-6 lg:p-8 rounded-2xl shadow-lg h-full flex flex-col group">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 content-narrow">    {
+      items.map((testimonial, _index) => (        <div class="bg-gradient-to-br from-white via-soft-orange/10 to-accent/5 border border-soft-orange/30 p-6 lg:p-8 rounded-2xl shadow-lg h-full flex flex-col group">
           <div class="relative mb-4">
             <div class="absolute -top-3 -right-3 w-8 h-8 bg-gradient-to-r from-soft-orange to-accent rounded-full flex items-center justify-center shadow-lg">
               <i class="fa-solid fa-quote-right text-sm text-white" aria-hidden="true" />

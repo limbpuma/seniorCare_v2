@@ -226,7 +226,7 @@ const getTextareaRows = () => {
     processFormSubmission(e);
   });
 
-  async function processFormSubmission(e: Event) {
+  async function processFormSubmission(_e: Event) {
 
     if (!consentCheckbox.checked) {
       showModal(

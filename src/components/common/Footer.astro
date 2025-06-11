@@ -54,9 +54,8 @@ const { isLandingPage } = Astro.props;
       </div>      <div class="text-center md:text-left">
         <h5 class="mb-6 text-soft-orange font-ag-h5 text-ag-h5 bg-gradient-to-r from-soft-orange to-yellow-400 bg-clip-text text-transparent">
           {footerTexts.linksTitle}
-        </h5>        <ul class="text-white/90 font-ag-body-text text-ag-body-text space-y-3">
-          {
-            Navlinks.map((link, index) => (
+        </h5>        <ul class="text-white/90 font-ag-body-text text-ag-body-text space-y-3">          {
+            Navlinks.map((link, _index) => (
               <li class="group">                <a 
                   href={isLandingPage ? link.anchor : link.href} 
                   class="hover:text-soft-orange nav-link relative hover:translate-x-1 block"
@@ -104,9 +103,8 @@ const { isLandingPage } = Astro.props;
     <hr class="my-6 border-white/20 sm:mx-auto lg:my-8 bg-gradient-to-r from-transparent via-white/30 to-transparent h-px border-0" />    <div
       class="sm:flex sm:items-center sm:justify-between text-center md:text-left text-white/90 font-ag-body-text text-ag-body-text"
     >
-      <span class="hover:text-transparent hover:bg-gradient-to-r hover:from-soft-orange hover:to-yellow-400 hover:bg-clip-text transition-all duration-300">{footerTexts.copyright}</span>      <div class="flex mt-4 sm:mt-0 justify-center md:justify-start space-x-4">
-        {
-          Legallinks.map((link, index) => (            <a 
+      <span class="hover:text-transparent hover:bg-gradient-to-r hover:from-soft-orange hover:to-yellow-400 hover:bg-clip-text transition-all duration-300">{footerTexts.copyright}</span>      <div class="flex mt-4 sm:mt-0 justify-center md:justify-start space-x-4">        {
+          Legallinks.map((link, _index) => (            <a 
               href={link.href} 
               class="hover:text-soft-orange relative group"
             >

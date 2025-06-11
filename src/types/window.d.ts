@@ -46,18 +46,34 @@ interface PerformanceMonitor {
 
 // Accessibility Manager class interface
 interface AccessibilityManager {
-  state: {
+  features: {
     textSpacing: boolean;
     highContrast: boolean;
     focusIndicators: boolean;
   };
+  panel: HTMLElement | null;
+  toggleButton: HTMLElement | null;
+  statusElement: HTMLElement | null;
   
-  toggleTextSpacing(): void;
-  toggleHighContrast(): void;
-  toggleFocusIndicators(): void;
-  loadSavedPreferences(): void;
+  init(): void;
+  setupElements(): void;
+  bindEvents(): void;
+  togglePanel(): void;
+  showPanel(): void;
+  hidePanel(): void;
+  isPanelVisible(): boolean;
+  toggleFeature(feature: string): void;
+  applyFeature(feature: string): void;
+  applyTextSpacing(enabled: boolean): void;
+  applyHighContrast(enabled: boolean): void;
+  applyFocusIndicators(enabled: boolean): void;
+  updateFeatureButton(feature: string): void;
+  updateStatus(): void;
+  resetAllPreferences(): void;
   savePreferences(): void;
-  applyPreferences(): void;
+  loadSavedPreferences(): void;
+  handleKeyboardShortcuts(e: Event): void;
+  handleOutsideClick(e: Event): void;
 }
 
 // Landing Page Navigator interface
