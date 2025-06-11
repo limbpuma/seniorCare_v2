@@ -6,10 +6,9 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<div class={`fixed bottom-5 right-5 z-50 font-sans ${className || ''}`} role="region" aria-label="Barrierefreiheitsoptionen">
-  <!-- Panel de controles principal -->
+<div class={`fixed bottom-5 right-5 z-50 font-sans ${className || ''}`} role="region" aria-label="Barrierefreiheitsoptionen">  <!-- Panel de controles principal -->
   <div 
-    class="absolute bottom-20 right-0 bg-white rounded-2xl shadow-2xl border border-gray-200 min-w-80 max-w-96 opacity-0 invisible transform translate-y-5 scale-95 transition-all duration-300 ease-out backdrop-blur-sm" 
+    class="absolute bottom-20 right-0 bg-white rounded-2xl shadow-2xl border border-gray-200 min-w-80 max-w-96 opacity-0 invisible transform translate-y-2 scale-95 transition-all duration-200 ease-out" 
     id="accessibilityPanel"
     role="dialog" 
     aria-labelledby="accessibility-title" 
@@ -209,12 +208,10 @@ const { class: className } = Astro.props;
       } else {
         this.showPanel();
       }
-    }
-
-    showPanel() {
+    }    showPanel() {
       if (!this.panel) return;
       
-      this.panel.classList.remove('opacity-0', 'invisible', 'translate-y-5', 'scale-95');
+      this.panel.classList.remove('opacity-0', 'invisible', 'translate-y-2', 'scale-95');
       this.panel.classList.add('opacity-100', 'visible', 'translate-y-0', 'scale-100');
       
       this.toggleButton?.setAttribute('aria-expanded', 'true');
@@ -224,7 +221,7 @@ const { class: className } = Astro.props;
     hidePanel() {
       if (!this.panel) return;
       
-      this.panel.classList.add('opacity-0', 'invisible', 'translate-y-5', 'scale-95');
+      this.panel.classList.add('opacity-0', 'invisible', 'translate-y-2', 'scale-95');
       this.panel.classList.remove('opacity-100', 'visible', 'translate-y-0', 'scale-100');
       
       this.toggleButton?.setAttribute('aria-expanded', 'false');
