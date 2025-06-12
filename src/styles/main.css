@@ -80,9 +80,10 @@
 
 
 /* Navigation and interactive elements spacing */
+/* Exclude accessibility buttons from global button styles */
 nav a,
 .nav-link,
-button,
+button:not(.accessibility-toggle-btn):not(.accessibility-feature-btn):not(#closeAccessibilityPanel):not(#resetAccessibility),
 .btn {
   padding: 0.75rem 1rem !important;
   min-height: 44px !important; /* Touch target size */
