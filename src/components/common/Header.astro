@@ -2,13 +2,18 @@
 import Button from "../common/Button.astro";
 import Icon from "../common/Icon.astro";
 import Logo from "./Logo.astro";
-import Nav from "./Nav.astro";
 import texts from "@/utils/texts.json";
 import { api } from "@/utils/api";
 
 interface NavAnchor {
   id: string;
   label: string;
+}
+
+interface NavigationLink {
+  name: string;
+  href: string;
+  isAnchor?: boolean;
 }
 
 const headerTexts = texts.header;
@@ -26,32 +31,42 @@ if (useDynamicContent) {
 
 // Usar textos dinámicos o fallback a estáticos
 const phone = dynamicTexts?.header?.phone || headerTexts.phone;
-// const email = dynamicTexts?.header?.email || headerTexts.email;
 const ctaButton = dynamicTexts?.header?.cta_button || headerTexts.cta;
 
+// Generar navegación optimizada para Astro usando SOLO los textos de texts.json
 const NAVIGATION = navAnchors 
-  ? navAnchors.map((anchor: NavAnchor) => ({ name: anchor.label, href: `#${anchor.id}`, isAnchor: true }))
+  ? navAnchors.map((anchor: NavAnchor) => ({ 
+      name: anchor.label, 
+      href: `#${anchor.id}`, 
+      isAnchor: true 
+    }))
   : [
     { name: headerTexts.nav.home, href: "/" },
-    { name: headerTexts.nav.about, href: "/#about" },
-    { name: headerTexts.nav.services, href: "/#services" },
-    { name: headerTexts.nav.contact, href: "/#contact" },
-    { name: headerTexts.nav.faq, href: "/#faq" },
+    { name: headerTexts.nav.about, href: "/#about", isAnchor: true },
+    { name: headerTexts.nav.services, href: "/#services", isAnchor: true },
+    { name: headerTexts.nav.contact, href: "/#contact", isAnchor: true },
+    { name: headerTexts.nav.faq, href: "/#faq", isAnchor: true },
   ];
+
+// Obtener la URL actual para navegación activa
+const currentPath = Astro.url.pathname;
 ---
 
 <!-- 
-  OPTIMIZED HEADER HEIGHTS for 100vh Compliance:
-  Contact Bar: py-2 (~2rem total with content)
-  Main Nav: Mobile 3.5rem + Tablet 4rem + Desktop 4.5rem
-  Total Header: ~5-6rem depending on screen size
-  This ensures header + hero section fit within 100vh
+  OPTIMIZED HEADER - Prioriza Astro sobre JavaScript
+  - Menú móvil con CSS puro + :target pseudo-selector
+  - Sin dependencias JavaScript externas
+  - Navegación completamente funcional con fallbacks
 -->
-<header class="w-full backdrop-blur-sm bg-white/95 shadow-lg shadow-deep-blue/5 sticky top-0 z-50">  <!-- Top Navbar Contact Bar -->
+
+<header class="w-full backdrop-blur-sm bg-white/95 shadow-lg shadow-deep-blue/5 sticky top-0 z-50">
+  <!-- Top Navbar Contact Bar -->
   <div class="bg-gradient-to-r from-primary/5 via-soft-blue/5 to-primary/5 text-ag-body-text border-b border-primary/10">
-    <div class="max-w-7xl mx-auto">      <div class="flex items-center justify-between py-2 px-3 md:px-2 lg:px-4">
+    <div class="max-w-7xl mx-auto">
+      <div class="flex items-center justify-between py-2 px-3 md:px-2 lg:px-4">
         <!-- Left: Address & Phone -->
-        <div class="flex items-center gap-2 md:gap-4">          <!-- Address - Desktop only (lg+) -->
+        <div class="flex items-center gap-2 md:gap-4">
+          <!-- Address - Desktop only (lg+) -->
           <a
             href="https://maps.app.goo.gl/UbA5eCbGWvF2pyPu9"
             target="_blank"
@@ -64,26 +79,36 @@ const NAVIGATION = navAnchors
               size="small"
               variant="default"
             />
-            <span class="group-hover:underline group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">{headerTexts.address}</span>
-          </a>          <!-- Phone - Always visible -->          <a
+            <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">
+              Flughafenstraße 404, 44328 Dortmund
+            </span>
+          </a>
+          
+          <!-- Phone - Always visible -->
+          <a
             href={`tel:${phone}`}
-            class="flex items-center gap-2 text-xs md:text-sm font-medium hover:text-primary group"
+            class="flex items-center gap-2 text-sm hover:text-primary group"
             aria-label={`Call us at ${phone}`}
-            role="link"
           >
             <Icon
               icons={[{ name: "phone" }]}
               size="small"
               variant="default"
             />
-            <span class="group-hover:underline group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">{phone}</span>
+            <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">
+              {phone}
+            </span>
           </a>
-        </div>        <!-- Right: Schedule & Social -->
+        </div>
+
+        <!-- Right: Schedule & Social -->
         <div class="flex items-center gap-2 md:gap-4">
           <!-- Schedule - Always visible -->
           <div class="flex items-center gap-2 text-xs md:text-sm group">
             <Icon icons={[{ name: "clock" }]} size="small" variant="default" />
-            <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">{headerTexts.schedule}</span>
+            <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">
+              {headerTexts.schedule}
+            </span>
           </div>
           
           <!-- Social Links - Medium+ screens -->
@@ -92,10 +117,7 @@ const NAVIGATION = navAnchors
               icons={[
                 { name: "facebook", href: headerTexts.socialLinks.facebook },
                 { name: "twitter", href: headerTexts.socialLinks.twitter },
-                {
-                  name: "instagram",
-                  href: headerTexts.socialLinks.instagram,
-                },
+                { name: "instagram", href: headerTexts.socialLinks.instagram },
               ]}
               size="small"
               variant="default"
@@ -104,10 +126,13 @@ const NAVIGATION = navAnchors
         </div>
       </div>
     </div>
-  </div>  <!-- Main Navigation -->
+  </div>
+
+  <!-- Main Navigation -->
   <nav class="bg-white/90 backdrop-blur-md border-b border-primary/10 shadow-sm">
     <div class="max-w-7xl mx-auto">
       <div class="flex items-center justify-between py-2 px-3 md:px-2 lg:px-4 min-h-[3rem] md:min-h-[4rem] lg:min-h-[4.5rem] xl:min-h-[4.5rem] 2xl:min-h-[5rem]">
+        
         <!-- Logo section -->
         <div class="flex-shrink-0 flex items-center">
           <a 
@@ -117,69 +142,128 @@ const NAVIGATION = navAnchors
           >
             <Logo class="h-8 md:h-10 lg:h-12 xl:h-12 2xl:h-14 w-auto group-hover:scale-105" color="dark" />
           </a>
+        </div>        <!-- Navigation Links - Desktop (Astro Only) -->
+        <div class="desktop-nav hidden md:flex items-center justify-center">          <ul class="flex items-center gap-6 lg:gap-8">
+            {NAVIGATION.map((link: NavigationLink) => {
+              const isActive = currentPath === '/' && link.href === '/' || 
+                              currentPath === link.href ||
+                              (currentPath === '/' && link.href.startsWith('/#'));
+              return (
+                <li>
+                  <a
+                    href={link.href}
+                    class={`
+                      relative px-3 py-2 text-base lg:text-lg font-medium
+                      transition-all duration-200 ease-out
+                      focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg
+                      min-h-[44px] flex items-center
+                      ${isActive 
+                        ? 'text-primary' 
+                        : 'text-gray-700 hover:text-primary'
+                      }
+                    `}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {link.name}
+                    {isActive && (
+                      <span 
+                        class="absolute bottom-0 left-0 right-0 h-0.5 bg-primary rounded-full"
+                        aria-hidden="true"
+                      />
+                    )}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
         </div>
 
-        <!-- Navigation Links - Desktop -->
-        <div class="desktop-nav hidden md:flex items-center justify-center">
-          <Nav links={NAVIGATION} />
-        </div>
-
-        <!-- Button and Mobile menu -->
-        <div class="flex items-center gap-2 md:gap-4 shrink-0">          <Button 
+        <!-- CTA Button and Mobile menu toggle -->
+        <div class="flex items-center gap-2 md:gap-4 shrink-0">
+          <!-- CTA Button - Desktop -->
+          <Button 
             class="hidden md:inline-flex items-center text-sm lg:text-base py-2 px-3 lg:px-4 min-w-[120px] lg:min-w-[140px]" 
             variant="primary" 
             size="medium"
             href={`tel:${phone}`}
           >
             {ctaButton}
-          </Button>          <!-- Mobile menu button -->
-          <button
-            data-collapse-toggle="navbar-cta"
-            type="button"
-            class="inline-flex items-center justify-center p-3 text-deep-blue rounded-xl md:hidden lg:hidden xl:hidden 2xl:hidden hover:bg-gradient-to-r hover:from-primary/10 hover:to-soft-blue/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 min-h-[44px] min-w-[44px]"
-            aria-controls="navbar-cta"
-            aria-expanded="false"
-            aria-label="Open navigation menu"
-          >
-            <span class="sr-only">Open main menu</span>
-            <svg
-              class="w-6 h-6 hamburger-icon"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          </Button>
+
+          <!-- Mobile menu toggle - CSS only -->
+          <div class="md:hidden">
+            <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-checkbox sr-only" />
+            <label 
+              for="mobile-menu-toggle" 
+              class="mobile-menu-button inline-flex items-center justify-center p-3 text-deep-blue rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-soft-blue/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 min-h-[44px] min-w-[44px] cursor-pointer"
+              aria-label="Toggle navigation menu"
             >
-              <path
-                class="hamburger-line hamburger-line-1"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 6h16"
-              />
-              <path
-                class="hamburger-line hamburger-line-2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 12h16"
-              />
-              <path
-                class="hamburger-line hamburger-line-3"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                d="M4 18h16"
-              />
-            </svg>
-          </button>
+              <span class="sr-only">Toggle main menu</span>
+              <svg
+                class="w-6 h-6 hamburger-icon"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  class="hamburger-line hamburger-line-1"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 6h16"
+                />
+                <path
+                  class="hamburger-line hamburger-line-2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 12h16"
+                />
+                <path
+                  class="hamburger-line hamburger-line-3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M4 18h16"
+                />
+              </svg>
+            </label>
+          </div>
         </div>
-      </div>      <!-- Mobile menu -->
-      <div class="md:hidden hidden ease-in-out glass-morphism" id="navbar-cta">
+      </div>      <!-- Mobile menu - CSS only implementation (Astro Only) -->
+      <div class="mobile-menu md:hidden">
         <div class="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md border-t border-primary/20">
-          <Nav links={NAVIGATION} />
-          <div class="mt-4">            <Button 
-              class="w-full text-center justify-center py-2"
+          <!-- Mobile Navigation Links (Astro Only) -->          <ul class="flex flex-col space-y-1">
+            {NAVIGATION.map((link: NavigationLink) => {
+              const isActive = currentPath === '/' && link.href === '/' || 
+                              currentPath === link.href ||
+                              (currentPath === '/' && link.href.startsWith('/#'));
+              return (
+                <li>
+                  <a
+                    href={link.href}
+                    class={`
+                      block w-full px-4 py-3 text-left rounded-lg text-base
+                      transition-colors duration-200
+                      focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2
+                      ${isActive 
+                        ? 'bg-primary/10 text-primary font-medium border-l-4 border-primary' 
+                        : 'text-gray-700 hover:bg-gray-50 hover:text-primary'
+                      }
+                    `}
+                    aria-current={isActive ? 'page' : undefined}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
+          <div class="mt-4 px-2">
+            <Button 
+              class="w-full justify-center py-3"
               variant="primary" 
               size="medium"
               href={`tel:${phone}`}
@@ -193,78 +277,91 @@ const NAVIGATION = navAnchors
   </nav>
 </header>
 
-<style>
-  /* Mobile menu animations */
-  #navbar-cta {
-    max-height: 0;    opacity: 0;
+<style>  /* CSS-only mobile menu implementation */
+  .mobile-menu-checkbox {
+    display: none;
+  }
+  
+  .mobile-menu {
+    max-height: 0;
+    opacity: 0;
     overflow: hidden;
+    transition: all 0.3s ease-in-out;
   }
   
-  #navbar-cta.mobile-menu-open {
-    max-height: 500px;
-    opacity: 1;
-  }
-    /* Ensure proper hiding on medium+ screens */
-  @media (min-width: 768px) {
-    #navbar-cta {
-      display: none !important;
-    }
-    
-    /* Force hide hamburger button on tablets and larger screens */
-    button[data-collapse-toggle="navbar-cta"] {
-      display: none !important;
-    }
+  /* Show mobile menu when checkbox is checked */
+  .mobile-menu-checkbox:checked + .mobile-menu-button + div .mobile-menu {
+    max-height: 500px !important;
+    opacity: 1 !important;
   }
   
-  /* Additional safety for large screens */
-  @media (min-width: 1024px) {
-    button[data-collapse-toggle="navbar-cta"] {
-      display: none !important;
-    }
-  }
-    /* Additional safety for extra large screens */
-  @media (min-width: 1280px) {
-    button[data-collapse-toggle="navbar-cta"] {
-      display: none !important;
-    }
-  }
-  
-  /* Ensure desktop navigation is always visible on larger screens */
-  @media (min-width: 768px) {
-    .desktop-nav {
-      display: flex !important;
-    }
-  }
-  
-  /* Smooth hamburger button animation */
-  button[data-collapse-toggle] {
-    transition: all 0.2s ease-in-out;
-  }
-  
-  button[data-collapse-toggle]:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
-  
-  /* Hamburger icon animation */
+  /* Hamburger icon animations */
   .hamburger-line {
     transition: all 0.3s ease-in-out;
     transform-origin: center;
   }
   
-  /* When menu is open, transform hamburger to X */
-  button[aria-expanded="true"] .hamburger-line-1 {
+  .mobile-menu-checkbox:checked + .mobile-menu-button .hamburger-line-1 {
     transform: rotate(45deg) translate(5px, 5px);
   }
   
-  button[aria-expanded="true"] .hamburger-line-2 {
+  .mobile-menu-checkbox:checked + .mobile-menu-button .hamburger-line-2 {
     opacity: 0;
   }
   
-  button[aria-expanded="true"] .hamburger-line-3 {
+  .mobile-menu-checkbox:checked + .mobile-menu-button .hamburger-line-3 {
     transform: rotate(-45deg) translate(7px, -6px);
+  }
+  
+  /* Force hide mobile menu on larger screens */
+  @media (min-width: 768px) {
+    .mobile-menu {
+      display: none !important;
+    }
+    
+    .mobile-menu-button {
+      display: none !important;
+    }
+    
+    .desktop-nav {
+      display: flex !important;
+    }
+  }
+  
+  /* Smooth scrolling for anchor links */
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* Enhanced focus states */
+  a:focus-visible {
+    outline: 2px solid var(--color-primary-600);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  
+  /* Active link styles */
+  .nav-link-active {
+    color: var(--color-primary-600);
+    position: relative;
+  }
+  
+  .nav-link-active::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-primary-600);
+    border-radius: 1px;
   }
 </style>
 
-<script>
-  import '@/utils/landing-page-navigator.js';
-</script>
+<!-- 
+  ASTRO-FIRST HEADER - Zero JavaScript Dependencies
+  - Navegación completamente funcional con solo CSS y HTML
+  - Menú móvil usando CSS :checked pseudo-selector
+  - Smooth scrolling nativo del navegador
+  - Estados activos manejados por Astro en build time
+-->
