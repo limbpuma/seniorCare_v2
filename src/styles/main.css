@@ -1,3 +1,8 @@
+/* Tailwind CSS base styles, components, and utilities */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 @font-face {
   font-family: "FontAwesome Brands";
   src:

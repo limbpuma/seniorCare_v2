@@ -4,15 +4,19 @@ import react from "@astrojs/react";
 import vercel from "@astrojs/vercel/serverless";
 
 // https://astro.build/config
-export default defineConfig({
-  integrations: [tailwind(), react()],
-  output: "server",
-  adapter: vercel(),
-  
-  // Performance optimizations
+export default defineConfig({  integrations: [
+    tailwind({
+      // Apply base styles
+      applyBaseStyles: true, // Try with true to see if Tailwind loads
+    }), 
+    react()
+  ],
+  output: "static",
+  // adapter: vercel(), // Temporalmente comentado para testing
+    // Performance optimizations
   build: {
     // Inline small assets to reduce HTTP requests
-    inlineStylesheets: 'auto',
+    inlineStylesheets: 'never', // Changed to prevent CSS inlining issues with Tailwind
     
     rollupOptions: {
       output: {

@@ -5,6 +5,8 @@ import CookieConsent from "@/components/common/CookieConsent.tsx";
 import AccessibilityControls from "@/components/common/AccessibilityControls.astro";
 import DynamicSEO from "@/components/common/DynamicSEO.astro";
 import texts from "@/utils/texts.json";
+import "../styles/main.css";
+import "../styles/accessibility.css";
 
 interface Props {
   title: string;
@@ -39,10 +41,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
         <meta name="description" content={description} />
         <!-- Keywords for SEO -->
         <meta name="keywords" content={keywords} />
-      </>
-    )}
-    <link rel="stylesheet" href="/src/styles/main.css" />
-    <link rel="stylesheet" href="/src/styles/accessibility.css" />
+      </>    )}
     <!-- Essential FontAwesome icons only -->
     <link
       rel="preload"
