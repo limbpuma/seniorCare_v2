@@ -1,5 +1,6 @@
 ---
 import { Image } from 'astro:assets';
+import OptimizedVideo from './OptimizedVideo.astro';
 
 interface Props {
   type: 'image' | 'video';
@@ -29,23 +30,20 @@ const {
       height={height}
       class="object-cover w-full h-full parallax-image motion-reduce:opacity-60"
       loading="eager"
-      />
-      ) : (      
-      <video
+      />      ) : (      
+      <OptimizedVideo
+        src={typeof src === 'string' ? src : src.src}
+        width={width}
+        height={height}
         class="object-cover w-full h-full parallax-video motion-reduce:opacity-60"
-        autoplay
-        loop
-        muted
-        playsinline
+        autoplay={true}
+        loop={true}
+        muted={true}
+        playsinline={true}
         preload="metadata"
         poster={posterSrc}
-        aria-label="Hintergrundvideo: Seniorenpflege bei Integra"
-        data-mobile-optimized="true"
-      >        
-        <source src={typeof src === 'string' ? src : src.src} type="video/webm" />
-        <source src={typeof src === 'string' ? src.replace('.webm', '.mp4') : src.src.replace('.webm', '.mp4')} type="video/mp4" />
-        <p>Ihr Browser unterstützt keine Videos. Sie können unsere Inhalte trotzdem problemlos ansehen.</p>
-      </video>
+        ariaLabel="Hintergrundvideo: Seniorenpflege bei Integra"
+      />
     )}
 </div>
 

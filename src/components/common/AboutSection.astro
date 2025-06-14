@@ -1,6 +1,7 @@
 ---
 import Button from "../common/Button.astro";
 import Section from "./Section.astro";
+import OptimizedImage from "./OptimizedImage.astro";
 import texts from "@/utils/texts.json";
 
 interface Stat {
@@ -54,11 +55,13 @@ const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
       class="flex justify-center items-center w-full sm:w-2/3 md:w-1/2 lg:w-72 xl:w-80 2xl:w-[22rem] order-1 lg:order-2 mb-spacing-8 lg:mb-0 lg:flex-shrink-0"
       role="img"
       aria-label="Profilbild unseres Teams"
-    >
-      <div class="relative my-4 w-full pb-[100%] lg:w-72 lg:h-72 xl:w-80 xl:h-80 2xl:w-[22rem] 2xl:h-[22rem] lg:pb-0">
-        <img
+    >      <div class="relative my-4 w-full pb-[100%] lg:w-72 lg:h-72 xl:w-80 xl:h-80 2xl:w-[22rem] 2xl:h-[22rem] lg:pb-0">
+        <OptimizedImage
           src="/assets/img/nurse_doctor_senior_care_1.webp"
           alt={imageAlt || "Professionelles Pflegeteam - Krankenschwester und Arzt bei der Seniorenbetreuung"}
+          width={352}
+          height={352}
+          sizes="(max-width: 768px) 67vw, (max-width: 1024px) 50vw, 352px"
           class="absolute inset-0 w-full h-full object-cover object-center rounded-full bg-neutral-200 shadow-md"
           loading="lazy"
         />
