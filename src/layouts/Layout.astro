@@ -586,13 +586,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
             }
           });        }
       }      // Create global instance
-      window.accessibilityManager = new AccessibilityManager();      // Initialize Enhanced Navigation Manager
-      import('/src/utils/enhanced-navigation-manager.js').then(_module => {
-        // Already initialized in the module, just ensure it's available
-        console.log('🚀 Enhanced Navigation Manager loaded');
-      }).catch(error => {
-        console.warn('Enhanced Navigation Manager not loaded:', error);
-      });
+      window.accessibilityManager = new AccessibilityManager();      // Enhanced Navigation Manager removed - using native Astro navigation
     </script>
   </body>
 </html>
