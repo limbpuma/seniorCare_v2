@@ -1,24 +1,24 @@
 {  "seo": {
     "home": {
-      "description": "Integra bietet hochwertige, selbstbestimmte Pflegekonzepte in Dortmund. Unsere empathische Pflegephilosophie sorgt für erstklassige medizinische Versorgung und familiäre Atmosphäre.",
-      "keywords": "Pflege, Betreuung, Dortmund, selbstbestimmt, medizinische Versorgung"
+      "description": "Ambulanter Pflegedienst Dortmund: Häusliche Krankenpflege direkt zu Ihnen ✓ SGB XI zugelassen ✓ Alle Krankenkassen ✓ Kostenlose Beratung ✓ Dortmund-Nord, Ost, Scharnhorst",
+      "keywords": "ambulanter Pflegedienst Dortmund, häusliche Krankenpflege, mobile Pflege, Grundpflege zu Hause, SGB XI, Krankenkasse zugelassen, Pflegedienst Dortmund-Nord"
     },
     "services": {
-      "description": "Entdecken Sie unsere umfassenden Pflegeleistungen: häusliche Pflege, medizinische Versorgung, Betreuung und individuelle Pflegekonzepte in Dortmund.",
-      "keywords": "Pflegeleistungen, häusliche Pflege, medizinische Versorgung, Betreuung, Dortmund"
+      "description": "Häusliche Pflegeleistungen Dortmund: Behandlungspflege, Grundpflege, Hauswirtschaft ✓ Medikamente zu Hause ✓ Verbände ✓ Injektionen ✓ Alle Stadtteile Dortmund",
+      "keywords": "häusliche Krankenpflege Dortmund, Behandlungspflege ambulant, Grundpflege zu Hause, Medikamente stellen, Verbandswechsel häuslich, mobile Pflege Dortmund"
     },
     "about": {
-      "description": "Erfahren Sie mehr über Integra - unser Team, unsere Philosophie und unser Engagement für hochwertige Pflege in Dortmund.",
-      "keywords": "Über uns, Team, Pflegephilosophie, Integra, Dortmund"
+      "description": "Ambulanter Pflegedienst Integra Dortmund: 10+ Jahre Erfahrung, SGB XI zugelassen ✓ Qualifizierte Pflegekräfte ✓ Alle Krankenkassen ✓ Hausbesuche ganz Dortmund",
+      "keywords": "ambulanter Pflegedienst Team Dortmund, SGB XI zugelassen, qualifizierte Pflegekräfte, Krankenkassen anerkannt, mobile Pflege Erfahrung"
     },
     "contact": {
-      "description": "Kontaktieren Sie Integra für Pflegeberatung und individuelle Lösungen. Wir sind in Dortmund für Sie da.",
-      "keywords": "Kontakt, Pflegeberatung, Terminvereinbarung, Dortmund"
+      "description": "Kostenlose Pflegeberatung Dortmund: Ambulanter Pflegedienst berät Sie zu Hause ✓ Pflegegrad ✓ Krankenkassen ✓ SGB XI Leistungen ✓ Tel: 0231 9125000",
+      "keywords": "kostenlose Pflegeberatung Dortmund, ambulante Pflege Beratung, Pflegegrad Hilfe, Krankenkassen Beratung, Hausbesuch Pflegedienst"
     },
     "faq": {
-      "description": "Häufig gestellte Fragen zu unseren Pflegeleistungen, Kosten und Abläufen bei Integra in Dortmund.",
-      "keywords": "FAQ, häufige Fragen, Pflegeleistungen, Kosten, Integra"
-    },    "legal": {
+      "description": "Häufige Fragen ambulante Pflege Dortmund: Kosten, Pflegegrad, SGB XI Leistungen ✓ Krankenkassen ✓ Hausbesuche ✓ Alle Antworten auf einen Blick",
+      "keywords": "ambulante Pflege FAQ, Pflegegrad Fragen, SGB XI Leistungen, Krankenkassen Kosten, häusliche Pflege Infos Dortmund"
+    },"legal": {
       "description": "Rechtliche Informationen und Impressum der Integra Pflegedienstleistungen in Dortmund.",
       "keywords": "Impressum, rechtliche Informationen, Integra, Dortmund"
     },
@@ -58,9 +58,8 @@
     "address": "Flughafenstraße 404, 44328 Dortmund",
     "phone": "0231 9125000",
     "email": "info@pflegedienst-integra.de",    "schedule": "Mo bis Fr 09:00 - 15:00",
-    "buttonText": "Jetzt Buchen",
-    "buttonHref": "#contact",
-    "cta": "Jetzt Buchen",
+    "buttonText": "Kostenlose Beratung",
+    "cta": "Kostenlose Beratung",
     "socialLinks": {
       "facebook": "https://www.facebook.com/pflegedienst.integra.dortmund",
       "twitter": "https://www.facebook.com/pflegedienst.integra.dortmund",
@@ -93,29 +92,34 @@
     }
   },
 
-  "home": {
-    "heroVideo": {
+  "home": {    "heroVideo": {
       "videoSrc": "/assets/video/nurse_talking_senior_wheelchair_4.webm",
-      "subtitle": "Professionelle Pflege und Unterstützung",
-      "title": "Selbstbestimmt zu Hause leben",      "description": "Bei Integra steht das selbstbestimmte Leben unserer Klientinnen und Klienten im Mittelpunkt. Unsere qualifizierten Pflegekräfte bieten individuelle Betreuung, um eine hohe Lebensqualität in einer vertrauten Umgebung zu gewährleisten.",
-      "alignment": "left",
+      "subtitle": "Ambulanter Pflegedienst Dortmund • Wir kommen zu Ihnen",
+      "title": "Häusliche Pflege - Zu Hause betreut",
+      "description": "Unser ambulanter Pflegedienst kommt direkt zu Ihnen nach Hause. Grundpflege, häusliche Krankenpflege und Betreuung in Ihrer vertrauten Umgebung - zugelassen bei allen Krankenkassen in Dortmund und Umgebung.",      "alignment": "left",
       "textColor": "text-deep-blue",
-      "buttonText": "Jetzt Termin buchen",
+      "buttonText": "Kostenlose Pflegeberatung",
       "buttonHref": "#contact",
       "buttonSize": "medium",
       "buttonColor": "primary"
-    },
-    "about": {
+    },    "about": {
       "services": [
-        "Häusliche Pflege",
-        "Medizinische Versorgung",
-        "Ganzheitliche Betreuung"
+        "Ambulante Grundpflege",
+        "Häusliche Krankenpflege",
+        "Mobile Betreuung"
       ],
       "stats": [
         { "number": "1k+", "label": "Betreute Personen" },
-        { "number": "10+", "label": "Jahre Erfahrung" }      ],
-      "buttonText": "Jetzt Termin buchen",
-      "buttonHref": "#contact",
+        { "number": "10+", "label": "Jahre Erfahrung" }
+      ],
+      "credentials": [
+        "✓ SGB XI & SGB V zugelassen",
+        "✓ Alle Krankenkassen anerkannt",
+        "✓ MDK-geprüfte Qualität", 
+        "✓ Dortmund + Umgebung abgedeckt"
+      ],
+      "serviceAreas": "Dortmund-Scharnhorst, Dortmund-Nord, Dortmund-Ost, Lünen, Kamen, Bergkamen, Schwerte",
+      "buttonText": "Kostenlose Pflegeberatung",
       "description": "Integra bietet maßgeschneiderte Pflege, die auf die individuellen Bedürfnisse unserer Klientinnen und Klienten abgestimmt ist. Unser Ziel ist es, die Unabhängigkeit und Lebensqualität der Menschen zu fördern.",
       "phoneNumber": "0231 9125000"
     },
@@ -126,12 +130,11 @@
       { "text": "Ganzheitliche Pflege", "icon": "fa-solid fa-heart-pulse" },
       { "text": "Vertrauen", "icon": "fa-solid fa-handshake" },
       { "text": "Kompetenz", "icon": "fa-solid fa-user-doctor" }
-    ],
-    "experience": {
-      "heading": "Warum Integra?",
-      "title": "Erfahrene Pflegekräfte",
-      "description": "Mit über 10 Jahren Erfahrung verstehen wir die einzigartigen Bedürfnisse unserer Klientinnen und Klienten. Unser Team bietet nicht nur professionelle Pflege, sondern auch emotionale Unterstützung und Begleitung im Alltag.",
-      "buttonText": "Mehr erfahren",
+    ],    "experience": {
+      "heading": "Warum Integra Dortmund?",
+      "title": "Ihr ambulanter Pflegedienst vor Ort",
+      "description": "Seit über 10 Jahren sind wir in Dortmund für Sie da. Unser ambulantes Pflegeteam kommt zu Ihnen nach Hause - von Scharnhorst bis Dortmund-Ost. Kurze Anfahrtswege, persönliche Betreuung.",
+      "buttonText": "Pflegeberatung anfordern",
       "icontext": "Unsere Leistungen"
     },
     "imageCarousel": {
@@ -164,11 +167,10 @@
           "text": "Sicherheitsbesuche"
         }
       ]
-    },
-    "formSection": {
-      "subtitle": "Kontaktieren Sie uns",
-      "title": "Wir sind für Sie da - jederzeit",
-      "description": "Haben Sie Fragen zu unseren Leistungen oder möchten Sie eine individuelle Beratung? Unser Team steht Ihnen jederzeit zur Verfügung.",
+    },    "formSection": {
+      "subtitle": "Kostenlose Pflegeberatung zu Hause",
+      "title": "Wir kommen zu Ihnen - kostenfrei & unverbindlich",
+      "description": "Haben Sie Fragen zu Pflegegrad, Krankenkassen-Leistungen oder unserem ambulanten Service? Unser Beratungsteam kommt gerne zu Ihnen nach Hause - in ganz Dortmund und Umgebung!",
       "image": "/assets/img/shot_of_a_nurse_2.webp",
       "contactForm": {
         "title": "Ihre Fragen<br>Unser Expertenrat!",
@@ -196,12 +198,11 @@
         "textareaPlaceholder": "Ihre Nachricht",
         "buttonText": "Absenden"
       }
-    },
-    "location": {
-      "subtitle": "Unsere Standorte",
-      "title": "Pflege in Ihrer Nähe",
-      "description": "Integra ist in verschiedenen Regionen vertreten, um eine qualitativ hochwertige und flächendeckende Versorgung zu gewährleisten. Unser Hauptsitz befindet sich in Dortmund.",
-      "city": "Scharnhorst Dortmund",
+    },    "location": {
+      "subtitle": "Ambulanter Pflegedienst vor Ort",
+      "title": "Wir kommen zu Ihnen in ganz Dortmund",
+      "description": "Von unserem Standort in Dortmund-Scharnhorst erreichen wir Sie schnell: Dortmund-Nord, Dortmund-Ost, Hombruch, Huckarde sowie Lünen, Kamen und Bergkamen. Kurze Anfahrtswege für optimale Betreuung.",
+      "city": "Scharnhorst Dortmund - Zentral für alle Stadtteile",
       "buttonText": "Standort anzeigen",
       "stats": [
         { "value": "10+", "label": "Jahre Erfahrung" },
@@ -320,50 +321,50 @@
         "Sicherheit und Geborgenheit",
         "24/7 Pflegepersonal",
         "Entspannungsprogramme",
-        "Familiäres Umfeld"      ],
+        "Familiäres Umfeld"
+      ],
       "buttonText": "Mehr erfahren",
-      "buttonLink": "#services",
+      "buttonLink": "/services",
       "mainImage": "/assets/img/nurse_woman_doctor_medica.webp",
       "overlayImage": "/assets/img/senior_woman_nurse.webp"
-    },
-    "discoverIcons": {
-      "subtitle": "Unsere Pflegeangebote",
-      "title": "Individuelle Leistungen",
+    },    "discoverIcons": {
+      "subtitle": "Unsere ambulanten Pflegeleistungen",
+      "title": "Pflege direkt bei Ihnen zu Hause",
       "features": [
         {
-          "icon": "bed",
-          "title": "Komfortable Wohnräume",
-          "description": "Barrierefreie und gemütliche Zimmer für unsere Klientinnen und Klienten.",
+          "icon": "home",
+          "title": "Häusliche Grundpflege",
+          "description": "Körperpflege, Anziehen und Mobilität direkt in Ihrem Zuhause.",
           "number": "01"
         },
         {
-          "icon": "utensils",
-          "title": "Gesunde Ernährung",
-          "description": "Wir bieten ausgewogene, nährstoffreiche Mahlzeiten für eine gesunde Lebensweise.",
+          "icon": "medical-kit",
+          "title": "Häusliche Krankenpflege",
+          "description": "Medikamente, Verbände, Injektionen - medizinische Versorgung zu Hause.",
           "number": "02"
         },
         {
           "icon": "shield-alt",
-          "title": "Sicherheitsmaßnahmen",
-          "description": "Unsere Einrichtung verfügt über modernste Sicherheitsvorkehrungen für den Schutz unserer Klientinnen und Klienten.",
+          "title": "24h Rufbereitschaft",
+          "description": "Bei Notfällen sind wir für Sie erreichbar - Sicherheit rund um die Uhr.",
           "number": "03"
         },
         {
-          "icon": "seedling",
-          "title": "Gedächtnispflege",
-          "description": "Spezielle Programme für Senioren mit Gedächtnisproblemen und Demenz.",
+          "icon": "brain",
+          "title": "Demenzbetreuung zu Hause",
+          "description": "Spezialisierte Betreuung für Menschen mit Demenz in vertrauter Umgebung.",
           "number": "04"
         },
         {
-          "icon": "ambulance",
-          "title": "Transportdienste",
-          "description": "Unterstützung bei Arztbesuchen und anderen wichtigen Terminen außerhalb der Einrichtung.",
+          "icon": "car",
+          "title": "Mobile Pflegekräfte",
+          "description": "Unser Team kommt zu Ihnen - kurze Anfahrtswege in ganz Dortmund.",
           "number": "05"
         },
         {
           "icon": "heart",
-          "title": "Emotionale Unterstützung",
-          "description": "Unser Team bietet emotionale und spirituelle Unterstützung, um die psychische Gesundheit zu fördern.",
+          "title": "Persönliche Bezugspflege",
+          "description": "Ihre feste Pflegekraft kennt Sie und Ihre Bedürfnisse ganz genau.",
           "number": "06"
         }
       ]
@@ -377,17 +378,16 @@
         { "label": "Startseite", "url": "/" },
         { "label": "Leistungen", "url": "/services" }
       ]
-    },
-    "discoverIcons": {
-      "title": "Unsere Leistungen Entdecken",
-      "subtitle": "Qualitative Pflege",
+    },    "discoverIcons": {
+      "title": "Ambulante Pflegeleistungen entdecken",
+      "subtitle": "Professionelle Pflege zu Hause",
       "icons": [
-        { "icon": "fa-solid fa-heart", "text": "Mitfühlende Pflege" },
-        { "icon": "fa-solid fa-home", "text": "Heimähnliche Umgebung" },
-        { "icon": "fa-solid fa-utensils", "text": "Nahrhafte Mahlzeiten" },
-        { "icon": "fa-solid fa-dumbbell", "text": "Aktive Betreuung" },
-        { "icon": "fa-solid fa-chess", "text": "Mentale Anregung" },
-        { "icon": "fa-solid fa-users", "text": "Soziale Interaktion" }
+        { "icon": "fa-solid fa-heart", "text": "Grundpflege zu Hause" },
+        { "icon": "fa-solid fa-home", "text": "Vertraute Umgebung" },
+        { "icon": "fa-solid fa-pills", "text": "Medikamente richten" },
+        { "icon": "fa-solid fa-bandage", "text": "Verbandswechsel" },
+        { "icon": "fa-solid fa-syringe", "text": "Injektionen" },
+        { "icon": "fa-solid fa-users", "text": "Bezugspflege" }
       ]
     },
     "servicesVideo": {
@@ -448,31 +448,30 @@
       "title": "Wilkommen bei Integra",
       "subtitle": "Unser Standort",
       "description": "Wir befinden uns in Dortmund Scharnhorst. Besuchen Sie uns oder nehmen Sie Kontakt auf, um mehr über unsere Pflegedienste zu erfahren.",
-      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.1646759155656!2d7.534846376966431!3d51.54687930781805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b9112207af117d%3A0x91c056aa0191090f!2sPflegedienst%20Integra%20Gerling%20GmbH!5e0!3m2!1sde!2sde!4v1725482670831!5m2!1sde!2sde"
-    },
-    "contactText": {
-      "subtitle": "Kontakt aufnehmen",
-      "title": "Wir sind für Sie da!",
-      "description": "Haben Sie Fragen zu unseren Pflegediensten? Kontaktieren Sie uns direkt oder über unser Kontaktformular. Wir melden uns zeitnah bei Ihnen.",      "contactOptions": [
+      "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2481.1646759155656!2d7.534846376966431!3d51.54687930781805!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47b9112207af117d%3A0x91c056aa0191090f!2sPflegedienst%20Integra%20Gerling%20GmbH!5e0!3m2!1ses!2sde!4v1725482670831!5m2!1ses!2sde"
+    },    "contactText": {
+      "subtitle": "Ambulanter Pflegedienst Dortmund",
+      "title": "Kostenlose Pflegeberatung bei Ihnen zu Hause!",
+      "description": "Sie wohnen in Dortmund oder Umgebung? Unser Beratungsteam kommt gerne zu Ihnen nach Hause - kostenfrei und unverbindlich. Wir beraten Sie zu Pflegegrad, Krankenkassen-Leistungen und unserem ambulanten Service.",      "contactOptions": [
         {
           "icon": "location",
           "title": "Unser Standort",
-          "description": "Flughafenstraße 404, 44328 Dortmund"
+          "description": "Flughafenstraße 404, 44328 Dortmund-Scharnhorst"
         },
         {
           "icon": "mobilePhone",
-          "title": "Rufen Sie uns an",
-          "description": "0231 9125000"
+          "title": "Sofort erreichbar",
+          "description": "0231 9125000 (Mo-Fr 9-15h + Notfall 24/7)"
         },
         {
           "icon": "envelope",
-          "title": "Schreiben Sie uns",
+          "title": "E-Mail Anfrage",
           "description": "info@pflegedienst-integra.de"
         },
         {
           "icon": "clock",
-          "title": "Öffnungszeiten",
-          "description": "Mo-Fr: 09:00-15:00 Uhr | Notfälle: 24/7"
+          "title": "Hausbesuche",
+          "description": "Kostenlose Beratung bei Ihnen zu Hause"
         }
       ],
       "contactForm": {
@@ -522,30 +521,29 @@
         { "label": "Startseite", "url": "/" },
         { "label": "FAQ", "url": "/faq" }
       ]
-    },
-    "faqContent": {
-      "title": "Häufige Fragen",
-      "subtitle": "Antworten auf Ihre Fragen zu unseren Dienstleistungen",
+    },    "faqContent": {
+      "title": "Häufige Fragen zum ambulanten Pflegedienst",
+      "subtitle": "Alles über häusliche Pflege in Dortmund",
       "faqItems": [
         {
-          "question": "Welche Pflegeleistungen bieten Sie an?",
-          "answer": "Wir bieten eine umfassende Betreuung an, darunter häusliche Pflege, medizinische Versorgung und Intensivpflege. Unsere Dienstleistungen sind individuell an die Bedürfnisse unserer Klienten angepasst."
+          "question": "Was ist ambulante Pflege und wie funktioniert sie?",
+          "answer": "Ambulante Pflege bedeutet, dass unsere Pflegekräfte zu Ihnen nach Hause kommen. Wir bieten Grundpflege (Körperpflege, Anziehen) und häusliche Krankenpflege (Medikamente, Verbände, Injektionen) direkt in Ihrer vertrauten Umgebung."
         },
         {
-          "question": "Wie erkenne ich, ob mein Angehöriger Pflege benötigt?",
-          "answer": "Anzeichen sind unter anderem Schwierigkeiten bei alltäglichen Aufgaben, Vergesslichkeit oder Verhaltensänderungen. Wir bieten eine kostenlose Beratung an, um den Pflegebedarf zu ermitteln."
+          "question": "Welche Gebiete in Dortmund betreuen Sie?",
+          "answer": "Wir sind in ganz Dortmund für Sie da: Scharnhorst, Nord, Ost, Hombruch, Huckarde. Außerdem betreuen wir Lünen, Kamen, Bergkamen und Schwerte. Kurze Anfahrtswege garantiert!"
         },
         {
-          "question": "Welche Qualifikationen haben Ihre Pflegekräfte?",
-          "answer": "Unsere Pflegekräfte sind ausgebildete Fachkräfte mit langjähriger Erfahrung. Sie durchlaufen regelmäßige Schulungen, um stets die beste Betreuung zu gewährleisten."
+          "question": "Übernimmt die Krankenkasse die Kosten für ambulante Pflege?",
+          "answer": "Ja! Wir sind bei allen Krankenkassen zugelassen. Grundpflege wird über die Pflegekasse (bei Pflegegrad), häusliche Krankenpflege über die Krankenkasse abgerechnet. Wir unterstützen Sie bei allen Anträgen."
         },
         {
-          "question": "Kann ich die Kosten für Pflege durch eine Versicherung decken?",
-          "answer": "Ja, wir arbeiten eng mit Pflegeversicherungen zusammen und unterstützen Sie bei der Abwicklung der Formalitäten."
+          "question": "Wie oft kommen Sie zu mir nach Hause?",
+          "answer": "Je nach Bedarf: von einmal wöchentlich bis zu mehrmals täglich. Häufig morgens für Grundpflege, mittags für Medikamente. Wir passen uns Ihrem Rhythmus an."
         },
         {
-          "question": "Bieten Sie Ausbildungsmöglichkeiten an?",
-          "answer": "Ja, bei Pflegedienst Integra bieten wir Ausbildungsplätze für angehende Pflegefachkräfte an. Wenn Sie Interesse an einer Ausbildung haben, können Sie sich über unser Kontaktformular bewerben. Wir unterstützen Sie bei Ihrer Karriere in der Pflege."
+          "question": "Was kostet eine kostenlose Pflegeberatung?",
+          "answer": "Unsere Erstberatung bei Ihnen zu Hause ist komplett kostenfrei und unverbindlich. Wir kommen zu Ihnen, beraten ausführlich und erstellen einen individuellen Pflegeplan."
         }
       ],
       "contactForm": {

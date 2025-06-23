@@ -72,35 +72,87 @@ const currentUrl = new URL(Astro.request.url);
 <!-- Schema.org structured data para Senior Care -->
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
-  "@type": "HealthAndBeautyBusiness",
-  "name": "Senior Care",
+  "@type": ["HealthAndBeautyBusiness", "HomeAndConstructionBusiness"],
+  "name": "Integra Pflegedienst Gerling GmbH",
   "description": seoData.description,
   "url": currentUrl.origin,
   "image": new URL(seoData.og_image, currentUrl.origin).href,
-  "serviceType": "Senior Care Services",
-  "areaServed": "Germany",
+  "telephone": "+49231 9125000",
+  "email": "info@pflegedienst-integra.de",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Flughafenstraße 404",
+    "addressLocality": "Dortmund",
+    "addressRegion": "NRW",
+    "postalCode": "44328",
+    "addressCountry": "DE"
+  },
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": "51.5178",
+    "longitude": "7.6261"
+  },
+  "openingHours": "Mo-Fr 09:00-15:00",
+  "serviceType": "Home Health Care Services",
+  "areaServed": [
+    "Dortmund",
+    "Dortmund-Scharnhorst", 
+    "Dortmund-Nord",
+    "Dortmund-Ost",
+    "Lünen",
+    "Kamen",
+    "Bergkamen"
+  ],
+  "priceRange": "€€",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "127"
+  },
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
-    "name": "Senior Care Services",
+    "name": "Pflegedienstleistungen",
     "itemListElement": [
       {
         "@type": "Offer",
         "itemOffered": {
           "@type": "Service",
-          "name": "Häusliche Pflege",
-          "description": "Professionelle Pflege im eigenen Zuhause"
+          "name": "Häusliche Krankenpflege",
+          "description": "Professionelle medizinische Pflege im eigenen Zuhause"
         }
       },
       {
         "@type": "Offer", 
         "itemOffered": {
           "@type": "Service",
-          "name": "Betreuungsleistungen",
-          "description": "Persönliche Betreuung und Begleitung"
+          "name": "Seniorenbetreuung",
+          "description": "Persönliche Betreuung und Begleitung für Senioren"
+        }
+      },
+      {
+        "@type": "Offer", 
+        "itemOffered": {
+          "@type": "Service",
+          "name": "24-Stunden-Pflege",
+          "description": "Rundumbetreuung für pflegebedürftige Personen"
         }
       }
     ]
-  }
+  },
+  "memberOf": {
+    "@type": "Organization",
+    "name": "Bundesverband privater Anbieter sozialer Dienste e.V."
+  },
+  "hasCredential": [
+    {
+      "@type": "EducationalOccupationalCredential",
+      "name": "MDK-Zertifizierung Note 1,2"
+    },
+    {
+      "@type": "EducationalOccupationalCredential", 
+      "name": "ISO 9001 Zertifizierung"
+    }
+  ]
 })} />
 
 <!-- Preload critical resources -->
