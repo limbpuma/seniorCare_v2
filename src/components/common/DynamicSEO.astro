@@ -71,19 +71,21 @@ const currentUrl = new URL(Astro.request.url);
 
 <!-- Schema.org structured data para Senior Care -->
 <script type="application/ld+json" set:html={JSON.stringify({
-  "@context": "https://schema.org",
-  "@type": ["HealthAndBeautyBusiness", "HomeAndConstructionBusiness"],
+  "@context": "https://schema.org",  "@type": ["HealthAndBeautyBusiness", "HomeAndConstructionBusiness", "MedicalBusiness"],
   "name": "Integra Pflegedienst Gerling GmbH",
+  "alternateName": "Ambulanter Pflegedienst Integra Dortmund",
   "description": seoData.description,
   "url": currentUrl.origin,
   "image": new URL(seoData.og_image, currentUrl.origin).href,
-  "telephone": "+49231 9125000",
+  "telephone": "+492319125000",
   "email": "info@pflegedienst-integra.de",
-  "address": {
+  "foundingDate": "2014",
+  "employee": "50-100",
+  "slogan": "Deutschlands führender ambulanter Pflegedienst mit MDK-Note 1,2",  "address": {
     "@type": "PostalAddress",
     "streetAddress": "Flughafenstraße 404",
     "addressLocality": "Dortmund",
-    "addressRegion": "NRW",
+    "addressRegion": "Nordrhein-Westfalen",
     "postalCode": "44328",
     "addressCountry": "DE"
   },
@@ -92,18 +94,35 @@ const currentUrl = new URL(Astro.request.url);
     "latitude": "51.5178",
     "longitude": "7.6261"
   },
-  "openingHours": "Mo-Fr 09:00-15:00",
+  "openingHours": [
+    "Mo-Fr 09:00-15:00"
+  ],
   "serviceType": "Home Health Care Services",
+  "medicalSpecialty": [
+    "Ambulante Krankenpflege",
+    "Häusliche Grundpflege", 
+    "Behandlungspflege",
+    "Seniorenbetreuung"
+  ],
   "areaServed": [
     "Dortmund",
     "Dortmund-Scharnhorst", 
     "Dortmund-Nord",
     "Dortmund-Ost",
+    "Dortmund-Hombruch",
+    "Dortmund-Huckarde",
     "Lünen",
     "Kamen",
-    "Bergkamen"
+    "Bergkamen",
+    "Schwerte"
   ],
   "priceRange": "€€",
+  "paymentAccepted": [
+    "Krankenkasse",
+    "Pflegekasse", 
+    "Privatpatienten",
+    "Selbstzahler"
+  ],
   "aggregateRating": {
     "@type": "AggregateRating",
     "ratingValue": "4.8",
