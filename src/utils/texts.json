@@ -57,9 +57,9 @@
   },  "header": {
     "address": "Flughafenstraße 404, 44328 Dortmund",
     "phone": "0231 9125000",
-    "email": "info@pflegedienst-integra.de",
-    "schedule": "Mo bis Fr 09:00 - 15:00",
+    "email": "info@pflegedienst-integra.de",    "schedule": "Mo bis Fr 09:00 - 15:00",
     "buttonText": "Jetzt Buchen",
+    "buttonHref": "#contact",
     "cta": "Jetzt Buchen",
     "socialLinks": {
       "facebook": "https://www.facebook.com/pflegedienst.integra.dortmund",
@@ -97,12 +97,11 @@
     "heroVideo": {
       "videoSrc": "/assets/video/nurse_talking_senior_wheelchair_4.webm",
       "subtitle": "Professionelle Pflege und Unterstützung",
-      "title": "Selbstbestimmt zu Hause leben",
-      "description": "Bei Integra steht das selbstbestimmte Leben unserer Klientinnen und Klienten im Mittelpunkt. Unsere qualifizierten Pflegekräfte bieten individuelle Betreuung, um eine hohe Lebensqualität in einer vertrauten Umgebung zu gewährleisten.",
+      "title": "Selbstbestimmt zu Hause leben",      "description": "Bei Integra steht das selbstbestimmte Leben unserer Klientinnen und Klienten im Mittelpunkt. Unsere qualifizierten Pflegekräfte bieten individuelle Betreuung, um eine hohe Lebensqualität in einer vertrauten Umgebung zu gewährleisten.",
       "alignment": "left",
       "textColor": "text-deep-blue",
       "buttonText": "Jetzt Termin buchen",
-      "buttonHref": "/contact",
+      "buttonHref": "#contact",
       "buttonSize": "medium",
       "buttonColor": "primary"
     },
@@ -114,9 +113,9 @@
       ],
       "stats": [
         { "number": "1k+", "label": "Betreute Personen" },
-        { "number": "10+", "label": "Jahre Erfahrung" }
-      ],
+        { "number": "10+", "label": "Jahre Erfahrung" }      ],
       "buttonText": "Jetzt Termin buchen",
+      "buttonHref": "#contact",
       "description": "Integra bietet maßgeschneiderte Pflege, die auf die individuellen Bedürfnisse unserer Klientinnen und Klienten abgestimmt ist. Unser Ziel ist es, die Unabhängigkeit und Lebensqualität der Menschen zu fördern.",
       "phoneNumber": "0231 9125000"
     },
@@ -321,10 +320,9 @@
         "Sicherheit und Geborgenheit",
         "24/7 Pflegepersonal",
         "Entspannungsprogramme",
-        "Familiäres Umfeld"
-      ],
+        "Familiäres Umfeld"      ],
       "buttonText": "Mehr erfahren",
-      "buttonLink": "/services",
+      "buttonLink": "#services",
       "mainImage": "/assets/img/nurse_woman_doctor_medica.webp",
       "overlayImage": "/assets/img/senior_woman_nurse.webp"
     },

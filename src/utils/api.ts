@@ -138,9 +138,8 @@ class SeniorCareAPI {
       email_check: ''
     };
 
-    try {
-      // Use environment variable or fallback to NEW PHP system
-      const emailApiUrl = import.meta.env?.PUBLIC_EMAIL_API_URL || 'http://localhost:27720/php-mail-system/send-email.php';
+    try {      // Use environment variable or fallback to NEW PHP system
+      const emailApiUrl = import.meta.env?.PUBLIC_EMAIL_API_URL || 'http://localhost/php-mail-system/send-email.php';
       
       const response = await fetch(emailApiUrl, {
         method: 'POST',

@@ -32,6 +32,7 @@ if (useDynamicContent) {
 // Usar textos dinámicos o fallback a estáticos
 const phone = dynamicTexts?.header?.phone || headerTexts.phone;
 const ctaButton = dynamicTexts?.header?.cta_button || headerTexts.cta;
+const ctaHref = dynamicTexts?.header?.buttonHref || headerTexts.buttonHref || "#contact";
 
 // NAVEGACIÓN NATIVA DE ASTRO - Solo usando texts.json
 const NAVIGATION = navAnchors 
@@ -225,7 +226,7 @@ function isActiveLink(href: string, currentPath: string): boolean {
             class="hidden lg:inline-flex items-center text-xs md:text-sm lg:text-base py-2 px-2 md:px-3 lg:px-4 min-w-[80px] md:min-w-[100px] lg:min-w-[120px] xl:min-w-[140px]"
             variant="primary" 
             size="medium"
-            href={`tel:${phone}`}
+            href={ctaHref}
           >
             {ctaButton}
           </Button>

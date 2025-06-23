@@ -274,7 +274,7 @@ const getTextareaRows = () => {
 
     try {
       // Use environment variable or fallback to improved PHP system
-      const emailApiUrl = import.meta.env.PUBLIC_EMAIL_API_URL || 'http://localhost:27720/php-mail-system/send-email.php';
+      const emailApiUrl = import.meta.env.PUBLIC_EMAIL_API_URL || 'http://localhost/php-mail-system/send-email.php';
       
       // Send JSON data to improved PHP email system
       const response = await fetch(emailApiUrl, {

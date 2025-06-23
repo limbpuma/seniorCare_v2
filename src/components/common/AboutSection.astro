@@ -13,6 +13,7 @@ interface Props {
   services: string[];
   stats: Stat[];
   buttonText: string;
+  buttonHref?: string;
   description: string;
   phoneNumber: string;
   headingLevel?: 2 | 3 | 4 | 5 | 6;
@@ -23,6 +24,7 @@ const {
   services, 
   stats, 
   buttonText, 
+  buttonHref = "#contact",
   description, 
   phoneNumber = texts.header.phone, // Use real phone as default
   headingLevel = 2,
@@ -114,11 +116,16 @@ const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
           flex={true}
         >
           <i class="fa fa-phone text-primary-700" aria-hidden="true"></i>
-          {phoneNumber}
-        </Button>
-        <div class="flex items-center text-h5 font-medium mt-spacing-4 sm:mt-0">
+          {phoneNumber}        </Button>
+        <Button 
+          variant="primary" 
+          size="medium" 
+          href={buttonHref}
+          aria-label={buttonText}
+          flex={true}
+        >
           {buttonText}
-        </div>
+        </Button>
       </div>
     </div>
   </div>
