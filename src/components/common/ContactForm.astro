@@ -257,39 +257,46 @@ const getTextareaRows = () => {
       phone: formData.get("phone"),
       subject: formData.get("subject"),
       message: formData.get("message")
-    };
-
-    try {
-      const response = await fetch("http://localhost/AdminHub-PHP/src/api/contact.php", {
+    };    try {
+      // Use environment variable or fallback to localhost
+      const emailApiUrl = import.meta.env.PUBLIC_EMAIL_API_URL || 'http://localhost:8080/send-email.php';
+      
+      // Use the existing PHP email backend
+      const formDataToSend = new FormData();
+      formDataToSend.append('name', contactData.name as string);
+      formDataToSend.append('email', contactData.email as string);
+      formDataToSend.append('phone', contactData.phone as string || '');
+      formDataToSend.append('subject', contactData.subject as string);
+      formDataToSend.append('message', contactData.message as string);
+      
+      const response = await fetch(emailApiUrl, {
         method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest'
-        },
-        body: JSON.stringify(contactData),
-      });
+        body: formDataToSend,
+      });const result = await response.json();
 
-      const result = await response.json();
-
-      if (result.success) {
+      if (response.ok && result.success) {
         showModal(
           "Nachricht gesendet!",
           "Vielen Dank für Ihre Kontaktaufnahme. Wir werden uns bald bei Ihnen melden."
         );
         form.reset();
       } else {
-        const errorMessage = result.errors 
-          ? (Array.isArray(result.errors) ? result.errors.join(", ") : result.errors)
-          : result.error || "Unbekannter Fehler";
+        const errorMessage = result.error || "Unbekannter Fehler";
         showModal(
           "Fehler",
           "Beim Senden der Nachricht ist ein Fehler aufgetreten: " + errorMessage
         );
-      }    } catch (error) {
+      }      } catch (error) {
+      console.error('Contact form error:', error);
+      let errorMessage = "Ein unerwarteter Fehler ist aufgetreten.";
+      
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        errorMessage = "Verbindungsfehler: Email-Server nicht erreichbar. Bitte starten Sie den PHP-Server (siehe CONTACT_INTEGRATION_SETUP.md).";
+      }
+      
       showModal(
-        "Fehler",
-        "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
+        "Verbindungsfehler",
+        errorMessage + " Bitte versuchen Sie es später erneut."
       );
     }
   }

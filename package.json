@@ -4,8 +4,7 @@
   "version": "0.0.1",
   "engines": {
     "node": "18.x"
-  },
-  "scripts": {
+  },  "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
     "lint": "eslint .",
@@ -13,7 +12,9 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "test:nav": "astro dev & sleep 5 && tsx src/utils/test-navigation.ts; exit_code=$?; pkill -f 'astro dev'; exit $exit_code"
+    "test:nav": "astro dev & sleep 5 && tsx src/utils/test-navigation.ts; exit_code=$?; pkill -f 'astro dev'; exit $exit_code",
+    "email-server": "powershell -ExecutionPolicy Bypass -File start-email-server.ps1",
+    "email-server:bat": "start-email-server.bat"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",

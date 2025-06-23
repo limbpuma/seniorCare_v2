@@ -125,13 +125,37 @@ class SeniorCareAPI {
     // Note: texts.php returns direct object, not wrapped in APIResponse
     return this.request<SiteTexts>('/texts.php');
   }
-
-  // Submit contact form
+  // Submit contact form using the existing PHP email backend
   async submitContact(data: ContactFormData): Promise<APIResponse> {
-    return this.request<APIResponse>('/contact.php', {
-      method: 'POST',
-      body: JSON.stringify(data)
-    });
+    const formData = new FormData();
+    formData.append('name', data.name);
+    formData.append('email', data.email);
+    formData.append('phone', data.phone || '');
+    formData.append('subject', data.subject || 'Allgemeine Anfrage');
+    formData.append('message', data.message);
+
+    try {
+      const response = await fetch('http://localhost:8080/send-email.php', {
+        method: 'POST',
+        body: formData,
+      });
+
+      const result = await response.json();
+      
+      if (response.ok && result.success) {
+        return { success: true, message: 'Nachricht erfolgreich gesendet.' };
+      } else {
+        return { 
+          success: false, 
+          error: result.error || 'Unbekannter Fehler beim Senden der Nachricht.' 
+        };
+      }
+    } catch (error) {
+      return { 
+        success: false, 
+        error: 'Verbindungsfehler. Bitte versuchen Sie es später erneut.' 
+      };
+    }
   }
 
   // Get SEO data for specific page
