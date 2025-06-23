@@ -7,6 +7,7 @@ export interface ContactFormData {
   phone?: string;
   subject?: string;
   message: string;
+  email_check?: string; // Honeypot field for bot detection
 }
 
 export interface APIResponse<T = any> {
@@ -124,26 +125,40 @@ class SeniorCareAPI {
   async getTexts(): Promise<SiteTexts> {
     // Note: texts.php returns direct object, not wrapped in APIResponse
     return this.request<SiteTexts>('/texts.php');
-  }
-  // Submit contact form using the existing PHP email backend
+  }  // Submit contact form using the NEW PHP email system
   async submitContact(data: ContactFormData): Promise<APIResponse> {
-    const formData = new FormData();
-    formData.append('name', data.name);
-    formData.append('email', data.email);
-    formData.append('phone', data.phone || '');
-    formData.append('subject', data.subject || 'Allgemeine Anfrage');
-    formData.append('message', data.message);
+    // Prepare data for NEW PHP system (JSON format)
+    const contactData = {
+      name: data.name,
+      email: data.email,
+      phone: data.phone || '',
+      subject: data.subject || 'Allgemeine Anfrage',
+      message: data.message,
+      // Honeypot field - must be empty to pass bot detection
+      email_check: ''
+    };
 
     try {
-      const response = await fetch('http://localhost:8080/send-email.php', {
+      // Use environment variable or fallback to NEW PHP system
+      const emailApiUrl = import.meta.env?.PUBLIC_EMAIL_API_URL || 'http://localhost:27720/php-mail-system/send-email.php';
+      
+      const response = await fetch(emailApiUrl, {
         method: 'POST',
-        body: formData,
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify(contactData),
       });
 
       const result = await response.json();
       
       if (response.ok && result.success) {
-        return { success: true, message: 'Nachricht erfolgreich gesendet.' };
+        return { 
+          success: true, 
+          message: result.message || 'Nachricht erfolgreich gesendet.' 
+        };
       } else {
         return { 
           success: false, 
@@ -151,6 +166,7 @@ class SeniorCareAPI {
         };
       }
     } catch (error) {
+      console.error('Contact form submission error:', error);
       return { 
         success: false, 
         error: 'Verbindungsfehler. Bitte versuchen Sie es später erneut.' 
