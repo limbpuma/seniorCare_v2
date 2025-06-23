@@ -134,11 +134,10 @@ function isActiveLink(href: string, currentPath: string): boolean {
       </div>
     </div>
   </div>
-
   <!-- Main Navigation -->
   <nav class="bg-white/90 backdrop-blur-md border-b border-primary/10 shadow-sm">
     <div class="max-w-7xl mx-auto">
-      <div class="flex items-center justify-between py-2 px-3 md:px-2 lg:px-4 min-h-[3rem] md:min-h-[4rem] lg:min-h-[4.5rem]">
+      <div class="flex items-center justify-between py-2 px-2 md:px-3 lg:px-4 min-h-[3rem] md:min-h-[4rem] lg:min-h-[4.5rem] gap-2 md:gap-4">
         
         <!-- Logo Section -->
         <div class="flex-shrink-0 flex items-center">
@@ -149,18 +148,54 @@ function isActiveLink(href: string, currentPath: string): boolean {
           >
             <Logo class="h-8 md:h-10 lg:h-12 w-auto group-hover:scale-105 transition-transform duration-200" color="dark" />
           </a>
-        </div>        <!-- Desktop Navigation - HTML directo de Astro -->
-        <div class="hidden md:flex items-center justify-center">
-          <ul class="flex items-center gap-6 lg:gap-8">
-            {NAVIGATION.map((link: NavigationLink) => {
+        </div>        <!-- 
+          SISTEMA DE PRIORIZACIÓN RESPONSIVE PARA NAVEGACIÓN:
+          
+          🔥 ALTA PRIORIDAD (siempre visible):
+          - Services: Contenido principal del negocio
+          - Contact: Acción clave para conversión
+          
+          🟡 MEDIA PRIORIDAD:
+          - About: Solo desde MD+ (768px+)
+          
+          🟢 BAJA PRIORIDAD:
+          - FAQ: Solo desde LG+ (1024px+)
+          - Home: Solo desde XL+ (1280px+, logo cumple esta función)
+          
+          Este sistema garantiza que los links más importantes siempre sean visibles
+          y que la navegación nunca se desborde en una sola línea.
+        -->
+        <!-- Desktop Navigation - HTML directo de Astro con priorización responsive -->
+        <div class="hidden md:flex items-center justify-center flex-1 min-w-0">
+          <ul class="flex items-center gap-1 md:gap-2 lg:gap-4 xl:gap-6">
+            {NAVIGATION.map((link: NavigationLink, index: number) => {
               const isActive = isActiveLink(link.href, currentPath);
+              const isHome = link.href === "/" || link.name === headerTexts.nav.home;
+              const isAbout = link.name === headerTexts.nav.about;
+              const isServices = link.name === headerTexts.nav.services;
+              const isContact = link.name === headerTexts.nav.contact;
+              const isFaq = link.name === headerTexts.nav.faq;
+              
+              // Sistema de priorización por tamaño de pantalla
+              let responsiveClasses = "";
+              if (isHome) {
+                responsiveClasses = "hidden xl:block"; // Solo en XL+
+              } else if (isFaq) {
+                responsiveClasses = "hidden lg:block"; // Solo en LG+
+              } else if (isAbout) {
+                responsiveClasses = "hidden md:block"; // Desde MD+
+              } else {
+                responsiveClasses = "block"; // Siempre visible (Services, Contact)
+              }
+              
               return (
-                <li>
+                <li class={responsiveClasses}>
                   <a
                     href={link.href}
                     class={`
-                      relative px-3 py-2 text-base lg:text-lg font-medium
-                      transition-all duration-200 ease-out
+                      relative px-1.5 md:px-2 lg:px-3 xl:px-4 py-2 
+                      text-xs md:text-sm lg:text-base xl:text-lg font-medium
+                      transition-all duration-200 ease-out whitespace-nowrap
                       focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg
                       min-h-[44px] flex items-center
                       ${isActive 
@@ -185,10 +220,9 @@ function isActiveLink(href: string, currentPath: string): boolean {
         </div>
 
         <!-- CTA Button and Mobile Menu Toggle -->
-        <div class="flex items-center gap-2 md:gap-4 shrink-0">
-          <!-- CTA Button - Desktop -->
+        <div class="flex items-center gap-2 md:gap-4 shrink-0">          <!-- CTA Button - Desktop con priorización responsive -->
           <Button 
-            class="hidden md:inline-flex items-center text-sm lg:text-base py-2 px-3 lg:px-4 min-w-[120px] lg:min-w-[140px]" 
+            class="hidden lg:inline-flex items-center text-xs md:text-sm lg:text-base py-2 px-2 md:px-3 lg:px-4 min-w-[80px] md:min-w-[100px] lg:min-w-[120px] xl:min-w-[140px]"
             variant="primary" 
             size="medium"
             href={`tel:${phone}`}
