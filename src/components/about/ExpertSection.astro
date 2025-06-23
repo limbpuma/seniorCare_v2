@@ -3,6 +3,7 @@ import Button from "../common/Button.astro";
 import Icon from "../common/Icon.astro";
 import TextBlock from "../common/TextBlock.astro";
 import Section from "../common/Section.astro";
+import OptimizedImage from "../common/OptimizedImage.astro";
 
 interface Props {
   subtitle: string;
@@ -66,18 +67,23 @@ const {
             {buttonText}
           </Button>
         </div>
-      </div>
-
-      <div class="w-full lg:w-1/2 relative">
+      </div>      <div class="w-full lg:w-1/2 relative">
         <div class="relative aspect-w-16 aspect-h-9">
-          <img
+          <OptimizedImage
             src={mainImage}
             alt="Main Image"
+            width={800}
+            height={600}
+            sizes="(max-width: 1024px) 100vw, 50vw"
             class="w-full h-full object-cover rounded-lg shadow-lg"
             loading="lazy"
           />
-          <img
-            src={overlayImage}            alt="Overlay Image"
+          <OptimizedImage
+            src={overlayImage}
+            alt="Overlay Image"
+            width={480}
+            height={360}
+            sizes="(max-width: 1024px) 60vw, 30vw"
             class="absolute bottom-0 right-0 w-3/5 h-3/5 object-cover  shadow-lg border-8 border-white transform translate-y-1/4 translate-x-1/6 my-12"
             loading="lazy"
             />

@@ -10,11 +10,6 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<!-- Importar estilos específicos optimizados -->
-<style>
-  @import '../../styles/accessibility-optimized.css';
-</style>
-
 <!-- Widget de Accesibilidad - Optimizado para Astro + Tailwind -->
 <div 
   class={`accessibility-widget fixed bottom-5 right-5 z-50 font-sans ${className || ''}`} 

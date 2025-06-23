@@ -3,6 +3,7 @@ import Button from "./Button.astro";
 import Icon from "../common/Icon.astro";
 import Section from "./Section.astro";
 import TextBlock from "./TextBlock.astro";
+import OptimizedImage from "./OptimizedImage.astro";
 interface Props {
   srcs: string[];
   subtitle: string;
@@ -55,11 +56,13 @@ id="experience-section"
                   : index === 4
                     ? "col-span-2"
                     : ""
-              }`}
-            >              <img
+              }`}            >              <OptimizedImage
                 src={src}
+                alt={`Gallery image ${index + 1}`}
+                width={400}
+                height={400}
+                sizes="(max-width: 768px) 50vw, 25vw"
                 class="absolute inset-0 w-full h-full object-cover rounded-xl"
-                alt=""
                 loading="lazy"
               />
               <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 rounded-xl"></div>
@@ -69,45 +72,57 @@ id="experience-section"
       </div>
 
       <div class="hidden md:grid md:grid-cols-3 gap-4 h-[600px]">
-        <div class="grid grid-rows-[7fr,3fr] gap-4">
-          <div class="relative group overflow-hidden rounded-xl">            <img
+        <div class="grid grid-rows-[7fr,3fr] gap-4">          <div class="relative group overflow-hidden rounded-xl">            <OptimizedImage
               src={srcs[0]}
+              alt="Gallery image 1 - Senior care services"
+              width={600}
+              height={700}
+              sizes="(max-width: 1024px) 50vw, 33vw"
               class="absolute inset-0 w-full h-full object-cover rounded-xl"
-              alt="image 1 section gallery"
               loading="lazy"
             />            <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 rounded-xl"></div>
-          </div>          <div class="relative group overflow-hidden rounded-xl">            <img
+          </div>          <div class="relative group overflow-hidden rounded-xl">            <OptimizedImage
               src={srcs[1]}
+              alt="Gallery image 2 - Senior care services"
+              width={600}
+              height={300}
+              sizes="(max-width: 1024px) 50vw, 33vw"
               class="absolute inset-0 w-full h-full object-cover rounded-xl"
-              alt="image 2 section gallery"
               loading="lazy"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 rounded-xl"></div>
-          </div>
-        </div>        <div class="relative group overflow-hidden rounded-xl">
-          <img
+          </div>        </div>        <div class="relative group overflow-hidden rounded-xl">
+          <OptimizedImage
             src={srcs[2]}
+            alt="Gallery image 3 - Senior care services"
+            width={600}
+            height={600}
+            sizes="(max-width: 1024px) 50vw, 33vw"
             class="absolute inset-0 w-full h-full object-cover rounded-xl"
-            alt="image 3 section gallery"
             loading="lazy"
           />
           <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 rounded-xl"></div>
         </div>
         <div class="grid grid-rows-[3fr,7fr] gap-4">
           <div class="relative group overflow-hidden rounded-xl">
-            <img
+            <OptimizedImage
               src={srcs[3]}
+              alt="Gallery image 4 - Senior care services"
+              width={600}
+              height={300}
+              sizes="(max-width: 1024px) 50vw, 33vw"
               class="absolute inset-0 w-full h-full object-cover rounded-xl"
-              alt="image 4 section gallery"
               loading="lazy"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 rounded-xl"></div>
-          </div>
-          <div class="relative group overflow-hidden rounded-xl">
-            <img
+          </div>          <div class="relative group overflow-hidden rounded-xl">
+            <OptimizedImage
               src={srcs[4]}
+              alt="Gallery image 5 - Senior care services"
+              width={600}
+              height={700}
+              sizes="(max-width: 1024px) 50vw, 33vw"
               class="absolute inset-0 w-full h-full object-cover rounded-xl"
-              alt="image 5 section gallery"
               loading="lazy"
             />
             <div class="absolute inset-0 bg-gradient-to-t from-deep-blue/30 via-transparent to-transparent opacity-0 group-hover:opacity-100 rounded-xl"></div>

@@ -54,11 +54,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      />
-    </noscript>    <!-- Core functionality modules -->
-    <script src="/src/utils/lazy-loader.js" type="module" is:inline></script>
-    <script src="/src/utils/intelligent-preloader.js" type="module" is:inline></script>
-    <script src="/src/utils/landing-page-navigator.js" type="module" is:inline></script>
+      />    </noscript>
     
     <!-- Mobile viewport height optimization -->
     <script is:inline>
@@ -590,13 +586,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
             }
           });        }
       }      // Create global instance
-      window.accessibilityManager = new AccessibilityManager();      // Initialize Enhanced Navigation Manager
-      import('/src/utils/enhanced-navigation-manager.js').then(_module => {
-        // Already initialized in the module, just ensure it's available
-        console.log('🚀 Enhanced Navigation Manager loaded');
-      }).catch(error => {
-        console.warn('Enhanced Navigation Manager not loaded:', error);
-      });
+      window.accessibilityManager = new AccessibilityManager();      // Enhanced Navigation Manager removed - using native Astro navigation
     </script>
   </body>
 </html>
@@ -831,13 +821,5 @@ main {
     initAnimations();
   }
   
-  // Link validation in development
-  if (import.meta.env.DEV) {
-    import('../utils/link-validator.ts').then(({ linkValidator }) => {
-      // Run validation after all content is loaded
-      setTimeout(() => {
-        linkValidator.logValidationResults();
-      }, 2000);
-    });
-  }
+  // Link validation removed - validator no longer needed
 </script>

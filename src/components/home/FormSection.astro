@@ -2,6 +2,7 @@
 import ContactForm from "../common/ContactForm.astro";
 import Section from "../common/Section.astro";
 import TextBlock from "../common/TextBlock.astro";
+import OptimizedImage from "../common/OptimizedImage.astro";
 interface Props {
   subtitle: string;
   title: string;
@@ -47,14 +48,16 @@ animation="fade-in"
           description={description}
           alignment="left"
           textColor="white"
-        />
-        <div
+        />        <div
           class="mt-6 sm:mt-8 md:mt-10 max-w-[638px] h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] mx-auto lg:mx-0 "
         >
-          <img
+          <OptimizedImage
             src={image}
-            class="object-cover w-full h-full rounded-lg shadow-lg"
             alt="Contact image"
+            width={638}
+            height={350}
+            sizes="(max-width: 1024px) 100vw, 638px"
+            class="object-cover w-full h-full rounded-lg shadow-lg"
             loading="lazy"
           />
         </div>

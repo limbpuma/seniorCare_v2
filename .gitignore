@@ -8,6 +8,9 @@ package-lock.json
 # generated types
 .astro/
 
+#references
+integra-old-on-php/
+
 # dependencies
 node_modules/
 

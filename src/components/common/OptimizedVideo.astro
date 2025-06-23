@@ -1,0 +1,79 @@
+---
+/**
+ * OptimizedVideo - Componente de video optimizado para Astro
+ * Soporte nativo para múltiples formatos y optimización de carga
+ */
+
+interface Props {
+  src: string | string[];
+  poster?: string;
+  width?: number;
+  height?: number;
+  class?: string;
+  autoplay?: boolean;
+  loop?: boolean;
+  muted?: boolean;
+  controls?: boolean;
+  playsinline?: boolean;
+  preload?: 'none' | 'metadata' | 'auto';
+  ariaLabel?: string;
+}
+
+const {
+  src,
+  poster,
+  width = 1920,
+  height = 1080,
+  class: className = '',
+  autoplay = false,
+  loop = false,
+  muted = false,
+  controls = false,
+  playsinline = true,
+  preload = 'metadata',
+  ariaLabel = 'Video content'
+} = Astro.props;
+
+// Convertir src a array si es string
+const sources = Array.isArray(src) ? src : [src];
+
+// Solo usar el source original - no generar formatos automáticamente
+// ya que puede crear URLs que no existen
+const videoSources = sources;
+
+// Obtener tipo MIME
+const getMimeType = (url: string) => {
+  if (url.includes('.webm')) return 'video/webm';
+  if (url.includes('.ogg') || url.includes('.ogv')) return 'video/ogg';
+  if (url.includes('.mov')) return 'video/quicktime';
+  return 'video/mp4';
+};
+---
+
+<video
+  width={width}
+  height={height}
+  class={className}
+  autoplay={autoplay}
+  loop={loop}
+  muted={muted}
+  controls={controls}
+  playsinline={playsinline}
+  preload={preload}
+  poster={poster}
+  aria-label={ariaLabel}
+  data-astro-optimized="true"
+>
+  {videoSources.map((source) => (
+    <source 
+      src={source} 
+      type={getMimeType(source)} 
+    />
+  ))}
+  
+  <!-- Fallback para navegadores sin soporte -->
+  <p>
+    Tu navegador no soporta el elemento video. 
+    <a href={videoSources[0]} download>Descargar video</a>
+  </p>
+</video>
