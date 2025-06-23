@@ -19,10 +19,21 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
 
 <!doctype html>
 <html lang="de">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />    <meta name="generator" content={Astro.generator} />
+  <head>    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    
+    <!-- Preload kritischer Ressourcen -->
+    <link rel="preload" href="/assets/video/nurse_talking_senior_wheelchair_4.webm" as="video" />
+    <link rel="preload" href="/assets/css/fonts/main.woff2" as="font" type="font/woff2" crossorigin />
+    
+    <!-- DNS Prefetch für externe Services -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="//www.google-analytics.com" />
+    <link rel="dns-prefetch" href="//maps.googleapis.com" />
     
     <!-- SEO Meta Tags - Dynamic or Static -->
     {useDynamicSEO ? (
@@ -49,49 +60,26 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       as="style"
       onload={`this.onload=null;this.rel='stylesheet'`}
-    />
-    <noscript>
+    />    <noscript>
       <link
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-      />    </noscript>
-    
-    <!-- Mobile viewport height optimization -->
-    <script is:inline>
-      // Set CSS custom property for dynamic viewport height
-      function setDynamicViewportHeight() {
-        const vh = window.innerHeight * 0.01;
-        document.documentElement.style.setProperty('--vh', `${vh}px`);
-      }
-      
-      // Set on initial load
-      setDynamicViewportHeight();
-      
-      // Update on resize (for orientation changes)
-      window.addEventListener('resize', () => {
-        setTimeout(setDynamicViewportHeight, 100);
-      });
-      
-      // Update on orientation change (for mobile devices)
-      window.addEventListener('orientationchange', () => {
-        setTimeout(setDynamicViewportHeight, 300);
-      });
-    </script>
-  </head>  <body class="bg-white">
-    {page === "home" ? (
-      <!-- Home page: Header + Hero in single viewport container -->
+      />
+    </noscript>  </head>
+  <body class="bg-white">    {page === "home" ? (
       <>
         <div class="viewport-height flex flex-col w-full">
-          <Header navAnchors={navAnchors} />          <div class="flex-1 w-full min-h-0">
+          <Header navAnchors={navAnchors} />
+          <div class="flex-1 w-full min-h-0">
             <slot name="hero" />
           </div>
-        </div>        <main class="relative w-full z-10 bg-white">
+        </div>
+        <main class="relative w-full z-10 bg-white">
           <slot />
         </main>
         <Footer isLandingPage={true} />
       </>
     ) : (
-      <!-- Other pages: Normal layout -->
       <>
         <Header navAnchors={navAnchors} />
         <main class="relative">
@@ -819,7 +807,8 @@ main {
     document.addEventListener('DOMContentLoaded', initAnimations, { once: true });
   } else {
     initAnimations();
-  }
-  
+  }  
   // Link validation removed - validator no longer needed
 </script>
+  </body>
+</html>
