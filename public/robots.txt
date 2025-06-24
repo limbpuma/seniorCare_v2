@@ -1,4 +1,25 @@
 User-agent: *
-Disallow: /admin/
-Disallow: /wp-login.php
+Allow: /
+
+# Archivos importantes del sistema
+Disallow: /php-mail-system/
+Disallow: /_astro/
+Disallow: /src/
+Disallow: /.env
+Disallow: /node_modules/
+
+# Permitir archivos de medios importantes
+Allow: /assets/
+Allow: /sitemap.xml
+Allow: /robots.txt
+
+# Crawl-delay para bots agresivos
+User-agent: bingbot
+Crawl-delay: 1
+
+User-agent: slurp
+Crawl-delay: 1
+
+# Sitemap
 Sitemap: https://www.pflegedienst-integra.de/sitemap.xml
+Sitemap: https://www.pflegedienst-integra.de/sitemap-images.xml

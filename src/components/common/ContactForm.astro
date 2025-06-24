@@ -81,7 +81,20 @@ const getTextareaRows = () => {
       class={`text-ag-body-text sm:text-ag-h5 md:text-ag-h4 lg:text-[32px] xl:text-[34px] font-ag-h4 mb-2 sm:mb-3 md:mb-4 leading-tight text-center text-deep-blue uppercase ${titleClasses[size]}`}
       set:html={title}
     />
-    <div class={spacingClasses[size]}>      {inputFields.map((input) => {
+    <div class={spacingClasses[size]}>
+      <!-- Honeypot field for bot detection (invisible to users) -->
+      <div style="position: absolute; left: -9999px; visibility: hidden;">
+        <input 
+          type="text" 
+          name="email_check" 
+          id="email_check" 
+          tabindex="-1" 
+          autocomplete="off"
+          aria-hidden="true"
+        />
+      </div>
+      
+      {inputFields.map((input) => {
         const { type, placeholder } = input;
         let name = type;
         if (type === "tel") name = "phone";
@@ -248,48 +261,54 @@ const getTextareaRows = () => {
         "Bitte geben Sie eine gültige deutsche Telefonnummer ein."
       );
       return;
-    }
-
-    // Preparar datos para el backend PHP
+    }    // Preparar datos para el nuevo sistema PHP mejorado
     const contactData = {
       name: formData.get("name"),
       email: formData.get("email"),
       phone: formData.get("phone"),
       subject: formData.get("subject"),
-      message: formData.get("message")
+      message: formData.get("message"),
+      // Honeypot field - debe estar vacío para pasar detección de bots
+      email_check: formData.get("email_check") || ""
     };
 
     try {
-      const response = await fetch("http://localhost/AdminHub-PHP/src/api/contact.php", {
+      // Use environment variable or fallback to improved PHP system
+      const emailApiUrl = import.meta.env.PUBLIC_EMAIL_API_URL || 'http://localhost/php-mail-system/send-email.php';
+      
+      // Send JSON data to improved PHP email system
+      const response = await fetch(emailApiUrl, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
-          'Accept': 'application/json',
           'X-Requested-With': 'XMLHttpRequest'
         },
         body: JSON.stringify(contactData),
-      });
+      });const result = await response.json();
 
-      const result = await response.json();
-
-      if (result.success) {
+      if (response.ok && result.success) {
         showModal(
           "Nachricht gesendet!",
           "Vielen Dank für Ihre Kontaktaufnahme. Wir werden uns bald bei Ihnen melden."
         );
         form.reset();
       } else {
-        const errorMessage = result.errors 
-          ? (Array.isArray(result.errors) ? result.errors.join(", ") : result.errors)
-          : result.error || "Unbekannter Fehler";
+        const errorMessage = result.error || "Unbekannter Fehler";
         showModal(
           "Fehler",
           "Beim Senden der Nachricht ist ein Fehler aufgetreten: " + errorMessage
         );
-      }    } catch (error) {
+      }      } catch (error) {
+      console.error('Contact form error:', error);
+      let errorMessage = "Ein unerwarteter Fehler ist aufgetreten.";
+      
+      if (error instanceof TypeError && error.message.includes('fetch')) {
+        errorMessage = "Verbindungsfehler: Email-Server nicht erreichbar. Bitte starten Sie den PHP-Server (siehe CONTACT_INTEGRATION_SETUP.md).";
+      }
+      
       showModal(
-        "Fehler",
-        "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es später erneut."
+        "Verbindungsfehler",
+        errorMessage + " Bitte versuchen Sie es später erneut."
       );
     }
   }

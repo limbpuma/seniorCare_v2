@@ -7,6 +7,7 @@ export interface ContactFormData {
   phone?: string;
   subject?: string;
   message: string;
+  email_check?: string; // Honeypot field for bot detection
 }
 
 export interface APIResponse<T = any> {
@@ -124,14 +125,52 @@ class SeniorCareAPI {
   async getTexts(): Promise<SiteTexts> {
     // Note: texts.php returns direct object, not wrapped in APIResponse
     return this.request<SiteTexts>('/texts.php');
-  }
-
-  // Submit contact form
+  }  // Submit contact form using the NEW PHP email system
   async submitContact(data: ContactFormData): Promise<APIResponse> {
-    return this.request<APIResponse>('/contact.php', {
-      method: 'POST',
-      body: JSON.stringify(data)
-    });
+    // Prepare data for NEW PHP system (JSON format)
+    const contactData = {
+      name: data.name,
+      email: data.email,
+      phone: data.phone || '',
+      subject: data.subject || 'Allgemeine Anfrage',
+      message: data.message,
+      // Honeypot field - must be empty to pass bot detection
+      email_check: ''
+    };
+
+    try {      // Use environment variable or fallback to NEW PHP system
+      const emailApiUrl = import.meta.env?.PUBLIC_EMAIL_API_URL || 'http://localhost/php-mail-system/send-email.php';
+      
+      const response = await fetch(emailApiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'X-Requested-With': 'XMLHttpRequest'
+        },
+        body: JSON.stringify(contactData),
+      });
+
+      const result = await response.json();
+      
+      if (response.ok && result.success) {
+        return { 
+          success: true, 
+          message: result.message || 'Nachricht erfolgreich gesendet.' 
+        };
+      } else {
+        return { 
+          success: false, 
+          error: result.error || 'Unbekannter Fehler beim Senden der Nachricht.' 
+        };
+      }
+    } catch (error) {
+      console.error('Contact form submission error:', error);
+      return { 
+        success: false, 
+        error: 'Verbindungsfehler. Bitte versuchen Sie es später erneut.' 
+      };
+    }
   }
 
   // Get SEO data for specific page

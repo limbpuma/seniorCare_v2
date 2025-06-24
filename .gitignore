@@ -10,6 +10,7 @@ package-lock.json
 
 #references
 integra-old-on-php/
+php-mail-system
 
 # dependencies
 node_modules/

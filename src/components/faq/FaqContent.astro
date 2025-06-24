@@ -24,6 +24,20 @@ interface Props {
 }
 
 const { title, subtitle, faqItems } = Astro.props;
+
+// Generate FAQ Schema for SEO
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
 ---
 
 <Section background="white"
@@ -33,6 +47,9 @@ height="auto"
 id="faq-section"
 animation="fade-in"
 >
+  <!-- FAQ Schema for SEO -->
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
     <div class="text-center mb-12 content-narrow">
       <TextBlock
       subtitle={subtitle}

@@ -1,0 +1,257 @@
+---
+/**
+ * Astro Native Navigation Test Page
+ * Tests the new navigation system using only Astro 5.9 native capabilities
+ */
+
+import Layout from '../layouts/Layout.astro';
+import AstroNativeHeader from '../components/common/AstroNativeHeader.astro';
+import Section from '../components/common/Section.astro';
+import Button from '../components/common/Button.astro';
+import { 
+  ROUTE_MAPPINGS, 
+  NAVIGATION_STRUCTURE, 
+  getCanonicalUrl, 
+  needsRedirect,
+  isValidInternalLink,
+  getPageMetadata 
+} from '../utils/astro-native-router';
+
+const currentPath = Astro.url.pathname;
+const pageMetadata = getPageMetadata(currentPath);
+
+// Check if this page needs a redirect
+if (needsRedirect(currentPath)) {
+  return Astro.redirect(getCanonicalUrl(currentPath));
+}
+
+// Test data for navigation verification
+const testRoutes = [
+  '/',
+  '/about',
+  '/services',
+  '/contact',
+  '/faq',
+  '/legal',
+  '/#about',
+  '/#services',
+  '/#contact'
+];
+
+const testResults = testRoutes.map(route => ({
+  route,
+  isValid: isValidInternalLink(route),
+  canonical: getCanonicalUrl(route),
+  needsRedirect: needsRedirect(route)
+}));
+---
+
+<Layout 
+  title={`${pageMetadata.title} - Navigation Test`}
+  description={pageMetadata.description}
+  keywords={pageMetadata.keywords}
+>
+  <!-- Use the new Astro Native Header -->
+  <AstroNativeHeader />
+  
+  <main class="min-h-screen bg-gray-50">
+    <Section padding="large" width="container">
+      <div class="max-w-4xl mx-auto">
+        
+        <!-- Page Header -->
+        <div class="text-center mb-12">
+          <h1 class="text-4xl font-bold text-gray-900 mb-4">
+            Astro Native Navigation Test
+          </h1>
+          <p class="text-xl text-gray-600">
+            Testing the new navigation system using only Astro 5.9 native capabilities
+          </p>
+        </div>
+
+        <!-- Navigation Features -->
+        <div class="grid md:grid-cols-2 gap-8 mb-12">
+          
+          <!-- Feature 1 -->
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+              ✅ Pure Astro Routing
+            </h2>
+            <ul class="space-y-2 text-gray-600">
+              <li>• No JavaScript dependencies</li>
+              <li>• Native Astro 5.9 routing</li>
+              <li>• Automatic redirections</li>
+              <li>• SEO optimized URLs</li>
+            </ul>
+          </div>
+
+          <!-- Feature 2 -->
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+              📱 CSS-Only Mobile Menu
+            </h2>
+            <ul class="space-y-2 text-gray-600">
+              <li>• :target pseudo-selector</li>
+              <li>• No JavaScript required</li>
+              <li>• Smooth animations</li>
+              <li>• Fully accessible</li>
+            </ul>
+          </div>
+
+          <!-- Feature 3 -->
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+              ♿ WCAG 2.2 Compliant
+            </h2>
+            <ul class="space-y-2 text-gray-600">
+              <li>• 44px minimum target size</li>
+              <li>• Focus indicators</li>
+              <li>• Screen reader support</li>
+              <li>• Keyboard navigation</li>
+            </ul>
+          </div>
+
+          <!-- Feature 4 -->
+          <div class="bg-white rounded-lg shadow-lg p-6">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+              🚀 Performance Optimized
+            </h2>
+            <ul class="space-y-2 text-gray-600">
+              <li>• Zero JavaScript bundle</li>
+              <li>• Preload critical routes</li>
+              <li>• Instant navigation</li>
+              <li>• Minimal CSS</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Navigation Test Results -->
+        <div class="bg-white rounded-lg shadow-lg p-6 mb-8">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-6">
+            Navigation Test Results
+          </h2>
+          
+          <div class="overflow-x-auto">
+            <table class="min-w-full table-auto">
+              <thead>
+                <tr class="bg-gray-50">
+                  <th class="px-4 py-2 text-left text-sm font-medium text-gray-900">Route</th>
+                  <th class="px-4 py-2 text-left text-sm font-medium text-gray-900">Valid</th>
+                  <th class="px-4 py-2 text-left text-sm font-medium text-gray-900">Canonical</th>
+                  <th class="px-4 py-2 text-left text-sm font-medium text-gray-900">Redirect</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-gray-200">
+                {testResults.map((result) => (
+                  <tr>
+                    <td class="px-4 py-2 text-sm font-mono text-gray-900">{result.route}</td>
+                    <td class="px-4 py-2 text-sm">
+                      <span class={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
+                        result.isValid 
+                          ? 'bg-green-100 text-green-800' 
+                          : 'bg-red-100 text-red-800'
+                      }`}>
+                        {result.isValid ? 'Valid' : 'Invalid'}
+                      </span>
+                    </td>
+                    <td class="px-4 py-2 text-sm font-mono text-gray-600">{result.canonical}</td>
+                    <td class="px-4 py-2 text-sm">
+                      <span class={`inline-flex px-2 py-1 text-xs font-medium rounded-full ${
+                        result.needsRedirect 
+                          ? 'bg-yellow-100 text-yellow-800' 
+                          : 'bg-green-100 text-green-800'
+                      }`}>
+                        {result.needsRedirect ? 'Yes' : 'No'}
+                      </span>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Test Navigation Links -->
+        <div class="bg-white rounded-lg shadow-lg p-6">
+          <h2 class="text-2xl font-semibold text-gray-900 mb-6">
+            Test Navigation Links
+          </h2>
+          
+          <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {NAVIGATION_STRUCTURE.main.map((link) => (
+              <Button
+                href={link.href}
+                variant="outline"
+                size="medium"
+                class="text-center"
+              >
+                Go to {link.name}
+              </Button>
+            ))}
+          </div>
+          
+          <div class="mt-6 pt-6 border-t border-gray-200">
+            <h3 class="text-lg font-medium text-gray-900 mb-4">Anchor Links Test</h3>
+            <div class="grid grid-cols-2 gap-4">
+              <Button
+                href="/#hero"
+                variant="outline"
+                size="small"
+              >
+                #hero
+              </Button>
+              <Button
+                href="/#about"
+                variant="outline"
+                size="small"
+              >
+                #about
+              </Button>
+              <Button
+                href="/#services"
+                variant="outline"
+                size="small"
+              >
+                #services
+              </Button>
+              <Button
+                href="/#contact"
+                variant="outline"
+                size="small"
+              >
+                #contact
+              </Button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Current Path Info -->
+        <div class="mt-8 p-4 bg-blue-50 rounded-lg">
+          <h3 class="text-lg font-medium text-blue-900 mb-2">Current Page Info</h3>
+          <p class="text-blue-800">
+            <strong>Path:</strong> {currentPath}<br>
+            <strong>Title:</strong> {pageMetadata.title}<br>
+            <strong>Description:</strong> {pageMetadata.description}
+          </p>
+        </div>
+
+      </div>
+    </Section>
+  </main>
+</Layout>
+
+<style>
+  /* Additional test page styles */
+  table {
+    border-collapse: collapse;
+  }
+  
+  table td,
+  table th {
+    border: 1px solid #e5e7eb;
+  }
+  
+  /* Test specific hover effects */
+  .test-link:hover {
+    background-color: #f3f4f6;
+  }
+</style>
