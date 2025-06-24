@@ -32,7 +32,7 @@ if (useDynamicContent) {
 // Usar textos dinámicos o fallback a estáticos
 const phone = dynamicTexts?.header?.phone || headerTexts.phone;
 const ctaButton = dynamicTexts?.header?.cta_button || headerTexts.cta;
-const ctaHref = dynamicTexts?.header?.buttonHref || headerTexts.buttonHref || "#contact";
+const ctaHref = "#contact";
 
 // NAVEGACIÓN NATIVA DE ASTRO - Solo usando texts.json
 const NAVIGATION = navAnchors 
