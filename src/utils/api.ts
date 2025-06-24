@@ -29,9 +29,10 @@ export interface SEOData {
 
 export interface SiteTexts {
   seo: {
-    title: string;
-    description: string;
-    keywords: string;
+    [key: string]: {
+      description: string;
+      keywords: string;
+    };
   };
   header: {
     phone: string;
