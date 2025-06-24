@@ -38,6 +38,10 @@
     "404": {
       "description": "Seite nicht gefunden. Bitte überprüfen Sie die URL oder kehren Sie zur Startseite zurück.",
       "keywords": "404, Seite nicht gefunden, Fehler"
+    },
+    "datenschutz": {
+      "description": "",
+      "keywords": ""
     }
   },  "header": {
     "address": "Flughafenstraße 404, 44328 Dortmund",
