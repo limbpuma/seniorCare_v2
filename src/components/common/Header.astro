@@ -32,8 +32,9 @@ if (useDynamicContent) {
 // Usar textos dinámicos o fallback a estáticos
 const phone = dynamicTexts?.header?.phone || headerTexts.phone;
 const ctaButton = dynamicTexts?.header?.cta_button || headerTexts.cta;
+const ctaHref = dynamicTexts?.header?.buttonHref || headerTexts.buttonHref || "#contact";
 
-// Generar navegación optimizada para Astro usando SOLO los textos de texts.json
+// NAVEGACIÓN NATIVA DE ASTRO - Solo usando texts.json
 const NAVIGATION = navAnchors 
   ? navAnchors.map((anchor: NavAnchor) => ({ 
       name: anchor.label, 
@@ -50,17 +51,26 @@ const NAVIGATION = navAnchors
 
 // Obtener la URL actual para navegación activa
 const currentPath = Astro.url.pathname;
+
+// Función para determinar si un link está activo
+function isActiveLink(href: string, currentPath: string): boolean {
+  if (href.startsWith('/#')) {
+    return currentPath === '/' || currentPath === '';
+  }
+  return currentPath === href;
+}
 ---
 
 <!-- 
-  OPTIMIZED HEADER - Prioriza Astro sobre JavaScript
-  - Menú móvil con CSS puro + :target pseudo-selector
-  - Sin dependencias JavaScript externas
-  - Navegación completamente funcional con fallbacks
+  ASTRO NATIVE HEADER - Zero JavaScript Dependencies
+  - Links importados únicamente desde texts.json
+  - Navegación completamente funcional con solo CSS y HTML
+  - Sin JavaScript de navegación
+  - Estados activos manejados por Astro en build time
 -->
 
 <header class="w-full backdrop-blur-sm bg-white/95 shadow-lg shadow-deep-blue/5 sticky top-0 z-50">
-  <!-- Top Navbar Contact Bar -->
+  <!-- Top Contact Bar -->
   <div class="bg-gradient-to-r from-primary/5 via-soft-blue/5 to-primary/5 text-ag-body-text border-b border-primary/10">
     <div class="max-w-7xl mx-auto">
       <div class="flex items-center justify-between py-2 px-3 md:px-2 lg:px-4">
@@ -71,7 +81,7 @@ const currentPath = Astro.url.pathname;
             href="https://maps.app.goo.gl/UbA5eCbGWvF2pyPu9"
             target="_blank"
             rel="noopener noreferrer"
-            class="hidden lg:flex items-center gap-2 text-sm hover:text-primary group"
+            class="hidden lg:flex items-center gap-2 text-sm hover:text-primary group transition-colors duration-200"
             aria-label="Visit our location on Google Maps (opens in new tab)"
           >
             <Icon
@@ -79,15 +89,15 @@ const currentPath = Astro.url.pathname;
               size="small"
               variant="default"
             />
-            <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">
-              Flughafenstraße 404, 44328 Dortmund
+            <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text transition-all duration-200">
+              {headerTexts.address}
             </span>
           </a>
           
           <!-- Phone - Always visible -->
           <a
             href={`tel:${phone}`}
-            class="flex items-center gap-2 text-sm hover:text-primary group"
+            class="flex items-center gap-2 text-sm hover:text-primary group transition-colors duration-200"
             aria-label={`Call us at ${phone}`}
           >
             <Icon
@@ -95,7 +105,7 @@ const currentPath = Astro.url.pathname;
               size="small"
               variant="default"
             />
-            <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">
+            <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text transition-all duration-200">
               {phone}
             </span>
           </a>
@@ -104,11 +114,9 @@ const currentPath = Astro.url.pathname;
         <!-- Right: Schedule & Social -->
         <div class="flex items-center gap-2 md:gap-4">
           <!-- Schedule - Always visible -->
-          <div class="flex items-center gap-2 text-xs md:text-sm group">
+          <div class="flex items-center gap-2 text-xs md:text-sm">
             <Icon icons={[{ name: "clock" }]} size="small" variant="default" />
-            <span class="group-hover:text-transparent group-hover:bg-gradient-to-r group-hover:from-primary group-hover:to-soft-blue group-hover:bg-clip-text">
-              {headerTexts.schedule}
-            </span>
+            <span>{headerTexts.schedule}</span>
           </div>
           
           <!-- Social Links - Medium+ screens -->
@@ -127,34 +135,68 @@ const currentPath = Astro.url.pathname;
       </div>
     </div>
   </div>
-
   <!-- Main Navigation -->
   <nav class="bg-white/90 backdrop-blur-md border-b border-primary/10 shadow-sm">
     <div class="max-w-7xl mx-auto">
-      <div class="flex items-center justify-between py-2 px-3 md:px-2 lg:px-4 min-h-[3rem] md:min-h-[4rem] lg:min-h-[4.5rem] xl:min-h-[4.5rem] 2xl:min-h-[5rem]">
+      <div class="flex items-center justify-between py-2 px-2 md:px-3 lg:px-4 min-h-[3rem] md:min-h-[4rem] lg:min-h-[4.5rem] gap-2 md:gap-4">
         
-        <!-- Logo section -->
+        <!-- Logo Section -->
         <div class="flex-shrink-0 flex items-center">
           <a 
             href="/" 
-            class="block focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg min-h-[44px] p-2 -m-2 group"
+            class="block focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg min-h-[44px] p-2 -m-2 group transition-transform duration-200"
             aria-label="Go to homepage"
           >
-            <Logo class="h-8 md:h-10 lg:h-12 xl:h-12 2xl:h-14 w-auto group-hover:scale-105" color="dark" />
+            <Logo class="h-8 md:h-10 lg:h-12 w-auto group-hover:scale-105 transition-transform duration-200" color="dark" />
           </a>
-        </div>        <!-- Navigation Links - Desktop (Astro Only) -->
-        <div class="desktop-nav hidden md:flex items-center justify-center">          <ul class="flex items-center gap-6 lg:gap-8">
-            {NAVIGATION.map((link: NavigationLink) => {
-              const isActive = currentPath === '/' && link.href === '/' || 
-                              currentPath === link.href ||
-                              (currentPath === '/' && link.href.startsWith('/#'));
+        </div>        <!-- 
+          SISTEMA DE PRIORIZACIÓN RESPONSIVE PARA NAVEGACIÓN:
+          
+          🔥 ALTA PRIORIDAD (siempre visible):
+          - Services: Contenido principal del negocio
+          - Contact: Acción clave para conversión
+          
+          🟡 MEDIA PRIORIDAD:
+          - About: Solo desde MD+ (768px+)
+          
+          🟢 BAJA PRIORIDAD:
+          - FAQ: Solo desde LG+ (1024px+)
+          - Home: Solo desde XL+ (1280px+, logo cumple esta función)
+          
+          Este sistema garantiza que los links más importantes siempre sean visibles
+          y que la navegación nunca se desborde en una sola línea.
+        -->
+        <!-- Desktop Navigation - HTML directo de Astro con priorización responsive -->
+        <div class="hidden md:flex items-center justify-center flex-1 min-w-0">
+          <ul class="flex items-center gap-1 md:gap-2 lg:gap-4 xl:gap-6">
+            {NAVIGATION.map((link: NavigationLink, index: number) => {
+              const isActive = isActiveLink(link.href, currentPath);
+              const isHome = link.href === "/" || link.name === headerTexts.nav.home;
+              const isAbout = link.name === headerTexts.nav.about;
+              const isServices = link.name === headerTexts.nav.services;
+              const isContact = link.name === headerTexts.nav.contact;
+              const isFaq = link.name === headerTexts.nav.faq;
+              
+              // Sistema de priorización por tamaño de pantalla
+              let responsiveClasses = "";
+              if (isHome) {
+                responsiveClasses = "hidden xl:block"; // Solo en XL+
+              } else if (isFaq) {
+                responsiveClasses = "hidden lg:block"; // Solo en LG+
+              } else if (isAbout) {
+                responsiveClasses = "hidden md:block"; // Desde MD+
+              } else {
+                responsiveClasses = "block"; // Siempre visible (Services, Contact)
+              }
+              
               return (
-                <li>
+                <li class={responsiveClasses}>
                   <a
                     href={link.href}
                     class={`
-                      relative px-3 py-2 text-base lg:text-lg font-medium
-                      transition-all duration-200 ease-out
+                      relative px-1.5 md:px-2 lg:px-3 xl:px-4 py-2 
+                      text-xs md:text-sm lg:text-base xl:text-lg font-medium
+                      transition-all duration-200 ease-out whitespace-nowrap
                       focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded-lg
                       min-h-[44px] flex items-center
                       ${isActive 
@@ -178,27 +220,30 @@ const currentPath = Astro.url.pathname;
           </ul>
         </div>
 
-        <!-- CTA Button and Mobile menu toggle -->
-        <div class="flex items-center gap-2 md:gap-4 shrink-0">
-          <!-- CTA Button - Desktop -->
+        <!-- CTA Button and Mobile Menu Toggle -->
+        <div class="flex items-center gap-2 md:gap-4 shrink-0">          <!-- CTA Button - Desktop con priorización responsive -->
           <Button 
-            class="hidden md:inline-flex items-center text-sm lg:text-base py-2 px-3 lg:px-4 min-w-[120px] lg:min-w-[140px]" 
+            class="hidden lg:inline-flex items-center text-xs md:text-sm lg:text-base py-2 px-2 md:px-3 lg:px-4 min-w-[80px] md:min-w-[100px] lg:min-w-[120px] xl:min-w-[140px]"
             variant="primary" 
             size="medium"
-            href={`tel:${phone}`}
+            href={ctaHref}
           >
             {ctaButton}
           </Button>
 
-          <!-- Mobile menu toggle - CSS only -->
+          <!-- Mobile Menu Toggle - CSS Only -->
           <div class="md:hidden">
-            <input type="checkbox" id="mobile-menu-toggle" class="mobile-menu-checkbox sr-only" />
+            <!-- Hidden checkbox for CSS-only toggle -->
+            <input type="checkbox" id="mobile-menu-toggle" class="sr-only peer" />
+            
+            <!-- Toggle Button -->
             <label 
               for="mobile-menu-toggle" 
-              class="mobile-menu-button inline-flex items-center justify-center p-3 text-deep-blue rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-soft-blue/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 min-h-[44px] min-w-[44px] cursor-pointer"
+              class="mobile-menu-toggle-btn flex items-center justify-center p-3 text-deep-blue rounded-xl hover:bg-gradient-to-r hover:from-primary/10 hover:to-soft-blue/10 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 min-h-[44px] min-w-[44px] cursor-pointer transition-colors duration-200"
               aria-label="Toggle navigation menu"
             >
               <span class="sr-only">Toggle main menu</span>
+              <!-- Hamburger Icon -->
               <svg
                 class="w-6 h-6 hamburger-icon"
                 aria-hidden="true"
@@ -206,40 +251,23 @@ const currentPath = Astro.url.pathname;
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
+                stroke-width="2"
               >
-                <path
-                  class="hamburger-line hamburger-line-1"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16"
-                />
-                <path
-                  class="hamburger-line hamburger-line-2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 12h16"
-                />
-                <path
-                  class="hamburger-line hamburger-line-3"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 18h16"
-                />
+                <path class="hamburger-line-1" stroke-linecap="round" stroke-linejoin="round" d="M4 6h16" />
+                <path class="hamburger-line-2" stroke-linecap="round" stroke-linejoin="round" d="M4 12h16" />
+                <path class="hamburger-line-3" stroke-linecap="round" stroke-linejoin="round" d="M4 18h16" />
               </svg>
             </label>
           </div>
         </div>
-      </div>      <!-- Mobile menu - CSS only implementation (Astro Only) -->
-      <div class="mobile-menu md:hidden">
-        <div class="px-2 pt-2 pb-3 space-y-1 bg-white/95 backdrop-blur-md border-t border-primary/20">
-          <!-- Mobile Navigation Links (Astro Only) -->          <ul class="flex flex-col space-y-1">
+      </div>
+
+      <!-- Mobile Menu - CSS Only Implementation -->
+      <div class="mobile-menu md:hidden max-h-0 overflow-hidden opacity-0 peer-checked:max-h-96 peer-checked:opacity-100 transition-all duration-300 ease-in-out">
+        <div class="px-2 pt-2 pb-3 bg-white/95 backdrop-blur-md border-t border-primary/20">          <!-- Mobile Navigation - HTML directo de Astro -->
+          <ul class="flex flex-col space-y-1">
             {NAVIGATION.map((link: NavigationLink) => {
-              const isActive = currentPath === '/' && link.href === '/' || 
-                              currentPath === link.href ||
-                              (currentPath === '/' && link.href.startsWith('/#'));
+              const isActive = isActiveLink(link.href, currentPath);
               return (
                 <li>
                   <a
@@ -277,91 +305,113 @@ const currentPath = Astro.url.pathname;
   </nav>
 </header>
 
-<style>  /* CSS-only mobile menu implementation */
-  .mobile-menu-checkbox {
+<style>
+  /* CSS-only mobile menu */
+  #mobile-menu-toggle {
     display: none;
   }
   
+  /* Mobile menu animation */
   .mobile-menu {
-    max-height: 0;
-    opacity: 0;
-    overflow: hidden;
-    transition: all 0.3s ease-in-out;
+    transition: max-height 0.3s ease-in-out, opacity 0.3s ease-in-out;
   }
   
   /* Show mobile menu when checkbox is checked */
-  .mobile-menu-checkbox:checked + .mobile-menu-button + div .mobile-menu {
-    max-height: 500px !important;
-    opacity: 1 !important;
+  #mobile-menu-toggle:checked ~ div .mobile-menu {
+    max-height: 500px;
+    opacity: 1;
   }
   
-  /* Hamburger icon animations */
-  .hamburger-line {
+  /* Hamburger icon animation */
+  .hamburger-line-1,
+  .hamburger-line-2,
+  .hamburger-line-3 {
     transition: all 0.3s ease-in-out;
     transform-origin: center;
   }
   
-  .mobile-menu-checkbox:checked + .mobile-menu-button .hamburger-line-1 {
+  /* Transform hamburger to X when menu is open */
+  #mobile-menu-toggle:checked ~ .mobile-menu-toggle-btn .hamburger-line-1 {
     transform: rotate(45deg) translate(5px, 5px);
   }
   
-  .mobile-menu-checkbox:checked + .mobile-menu-button .hamburger-line-2 {
+  #mobile-menu-toggle:checked ~ .mobile-menu-toggle-btn .hamburger-line-2 {
     opacity: 0;
   }
   
-  .mobile-menu-checkbox:checked + .mobile-menu-button .hamburger-line-3 {
+  #mobile-menu-toggle:checked ~ .mobile-menu-toggle-btn .hamburger-line-3 {
     transform: rotate(-45deg) translate(7px, -6px);
   }
   
-  /* Force hide mobile menu on larger screens */
+  /* Hide mobile elements on desktop */
   @media (min-width: 768px) {
     .mobile-menu {
       display: none !important;
     }
     
-    .mobile-menu-button {
+    .mobile-menu-toggle-btn {
       display: none !important;
-    }
-    
-    .desktop-nav {
-      display: flex !important;
     }
   }
   
-  /* Smooth scrolling for anchor links */
+  /* Smooth scrolling nativo del navegador */
   html {
     scroll-behavior: smooth;
   }
   
-  /* Enhanced focus states */
+  /* Enhanced focus states for accessibility */
   a:focus-visible {
     outline: 2px solid var(--color-primary-600);
     outline-offset: 2px;
     border-radius: 4px;
   }
   
-  /* Active link styles */
-  .nav-link-active {
-    color: var(--color-primary-600);
-    position: relative;
-  }
-  
-  .nav-link-active::after {
+  /* Active link indicator animation */
+  a[aria-current="page"]::after {
     content: '';
     position: absolute;
-    bottom: -4px;
-    left: 0;
-    right: 0;
-    height: 2px;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
     background: var(--color-primary-600);
-    border-radius: 1px;
+    border-radius: 50%;
+    animation: activeIndicator 0.3s ease-out;
+  }
+  
+  @keyframes activeIndicator {
+    from {
+      opacity: 0;
+      transform: translateX(-50%) scale(0);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(-50%) scale(1);
+    }
+  }
+  
+  /* Hover effects */
+  a:not([aria-current="page"]):hover::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4px;
+    height: 4px;
+    background: var(--color-primary-400);
+    border-radius: 50%;
+    opacity: 0.6;
+    transition: all 0.2s ease-out;
   }
 </style>
 
 <!-- 
-  ASTRO-FIRST HEADER - Zero JavaScript Dependencies
-  - Navegación completamente funcional con solo CSS y HTML
-  - Menú móvil usando CSS :checked pseudo-selector
+  ZERO JAVASCRIPT IMPLEMENTATION
+  - Links importados ÚNICAMENTE desde texts.json
+  - No navigation.js ni otros archivos JS de navegación
+  - Navegación funciona completamente con CSS + HTML semántico
   - Smooth scrolling nativo del navegador
-  - Estados activos manejados por Astro en build time
+  - Estados activos manejados por Astro server-side
 -->
