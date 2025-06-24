@@ -52,14 +52,14 @@ const getTitleClasses = (gradient: boolean) => {
 };
 ---
 
-<div class={`${alignmentClass} ${textColor} max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 animate-on-scroll fade-in`}>
+<div class={`${alignmentClass} ${textColor} max-w-4xl mx-auto px-2 sm:px-4 lg:px-8 animate-on-scroll fade-in break-words overflow-hidden`}>  
   {subtitle && (
-    <h3 class="text-ag-sub-heading font-ag-sub-heading mb-2 sm:mb-3 md:mb-4 opacity-90 tracking-wide">
+    <h3 class="text-ag-sub-heading font-ag-sub-heading mb-2 sm:mb-3 md:mb-4 opacity-90 tracking-wide break-words">
       {subtitle}
     </h3>
   )}
   {title && (
-    <h2 class={getTitleClasses(titleGradient)}>
+    <h2 class={getTitleClasses(titleGradient) + ' break-words truncate max-w-full'}>
       {title}
     </h2>
   )}
@@ -95,6 +95,7 @@ const getTitleClasses = (gradient: boolean) => {
         href={buttonHref}
         variant={buttonVariant}
         size={buttonSize}
+        class="block mx-auto w-full sm:w-auto"
       >
         {buttonText}
       </Button>
