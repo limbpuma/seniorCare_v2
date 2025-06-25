@@ -52,14 +52,14 @@ const getTitleClasses = (gradient: boolean) => {
 };
 ---
 
-<div class={`${alignmentClass} ${textColor} max-w-4xl mx-auto px-2 sm:px-4 lg:px-8 animate-on-scroll fade-in break-words overflow-hidden`}>  
+<div class={`${alignmentClass} ${textColor} max-w-full mx-auto px-2 sm:px-4 lg:px-8 animate-on-scroll fade-in break-words overflow-hidden whitespace-normal`}>  
   {subtitle && (
-    <h3 class="text-ag-sub-heading font-ag-sub-heading mb-2 sm:mb-3 md:mb-4 opacity-90 tracking-wide break-words">
+    <h3 class="text-ag-sub-heading font-ag-sub-heading mb-2 sm:mb-3 md:mb-4 opacity-90 tracking-wide break-words max-w-full whitespace-normal">
       {subtitle}
     </h3>
   )}
   {title && (
-    <h2 class={getTitleClasses(titleGradient) + ' break-words max-w-full whitespace-normal'}>
+    <h2 class={getTitleClasses(titleGradient) + ' break-words max-w-full whitespace-normal overflow-hidden'}>
       {title}
     </h2>
   )}
