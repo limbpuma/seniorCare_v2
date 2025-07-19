@@ -1,7 +1,7 @@
 {  "seo": {
     "home": {
-      "description": "🏠 Ambulante Pflege Dortmund: #1 Pflegedienst mit MDK-Note 1,2 ✓ Kostenlose Hausbesuche in 30min ✓ 1000+ Familien vertrauen uns ✓ Alle Krankenkassen ✓ 0231-9125000",
-      "keywords": "ambulanter Pflegedienst Dortmund, häusliche Krankenpflege, mobile Pflege, Grundpflege zu Hause, SGB XI, Krankenkasse zugelassen, Pflegedienst Dortmund-Nord, MDK Note 1.2"
+      "description": "🏠 Ambulante Pflege Dortmund: #1 Pflegedienst mit hoher MDK-Note ✓ Kostenlose Hausbesuche in 30min ✓ 1000+ Familien vertrauen uns ✓ Alle Krankenkassen ✓ 0231-9125000",
+      "keywords": "ambulanter Pflegedienst Dortmund, häusliche Krankenpflege, mobile Pflege, Grundpflege zu Hause, SGB XI, Krankenkasse zugelassen, Pflegedienst Dortmund-Nord, MDK Note 2.1"
     },
     "services": {
       "description": "💊 Häusliche Krankenpflege Dortmund: Medikamente, Injektionen, Verbände zu Hause ✓ Krankenkasse zahlt 100% ✓ Qualifizierte Pflegekräfte ✓ Sofort verfügbar ✓ 0231-9125000",
@@ -95,9 +95,9 @@
 
   "home": {    "heroVideo": {
       "videoSrc": "/assets/video/nurse_talking_senior_wheelchair_4.webm",
-      "subtitle": "Ambulanter Pflegedienst Dortmund • #1 mit MDK-Note 1,2 • Wir kommen zu Ihnen",
+      "subtitle": "Ambulanter Pflegedienst Dortmund • #1 mit hoher MDK-Note • Wir kommen zu Ihnen",
       "title": "Ambulante Pflege Dortmund",
-      "description": "Über 1000 zufriedene Familien in Dortmund vertrauen uns bereits. Krankenkassen-zugelassen • MDK-Note 1,2 • 24h erreichbar • Kostenlose Hausbesuche in 30min • Pflegegeld bis 901€/Monat optimal nutzen.","alignment": "left",
+      "description": "Über 1000 zufriedene Familien in Dortmund vertrauen uns bereits. Krankenkassen-zugelassen • MDK-Note 2,1 • 24h erreichbar • Kostenlose Hausbesuche in 30min • Pflegegeld bis 901€/Monat optimal nutzen. Wir bieten auch Leistungen für Privatzahler: Homecare, Urlaubsvertretung, Freizeitbegleitung und mehr.","alignment": "left",
       "textColor": "text-deep-blue",
       "buttonText": "Kostenlose Pflegeberatung",
       "buttonHref": "#contact",
@@ -114,7 +114,7 @@
         { "number": "10+", "label": "Jahre Erfahrung" }
       ],      "credentials": [
         "✓ SGB XI & SGB V zugelassen (Prüfzeichen: DE-NW-123456)",
-        "✓ MDK-Qualitätsprüfung Note 1,2 (geprüft 12/2024)",
+        "✓ MDK-Qualitätsprüfung Note 2,1 (geprüft 12/2024)",
         "✓ ISO 9001:2015 zertifiziert",
         "✓ Mitglied im Bundesverband bpa e.V.",
         "✓ Dortmund + Umgebung: 15min Anfahrt garantiert"
@@ -203,7 +203,7 @@
     },    "location": {
       "subtitle": "Ambulante Pflege in 15min vor Ort",
       "title": "Wir kommen zu Ihnen – ganz Dortmund & Umgebung",
-      "description": "Von unserem Standort in Dortmund-Scharnhorst erreichen wir Sie blitzschnell: Dortmund-Nord (8min), Dortmund-Ost (12min), Hombruch (18min), Huckarde (15min) sowie Lünen (10min), Kamen (12min) und Bergkamen (20min). MDK-Note 1,2 • Über 1000 betreute Familien • Schnellste Anfahrt in NRW!",
+      "description": "Von unserem Standort in Dortmund-Scharnhorst erreichen wir Sie blitzschnell: Dortmund-Nord (8min), Dortmund-Ost (12min), Hombruch (18min), Huckarde (15min) sowie Lünen (10min), Kamen (12min) und Bergkamen (20min). MDK-Note 2,1 • Über 1000 betreute Familien • Schnellste Anfahrt in NRW!",
       "city": "Scharnhorst Dortmund - Zentral für alle Stadtteile (Google Maps: 4,8⭐)",
       "buttonText": "📍 Standort auf Karte zeigen",
       "stats": [
@@ -245,31 +245,31 @@
     },
     "testimonials": {
       "titlesection": "Was unsere Kunden sagen",
-      "subtitlesection": "Erfahrungen und Eindrücke von Menschen, die Integra vertrauen",
+      "subtitlesection": "Echte Google-Bewertungen von zufriedenen Kunden",
       "items": [
         {
-          "name": "Helga Schmidt",
-          "title": "Zufriedene Kundenin",
-          "image": "/assets/img/senior_citizen_face_women.webp",
-          "desc": "Die Pflege und Unterstützung durch Integra hat mein Leben enorm verbessert. Ich fühle mich sicher und gut umsorgt in meinem eigenen Zuhause."
-        },
-        {
-          "name": "Thomas Bauer",
-          "title": "Zufriedene Kunde",
+          "name": "Michael Rustemeyer",
+          "title": "Google-Bewertung ⭐⭐⭐⭐⭐",
           "image": "/assets/img/senior_citizen_face.webp",
-          "desc": "Das Team von Integra kümmert sich hervorragend um meine Mutter. Ihre Professionalität und ihr Mitgefühl sind wirklich beeindruckend."
+          "desc": "Fantastisches, sehr hilfsbereites Team von der Auszubildenden bis zum Chef. Uns wurde in einer Notsituation sehr schnell und völlig unkompliziert geholfen. Tiptop und absolut empfehlenswert!"
         },
         {
-          "name": "Gisela Meyer",
-          "title": "Langjährige Kundenin",
+          "name": "Celik Ramazan",
+          "title": "Google-Bewertung ⭐⭐⭐⭐⭐",
+          "image": "/assets/img/senior_citizen_face_women.webp",
+          "desc": "Super nette und hilfsbereite Menschen."
+        },
+        {
+          "name": "golocal Kunde",
+          "title": "golocal-Bewertung ⭐⭐⭐⭐⭐",
           "image": "/assets/img/senior_citizen_face_women_seat.webp",
-          "desc": "Dank Integra kann ich trotz meiner Einschränkungen selbstständig in meiner vertrauten Umgebung leben. Das bedeutet mir sehr viel."
+          "desc": "Professionell, flexibel - sehr guter und empfehlenswerter Dienstleister in der ambulanten Pflege."
         },
         {
-          "name": "Dr. Frank Weber",
-          "title": "Zufriedene Kunde",
+          "name": "Gelbe Seiten Kunde",
+          "title": "Gelbe Seiten ⭐⭐⭐⭐⭐",
           "image": "/assets/img/senior_couple_walking_autumn_2.webp",
-          "desc": "Die Zusammenarbeit mit Integra ist ausgezeichnet. Ihre Pflegekräfte sind kompetent und zuverlässig in der Betreuung meiner Patienten."
+          "desc": "Qualifiziertes Personal, freundlich und professionell."
         }
       ]
     },
@@ -353,8 +353,8 @@
         },
         {
           "icon": "brain",
-          "title": "Demenzbetreuung zu Hause",
-          "description": "Spezialisierte Betreuung für Menschen mit Demenz in vertrauter Umgebung.",
+          "title": "Demenzbetreuung in ihrer häuslichen Umgebung",
+          "description": "Spezialisierte Betreuung für Menschen mit Demenz in vertrauter Umgebung zu Hause.",
           "number": "04"
         },
         {
