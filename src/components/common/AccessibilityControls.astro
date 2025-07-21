@@ -1,7 +1,6 @@
 ---
 /**
- * AccessibilityControls - Componente optimizado para Astro + Tailwind CSS
- * Prioriza utilidades Tailwind y minimiza JavaScript/CSS custom
+ * AccessibilityControls - Componente limpio y funcional
  */
 interface Props {
   class?: string;
@@ -10,13 +9,13 @@ interface Props {
 const { class: className } = Astro.props;
 ---
 
-<!-- Widget de Accesibilidad - Optimizado para Astro + Tailwind -->
+<!-- Widget de Accesibilidad -->
 <div 
   class={`accessibility-widget fixed bottom-20 right-5 z-50 font-sans ${className || ''}`} 
   role="region" 
   aria-label="Barrierefreiheitsoptionen"
 >
-  <!-- Panel de controles - Diseño completamente con Tailwind -->
+  <!-- Panel de controles -->
   <div 
     class="accessibility-panel absolute bottom-20 right-0 bg-white rounded-2xl shadow-2xl border border-gray-200 min-w-80 max-w-96 transform transition-all duration-300 ease-in-out opacity-0 invisible translate-y-4 scale-95" 
     id="accessibilityPanel"
@@ -49,68 +48,89 @@ const { class: className } = Astro.props;
       </div>
     </div>
     
-    <!-- Controles - Optimizados con Tailwind -->
-    <div class="p-5 space-y-3">
+    <!-- Controles -->
+    <div class="p-4 space-y-2">
       <!-- Text Spacing Control -->
       <button 
         id="toggleTextSpacing" 
-        class="accessibility-feature-btn w-full p-4 border-2 border-gray-200 rounded-xl bg-white flex items-center gap-4 text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+        class="accessibility-feature-btn w-full p-3 border-2 border-gray-200 rounded-xl bg-white flex items-center gap-3 text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
         aria-label="Textabstand anpassen für bessere Lesbarkeit"
         aria-pressed="false"
         aria-keyshortcuts="Alt+T"
         data-feature="textSpacing"
       >
-        <div class="flex-shrink-0 w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-          <span class="text-2xl">🔤</span>
+        <div class="flex-shrink-0 w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+          <span class="text-xl">🔤</span>
         </div>
         <div class="flex-1 min-w-0">
-          <div class="font-medium text-gray-900">Text Spacing</div>
-          <div class="text-sm text-gray-600">Verbessert die Lesbarkeit</div>
+          <div class="font-medium text-gray-900 text-sm">Text Spacing</div>
+          <div class="text-xs text-gray-600">Bessere Lesbarkeit</div>
         </div>
         <div class="flex-shrink-0">
-          <span class="feature-status px-3 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full">AUS</span>
+          <span class="feature-status px-2 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full">AUS</span>
         </div>
       </button>
       
       <!-- High Contrast Control -->
       <button 
         id="highContrastMode" 
-        class="accessibility-feature-btn w-full p-4 border-2 border-gray-200 rounded-xl bg-white flex items-center gap-4 text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+        class="accessibility-feature-btn w-full p-3 border-2 border-gray-200 rounded-xl bg-white flex items-center gap-3 text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
         aria-label="Hohen Kontrast aktivieren für bessere Sichtbarkeit"
         aria-pressed="false"
         aria-keyshortcuts="Alt+C"
         data-feature="highContrast"
       >
-        <div class="flex-shrink-0 w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-          <span class="text-2xl">🎨</span>
+        <div class="flex-shrink-0 w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+          <span class="text-xl">🎨</span>
         </div>
         <div class="flex-1 min-w-0">
-          <div class="font-medium text-gray-900">Hoher Kontrast</div>
-          <div class="text-sm text-gray-600">Verbessert die Sichtbarkeit</div>
+          <div class="font-medium text-gray-900 text-sm">Hoher Kontrast</div>
+          <div class="text-xs text-gray-600">Stärkere Farben</div>
         </div>
         <div class="flex-shrink-0">
-          <span class="feature-status px-3 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full">AUS</span>
+          <span class="feature-status px-2 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full">AUS</span>
         </div>
       </button>
       
       <!-- Focus Indicators Control -->
       <button 
         id="focusIndicators" 
-        class="accessibility-feature-btn w-full p-4 border-2 border-gray-200 rounded-xl bg-white flex items-center gap-4 text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+        class="accessibility-feature-btn w-full p-3 border-2 border-gray-200 rounded-xl bg-white flex items-center gap-3 text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
         aria-label="Fokusindikatoren verstärken für bessere Navigation"
         aria-pressed="false"
         aria-keyshortcuts="Alt+F"
         data-feature="focusIndicators"
       >
-        <div class="flex-shrink-0 w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-          <span class="text-2xl">🎯</span>
+        <div class="flex-shrink-0 w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+          <span class="text-xl">🎯</span>
         </div>
         <div class="flex-1 min-w-0">
-          <div class="font-medium text-gray-900">Fokus verbessern</div>
-          <div class="text-sm text-gray-600">Klarere Navigation</div>
+          <div class="font-medium text-gray-900 text-sm">Fokus verbessern</div>
+          <div class="text-xs text-gray-600">Klarere Navigation</div>
         </div>
         <div class="flex-shrink-0">
-          <span class="feature-status px-3 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full">AUS</span>
+          <span class="feature-status px-2 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full">AUS</span>
+        </div>
+      </button>
+
+      <!-- Font Size Control -->
+      <button 
+        id="toggleFontSize" 
+        class="accessibility-feature-btn w-full p-3 border-2 border-gray-200 rounded-xl bg-white flex items-center gap-3 text-left hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-200"
+        aria-label="Schriftgröße erhöhen für bessere Lesbarkeit"
+        aria-pressed="false"
+        aria-keyshortcuts="Alt+S"
+        data-feature="fontSize"
+      >
+        <div class="flex-shrink-0 w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+          <span class="text-xl">📝</span>
+        </div>
+        <div class="flex-1 min-w-0">
+          <div class="font-medium text-gray-900 text-sm">Text vergrößern</div>
+          <div class="text-xs text-gray-600">Größere Schrift</div>
+        </div>
+        <div class="flex-shrink-0">
+          <span class="feature-status px-2 py-1 text-xs font-medium bg-gray-100 text-gray-600 rounded-full">Normal</span>
         </div>
       </button>
     </div>
@@ -138,14 +158,18 @@ const { class: className } = Astro.props;
         </a>
       </div>
     </div>
-  </div>  <!-- Botón flotante - Completamente optimizado para Tailwind -->
+  </div>
+
+  <!-- Botón flotante -->
   <button 
     id="toggleAccessibilityPanel" 
     class="accessibility-toggle-btn w-16 h-16 bg-gradient-to-br from-blue-600 to-blue-700 rounded-full shadow-xl border-2 border-white text-white flex items-center justify-center hover:scale-105 hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300/50 transition-all duration-300 ease-out"
     aria-label="Barrierefreiheitsoptionen öffnen"
     aria-expanded="false"
     aria-controls="accessibilityPanel"
-    title="Barrierefreiheitsoptionen öffnen/schließen"  >    <svg class="w-8 h-8 drop-shadow-sm" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    title="Barrierefreiheitsoptionen öffnen/schließen"
+  >
+    <svg class="w-8 h-8 drop-shadow-sm" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
       <circle cx="12" cy="12" r="11" stroke="currentColor" stroke-width="1.5" fill="none"/>
       <path fill="currentColor" d="M12 6.5c0.83 0 1.5-0.67 1.5-1.5s-0.67-1.5-1.5-1.5-1.5 0.67-1.5 1.5 0.67 1.5 1.5 1.5zm-1.77 1.23c-0.8 0.35-1.38 1.09-1.52 2.02L8.29 12H5c-0.55 0-1 0.45-1 1s0.45 1 1 1h3.69l-0.51 3.03c-0.09 0.55 0.28 1.07 0.83 1.16 0.06 0.01 0.11 0.01 0.17 0.01 0.48 0 0.9-0.35 0.98-0.84L10.72 14h2.56l0.56 2.36c0.11 0.48 0.54 0.82 1.02 0.82 0.08 0 0.16-0.01 0.24-0.03 0.56-0.13 0.9-0.69 0.77-1.25L15.31 13H19c0.55 0 1-0.45 1-1s-0.45-1-1-1h-4.09l-0.49-2.39c-0.2-1-1.09-1.76-2.16-1.76h-0.53c-0.55 0-1 0.45-1 1s0.45 1 1 1h0.53l0.28 1.37L12.9 10H11.1l-0.39-1.96c0.1-0.05 0.21-0.08 0.32-0.08h0.53c0.04 0 0.08-0.01 0.11-0.01z"/>
     </svg>
@@ -153,15 +177,12 @@ const { class: className } = Astro.props;
 </div>
 
 <script>
-  /**
-   * AccessibilityManager - Reestructurado para Astro + Tailwind
-   * JavaScript mínimo, máximo aprovechamiento de utilidades CSS
-   */
   class AccessibilityManager {
     public features: {
       textSpacing: boolean;
       highContrast: boolean;
       focusIndicators: boolean;
+      fontSize: string;
     };
     public panel: HTMLElement | null;
     public toggleButton: HTMLElement | null;
@@ -172,7 +193,8 @@ const { class: className } = Astro.props;
       this.features = {
         textSpacing: false,
         highContrast: false,
-        focusIndicators: false
+        focusIndicators: false,
+        fontSize: 'normal'
       };
       this.panel = null;
       this.toggleButton = null;
@@ -215,14 +237,20 @@ const { class: className } = Astro.props;
         this.toggleFeature('highContrast'));
       document.getElementById('focusIndicators')?.addEventListener('click', () => 
         this.toggleFeature('focusIndicators'));
+      document.getElementById('toggleFontSize')?.addEventListener('click', () => 
+        this.toggleFontSize());
       
       // Reset button
       document.getElementById('resetAccessibility')?.addEventListener('click', () => 
         this.resetAllPreferences());
       
-      // Event handlers
+      // Keyboard shortcuts
       document.addEventListener('keydown', (e: KeyboardEvent) => this.handleKeyboardShortcuts(e));
+      
+      // Outside click
       document.addEventListener('click', (e: MouseEvent) => this.handleOutsideClick(e));
+      
+      // Escape key
       document.addEventListener('keydown', (e: KeyboardEvent) => {
         if (e.key === 'Escape' && this.isPanelVisible()) {
           this.hidePanel();
@@ -237,7 +265,6 @@ const { class: className } = Astro.props;
     showPanel(): void {
       if (!this.panel) return;
       
-      // Usar solo clases Tailwind para transiciones
       this.panel.classList.remove('opacity-0', 'invisible', 'translate-y-4', 'scale-95');
       this.panel.classList.add('opacity-100', 'visible', 'translate-y-0', 'scale-100');
       
@@ -249,7 +276,6 @@ const { class: className } = Astro.props;
     hidePanel(): void {
       if (!this.panel) return;
       
-      // Usar solo clases Tailwind para transiciones
       this.panel.classList.add('opacity-0', 'invisible', 'translate-y-4', 'scale-95');
       this.panel.classList.remove('opacity-100', 'visible', 'translate-y-0', 'scale-100');
       
@@ -262,7 +288,7 @@ const { class: className } = Astro.props;
       return this.panel?.classList.contains('opacity-100') || false;
     }
 
-    toggleFeature(feature: keyof AccessibilityManager['features']): void {
+    toggleFeature(feature: 'textSpacing' | 'highContrast' | 'focusIndicators'): void {
       this.features[feature] = !this.features[feature];
       this.applyFeature(feature);
       this.updateFeatureButton(feature);
@@ -270,7 +296,19 @@ const { class: className } = Astro.props;
       this.updateStatus();
     }
 
-    applyFeature(feature: keyof AccessibilityManager['features']): void {
+    toggleFontSize(): void {
+      const sizes = ['normal', 'large'];
+      const currentIndex = sizes.indexOf(this.features.fontSize);
+      const nextIndex = (currentIndex + 1) % sizes.length;
+      
+      this.features.fontSize = sizes[nextIndex];
+      this.applyFontSize(this.features.fontSize);
+      this.updateFontSizeButton();
+      this.savePreferences();
+      this.updateStatus();
+    }
+
+    applyFeature(feature: 'textSpacing' | 'highContrast' | 'focusIndicators'): void {
       const isEnabled = this.features[feature];
       
       switch (feature) {
@@ -286,104 +324,139 @@ const { class: className } = Astro.props;
       }
     }
 
-    // Métodos de aplicación de características - Mejorados
     applyTextSpacing(enabled: boolean): void {
+      const styleId = 'enhanced-text-spacing';
+      
       if (enabled) {
-        // Mejoras más comprehensivas para text spacing
-        document.documentElement.style.setProperty('--text-spacing-multiplier', '1.6');
-        document.body.style.lineHeight = '1.75';
-        document.body.style.letterSpacing = '0.08em';
-        document.body.style.wordSpacing = '0.15em';
-        
-        // Aplicar a todos los elementos de texto
-        const style = document.createElement('style');
-        style.id = 'enhanced-text-spacing';
-        style.textContent = `
-          p, div, span, a, li, td, th, label, input, textarea, select, button {
-            line-height: 1.75 !important;
-            letter-spacing: 0.08em !important;
-            word-spacing: 0.15em !important;
-          }
-          h1, h2, h3, h4, h5, h6 {
-            line-height: 1.4 !important;
-            letter-spacing: 0.05em !important;
-            margin-bottom: 1.2em !important;
-          }
-          p {
-            margin-bottom: 1.5em !important;
-          }
-          li {
-            margin-bottom: 0.5em !important;
-          }
-        `;
-        if (!document.getElementById('enhanced-text-spacing')) {
+        if (!document.getElementById(styleId)) {
+          const style = document.createElement('style');
+          style.id = styleId;
+          style.textContent = `
+            p, div, span, a, li, td, th, label, input, textarea, select, button {
+              line-height: 1.75 !important;
+              letter-spacing: 0.08em !important;
+              word-spacing: 0.15em !important;
+            }
+            h1, h2, h3, h4, h5, h6 {
+              line-height: 1.4 !important;
+              letter-spacing: 0.05em !important;
+              margin-bottom: 1.2em !important;
+            }
+            p {
+              margin-bottom: 1.5em !important;
+            }
+            li {
+              margin-bottom: 0.5em !important;
+            }
+          `;
           document.head.appendChild(style);
         }
       } else {
-        document.documentElement.style.removeProperty('--text-spacing-multiplier');
-        document.body.style.lineHeight = '';
-        document.body.style.letterSpacing = '';
-        document.body.style.wordSpacing = '';
-        document.getElementById('enhanced-text-spacing')?.remove();
+        document.getElementById(styleId)?.remove();
       }
     }
 
     applyHighContrast(enabled: boolean): void {
+      const styleId = 'enhanced-high-contrast';
+      
       if (enabled) {
         document.documentElement.classList.add('high-contrast-mode');
         
-        // Crear estilos de alto contraste más efectivos
-        const style = document.createElement('style');
-        style.id = 'enhanced-high-contrast';
-        style.textContent = `
-          .high-contrast-mode {
-            filter: contrast(200%) brightness(1.15) saturate(1.3) !important;
-          }
-          
-          .high-contrast-mode * {
-            text-shadow: 0 0 1px rgba(0, 0, 0, 0.8) !important;
-          }
-          
-          .high-contrast-mode a {
-            color: #0066ff !important;
-            text-decoration: underline !important;
-            font-weight: 600 !important;
-            background-color: rgba(255, 255, 0, 0.1) !important;
-            padding: 1px 3px !important;
-            border-radius: 2px !important;
-          }
-          
-          .high-contrast-mode button, 
-          .high-contrast-mode input, 
-          .high-contrast-mode select, 
-          .high-contrast-mode textarea {
-            border: 2px solid #000 !important;
-            background-color: #fff !important;
-            color: #000 !important;
-          }
-          
-          .high-contrast-mode button:hover {
-            background-color: #000 !important;
-            color: #fff !important;
-          }
-          
-          .high-contrast-mode img {
-            filter: contrast(150%) brightness(1.1) !important;
-          }
-          
-          .high-contrast-mode .bg-gradient-to-br,
-          .high-contrast-mode .bg-gradient-to-r {
-            background: #000 !important;
-            color: #fff !important;
-          }
-        `;
-        
-        if (!document.getElementById('enhanced-high-contrast')) {
+        if (!document.getElementById(styleId)) {
+          const style = document.createElement('style');
+          style.id = styleId;
+          style.textContent = `
+            /* TODAS las imágenes y videos SIN filtros */
+            .high-contrast-mode img,
+            .high-contrast-mode video,
+            .high-contrast-mode picture,
+            .high-contrast-mode figure,
+            .high-contrast-mode iframe,
+            .high-contrast-mode canvas,
+            .high-contrast-mode svg,
+            .high-contrast-mode [class*="gallery"],
+            .high-contrast-mode [class*="mosaic"] {
+              filter: none !important;
+              -webkit-filter: none !important;
+            }
+            
+            /* Forzar colores de alto contraste en texto */
+            .high-contrast-mode p,
+            .high-contrast-mode div:not([class*="gallery"]):not([class*="mosaic"]),
+            .high-contrast-mode span,
+            .high-contrast-mode li,
+            .high-contrast-mode td,
+            .high-contrast-mode th,
+            .high-contrast-mode label {
+              color: #000000 !important;
+              background-color: #ffffff !important;
+            }
+            
+            /* Headers visibles */
+            .high-contrast-mode h1,
+            .high-contrast-mode h2,
+            .high-contrast-mode h3,
+            .high-contrast-mode h4,
+            .high-contrast-mode h5,
+            .high-contrast-mode h6 {
+              color: #000000 !important;
+              background-color: #ffffff !important;
+              font-weight: bold !important;
+            }
+            
+            /* Enlaces destacados */
+            .high-contrast-mode a {
+              color: #0000ff !important;
+              background-color: #ffff99 !important;
+              text-decoration: underline !important;
+              font-weight: 600 !important;
+              padding: 1px 3px !important;
+              border-radius: 2px !important;
+            }
+            
+            /* Botones */
+            .high-contrast-mode button {
+              border: 2px solid #000000 !important;
+              background-color: #ffffff !important;
+              color: #000000 !important;
+              font-weight: bold !important;
+            }
+            
+            .high-contrast-mode button:hover,
+            .high-contrast-mode button:focus {
+              background-color: #000000 !important;
+              color: #ffffff !important;
+            }
+            
+            /* Elementos de formulario */
+            .high-contrast-mode input,
+            .high-contrast-mode select,
+            .high-contrast-mode textarea {
+              border: 2px solid #000000 !important;
+              background-color: #ffffff !important;
+              color: #000000 !important;
+            }
+            
+            /* Footer */
+            .high-contrast-mode footer {
+              background: #000000 !important;
+            }
+            
+            .high-contrast-mode footer * {
+              color: #ffffff !important;
+              background-color: transparent !important;
+            }
+            
+            .high-contrast-mode footer a {
+              color: #ffff00 !important;
+              background-color: #000080 !important;
+            }
+          `;
           document.head.appendChild(style);
         }
       } else {
         document.documentElement.classList.remove('high-contrast-mode');
-        document.getElementById('enhanced-high-contrast')?.remove();
+        document.getElementById(styleId)?.remove();
       }
     }
 
@@ -395,77 +468,78 @@ const { class: className } = Astro.props;
           const style = document.createElement('style');
           style.id = styleId;
           style.textContent = `
-            /* Indicadores de foco mejorados y más visibles */
             *:focus {
               outline: 4px solid #ff6600 !important;
               outline-offset: 3px !important;
-              box-shadow: 
-                0 0 0 7px rgba(255, 102, 0, 0.4) !important,
-                0 0 15px rgba(255, 102, 0, 0.6) !important;
-              border-radius: 6px !important;
-              position: relative !important;
-              z-index: 999 !important;
+              box-shadow: 0 0 0 7px rgba(255, 102, 0, 0.4) !important;
             }
             
-            /* Foco especial para enlaces */
             a:focus {
               background-color: rgba(255, 102, 0, 0.15) !important;
-              outline: 4px solid #ff6600 !important;
-              outline-offset: 2px !important;
               text-decoration: underline !important;
               font-weight: 600 !important;
             }
             
-            /* Foco especial para botones */
             button:focus {
-              outline: 4px solid #ff6600 !important;
-              outline-offset: 3px !important;
-              box-shadow: 
-                0 0 0 7px rgba(255, 102, 0, 0.4) !important,
-                0 0 20px rgba(255, 102, 0, 0.7) !important;
               transform: scale(1.02) !important;
               transition: all 0.2s ease !important;
             }
             
-            /* Foco para elementos de formulario */
             input:focus, textarea:focus, select:focus {
-              outline: 4px solid #ff6600 !important;
-              outline-offset: 2px !important;
-              box-shadow: 
-                0 0 0 6px rgba(255, 102, 0, 0.3) !important,
-                inset 0 0 5px rgba(255, 102, 0, 0.2) !important;
               border-color: #ff6600 !important;
-            }
-            
-            /* Indicador visual adicional */
-            *:focus::before {
-              content: "";
-              position: absolute;
-              top: -8px;
-              left: -8px;
-              right: -8px;
-              bottom: -8px;
-              border: 2px dashed #ff6600;
-              border-radius: 8px;
-              pointer-events: none;
-              animation: focus-pulse 2s infinite;
-            }
-            
-            @keyframes focus-pulse {
-              0%, 100% { opacity: 0.7; }
-              50% { opacity: 1; }
             }
           `;
           document.head.appendChild(style);
         }
-        document.documentElement.classList.add('enhanced-focus-mode');
       } else {
         document.getElementById(styleId)?.remove();
-        document.documentElement.classList.remove('enhanced-focus-mode');
       }
     }
 
-    updateFeatureButton(feature: keyof AccessibilityManager['features']): void {
+    applyFontSize(size: string): void {
+      const styleId = 'enhanced-font-size';
+      const existingStyle = document.getElementById(styleId);
+      if (existingStyle) {
+        existingStyle.remove();
+      }
+      
+      if (size !== 'normal') {
+        const style = document.createElement('style');
+        style.id = styleId;
+        const multiplier = '1.1'; // 10% increase
+        
+        style.textContent = `
+          p, div, span, a, li, td, th, label, button, input, textarea, select,
+          h1, h2, h3, h4, h5, h6, .text-xs, .text-sm, .text-base, .text-lg, .text-xl {
+            font-size: ${multiplier}em !important;
+          }
+          
+          h1, .text-4xl, .text-5xl, .text-6xl {
+            font-size: ${parseFloat(multiplier) * 2.25}em !important;
+          }
+          
+          h2, .text-3xl {
+            font-size: ${parseFloat(multiplier) * 1.875}em !important;
+          }
+          
+          h3, .text-2xl {
+            font-size: ${parseFloat(multiplier) * 1.5}em !important;
+          }
+          
+          h4, .text-xl {
+            font-size: ${parseFloat(multiplier) * 1.25}em !important;
+          }
+          
+          .text-sm, small {
+            font-size: ${parseFloat(multiplier) * 0.875}em !important;
+          }
+        `;
+        
+        document.head.appendChild(style);
+      }
+    }
+
+    updateFeatureButton(feature: 'textSpacing' | 'highContrast' | 'focusIndicators'): void {
       const button = document.querySelector(`[data-feature="${feature}"]`) as HTMLElement;
       const status = button?.querySelector('.feature-status') as HTMLElement;
       const isEnabled = this.features[feature];
@@ -474,7 +548,6 @@ const { class: className } = Astro.props;
         button.setAttribute('aria-pressed', isEnabled.toString());
         status.textContent = isEnabled ? 'EIN' : 'AUS';
         
-        // Usar solo clases Tailwind para estados
         if (isEnabled) {
           button.classList.add('bg-blue-50', 'border-blue-500');
           button.classList.remove('border-gray-200');
@@ -489,18 +562,54 @@ const { class: className } = Astro.props;
       }
     }
 
+    updateFontSizeButton(): void {
+      const button = document.querySelector(`[data-feature="fontSize"]`) as HTMLElement;
+      const status = button?.querySelector('.feature-status') as HTMLElement;
+      
+      if (button && status) {
+        const labels = {
+          normal: 'Normal',
+          large: 'Groß'
+        };
+        
+        status.textContent = labels[this.features.fontSize as keyof typeof labels] || 'Normal';
+        
+        if (this.features.fontSize !== 'normal') {
+          button.classList.add('bg-orange-50', 'border-orange-500');
+          button.classList.remove('border-gray-200');
+          status.classList.add('bg-orange-200', 'text-orange-800');
+          status.classList.remove('bg-gray-100', 'text-gray-600');
+        } else {
+          button.classList.remove('bg-orange-50', 'border-orange-500');
+          button.classList.add('border-gray-200');
+          status.classList.remove('bg-orange-200', 'text-orange-800');
+          status.classList.add('bg-gray-100', 'text-gray-600');
+        }
+      }
+    }
+
     updateStatus(): void {
-      const activeCount = Object.values(this.features).filter(Boolean).length;
+      const activeCount = Object.values(this.features).filter(value => 
+        typeof value === 'boolean' ? value : value !== 'normal'
+      ).length;
       if (this.statusElement) {
         this.statusElement.textContent = `${activeCount} ${activeCount === 1 ? 'Funktion aktiv' : 'Funktionen aktiv'}`;
       }
     }
 
     resetAllPreferences(): void {
+      // Reset boolean features
       Object.keys(this.features).forEach(feature => {
-        this.features[feature as keyof AccessibilityManager['features']] = false;
-        this.applyFeature(feature as keyof AccessibilityManager['features']);
-        this.updateFeatureButton(feature as keyof AccessibilityManager['features']);
+        if (feature === 'fontSize') {
+          this.features.fontSize = 'normal';
+          this.applyFontSize('normal');
+          this.updateFontSizeButton();
+        } else {
+          const featureKey = feature as 'textSpacing' | 'highContrast' | 'focusIndicators';
+          this.features[featureKey] = false;
+          this.applyFeature(featureKey);
+          this.updateFeatureButton(featureKey);
+        }
       });
       this.savePreferences();
       this.updateStatus();
@@ -520,11 +629,17 @@ const { class: className } = Astro.props;
         if (saved) {
           const preferences = JSON.parse(saved);
           Object.keys(this.features).forEach(feature => {
-            const featureKey = feature as keyof AccessibilityManager['features'];
-            if (preferences[featureKey]) {
-              this.features[featureKey] = true;
-              this.applyFeature(featureKey);
-              this.updateFeatureButton(featureKey);
+            if (feature === 'fontSize') {
+              this.features.fontSize = preferences.fontSize || 'normal';
+              this.applyFontSize(this.features.fontSize);
+              this.updateFontSizeButton();
+            } else {
+              const featureKey = feature as 'textSpacing' | 'highContrast' | 'focusIndicators';
+              if (preferences[featureKey]) {
+                this.features[featureKey] = true;
+                this.applyFeature(featureKey);
+                this.updateFeatureButton(featureKey);
+              }
             }
           });
         }
@@ -548,6 +663,10 @@ const { class: className } = Astro.props;
             e.preventDefault();
             this.toggleFeature('focusIndicators');
             break;
+          case 's':
+            e.preventDefault();
+            this.toggleFontSize();
+            break;
           case 'a':
             e.preventDefault();
             window.location.href = '/accessibility';
@@ -566,19 +685,19 @@ const { class: className } = Astro.props;
     }
   }
 
-  // Inicialización optimizada para Astro
+  // Inicialización
   let accessibilityManager: AccessibilityManager | null = null;
   
   function initAccessibility(): void {
     if (!accessibilityManager) {
       accessibilityManager = new AccessibilityManager();
       if (typeof window !== 'undefined') {
-        window.accessibilityManager = accessibilityManager;
+        (window as any).accessibilityManager = accessibilityManager;
       }
     }
   }
 
-  // Inicializar en DOM ready
+  // Inicializar
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initAccessibility);
   } else {
