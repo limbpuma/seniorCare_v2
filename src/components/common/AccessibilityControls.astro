@@ -286,28 +286,104 @@ const { class: className } = Astro.props;
       }
     }
 
-    // Métodos de aplicación de características - Mínimo JavaScript
+    // Métodos de aplicación de características - Mejorados
     applyTextSpacing(enabled: boolean): void {
       if (enabled) {
-        document.documentElement.style.setProperty('--text-spacing-multiplier', '1.5');
-        document.body.style.lineHeight = '1.8';
-        document.body.style.letterSpacing = '0.05em';
-        document.body.style.wordSpacing = '0.1em';
+        // Mejoras más comprehensivas para text spacing
+        document.documentElement.style.setProperty('--text-spacing-multiplier', '1.6');
+        document.body.style.lineHeight = '1.75';
+        document.body.style.letterSpacing = '0.08em';
+        document.body.style.wordSpacing = '0.15em';
+        
+        // Aplicar a todos los elementos de texto
+        const style = document.createElement('style');
+        style.id = 'enhanced-text-spacing';
+        style.textContent = `
+          p, div, span, a, li, td, th, label, input, textarea, select, button {
+            line-height: 1.75 !important;
+            letter-spacing: 0.08em !important;
+            word-spacing: 0.15em !important;
+          }
+          h1, h2, h3, h4, h5, h6 {
+            line-height: 1.4 !important;
+            letter-spacing: 0.05em !important;
+            margin-bottom: 1.2em !important;
+          }
+          p {
+            margin-bottom: 1.5em !important;
+          }
+          li {
+            margin-bottom: 0.5em !important;
+          }
+        `;
+        if (!document.getElementById('enhanced-text-spacing')) {
+          document.head.appendChild(style);
+        }
       } else {
         document.documentElement.style.removeProperty('--text-spacing-multiplier');
         document.body.style.lineHeight = '';
         document.body.style.letterSpacing = '';
         document.body.style.wordSpacing = '';
+        document.getElementById('enhanced-text-spacing')?.remove();
       }
     }
 
     applyHighContrast(enabled: boolean): void {
       if (enabled) {
         document.documentElement.classList.add('high-contrast-mode');
-        document.documentElement.style.filter = 'contrast(150%) brightness(1.1)';
+        
+        // Crear estilos de alto contraste más efectivos
+        const style = document.createElement('style');
+        style.id = 'enhanced-high-contrast';
+        style.textContent = `
+          .high-contrast-mode {
+            filter: contrast(200%) brightness(1.15) saturate(1.3) !important;
+          }
+          
+          .high-contrast-mode * {
+            text-shadow: 0 0 1px rgba(0, 0, 0, 0.8) !important;
+          }
+          
+          .high-contrast-mode a {
+            color: #0066ff !important;
+            text-decoration: underline !important;
+            font-weight: 600 !important;
+            background-color: rgba(255, 255, 0, 0.1) !important;
+            padding: 1px 3px !important;
+            border-radius: 2px !important;
+          }
+          
+          .high-contrast-mode button, 
+          .high-contrast-mode input, 
+          .high-contrast-mode select, 
+          .high-contrast-mode textarea {
+            border: 2px solid #000 !important;
+            background-color: #fff !important;
+            color: #000 !important;
+          }
+          
+          .high-contrast-mode button:hover {
+            background-color: #000 !important;
+            color: #fff !important;
+          }
+          
+          .high-contrast-mode img {
+            filter: contrast(150%) brightness(1.1) !important;
+          }
+          
+          .high-contrast-mode .bg-gradient-to-br,
+          .high-contrast-mode .bg-gradient-to-r {
+            background: #000 !important;
+            color: #fff !important;
+          }
+        `;
+        
+        if (!document.getElementById('enhanced-high-contrast')) {
+          document.head.appendChild(style);
+        }
       } else {
         document.documentElement.classList.remove('high-contrast-mode');
-        document.documentElement.style.filter = '';
+        document.getElementById('enhanced-high-contrast')?.remove();
       }
     }
 
@@ -319,10 +395,65 @@ const { class: className } = Astro.props;
           const style = document.createElement('style');
           style.id = styleId;
           style.textContent = `
+            /* Indicadores de foco mejorados y más visibles */
             *:focus {
-              outline: 3px solid #ff6600 !important;
+              outline: 4px solid #ff6600 !important;
+              outline-offset: 3px !important;
+              box-shadow: 
+                0 0 0 7px rgba(255, 102, 0, 0.4) !important,
+                0 0 15px rgba(255, 102, 0, 0.6) !important;
+              border-radius: 6px !important;
+              position: relative !important;
+              z-index: 999 !important;
+            }
+            
+            /* Foco especial para enlaces */
+            a:focus {
+              background-color: rgba(255, 102, 0, 0.15) !important;
+              outline: 4px solid #ff6600 !important;
               outline-offset: 2px !important;
-              box-shadow: 0 0 0 5px rgba(255, 102, 0, 0.3) !important;
+              text-decoration: underline !important;
+              font-weight: 600 !important;
+            }
+            
+            /* Foco especial para botones */
+            button:focus {
+              outline: 4px solid #ff6600 !important;
+              outline-offset: 3px !important;
+              box-shadow: 
+                0 0 0 7px rgba(255, 102, 0, 0.4) !important,
+                0 0 20px rgba(255, 102, 0, 0.7) !important;
+              transform: scale(1.02) !important;
+              transition: all 0.2s ease !important;
+            }
+            
+            /* Foco para elementos de formulario */
+            input:focus, textarea:focus, select:focus {
+              outline: 4px solid #ff6600 !important;
+              outline-offset: 2px !important;
+              box-shadow: 
+                0 0 0 6px rgba(255, 102, 0, 0.3) !important,
+                inset 0 0 5px rgba(255, 102, 0, 0.2) !important;
+              border-color: #ff6600 !important;
+            }
+            
+            /* Indicador visual adicional */
+            *:focus::before {
+              content: "";
+              position: absolute;
+              top: -8px;
+              left: -8px;
+              right: -8px;
+              bottom: -8px;
+              border: 2px dashed #ff6600;
+              border-radius: 8px;
+              pointer-events: none;
+              animation: focus-pulse 2s infinite;
+            }
+            
+            @keyframes focus-pulse {
+              0%, 100% { opacity: 0.7; }
+              50% { opacity: 1; }
             }
           `;
           document.head.appendChild(style);
