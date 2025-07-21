@@ -113,6 +113,16 @@ const { isLandingPage } = Astro.props;
             </a>
           ))
         }
+        <!-- Botón de configuración de cookies para cumplir DSGVO -->
+        <button 
+          id="cookie-settings-btn" 
+          class="hover:text-soft-orange relative group bg-transparent border-none cursor-pointer"
+          onclick="openCookieSettings()"
+          aria-label="Cookie-Einstellungen ändern"
+        >
+          <span class="relative z-10">Cookie-Einstellungen</span>
+          <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-soft-orange to-yellow-400 group-hover:w-full transition-all duration-300"></span>
+        </button>
       </div>    </div>
   </div>
 </footer>
