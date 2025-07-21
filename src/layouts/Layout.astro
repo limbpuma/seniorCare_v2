@@ -2,6 +2,7 @@
 import Header from "@/components/common/Header.astro";
 import Footer from "@/components/common/Footer.astro";
 import CookieConsent from "@/components/common/CookieConsent.tsx";
+import CookieConsentModal from "@/components/common/CookieConsentModal.tsx";
 import AccessibilityControls from "@/components/common/AccessibilityControls.astro";
 import DynamicSEO from "@/components/common/DynamicSEO.astro";
 import texts from "@/utils/texts.json";
@@ -89,6 +90,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
       </>
     )}
     <CookieConsent client:idle />
+    <CookieConsentModal client:idle />
     <AccessibilityControls class="global-accessibility-controls" />
     
     <!-- Accessibility Manager Script -->
@@ -576,6 +578,9 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
       }      // Create global instance
       window.accessibilityManager = new AccessibilityManager();      // Enhanced Navigation Manager removed - using native Astro navigation
     </script>
+    
+    <!-- Cookie Consent Script -->
+    <script src="/js/cookie-consent.js" defer></script>
   </body>
 </html>
 

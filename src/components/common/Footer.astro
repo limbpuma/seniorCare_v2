@@ -100,16 +100,21 @@ const { isLandingPage } = Astro.props;
       </div>
     </div>
 
-    <hr class="my-6 border-white/20 sm:mx-auto lg:my-8 bg-gradient-to-r from-transparent via-white/30 to-transparent h-px border-0" />    <div
-      class="sm:flex sm:items-center sm:justify-between text-center md:text-left text-white/90 font-ag-body-text text-ag-body-text"
-    >
-      <span class="hover:text-transparent hover:bg-gradient-to-r hover:from-soft-orange hover:to-yellow-400 hover:bg-clip-text transition-all duration-300">{footerTexts.copyright}</span>      <div class="flex mt-4 sm:mt-0 justify-center md:justify-start space-x-4">        {
-          Legallinks.map((link, _index) => (            <a 
+    <hr class="my-6 border-white/20 sm:mx-auto lg:my-8 bg-gradient-to-r from-transparent via-white/30 to-transparent h-px border-0" />    <!-- Copyright Footer -->
+    <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between text-center sm:text-left text-white/90 font-ag-body-text text-ag-body-text">
+      <span class="hover:text-transparent hover:bg-gradient-to-r hover:from-soft-orange hover:to-yellow-400 hover:bg-clip-text transition-all duration-300 mb-4 sm:mb-0">
+        {footerTexts.copyright}
+      </span>
+      
+      <div class="flex flex-wrap justify-center sm:justify-end items-center gap-4">
+        {
+          Legallinks.map((link, _index) => (
+            <a 
               href={link.href} 
               class="hover:text-soft-orange relative group"
             >
               <span class="relative z-10">{link.name}</span>
-              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-soft-orange to-yellow-400 group-hover:w-full"></span>
+              <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-soft-orange to-yellow-400 group-hover:w-full transition-all duration-300"></span>
             </a>
           ))
         }
@@ -123,7 +128,8 @@ const { isLandingPage } = Astro.props;
           <span class="relative z-10">Cookie-Einstellungen</span>
           <span class="absolute bottom-0 left-0 w-0 h-0.5 bg-gradient-to-r from-soft-orange to-yellow-400 group-hover:w-full transition-all duration-300"></span>
         </button>
-      </div>    </div>
+      </div>
+    </div>
   </div>
 </footer>
 
