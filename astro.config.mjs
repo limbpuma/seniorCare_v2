@@ -1,29 +1,29 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
-import vercel from "@astrojs/vercel/serverless";
 
-// https://astro.build/config
+// KAS All-Inkl Production Configuration
+// Optimized for https://kas.all-inkl.com/ deployment
 export default defineConfig({
   integrations: [tailwind(), react()],
-  output: "server",
-  adapter: vercel(),
+  output: "static", // Changed to static for KAS hosting
   
-  // Performance optimizations
+  // KAS hosting optimizations
   build: {
     // Inline small assets to reduce HTTP requests
     inlineStylesheets: 'auto',
     
+    // Optimize for KAS hosting environment
     rollupOptions: {
       output: {
-        // Manual chunk splitting for better caching
+        // Optimized chunk splitting for KAS
         manualChunks: (id) => {
-          // Vendor chunk for React
+          // Core React chunk
           if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
             return 'vendor-react';
           }
           
-          // WCAG utilities - separate chunk for conditional loading
+          // WCAG utilities - separate chunk
           if (id.includes('wcag-text-spacing-test') || 
               id.includes('wcag-focus-not-obscured') ||
               id.includes('wcag-content-hover-focus') ||
@@ -31,12 +31,12 @@ export default defineConfig({
             return 'wcag-utils';
           }
           
-          // Heavy test suite - separate chunk
+          // Heavy test suite - separate chunk for conditional loading
           if (id.includes('wcag22-comprehensive-test')) {
             return 'wcag-tests';
           }
           
-          // Swiper - separate chunk for conditional loading
+          // Swiper - separate chunk
           if (id.includes('swiper')) {
             return 'swiper-lib';
           }
@@ -46,13 +46,13 @@ export default defineConfig({
             return 'fontawesome';
           }
           
-          // Other node_modules
+          // Other vendor libraries
           if (id.includes('node_modules')) {
             return 'vendor';
           }
         },
         
-        // Optimize chunk file names
+        // KAS-optimized file names
         chunkFileNames: 'assets/js/[name]-[hash].js',
         entryFileNames: 'assets/js/[name]-[hash].js',
         assetFileNames: (assetInfo) => {
@@ -63,53 +63,105 @@ export default defineConfig({
           if (/css/i.test(extType)) {
             return `assets/css/[name]-[hash].[ext]`;
           }
+          if (/woff2?|ttf|eot/i.test(extType)) {
+            return `assets/fonts/[name]-[hash].[ext]`;
+          }
           return `assets/[name]-[hash].[ext]`;
         }
       },
       
-      // Tree shaking configuration
+      // Enhanced tree shaking for production
       treeshake: {
         moduleSideEffects: false,
-        propertyReadSideEffects: false
+        propertyReadSideEffects: false,
+        unknownGlobalSideEffects: false
       }
     },
     
-    // Target more modern browsers for smaller bundles
-    target: 'es2020'
+    // Target ES2018 for wider browser support on KAS
+    target: 'es2018'
   },
   
-  // Vite optimization
+  // Vite optimization for KAS hosting
   vite: {
     build: {
       // CSS code splitting
       cssCodeSplit: true,
       
-      // Minification
+      // Aggressive minification for production
       minify: 'terser',
       terserOptions: {
         compress: {
-          drop_console: process.env.NODE_ENV === 'production',
+          drop_console: true, // Remove console logs in production
           drop_debugger: true,
-          passes: 2
+          passes: 3, // More aggressive compression
+          pure_funcs: ['console.log', 'console.info', 'console.debug'], // Remove specific console methods
+          unsafe_comps: true,
+          unsafe_math: true,
+          unsafe_methods: true,
+        },
+        mangle: {
+          safari10: true,
+        },
+        format: {
+          comments: false, // Remove comments
         }
       },
       
-      // Chunk size warnings
-      chunkSizeWarningLimit: 1000
+      // Optimized chunk size for KAS
+      chunkSizeWarningLimit: 800,
+      
+      // Enable source maps only for errors
+      sourcemap: false,
+      
+      // Optimize CSS
+      cssMinify: true,
+      
+      // Asset inlining threshold (4KB)
+      assetsInlineLimit: 4096
     },
     
     // Optimization for dependencies
     optimizeDeps: {
       include: ['react', 'react-dom'],
       exclude: [
-        // Don't pre-bundle heavy WCAG test suite
+        // Don't pre-bundle heavy test suites
         './src/utils/wcag22-comprehensive-test.js'
       ]
     },
     
     // CSS optimization
     css: {
-      devSourcemap: process.env.NODE_ENV === 'development'
+      devSourcemap: false, // Disable CSS source maps in production
+      preprocessorOptions: {
+        scss: {
+          // Optimize SCSS compilation
+          outputStyle: 'compressed'
+        }
+      }
+    },
+    
+    // Server options for development (KAS compatibility)
+    server: {
+      port: 4321,
+      host: '0.0.0.0', // Allow external connections for testing
     }
-  }
+  },
+  
+  // KAS hosting specific configurations
+  site: 'https://pflegedienst-integra.de', // Production site URL
+  base: '/', // Root deployment
+  
+  // Removed experimental features for compatibility with Astro 5.10.1
+  
+  // Enhanced prefetch for KAS hosting
+  prefetch: {
+    prefetchAll: false, // Conservative prefetching
+    defaultStrategy: 'hover'
+  },
+  
+  // Security headers and SEO optimization
+  compressHTML: true,
+  
+  // Basic configuration for stable build
 });

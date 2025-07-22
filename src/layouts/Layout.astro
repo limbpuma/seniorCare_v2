@@ -1,8 +1,6 @@
 ---
 import Header from "@/components/common/Header.astro";
 import Footer from "@/components/common/Footer.astro";
-import CookieConsent from "@/components/common/CookieConsent.tsx";
-import CookieConsentModal from "@/components/common/CookieConsentModal.tsx";
 import AccessibilityControls from "@/components/common/AccessibilityControls.astro";
 import DynamicSEO from "@/components/common/DynamicSEO.astro";
 import texts from "@/utils/texts.json";
@@ -53,8 +51,6 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
         <meta name="keywords" content={keywords} />
       </>
     )}
-    <link rel="stylesheet" href="/src/styles/main.css" />
-    <link rel="stylesheet" href="/src/styles/accessibility.css" />
     <!-- Essential FontAwesome icons only -->
     <link
       rel="preload"
@@ -89,8 +85,6 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
         <Footer isLandingPage={false} />
       </>
     )}
-    <CookieConsent client:idle />
-    <CookieConsentModal client:idle />
     <AccessibilityControls class="global-accessibility-controls" />
     
     <!-- Accessibility Manager Script -->
@@ -580,7 +574,7 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
     </script>
     
     <!-- Cookie Consent Script -->
-    <script src="/js/cookie-consent.js" defer></script>
+    <script src="/js/cookie-consent.js" is:inline defer></script>
   </body>
 </html>
 

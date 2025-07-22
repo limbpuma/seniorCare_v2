@@ -169,12 +169,10 @@ function isActiveLink(href: string, currentPath: string): boolean {
         <!-- Desktop Navigation - HTML directo de Astro con priorización responsive -->
         <div class="hidden md:flex items-center justify-center flex-1 min-w-0">
           <ul class="flex items-center gap-1 md:gap-2 lg:gap-4 xl:gap-6">
-            {NAVIGATION.map((link: NavigationLink, index: number) => {
+            {NAVIGATION.map((link: NavigationLink) => {
               const isActive = isActiveLink(link.href, currentPath);
               const isHome = link.href === "/" || link.name === headerTexts.nav.home;
               const isAbout = link.name === headerTexts.nav.about;
-              const isServices = link.name === headerTexts.nav.services;
-              const isContact = link.name === headerTexts.nav.contact;
               const isFaq = link.name === headerTexts.nav.faq;
               
               // Sistema de priorización por tamaño de pantalla

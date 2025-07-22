@@ -37,11 +37,6 @@ const CookieConsentModal: React.FC = () => {
       };
       localStorage.setItem('integra_cookie_consent', JSON.stringify(consentData));
       
-      // Trigger the global cookie application function if available
-      if (window.applyCookieSettings) {
-        window.applyCookieSettings(consentData);
-      }
-      
       // Hide modal
       const modal = document.getElementById('cookie-settings');
       if (modal) {

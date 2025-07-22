@@ -273,8 +273,11 @@ const getTextareaRows = () => {
     };
 
     try {
-      // Use environment variable or fallback to improved PHP system
-      const emailApiUrl = import.meta.env.PUBLIC_EMAIL_API_URL || 'http://localhost/php-mail-system/send-email.php';
+      // KAS Production or local development URL
+      const emailApiUrl = import.meta.env.PUBLIC_EMAIL_API_URL || 
+                         (window.location.hostname === 'pflegedienst-integra.de' || window.location.hostname.includes('kasserver.com')) 
+                           ? '/php-mail-system/send-email-kas-production.php'
+                           : 'http://localhost/php-mail-system/send-email.php';
       
       // Send JSON data to improved PHP email system
       const response = await fetch(emailApiUrl, {

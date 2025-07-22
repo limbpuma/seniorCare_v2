@@ -80,7 +80,7 @@ const HeadingTag = `h${headingLevel}` as keyof JSX.IntrinsicElements;
       aria-label="Unsere Statistiken und Zahlen"
     >      <div class="grid grid-cols-2 gap-spacing-4 sm:gap-spacing-8 md:gap-0">
         {
-          stats.map(({ number, label }, index) => (
+          stats.map(({ number, label }) => (
             <div class="text-center rounded-2xl p-4 lg:p-6">
               <p 
                 class="text-h3 sm:text-h2 lg:text-[48px] xl:text-[56px] 2xl:text-[64px] font-bold mb-spacing-2 bg-gradient-to-r from-accent to-soft-orange bg-clip-text text-transparent"
