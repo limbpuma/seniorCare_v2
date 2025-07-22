@@ -65,8 +65,8 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
     </noscript>  </head>
   <body class="bg-white">    {page === "home" ? (
       <>
+        <Header navAnchors={navAnchors} />
         <div class="viewport-height flex flex-col w-full">
-          <Header navAnchors={navAnchors} />
           <div class="flex-1 w-full min-h-0">
             <slot name="hero" />
           </div>

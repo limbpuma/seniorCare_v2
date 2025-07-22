@@ -1,0 +1,176 @@
+---
+// Cookie Settings Modal Component for DSGVO Compliance
+import texts from "@/utils/texts.json";
+
+// Use fallback texts if not found in JSON
+const cookieTexts = texts.cookies || {
+  settings: {
+    title: "Cookie-Einstellungen",
+    description: "Wir verwenden Cookies, um Ihnen die beste Erfahrung auf unserer Website zu bieten. Sie können auswählen, welche Kategorien von Cookies Sie zulassen möchten.",
+    essential: {
+      title: "Notwendige Cookies",
+      description: "Diese Cookies sind für das Funktionieren der Website erforderlich und können nicht deaktiviert werden.",
+      alwaysActive: "Immer aktiv"
+    },
+    analytics: {
+      title: "Analyse Cookies",
+      description: "Diese Cookies helfen uns zu verstehen, wie Besucher mit der Website interagieren, indem sie Informationen anonym sammeln und melden.",
+      enable: "Aktivieren"
+    },
+    marketing: {
+      title: "Marketing Cookies",
+      description: "Diese Cookies werden verwendet, um Werbeanzeigen zu personalisieren und die Wirksamkeit von Werbekampagnen zu messen.",
+      enable: "Aktivieren"
+    },
+    saveSettings: "Einstellungen speichern",
+    acceptAll: "Alle akzeptieren",
+    acceptNecessary: "Nur notwendige",
+    close: "Schließen"
+  }
+};
+---
+
+<!-- Cookie Settings Modal -->
+<div 
+  id="cookie-settings" 
+  class="fixed inset-0 bg-black bg-opacity-50 z-50"
+  role="dialog"
+  aria-labelledby="cookie-settings-title"
+  aria-describedby="cookie-settings-description"
+  style="display: none; align-items: center; justify-content: center;"
+>
+  <div class="bg-white rounded-lg shadow-xl max-w-2xl w-full mx-4 sm:mx-6 md:mx-8 max-h-[90vh] sm:max-h-[85vh] overflow-y-auto">
+    <div class="p-4 sm:p-6">
+      <!-- Header -->
+      <div class="flex justify-between items-center mb-4 sm:mb-6">
+        <h2 id="cookie-settings-title" class="text-xl sm:text-2xl font-bold text-deep-blue">
+          {cookieTexts.settings.title}
+        </h2>
+        <button
+          id="close-cookie-settings"
+          class="text-gray-500 hover:text-gray-700 text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded"
+          aria-label={cookieTexts.settings.close}
+        >
+          ×
+        </button>
+      </div>
+
+      <!-- Description -->
+      <p id="cookie-settings-description" class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
+        {cookieTexts.settings.description}
+      </p>
+
+      <!-- Cookie Categories -->
+      <div class="space-y-4 sm:space-y-6">
+        <!-- Essential Cookies -->
+        <div class="border rounded-lg p-3 sm:p-4">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+            <div>
+              <h3 class="font-semibold text-deep-blue mb-2 text-sm sm:text-base">
+                {cookieTexts.settings.essential.title}
+              </h3>
+              <p class="text-sm text-gray-600">
+                {cookieTexts.settings.essential.description}
+              </p>
+            </div>
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="essential-cookies"
+                checked
+                disabled
+                class="w-5 h-5 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2 cursor-not-allowed"
+              />
+              <label for="essential-cookies" class="ml-2 text-sm font-medium text-gray-500">
+                {cookieTexts.settings.essential.alwaysActive}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Analytics Cookies -->
+        <div class="border rounded-lg p-3 sm:p-4">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+            <div>
+              <h3 class="font-semibold text-deep-blue mb-2 text-sm sm:text-base">
+                {cookieTexts.settings.analytics.title}
+              </h3>
+              <p class="text-sm text-gray-600">
+                {cookieTexts.settings.analytics.description}
+              </p>
+            </div>
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="analytics-cookies"
+                class="w-5 h-5 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2"
+              />
+              <label for="analytics-cookies" class="ml-2 text-sm font-medium text-gray-900">
+                {cookieTexts.settings.analytics.enable}
+              </label>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marketing Cookies -->
+        <div class="border rounded-lg p-3 sm:p-4">
+          <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+            <div>
+              <h3 class="font-semibold text-deep-blue mb-2 text-sm sm:text-base">
+                {cookieTexts.settings.marketing.title}
+              </h3>
+              <p class="text-sm text-gray-600">
+                {cookieTexts.settings.marketing.description}
+              </p>
+            </div>
+            <div class="flex items-center">
+              <input
+                type="checkbox"
+                id="marketing-cookies"
+                class="w-5 h-5 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2"
+              />
+              <label for="marketing-cookies" class="ml-2 text-sm font-medium text-gray-900">
+                {cookieTexts.settings.marketing.enable}
+              </label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="flex flex-col sm:flex-row gap-3 sm:gap-4 mt-6 sm:mt-8">
+        <button
+          id="save-cookie-settings"
+          class="flex-1 bg-primary hover:bg-primary/90 text-white font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 text-sm sm:text-base"
+        >
+          {cookieTexts.settings.saveSettings}
+        </button>
+        <button
+          id="modal-accept-all"
+          class="flex-1 bg-soft-blue hover:bg-soft-blue/90 text-white font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-soft-blue focus:ring-offset-2 text-sm sm:text-base"
+        >
+          {cookieTexts.settings.acceptAll}
+        </button>
+        <button
+          id="modal-accept-necessary"
+          class="flex-1 bg-gray-500 hover:bg-gray-600 text-white font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 text-sm sm:text-base"
+        >
+          {cookieTexts.settings.acceptNecessary}
+        </button>
+      </div>
+
+      <!-- Privacy Policy Link -->
+      <div class="mt-4 sm:mt-6 text-center">
+        <p class="text-sm text-gray-600">
+          Weitere Informationen finden Sie in unserer{' '}
+          <a 
+            href="/privacypolicy" 
+            class="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded"
+          >
+            Datenschutzerklärung
+          </a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
