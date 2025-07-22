@@ -105,6 +105,7 @@ const getTextareaRows = () => {
               type={type as astroHTML.JSX.HTMLInputTypeAttribute}
               name={name}
               placeholder={placeholder}
+              value={type === "tel" ? "+49 " : ""}
               data-form-element="true"
               class={inputClasses}
               required
