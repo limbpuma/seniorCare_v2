@@ -410,3 +410,35 @@ body {
   }
 }
 
+/* ===============================================
+   LAYOUT UTILITIES
+   =============================================== */
+
+/* Viewport height utility for full screen sections */
+.viewport-height {
+  height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile browsers */
+}
+
+/* Header height compensation for sticky layouts */
+:root {
+  --header-height: 80px; /* Approximate header height */
+}
+
+@media (min-width: 768px) {
+  :root {
+    --header-height: 90px; /* Larger header on desktop */
+  }
+}
+
+/* Sticky header specific styles */
+.sticky-header-compensation {
+  padding-top: var(--header-height);
+}
+
+/* Ensure content doesn't hide behind sticky header */
+.content-with-sticky-header {
+  margin-top: calc(var(--header-height) * -1);
+  padding-top: var(--header-height);
+}
+
