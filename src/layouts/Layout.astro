@@ -573,7 +573,8 @@ const { description, keywords } = texts.seo[page] || { description: "", keywords
       window.accessibilityManager = new AccessibilityManager();      // Enhanced Navigation Manager removed - using native Astro navigation
     </script>
     
-    <!-- Cookie Consent Script -->
+    <!-- Cookie System Scripts - DOM injection first, then consent management -->
+    <script src="/js/cookie-dom-inject.js" is:inline></script>
     <script src="/js/cookie-consent.js" is:inline defer></script>
   </body>
 </html>

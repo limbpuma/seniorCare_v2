@@ -1,31 +1,29 @@
 ---
-// Cookie Settings Modal Component for DSGVO Compliance
+// Cookie Settings Modal Component for GDPR/DSGVO Compliance
 import texts from "@/utils/texts.json";
 
-// Use fallback texts if not found in JSON
-const cookieTexts = texts.cookies || {
-  settings: {
-    title: "Cookie-Einstellungen",
-    description: "Wir verwenden Cookies, um Ihnen die beste Erfahrung auf unserer Website zu bieten. Sie können auswählen, welche Kategorien von Cookies Sie zulassen möchten.",
+// Use updated cookie texts with GDPR compliance
+const cookieTexts = texts.cookies?.settings || {
+  title: "Cookie-Einstellungen verwalten",
+  description: "Sie können hier Ihre Einwilligung zu den verschiedenen Cookie-Kategorien geben oder widerrufen. Ihre Entscheidung wird für 12 Monate gespeichert.",
+  save: "Einstellungen speichern",
+  close: "Schließen",
+  categories: {
     essential: {
       title: "Notwendige Cookies",
-      description: "Diese Cookies sind für das Funktionieren der Website erforderlich und können nicht deaktiviert werden.",
-      alwaysActive: "Immer aktiv"
+      description: "Diese Cookies sind für die Grundfunktionen der Website unerlässlich und können nicht deaktiviert werden.",
+      required: true
     },
     analytics: {
-      title: "Analyse Cookies",
-      description: "Diese Cookies helfen uns zu verstehen, wie Besucher mit der Website interagieren, indem sie Informationen anonym sammeln und melden.",
-      enable: "Aktivieren"
+      title: "Analyse-Cookies", 
+      description: "Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren.",
+      required: false
     },
     marketing: {
-      title: "Marketing Cookies",
-      description: "Diese Cookies werden verwendet, um Werbeanzeigen zu personalisieren und die Wirksamkeit von Werbekampagnen zu messen.",
-      enable: "Aktivieren"
-    },
-    saveSettings: "Einstellungen speichern",
-    acceptAll: "Alle akzeptieren",
-    acceptNecessary: "Nur notwendige",
-    close: "Schließen"
+      title: "Marketing-Cookies",
+      description: "Diese Cookies werden verwendet, um Werbeanzeigen für Sie relevanter zu machen.",
+      required: false
+    }
   }
 };
 ---
@@ -44,12 +42,12 @@ const cookieTexts = texts.cookies || {
       <!-- Header -->
       <div class="flex justify-between items-center mb-4 sm:mb-6">
         <h2 id="cookie-settings-title" class="text-xl sm:text-2xl font-bold text-deep-blue">
-          {cookieTexts.settings.title}
+          {cookieTexts.title}
         </h2>
         <button
           id="close-cookie-settings"
           class="text-gray-500 hover:text-gray-700 text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded"
-          aria-label={cookieTexts.settings.close}
+          aria-label={cookieTexts.close}
         >
           ×
         </button>
@@ -57,83 +55,93 @@ const cookieTexts = texts.cookies || {
 
       <!-- Description -->
       <p id="cookie-settings-description" class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
-        {cookieTexts.settings.description}
+        {cookieTexts.description}
       </p>
 
       <!-- Cookie Categories -->
       <div class="space-y-4 sm:space-y-6">
         <!-- Essential Cookies -->
-        <div class="border rounded-lg p-3 sm:p-4">
+        <div class="border border-gray-200 rounded-lg p-3 sm:p-4">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
             <div>
               <h3 class="font-semibold text-deep-blue mb-2 text-sm sm:text-base">
-                {cookieTexts.settings.essential.title}
+                {cookieTexts.categories.essential.title}
               </h3>
               <p class="text-sm text-gray-600">
-                {cookieTexts.settings.essential.description}
+                {cookieTexts.categories.essential.description}
               </p>
             </div>
             <div class="flex items-center">
-              <input
-                type="checkbox"
-                id="essential-cookies"
-                checked
-                disabled
-                class="w-5 h-5 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2 cursor-not-allowed"
-              />
-              <label for="essential-cookies" class="ml-2 text-sm font-medium text-gray-500">
-                {cookieTexts.settings.essential.alwaysActive}
-              </label>
+              <div class="relative inline-block w-10 h-6 bg-primary rounded-full">
+                <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transform translate-x-4 transition-transform"></div>
+              </div>
+              <span class="ml-2 text-sm font-medium text-gray-500">
+                Immer aktiv
+              </span>
             </div>
           </div>
         </div>
 
         <!-- Analytics Cookies -->
-        <div class="border rounded-lg p-3 sm:p-4">
+        <div class="border border-gray-200 rounded-lg p-3 sm:p-4">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
             <div>
               <h3 class="font-semibold text-deep-blue mb-2 text-sm sm:text-base">
-                {cookieTexts.settings.analytics.title}
+                {cookieTexts.categories.analytics.title}
               </h3>
               <p class="text-sm text-gray-600">
-                {cookieTexts.settings.analytics.description}
+                {cookieTexts.categories.analytics.description}
               </p>
             </div>
             <div class="flex items-center">
-              <input
-                type="checkbox"
-                id="analytics-cookies"
-                class="w-5 h-5 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2"
-              />
-              <label for="analytics-cookies" class="ml-2 text-sm font-medium text-gray-900">
-                {cookieTexts.settings.analytics.enable}
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input 
+                  type="checkbox" 
+                  id="analytics-cookies" 
+                  class="sr-only peer"
+                />
+                <div class="relative w-10 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
               </label>
             </div>
           </div>
         </div>
 
         <!-- Marketing Cookies -->
-        <div class="border rounded-lg p-3 sm:p-4">
+        <div class="border border-gray-200 rounded-lg p-3 sm:p-4">
           <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
             <div>
               <h3 class="font-semibold text-deep-blue mb-2 text-sm sm:text-base">
-                {cookieTexts.settings.marketing.title}
+                {cookieTexts.categories.marketing.title}
               </h3>
               <p class="text-sm text-gray-600">
-                {cookieTexts.settings.marketing.description}
+                {cookieTexts.categories.marketing.description}
               </p>
             </div>
             <div class="flex items-center">
-              <input
-                type="checkbox"
-                id="marketing-cookies"
-                class="w-5 h-5 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2"
-              />
-              <label for="marketing-cookies" class="ml-2 text-sm font-medium text-gray-900">
-                {cookieTexts.settings.marketing.enable}
+              <label class="relative inline-flex items-center cursor-pointer">
+                <input 
+                  type="checkbox" 
+                  id="marketing-cookies" 
+                  class="sr-only peer"
+                />
+                <div class="relative w-10 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
               </label>
             </div>
           </div>
+        </div>
+
+        <!-- GDPR Information -->
+        <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+          <h4 class="text-sm font-semibold text-blue-900 mb-2">
+            <svg class="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+            </svg>
+            Ihre Rechte nach DSGVO
+          </h4>
+          <p class="text-xs text-blue-800">
+            Sie können Ihre Einwilligung jederzeit widerrufen. Ihre Entscheidung wird für 12 Monate gespeichert. 
+            Bei Fragen wenden Sie sich an: info@pflegedienst-integra.de
+          </p>
         </div>
       </div>
 
@@ -143,19 +151,24 @@ const cookieTexts = texts.cookies || {
           id="save-cookie-settings"
           class="flex-1 bg-primary hover:bg-primary/90 text-white font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 text-sm sm:text-base"
         >
-          {cookieTexts.settings.saveSettings}
+          {cookieTexts.save}
         </button>
         <button
-          id="modal-accept-all"
-          class="flex-1 bg-soft-blue hover:bg-soft-blue/90 text-white font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-soft-blue focus:ring-offset-2 text-sm sm:text-base"
-        >
-          {cookieTexts.settings.acceptAll}
-        </button>
-        <button
-          id="modal-accept-necessary"
+          id="reject-all-cookies"
           class="flex-1 bg-gray-500 hover:bg-gray-600 text-white font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 text-sm sm:text-base"
         >
-          {cookieTexts.settings.acceptNecessary}
+          Alle ablehnen
+        </button>
+      </div>
+
+      <!-- GDPR Revoke Button -->
+      <div class="mt-4 text-center">
+        <button
+          id="revoke-consent-btn"
+          class="bg-red-500 hover:bg-red-600 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 text-sm"
+          onclick="window.revokeAllConsent()"
+        >
+          Einwilligung vollständig widerrufen
         </button>
       </div>
 

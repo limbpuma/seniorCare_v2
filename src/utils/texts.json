@@ -634,5 +634,80 @@
       "title": "Barriere melden",
       "description": "Haben Sie Probleme bei der Nutzung unserer Website? Schreiben Sie uns eine E-Mail an info@pflegedienst-integra.de oder rufen Sie uns an: 0231 9125000. Wir helfen Ihnen gerne weiter."
     }
+  },
+  "cookies": {
+    "banner": {
+      "title": "Cookie-Einstellungen",
+      "message": "Diese Website verwendet Cookies, um Ihnen ein optimales Nutzererlebnis zu bieten und unsere Dienstleistungen zu verbessern. Sie können frei wählen, welche Kategorien von Cookies Sie zulassen möchten. Notwendige Cookies können nicht abgewählt werden, da sie für die Grundfunktionen der Website erforderlich sind.",
+      "acceptAll": "Alle Cookies akzeptieren",
+      "acceptNecessary": "Nur notwendige Cookies",
+      "customize": "Cookie-Einstellungen anpassen",
+      "learnMore": "Mehr über unsere Cookie-Richtlinie erfahren"
+    },
+    "settings": {
+      "title": "Cookie-Einstellungen verwalten",
+      "description": "Sie können hier Ihre Einwilligung zu den verschiedenen Cookie-Kategorien geben oder widerrufen. Ihre Entscheidung wird für 12 Monate gespeichert.",
+      "save": "Einstellungen speichern",
+      "close": "Schließen",
+      "categories": {
+        "essential": {
+          "title": "Notwendige Cookies",
+          "description": "Diese Cookies sind für die Grundfunktionen der Website unerlässlich und können nicht deaktiviert werden. Sie ermöglichen es Ihnen, auf der Website zu navigieren und deren Funktionen zu nutzen.",
+          "required": true,
+          "cookies": [
+            "Sitzungsverwaltung",
+            "Cookie-Einstellungen speichern",
+            "Sicherheitstoken",
+            "Spracheinstellungen"
+          ]
+        },
+        "analytics": {
+          "title": "Analyse-Cookies",
+          "description": "Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren, indem sie Informationen anonym sammeln und melden. Wir verwenden diese Daten zur Verbesserung unserer Website.",
+          "required": false,
+          "cookies": [
+            "Google Analytics (anonymisiert)",
+            "Nutzungsstatistiken",
+            "Seitenaufrufe"
+          ]
+        },
+        "marketing": {
+          "title": "Marketing-Cookies",
+          "description": "Diese Cookies werden verwendet, um Werbeanzeigen für Sie relevanter zu machen. Sie können auch dazu verwendet werden, die Anzahl der Anzeigen zu begrenzen und die Wirksamkeit von Werbekampagnen zu messen.",
+          "required": false,
+          "cookies": [
+            "Soziale Medien Integration",
+            "Remarketing",
+            "Conversion Tracking"
+          ]
+        }
+      }
+    },
+    "policy": {
+      "title": "Cookie-Richtlinie",
+      "lastUpdated": "Zuletzt aktualisiert: {date}",
+      "sections": {
+        "whatAreCookies": {
+          "title": "Was sind Cookies?",
+          "content": "Cookies sind kleine Textdateien, die auf Ihrem Gerät gespeichert werden, wenn Sie eine Website besuchen. Sie helfen dabei, die Website funktionsfähig zu machen oder effizienter zu arbeiten, sowie Informationen an die Eigentümer der Website zu übermitteln."
+        },
+        "howWeUseCookies": {
+          "title": "Wie verwenden wir Cookies?",
+          "content": "Wir verwenden Cookies für verschiedene Zwecke: um sicherzustellen, dass unsere Website ordnungsgemäß funktioniert, um zu verstehen, wie Sie unsere Website nutzen, um Ihre Einstellungen zu speichern und um Ihnen relevante Inhalte und Werbung zu zeigen."
+        },
+        "yourChoices": {
+          "title": "Ihre Wahlmöglichkeiten",
+          "content": "Sie haben jederzeit die Kontrolle über Cookie-Einstellungen. Sie können Ihre Einwilligung widerrufen oder Ihre Einstellungen ändern, indem Sie auf die Schaltfläche 'Cookie-Einstellungen' am Ende der Seite klicken. Die meisten Webbrowser ermöglichen Ihnen auch, Cookies über die Browsereinstellungen zu verwalten."
+        },
+        "contact": {
+          "title": "Kontakt bei Fragen",
+          "content": "Bei Fragen zu unserer Cookie-Richtlinie können Sie uns unter info@pflegedienst-integra.de kontaktieren oder uns unter 0231 9125000 anrufen."
+        }
+      }
+    },
+    "footer": {
+      "cookieSettings": "Cookie-Einstellungen",
+      "privacyPolicy": "Datenschutzerklärung"
+    }
   }
 }

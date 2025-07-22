@@ -31,9 +31,9 @@
                             Cookie-Einstellungen
                         </h3>
                         <p id="cookie-banner-description" class="text-sm sm:text-base text-gray-600 leading-relaxed">
-                            Wir verwenden Cookies, um Ihnen die beste Erfahrung auf unserer Website zu bieten. Sie können auswählen, welche Kategorien von Cookies Sie zulassen möchten.
+                            Diese Website verwendet Cookies, um Ihnen ein optimales Nutzererlebnis zu bieten und unsere Dienstleistungen zu verbessern. Sie können frei wählen, welche Kategorien von Cookies Sie zulassen möchten. Notwendige Cookies können nicht abgewählt werden, da sie für die Grundfunktionen der Website erforderlich sind.
                             <a href="/privacypolicy" class="text-primary hover:underline focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 rounded ml-1">
-                                Mehr erfahren
+                                Mehr über unsere Cookie-Richtlinie erfahren
                             </a>
                         </p>
                     </div>
@@ -41,7 +41,7 @@
                         <button id="accept-all-cookies" class="bg-primary hover:bg-primary/90 text-white font-medium py-2.5 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2 text-sm sm:text-base whitespace-nowrap">
                             Alle akzeptieren
                         </button>
-                        <button id="accept-necessary-cookies" class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2.5 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 text-sm sm:text-base whitespace-nowrap">
+                        <button id="reject-cookies" class="bg-gray-500 hover:bg-gray-600 text-white font-medium py-2.5 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 text-sm sm:text-base whitespace-nowrap">
                             Nur notwendige
                         </button>
                         <button id="customize-cookies" class="bg-soft-blue hover:bg-soft-blue/90 text-white font-medium py-2.5 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-soft-blue focus:ring-offset-2 text-sm sm:text-base whitespace-nowrap">
@@ -68,49 +68,66 @@
                 <div class="p-4 sm:p-6">
                     <div class="flex justify-between items-center mb-4 sm:mb-6">
                         <h2 id="cookie-settings-title" class="text-xl sm:text-2xl font-bold text-deep-blue">
-                            Cookie-Einstellungen
+                            Cookie-Einstellungen verwalten
                         </h2>
                         <button id="close-cookie-settings" class="text-gray-500 hover:text-gray-700 text-2xl font-bold focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 rounded" aria-label="Schließen">
                             ×
                         </button>
                     </div>
                     <p id="cookie-settings-description" class="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
-                        Wir verwenden Cookies, um Ihnen die beste Erfahrung auf unserer Website zu bieten. Sie können auswählen, welche Kategorien von Cookies Sie zulassen möchten.
+                        Sie können hier Ihre Einwilligung zu den verschiedenen Cookie-Kategorien geben oder widerrufen. Ihre Entscheidung wird für 12 Monate gespeichert.
                     </p>
+                    <div class="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-4">
+                        <h4 class="text-sm font-semibold text-blue-900 mb-2">
+                            <svg class="w-4 h-4 inline mr-1" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path>
+                            </svg>
+                            Ihre Rechte nach DSGVO
+                        </h4>
+                        <p class="text-xs text-blue-800">
+                            Sie können Ihre Einwilligung jederzeit widerrufen. Bei Fragen wenden Sie sich an: info@pflegedienst-integra.de
+                        </p>
+                    </div>
                     <div class="space-y-4 sm:space-y-6">
-                        <div class="border rounded-lg p-3 sm:p-4">
+                        <div class="border border-gray-200 rounded-lg p-3 sm:p-4">
                             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
                                 <div>
                                     <h3 class="font-semibold text-deep-blue mb-2 text-sm sm:text-base">Notwendige Cookies</h3>
-                                    <p class="text-sm text-gray-600">Diese Cookies sind für das Funktionieren der Website erforderlich und können nicht deaktiviert werden.</p>
+                                    <p class="text-sm text-gray-600">Diese Cookies sind für die Grundfunktionen der Website unerlässlich und können nicht deaktiviert werden. Sie ermöglichen Navigation und Grundfunktionen.</p>
                                 </div>
                                 <div class="flex items-center">
-                                    <input type="checkbox" id="essential-cookies" checked disabled class="w-5 h-5 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2 cursor-not-allowed" />
-                                    <label for="essential-cookies" class="ml-2 text-sm font-medium text-gray-500">Immer aktiv</label>
+                                    <div class="relative inline-block w-10 h-6 bg-primary rounded-full">
+                                        <div class="absolute left-1 top-1 w-4 h-4 bg-white rounded-full transform translate-x-4 transition-transform"></div>
+                                    </div>
+                                    <span class="ml-2 text-sm font-medium text-gray-500">Immer aktiv</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="border rounded-lg p-3 sm:p-4">
+                        <div class="border border-gray-200 rounded-lg p-3 sm:p-4">
                             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
                                 <div>
-                                    <h3 class="font-semibold text-deep-blue mb-2 text-sm sm:text-base">Analyse Cookies</h3>
-                                    <p class="text-sm text-gray-600">Diese Cookies helfen uns zu verstehen, wie Besucher mit der Website interagieren, indem sie Informationen anonym sammeln und melden.</p>
+                                    <h3 class="font-semibold text-deep-blue mb-2 text-sm sm:text-base">Analyse-Cookies</h3>
+                                    <p class="text-sm text-gray-600">Diese Cookies helfen uns zu verstehen, wie Besucher mit unserer Website interagieren, indem sie Informationen anonym sammeln. Wir verwenden diese Daten zur Verbesserung unserer Website.</p>
                                 </div>
                                 <div class="flex items-center">
-                                    <input type="checkbox" id="analytics-cookies" class="w-5 h-5 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2" />
-                                    <label for="analytics-cookies" class="ml-2 text-sm font-medium text-gray-900">Aktivieren</label>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="analytics-cookies" class="sr-only peer" />
+                                        <div class="relative w-10 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
                                 </div>
                             </div>
                         </div>
-                        <div class="border rounded-lg p-3 sm:p-4">
+                        <div class="border border-gray-200 rounded-lg p-3 sm:p-4">
                             <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
                                 <div>
-                                    <h3 class="font-semibold text-deep-blue mb-2 text-sm sm:text-base">Marketing Cookies</h3>
-                                    <p class="text-sm text-gray-600">Diese Cookies werden verwendet, um Werbeanzeigen zu personalisieren und die Wirksamkeit von Werbekampagnen zu messen.</p>
+                                    <h3 class="font-semibold text-deep-blue mb-2 text-sm sm:text-base">Marketing-Cookies</h3>
+                                    <p class="text-sm text-gray-600">Diese Cookies werden verwendet, um Werbeanzeigen für Sie relevanter zu machen. Sie können auch dazu verwendet werden, die Anzahl der Anzeigen zu begrenzen und die Wirksamkeit von Werbekampagnen zu messen.</p>
                                 </div>
                                 <div class="flex items-center">
-                                    <input type="checkbox" id="marketing-cookies" class="w-5 h-5 text-primary bg-gray-100 border-gray-300 rounded focus:ring-primary focus:ring-2" />
-                                    <label for="marketing-cookies" class="ml-2 text-sm font-medium text-gray-900">Aktivieren</label>
+                                    <label class="relative inline-flex items-center cursor-pointer">
+                                        <input type="checkbox" id="marketing-cookies" class="sr-only peer" />
+                                        <div class="relative w-10 h-6 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-primary/30 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-primary"></div>
+                                    </label>
                                 </div>
                             </div>
                         </div>
@@ -122,7 +139,7 @@
                         <button id="modal-accept-all" class="flex-1 bg-soft-blue hover:bg-soft-blue/90 text-white font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-soft-blue focus:ring-offset-2 text-sm sm:text-base">
                             Alle akzeptieren
                         </button>
-                        <button id="modal-accept-necessary" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 text-sm sm:text-base">
+                        <button id="modal-reject-cookies" class="flex-1 bg-gray-500 hover:bg-gray-600 text-white font-medium py-2.5 sm:py-3 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 text-sm sm:text-base">
                             Nur notwendige
                         </button>
                     </div>

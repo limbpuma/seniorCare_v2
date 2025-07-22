@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Test - Integra Senior Care</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'primary': '#4A90E2',
+                        'deep-blue': '#2C3E50',
+                        'soft-blue': '#5DADE2'
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold text-deep-blue mb-6">Cookie System Test</h1>
+        
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+            <h2 class="text-xl font-semibold mb-4">Test Instructions</h2>
+            <ol class="list-decimal list-inside space-y-2 text-gray-700">
+                <li>Open this page in an incognito/private window</li>
+                <li>The cookie banner should appear automatically</li>
+                <li>Test all three buttons: "Alle akzeptieren", "Nur notwendige", "Anpassen"</li>
+                <li>In settings, test individual toggles and save</li>
+                <li>Reload page - banner should not appear again</li>
+                <li>Clear localStorage and reload - banner should appear again</li>
+            </ol>
+        </div>
+
+        <div class="bg-white p-6 rounded-lg shadow-lg mb-6">
+            <h2 class="text-xl font-semibold mb-4">Debug Controls</h2>
+            <div class="flex flex-wrap gap-3">
+                <button onclick="clearConsent()" class="bg-red-500 text-white px-4 py-2 rounded">
+                    Clear Consent
+                </button>
+                <button onclick="showConsentStatus()" class="bg-blue-500 text-white px-4 py-2 rounded">
+                    Show Status
+                </button>
+                <button onclick="openCookieSettings()" class="bg-green-500 text-white px-4 py-2 rounded">
+                    Open Settings
+                </button>
+                <button onclick="window.revokeAllConsent()" class="bg-yellow-500 text-white px-4 py-2 rounded">
+                    Revoke All
+                </button>
+            </div>
+        </div>
+
+        <div id="status" class="bg-white p-6 rounded-lg shadow-lg">
+            <h2 class="text-xl font-semibold mb-4">Current Status</h2>
+            <pre id="status-content" class="bg-gray-100 p-4 rounded text-sm overflow-auto"></pre>
+        </div>
+    </div>
+
+    <!-- Cookie Scripts -->
+    <script src="/js/cookie-dom-inject.js"></script>
+    <script src="/js/cookie-consent.js"></script>
+
+    <script>
+        function clearConsent() {
+            localStorage.removeItem('integra_cookie_consent_v2');
+            localStorage.removeItem('integra_cookie_consent');
+            document.cookie = 'integra_consent_given=; expires=Thu, 01 Jan 1970 00:00:01 GMT; path=/';
+            console.log('🧹 Consent cleared');
+            updateStatus();
+            // Trigger banner show
+            setTimeout(() => {
+                const banner = document.getElementById('cookie-banner');
+                if (banner) {
+                    banner.style.display = 'block';
+                    banner.classList.remove('hidden');
+                }
+            }, 100);
+        }
+
+        function showConsentStatus() {
+            updateStatus();
+        }
+
+        function updateStatus() {
+            const consent = localStorage.getItem('integra_cookie_consent_v2');
+            const banner = document.getElementById('cookie-banner');
+            const modal = document.getElementById('cookie-settings');
+            
+            const status = {
+                consent: consent ? JSON.parse(consent) : null,
+                bannerVisible: banner ? banner.style.display !== 'none' : false,
+                modalVisible: modal ? modal.style.display === 'flex' : false,
+                cookies: document.cookie,
+                localStorage: Object.keys(localStorage)
+            };
+            
+            document.getElementById('status-content').textContent = JSON.stringify(status, null, 2);
+        }
+
+        // Update status on page load
+        setTimeout(updateStatus, 1000);
+        
+        // Update status every 5 seconds
+        setInterval(updateStatus, 5000);
+    </script>
+</body>
+</html>
